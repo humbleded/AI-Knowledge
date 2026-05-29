@@ -20,6 +20,7 @@ tags:
 - [[01-Maps/AI 知识库总地图]]
 - [[01-Maps/Karpathy AI 学习路线]]
 - [[raw/README|Raw Sources]]
+- [[raw/initial-link-sources|Initial Link Sources]]
 - [[00-Inbox/README|Inbox]]
 - [[log|维护日志]]
 
@@ -77,6 +78,7 @@ tags:
 - [[07-Reviews/AI-Agent-Learning/2026-05-27-stage0-p0-01-p0-02-pass-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-05-28-stage0-p0-03-pass-review]]
 - [[07-Reviews/Knowledge-Base/2026-05-29-karpathy-health-check]]
+- [[07-Reviews/Knowledge-Base/2026-05-29-vault-check-automation]]
 - [[08-Memory/知识库长期记忆规则]]
 
 ## 维护任务
@@ -88,6 +90,6 @@ tags:
 ## 当前优先扩展
 
 - 为 [[04-Projects/LLM/README|LLM 项目记录]] 增加 micrograd 复现实验。
-- 完成 [[04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]] 的代码与观察记录。
+- 扩展 [[04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]] 的代码注释、可视化或测试。
 - 为 Karpathy 课程补充 raw transcript 或 repo 摘录。
 - 继续新增 `cross entropy`、`softmax`、`logits` 等概念卡。

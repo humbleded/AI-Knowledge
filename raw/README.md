@@ -40,6 +40,7 @@ tags:
 
 ## 相关入口
 
+- [[initial-link-sources|Initial Link Sources]]
 - [[../index|全局索引]]
 - [[../01-Maps/AI 知识库总地图]]
 - [[../01-Maps/Karpathy AI 学习路线]]

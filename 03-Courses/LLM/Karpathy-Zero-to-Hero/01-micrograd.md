@@ -62,10 +62,10 @@ loss.backward()
 当前验收项：
 
 - [ ] 跑通原始代码。
-- [ ] 自己重写一遍 `Value` 类。
-- [ ] 画出 `a * b + c` 的计算图并手算梯度。
-- [ ] 用自己的话解释 `backward()`。
-- [ ] 写一个两层 MLP，并用 toy data 训练。
+- [x] 自己重写一遍 `Value` 类。
+- [x] 画出 `a * b + c` 的计算图并打印梯度。
+- [x] 用自己的话解释 `backward()`。
+- [x] 写一个两层 MLP，并用 toy data 训练。
 
 ## 输出笔记
 
@@ -75,6 +75,9 @@ loss.backward()
 - [[../../../02-Concepts/LLM/gradient-descent]]
 - [[../../../04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]]
 - [[../../../log|维护日志]]
+- [[../../../raw/repos/karpathy-micrograd]]
+- [[../../../raw/repos/karpathy-nn-zero-to-hero]]
+- [[../../../raw/transcripts/karpathy-micrograd-video]]
 
 ## 相关概念
 

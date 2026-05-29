@@ -52,3 +52,19 @@ tags:
 
 - 新增 [[04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]]，作为 Karpathy Zero to Hero 第一段的实践记录。
 - 更新 [[04-Projects/LLM/README|LLM 项目记录]]、[[03-Courses/LLM/Karpathy-Zero-to-Hero/01-micrograd|01 Micrograd]] 和 [[index|AI Knowledge Index]] 的反向链接。
+
+### Raw Source、实验输出与健康检查自动化
+
+- 从知识库已有外部链接抽取 [[raw/initial-link-sources|Initial Link Sources]]，作为 raw/source 的初始资料清单。
+- 新增 Karpathy 相关 source notes：
+  - [[raw/repos/karpathy-micrograd]]
+  - [[raw/repos/karpathy-nn-zero-to-hero]]
+  - [[raw/transcripts/karpathy-micrograd-video]]
+- 新增可运行 micrograd 最小实现：
+  - `04-Projects/LLM/micrograd/engine.py`
+  - `04-Projects/LLM/micrograd/nn.py`
+  - `04-Projects/LLM/micrograd/demo_scalar_graph.py`
+  - `04-Projects/LLM/micrograd/demo_toy_mlp.py`
+- 运行 micrograd demo，toy MLP loss 从 `5.230518` 降到 `0.021629`。
+- 新增 `tools/check_vault.py`，用于自动检查 Markdown 数量、断链、frontmatter、status/type 分布和 raw source 数量。
+- 本次健康检查结果写入 [[07-Reviews/Knowledge-Base/2026-05-29-vault-check-automation]]。

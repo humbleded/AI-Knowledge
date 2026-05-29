@@ -48,6 +48,12 @@ tags:
 - 可复用概念拆到 `02-Concepts/LLM/`。
 - 每次完成课程页扩写或项目实验后更新 [[../../../log|维护日志]]。
 
+## 已登记 Raw Sources
+
+- [[../../../raw/repos/karpathy-micrograd]]
+- [[../../../raw/repos/karpathy-nn-zero-to-hero]]
+- [[../../../raw/transcripts/karpathy-micrograd-video]]
+
 ## 下一步
 
 - 完成 micrograd 项目复现记录中的验收项。
