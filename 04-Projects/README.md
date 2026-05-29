@@ -1,0 +1,38 @@
+---
+type: map
+topic: Projects
+status: active
+created: 2026-05-28
+updated: 2026-05-29
+tags:
+  - 项目记录
+  - 知识库
+---
+
+# 项目记录索引
+
+`04-Projects` 用来保存实践项目、源码阅读、代码练习和可运行产物的记录。它记录“做了什么代码/实验”，课程路线放入 `03-Courses`，概念沉淀放入 `02-Concepts`。
+
+## 当前项目
+
+### LLM
+
+- [[LLM/README|LLM 项目记录]]
+
+### Python
+
+- [[Python/AI-Agent-Learning/p0-01-hello-script|P0-01 环境与第一个程序]]
+- [[Python/AI-Agent-Learning/p0-02-profile-script|P0-02 数据类型与变量]]
+- [[Python/AI-Agent-Learning/p0-03-scheduler|P0-03 条件判断、模式匹配、循环]]
+
+### Agent
+
+- [[Agent/AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引]]
+
+## 分类规则
+
+- 先按知识点主题域分层，例如 `Python`、`LLM`、`Agent`、`MCP`、`RAG`。
+- 主题域下面再放项目、学习执行区或源码阅读对象。
+- 项目目录内可以按任务编号、阶段或功能写笔记。
+- 课程资源索引放 `03-Courses`；只有涉及运行、代码、源码阅读、实验结果时才放 `04-Projects`。
+- 项目复盘如果是阶段总结，放 `07-Reviews`，并从项目笔记反向链接过去。

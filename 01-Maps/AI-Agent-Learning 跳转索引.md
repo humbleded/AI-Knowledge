@@ -1,0 +1,84 @@
+﻿---
+type: map
+topic: AI-Agent-Learning 跳转索引
+status: active
+created: 2026-05-28
+tags:
+  - AI-Agent-Learning
+  - 索引
+---
+
+# AI-Agent-Learning 跳转索引
+
+## 工作区
+
+- [打开 AI-Agent-Learning 文件夹](file:///C:/Users/26823/Desktop/AI-Agent-Learning/)
+- [README](file:///C:/Users/26823/Desktop/AI-Agent-Learning/README.md)
+
+## 进度与评估
+
+- [学习总 tracker](file:///C:/Users/26823/Desktop/AI-Agent-Learning/tracker/ai-agent-learning-tracker.md)
+- [当前进度 progress](file:///C:/Users/26823/Desktop/AI-Agent-Learning/tracker/progress.md)
+- [每日记录模板](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/TEMPLATE.md)
+- [打开 daily 文件夹](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/)
+
+## 学习产物
+
+- [打开 code 文件夹](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/)
+- [打开 notes 文件夹](file:///C:/Users/26823/Desktop/AI-Agent-Learning/notes/)
+- [打开 repos 文件夹](file:///C:/Users/26823/Desktop/AI-Agent-Learning/repos/)
+- [打开 resources 文件夹](file:///C:/Users/26823/Desktop/AI-Agent-Learning/resources/)
+
+## 知识库沉淀
+
+- [[AI Agent 学习资源地图]]
+- [[../03-Courses/Agent/AI-Agent-Learning/README|AI-Agent-Learning 知识沉淀]]
+- [[../03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]
+- [[../04-Projects/Python/AI-Agent-Learning/p0-01-hello-script|P0-01 环境与第一个程序]]
+- [[../04-Projects/Python/AI-Agent-Learning/p0-02-profile-script|P0-02 数据类型与变量]]
+- [[../04-Projects/Python/AI-Agent-Learning/p0-03-scheduler|P0-03 条件判断、模式匹配、循环]]
+- [[../07-Reviews/AI-Agent-Learning/2026-05-27-stage0-p0-01-p0-02-pass-review|2026-05-27 阶段 0 PASS 复盘]]
+- [[../07-Reviews/AI-Agent-Learning/2026-05-28-stage0-p0-03-pass-review|2026-05-28 P0-03 PASS 复盘]]
+
+## 外部资源中文索引
+
+- [[../03-Courses/Python/Python-Basics/廖雪峰 Python 教程]]
+- [[../03-Courses/Python/Python-Basics/CS50P Weeks 中文学习索引]]
+- [[../03-Courses/Agent/AI-Agent-Learning/Datawhale hello-agents 中文学习索引]]
+- [[../03-Courses/Agent/AI-Agent-Learning/Agent-Learning-Hub 中文路线索引]]
+- [[../04-Projects/Agent/AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引]]
+- [[../03-Courses/Agent/AI-Agent-Learning/Agentic Design Patterns 中文模式索引]]
+- [[../03-Courses/Agent/AI-Agent-Learning/Hugging Face agents-course 中文学习索引]]
+
+## 阶段目录
+
+- [stage0 code](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage0/)
+- [stage0 notes](file:///C:/Users/26823/Desktop/AI-Agent-Learning/notes/stage0/)
+- [stage1 code](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage1/)
+- [stage1 notes](file:///C:/Users/26823/Desktop/AI-Agent-Learning/notes/stage1/)
+- [stage2 code](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage2/)
+- [stage2 notes](file:///C:/Users/26823/Desktop/AI-Agent-Learning/notes/stage2/)
+- [stage3 code](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage3/)
+- [stage3 notes](file:///C:/Users/26823/Desktop/AI-Agent-Learning/notes/stage3/)
+- [stage4 code](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage4/)
+- [stage4 notes](file:///C:/Users/26823/Desktop/AI-Agent-Learning/notes/stage4/)
+- [stage5 code](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage5/)
+- [stage5 notes](file:///C:/Users/26823/Desktop/AI-Agent-Learning/notes/stage5/)
+- [stage6 code](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage6/)
+- [stage6 notes](file:///C:/Users/26823/Desktop/AI-Agent-Learning/notes/stage6/)
+- [stage7 code](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage7/)
+- [stage7 notes](file:///C:/Users/26823/Desktop/AI-Agent-Learning/notes/stage7/)
+- [stage8 code](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage8/)
+- [stage8 notes](file:///C:/Users/26823/Desktop/AI-Agent-Learning/notes/stage8/)
+- [stage9 code](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage9/)
+- [stage9 notes](file:///C:/Users/26823/Desktop/AI-Agent-Learning/notes/stage9/)
+- [stage10 code](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage10/)
+- [stage10 notes](file:///C:/Users/26823/Desktop/AI-Agent-Learning/notes/stage10/)
+
+## 使用规则
+
+`AI-Agent-Learning` 保持为学习执行区，不移动、不合并。
+
+`D:\AI-Knowledge` 保持为长期知识库，通过本页跳转到学习区。
+
+当某个任务通过 PASS 后，再把稳定结论沉淀到知识库的概念、项目或复盘笔记中。
