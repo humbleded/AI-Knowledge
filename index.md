@@ -71,6 +71,7 @@ tags:
 - [[04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]]
 - [[04-Projects/Python/AI-Agent-Learning/p0-01-hello-script]]
 - [[04-Projects/Python/AI-Agent-Learning/p0-02-profile-script]]
+- [[04-Projects/Python/AI-Agent-Learning/p0-03-scheduler]]
 - [[04-Projects/Agent/AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引]]
 
 ## 复盘与记忆

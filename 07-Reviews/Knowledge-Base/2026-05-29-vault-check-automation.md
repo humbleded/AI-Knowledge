@@ -15,24 +15,35 @@ tags:
 
 ## 结论
 
-已新增 `tools/check_vault.py`，可以自动检查 Obsidian/LLM Wiki 的基础健康状态。
+已将 `tools/check_vault.py` 从基础统计脚本升级为提交前质量门禁。现在它不仅检查断链，还检查 raw/source 编译闭环、重要页是否进入 `index.md`、生成文件是否被 Git 跟踪，以及 `log.md` 是否记录自动化脚本。
+
+本次 `--strict` 检查通过：0 errors，0 warnings。
 
 ## 本次运行结果
 
 ```text
+OK: True
 Markdown files: 90
-Links: 435
+Links: 436
 Broken links: 0
-Missing frontmatter: 2
+Missing frontmatter: 0
 Raw non-index files: 4
+Warnings: 0
+Errors: 0
 ```
 
-缺 frontmatter 的文件：
+## 自动化能力
 
-- `AGENTS.md`
-- `README.md`
+当前脚本检查：
 
-这两个文件是仓库级说明文件，当前可以接受。
+- 是否存在 `index.md`、`log.md`、`AGENTS.md`。
+- Obsidian wikilink 是否断链。
+- Markdown frontmatter 是否缺失，允许 `README.md` 和 `AGENTS.md` 作为仓库级说明例外。
+- raw source note 是否有 `source_url`。
+- raw/source 是否至少链接一个编译目标，例如 `02-Concepts`、`03-Courses`、`04-Projects`。
+- `usable` / `pass` / 核心索引页是否被 `index.md` 引用。
+- Git 是否跟踪了 `__pycache__`、`.pyc` 等生成文件。
+- `log.md` 是否记录 `check_vault.py`。
 
 ## Raw Source 进展
 
@@ -49,10 +60,17 @@ Raw non-index files: 4
 cd D:\AI-Knowledge
 python tools\check_vault.py --root D:\AI-Knowledge
 python tools\check_vault.py --root D:\AI-Knowledge --json
+python tools\check_vault.py --root D:\AI-Knowledge --strict
 ```
+
+## 修复记录
+
+- `--strict` 首次运行发现 `04-Projects/Python/AI-Agent-Learning/p0-03-scheduler.md` 没有进入 `index.md`。
+- 已将它补入全局索引。
+- 再次运行 `--strict` 后通过。
 
 ## 下一步
 
-- 把健康检查脚本纳入每次提交前的手动检查。
-- 后续可以增加“新增核心页是否更新 `index.md` / `log.md`”的检查。
-- 后续可以增加“raw source 是否至少链接一个 compile target”的检查。
+- 后续可以把 `--strict` 检查接入 Git pre-commit hook。
+- 后续可以增加外部 URL 可达性检查。
+- 后续可以增加“source note 的 source_url 是否可访问”的网络检查模式。

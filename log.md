@@ -68,3 +68,15 @@ tags:
 - 运行 micrograd demo，toy MLP loss 从 `5.230518` 降到 `0.021629`。
 - 新增 `tools/check_vault.py`，用于自动检查 Markdown 数量、断链、frontmatter、status/type 分布和 raw source 数量。
 - 本次健康检查结果写入 [[07-Reviews/Knowledge-Base/2026-05-29-vault-check-automation]]。
+
+### Vault Check 严格模式升级
+
+- 升级 `tools/check_vault.py`，新增 `errors` / `warnings` 分级和 `--strict` 模式。
+- 新增检查：
+  - raw source note 是否有 `source_url`。
+  - raw/source 是否至少链接一个编译目标。
+  - `usable`、`pass` 和核心索引页是否进入 `index.md`。
+  - Git 是否跟踪了 `__pycache__`、`.pyc` 等生成文件。
+  - `log.md` 是否记录 `check_vault.py`。
+- 严格检查发现 `04-Projects/Python/AI-Agent-Learning/p0-03-scheduler.md` 未进入 `index.md`，已补入。
+- 当前 `python tools\check_vault.py --root D:\AI-Knowledge --strict` 通过：0 errors，0 warnings。
