@@ -39,6 +39,7 @@ tags:
 代码实验、训练记录和复现笔记放入：
 
 - [[../../../04-Projects/LLM/README]]
+- [[../../../04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]]
 
 ## Ingest 规则
 
@@ -49,6 +50,6 @@ tags:
 
 ## 下一步
 
-- 补充 micrograd 项目复现记录。
+- 完成 micrograd 项目复现记录中的验收项。
 - 补充 makemore 字符级生成实验记录。
 - 补充 GPT from scratch tensor shape 追踪记录。

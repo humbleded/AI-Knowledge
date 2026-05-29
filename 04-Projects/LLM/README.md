@@ -16,9 +16,10 @@ tags:
 
 ## Karpathy Zero to Hero 实践
 
+- [[micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]]
+
 后续实践记录建议按主题拆分：
 
-- `micrograd-backprop-from-scratch.md`
 - `makemore-character-model.md`
 - `gpt-from-scratch-tiny-shakespeare.md`
 
@@ -33,6 +34,7 @@ tags:
 ## 相关入口
 
 - [[../../01-Maps/Karpathy AI 学习路线]]
+- [[../../03-Courses/LLM/Karpathy-Zero-to-Hero/README|Karpathy Zero to Hero]]
 - [[../../03-Courses/LLM/Karpathy-Zero-to-Hero/01-micrograd]]
 - [[../../03-Courses/LLM/Karpathy-Zero-to-Hero/02-makemore]]
 - [[../../03-Courses/LLM/Karpathy-Zero-to-Hero/05-gpt-from-scratch]]

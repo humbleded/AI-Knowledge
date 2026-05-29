@@ -57,6 +57,10 @@ loss.backward()
 
 ## 实践记录
 
+- [[../../../04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]]
+
+当前验收项：
+
 - [ ] 跑通原始代码。
 - [ ] 自己重写一遍 `Value` 类。
 - [ ] 画出 `a * b + c` 的计算图并手算梯度。
@@ -69,7 +73,7 @@ loss.backward()
 
 - [[../../../02-Concepts/LLM/backpropagation]]
 - [[../../../02-Concepts/LLM/gradient-descent]]
-- [[../../../04-Projects/LLM/README|LLM 项目记录]]
+- [[../../../04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]]
 - [[../../../log|维护日志]]
 
 ## 相关概念

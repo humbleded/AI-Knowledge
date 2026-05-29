@@ -67,6 +67,7 @@ tags:
 
 - [[04-Projects/README|项目记录索引]]
 - [[04-Projects/LLM/README|LLM 项目记录]]
+- [[04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]]
 - [[04-Projects/Python/AI-Agent-Learning/p0-01-hello-script]]
 - [[04-Projects/Python/AI-Agent-Learning/p0-02-profile-script]]
 - [[04-Projects/Agent/AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引]]
@@ -87,5 +88,6 @@ tags:
 ## 当前优先扩展
 
 - 为 [[04-Projects/LLM/README|LLM 项目记录]] 增加 micrograd 复现实验。
+- 完成 [[04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]] 的代码与观察记录。
 - 为 Karpathy 课程补充 raw transcript 或 repo 摘录。
 - 继续新增 `cross entropy`、`softmax`、`logits` 等概念卡。
