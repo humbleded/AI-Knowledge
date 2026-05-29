@@ -86,3 +86,12 @@ tags:
 - 新增 `Templates/web-clipper-ai-knowledge-raw-source.json`，用于无 API key 场景下把网页保存到 `raw/articles`。
 - 新增 `Templates/web-clipper-ai-knowledge-raw-source-with-interpreter.json`，用于启用 Web Clipper Interpreter 后自动生成中文摘要和知识库整理建议。
 - 两个模板均面向 `D:\AI-Knowledge` 的 raw/source 工作流，默认保存原文、来源、highlight、compile targets 和 next steps。
+
+## 2026-05-30
+
+### 全库中文辅助阅读规则
+
+- 新增 [[08-Memory/全库中文辅助阅读规则]]，规定全库都可以补充中文辅助阅读，不限于 `raw/`。
+- 核心策略：原文保留，中文理解追加；术语保留英文，中文解释辅助；代码永不翻译。
+- 新增 [[06-Prompts/全库中文辅助阅读提示词]]，用于整理英文笔记时生成 `## 中文速读` 和 `## 关键术语`。
+- 更新 `AGENTS.md`，让后续知识库维护和自动化任务遵守该翻译策略。

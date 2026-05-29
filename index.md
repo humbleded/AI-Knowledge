@@ -81,6 +81,11 @@ tags:
 - [[07-Reviews/Knowledge-Base/2026-05-29-karpathy-health-check]]
 - [[07-Reviews/Knowledge-Base/2026-05-29-vault-check-automation]]
 - [[08-Memory/知识库长期记忆规则]]
+- [[08-Memory/全库中文辅助阅读规则]]
+
+## 提示词
+
+- [[06-Prompts/全库中文辅助阅读提示词]]
 
 ## 维护任务
 
