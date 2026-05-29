@@ -8,11 +8,15 @@ copilot-command-last-used: 0
 
 Based on the YouTube video information and transcript provided in the context, generate a complete Obsidian note in the following format.
 
+> 根据上下文中提供的 YouTube 视频信息和文字记录，按照以下格式生成完整的 Obsidian 笔记。
+
 IMPORTANT: If no YouTube video context is found, remind the user to:
 1. Open a YouTube video in Web Viewer (or use @ to select a YouTube web tab)
 2. Then use this command again
 
 Generate the note with this exact structure:
+
+> 请按照以下确切结构生成笔记：
 
 ---
 title: "<video title>"

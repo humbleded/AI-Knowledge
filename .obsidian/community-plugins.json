@@ -1,5 +1,10 @@
 [
   "copilot",
   "omnisearch",
-  "realclaudian"
+  "realclaudian",
+  "dataview",
+  "templater-obsidian",
+  "obsidian-git",
+  "selection-translator",
+  "obsidian-clipper"
 ]
