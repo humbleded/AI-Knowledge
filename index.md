@@ -80,6 +80,7 @@ tags:
 - [[07-Reviews/AI-Agent-Learning/2026-05-28-stage0-p0-03-pass-review]]
 - [[07-Reviews/Knowledge-Base/2026-05-29-karpathy-health-check]]
 - [[07-Reviews/Knowledge-Base/2026-05-29-vault-check-automation]]
+- [[07-Reviews/Knowledge-Base/2026-05-31-weekly-maintenance]]
 - [[08-Memory/知识库长期记忆规则]]
 - [[08-Memory/全库中文辅助阅读规则]]
 

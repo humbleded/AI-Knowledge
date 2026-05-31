@@ -95,3 +95,17 @@ tags:
 - 核心策略：原文保留，中文理解追加；术语保留英文，中文解释辅助；代码永不翻译。
 - 新增 [[06-Prompts/全库中文辅助阅读提示词]]，用于整理英文笔记时生成 `## 中文速读` 和 `## 关键术语`。
 - 更新 `AGENTS.md`，让后续知识库维护和自动化任务遵守该翻译策略。
+
+## 2026-05-31
+
+### Weekly Maintenance
+
+- 复查 [[00-Inbox/README|00-Inbox]]、[[raw/README|raw]]、[[index|index.md]]、[[log|log.md]] 和最近 Git 变更。
+- 运行严格检查：
+  - `& 'C:\Users\26823\AppData\Local\uv\cache\archive-v0\9__1AdRplGGYGwVO\Scripts\python.exe' tools\check_vault.py --root D:\AI-Knowledge --strict`
+  - 结果：`OK: True`，`Markdown files: 93`，`Links: 451`，`Broken links: 0`，`Missing frontmatter: 0`。
+- 当前没有新的 Inbox 条目或 raw/source 散落资料需要整理。
+- 发现 `2026-05-30` 的备份提交意外删除了两份 Web Clipper 模板，现已恢复：
+  - `Templates/web-clipper-ai-knowledge-raw-source.json`
+  - `Templates/web-clipper-ai-knowledge-raw-source-with-interpreter.json`
+- 本次维护结论写入 [[07-Reviews/Knowledge-Base/2026-05-31-weekly-maintenance]]。

@@ -1,0 +1,64 @@
+{
+  "schemaVersion": "0.1.0",
+  "name": "AI-Knowledge Raw Source + Chinese Summary",
+  "behavior": "create",
+  "noteNameFormat": "{{date|date:\"YYYY-MM-DD\"}} {{title|safe_name}}",
+  "path": "raw/articles",
+  "properties": [
+    {
+      "name": "type",
+      "value": "source",
+      "type": "text"
+    },
+    {
+      "name": "topic",
+      "value": "{{title}}",
+      "type": "text"
+    },
+    {
+      "name": "status",
+      "value": "inbox",
+      "type": "text"
+    },
+    {
+      "name": "created",
+      "value": "{{date|date:\"YYYY-MM-DD\"}}",
+      "type": "date"
+    },
+    {
+      "name": "source_url",
+      "value": "{{url}}",
+      "type": "text"
+    },
+    {
+      "name": "source_type",
+      "value": "web",
+      "type": "text"
+    },
+    {
+      "name": "site",
+      "value": "{{site}}",
+      "type": "text"
+    },
+    {
+      "name": "author",
+      "value": "{{author}}",
+      "type": "text"
+    },
+    {
+      "name": "published",
+      "value": "{{published|date:\"YYYY-MM-DD\"}}",
+      "type": "date"
+    },
+    {
+      "name": "tags",
+      "value": "Source, inbox",
+      "type": "multitext"
+    }
+  ],
+  "triggers": [
+    "schema:@Article"
+  ],
+  "context": "{{content|slice:0,12000}}",
+  "noteContentFormat": "# {{title}}\n\n## Source\n\n- URL: {{url}}\n- Site: {{site}}\n- Author: {{author}}\n- Published: {{published|date:\"YYYY-MM-DD\"}}\n- Retrieved: {{date|date:\"YYYY-MM-DD\"}}\n\n## 中文摘要\n\n{{\"基于当前网页内容，用中文总结核心观点。要求：1）5-8 条 bullet；2）保留关键英文术语；3）指出哪些内容适合整理进 Obsidian 概念卡、课程页或项目记录；4）不要编造网页中没有的信息。\"|trim}}\n\n## 适合进入知识库的内容\n\n{{\"基于当前网页内容，列出适合沉淀到知识库的条目。按 Concepts、Courses、Projects、Reviews 四类输出中文 bullet；如果某类没有内容，写“暂无”。\"|trim}}\n\n## Highlights\n\n{{highlights|map:item => item.text|join:\"\\n\\n\"}}\n\n## Original Clip\n\n{{content}}\n\n## Compile Targets\n\n- [[../../02-Concepts/README]]\n- [[../../03-Courses/README]]\n- [[../../04-Projects/README]]\n- [[../../07-Reviews/Knowledge-Base/2026-05-29-vault-check-automation]]\n\n## Next Step\n\n- [ ] 判断应该进入 Concepts / Courses / Projects / Reviews\n- [ ] 用中文提炼摘要\n- [ ] 补充相关 wikilink\n- [ ] 更新 [[../../log]]\n"
+}
