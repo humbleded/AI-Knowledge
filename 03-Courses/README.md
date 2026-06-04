@@ -24,6 +24,7 @@ tags:
 
 ### Python
 
+- [[Python/Python-Basics/python-core-reading-route|Python 官方手册核心阅读路线]]
 - [[Python/Python-Basics/廖雪峰 Python 教程]]
 - [[Python/Python-Basics/CS50P Weeks 中文学习索引]]
 - [[Python/AI-Agent-Learning/stage0-python-basics|AI-Agent-Learning 阶段 0：Python 与开发环境]]

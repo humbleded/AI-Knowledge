@@ -18,11 +18,15 @@ tags:
 - [[python-basic-data-types|Python 基础数据类型]]
 - [[python-type-conversion|Python 类型转换]]
 - [[python-f-string|Python f-string]]
+- [[python-functions|Python 函数、参数与 return]]
 - [[python-conditionals-and-loops|Python 条件判断与循环]]
 - [[python-match-case|Python match/case]]
+- [[python-list-dict-set|Python list、dict、set]]
 
 ## 对应课程
 
+- [[../../01-Maps/Python/python-official-docs-map|Python Official Docs Map]]
+- [[../../03-Courses/Python/Python-Basics/python-core-reading-route|Python 官方手册核心阅读路线]]
 - [[../../03-Courses/Python/Python-Basics/廖雪峰 Python 教程]]
 - [[../../03-Courses/Python/Python-Basics/CS50P Weeks 中文学习索引]]
 - [[../../03-Courses/Python/AI-Agent-Learning/stage0-python-basics]]

@@ -23,12 +23,15 @@ tags:
 
 ## Python
 
+- [Python 3 official documentation](https://docs.python.org/3/) -> [[articles/python-3-official-documentation]]
 - [廖雪峰 Python 教程主页](https://liaoxuefeng.com/books/python/)
 - [廖雪峰 Python match 模式匹配](https://liaoxuefeng.com/books/python/basic/match/index.html)
 - [CS50P Weeks](https://cs50.harvard.edu/python/weeks/)
 
 ## Agent / Skills
 
+- [MCP official introduction](https://modelcontextprotocol.io/docs/getting-started/intro) -> [[articles/mcp-official-docs-intro]]
+- [MCP docs index for LLMs](https://modelcontextprotocol.io/llms.txt)
 - [datawhalechina/Agent-Learning-Hub](https://github.com/datawhalechina/Agent-Learning-Hub)
 - [datawhalechina/hello-agents](https://github.com/datawhalechina/hello-agents)
 - [xindoo/agentic-design-patterns](https://github.com/xindoo/agentic-design-patterns)

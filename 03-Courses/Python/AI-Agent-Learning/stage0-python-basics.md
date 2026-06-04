@@ -24,6 +24,7 @@ tags:
 | P0-01 | 环境与第一个程序 | PASS | [[../../../04-Projects/Python/AI-Agent-Learning/p0-01-hello-script]] | 能运行 `.py` 文件，理解 `input()` / `print()` |
 | P0-02 | 数据类型与变量 | PASS | [[../../../04-Projects/Python/AI-Agent-Learning/p0-02-profile-script]] | 能使用 `str`、`int`、`float`、`bool` |
 | P0-03 | 条件判断、模式匹配、循环 | PASS | [[../../../04-Projects/Python/AI-Agent-Learning/p0-03-scheduler]] | 能使用分支判断和固定次数循环 |
+| P0-04 | list、tuple、dict、set | PASS | [[../../../04-Projects/Python/AI-Agent-Learning/p0-04-tasks]] | 能用 list/dict/set 管理任务、状态和去重 |
 
 ## 已掌握概念
 
@@ -33,20 +34,21 @@ tags:
 - [[../../../02-Concepts/Python/python-basic-data-types]]
 - [[../../../02-Concepts/Python/python-type-conversion]]
 - [[../../../02-Concepts/Python/python-f-string]]
+- [[../../../02-Concepts/Python/python-list-dict-set]]
 
 ## 下一步
 
-下一项是 P0-04：list、tuple、dict、set。
+下一项是 P0-05：函数、参数、返回值。
 
 要做的代码是：
 
-- `code/stage0/p0_04_tasks.py`
+- `code/stage0/p0_05_plan_functions.py`
 
 要能回答：
 
-- list 和 dict 的最大区别是什么？
-- 为什么 dict 适合保存结构化状态？
-- set 去重的代价是什么？
+- 为什么要把代码封装成函数？
+- `return` 和 `print` 有什么区别？
+- 如何判断一个函数是否职责过多？
 
 ## 注意
 

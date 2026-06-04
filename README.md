@@ -28,6 +28,7 @@
 ## 当前主线
 
 - [[01-Maps/AI 知识库总地图]]
+- [[01-Maps/AI 开发学习路线]]
 - [[index|AI Knowledge Index]]
 - [[raw/README|Raw Sources]]
 - [[log|AI Knowledge Log]]
@@ -59,11 +60,11 @@
 
 - [[02-Concepts/Python/README|Python 概念卡]]
 - [[02-Concepts/LLM/README|LLM 概念卡]]
+- [[02-Concepts/MCP/README|MCP 概念卡]]
 
 未来主题超过 8-10 篇笔记时，再新增：
 
 - `02-Concepts/Agent`
-- `02-Concepts/MCP`
 - `02-Concepts/RAG`
 - `02-Concepts/Evaluation`
 - `02-Concepts/Prompting`
@@ -71,10 +72,13 @@
 ### 课程笔记
 
 - [[03-Courses/README|课程笔记索引]]
+- [[01-Maps/Python/python-official-docs-map|Python Official Docs Map]]
+- [[03-Courses/Python/Python-Basics/python-core-reading-route|Python 官方手册核心阅读路线]]
 - [[03-Courses/Python/Python-Basics/廖雪峰 Python 教程]]
 - [[03-Courses/Python/Python-Basics/CS50P Weeks 中文学习索引]]
 - [[03-Courses/Python/AI-Agent-Learning/stage0-python-basics|AI-Agent-Learning 阶段 0：Python]]
 - [[03-Courses/Agent/AI-Agent-Learning/README|AI-Agent-Learning Agent 资源]]
+- [[01-Maps/MCP/mcp-official-docs-map|MCP Official Docs Map]]
 - [[03-Courses/LLM/Karpathy-Zero-to-Hero/01-micrograd|Karpathy Zero to Hero]]
 - [[03-Courses/Agent/Agent-Skills-with-Anthropic/Claude Skills：让 Agent 拥有可复用专业能力的方法]]
 

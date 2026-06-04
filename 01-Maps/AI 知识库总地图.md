@@ -15,11 +15,14 @@ tags:
 - [[../index|AI Knowledge Index]]
 - [[../raw/README|Raw Sources]]
 - [[../log|AI Knowledge Log]]
+- [[AI 开发学习路线]]
 - [[Karpathy AI 学习路线]]
 - [[AI + Obsidian 工作流]]
 - [[AI-Agent-Learning 关联方案]]
 - [[AI-Agent-Learning 跳转索引]]
 - [[AI Agent 学习资源地图]]
+- [[Python/python-official-docs-map|Python Official Docs Map]]
+- [[MCP/mcp-official-docs-map|MCP Official Docs Map]]
 - [[../03-Courses/Agent/AI-Agent-Learning/README|AI-Agent-Learning 知识沉淀]]
 - [[../03-Courses/Agent/Agent-Skills-with-Anthropic/Claude Skills：让 Agent 拥有可复用专业能力的方法]]
 - [[标签与命名规范]]
@@ -41,18 +44,24 @@ tags:
 - [[../02-Concepts/README|概念卡片索引]]
 - [[../02-Concepts/Python/README|Python 概念卡]]
 - [[../02-Concepts/LLM/README|LLM 概念卡]]
+- [[../02-Concepts/MCP/README|MCP 概念卡]]
 
 ### 基础能力
 
+- [[AI 开发学习路线]]
 - [[AI Agent 学习资源地图]]
 - [[../03-Courses/Python/Python-Basics/廖雪峰 Python 教程]]
 - [[../03-Courses/Python/Python-Basics/CS50P Weeks 中文学习索引]]
+- [[../03-Courses/Python/Python-Basics/python-core-reading-route|Python 官方手册核心阅读路线]]
 - [[../02-Concepts/Python/python-interpreter|Python Interpreter]]
 - [[../02-Concepts/Python/python-input-print|Python input() 与 print()]]
 - [[../02-Concepts/Python/python-basic-data-types|Python 基础数据类型]]
 - 数学基础
 - 神经网络基础
 - PyTorch
+- 数据库
+- Linux
+- 网络基础
 
 ### 大模型能力
 
@@ -68,7 +77,8 @@ tags:
 - RAG
 - Agent
 - Tool calling
-- MCP
+- [[MCP/mcp-official-docs-map|MCP]]
+- [[../02-Concepts/MCP/model-context-protocol|Model Context Protocol]]
 - Claude Skills
 - [[../03-Courses/Agent/AI-Agent-Learning/Datawhale hello-agents 中文学习索引]]
 - [[../03-Courses/Agent/AI-Agent-Learning/Agentic Design Patterns 中文模式索引]]

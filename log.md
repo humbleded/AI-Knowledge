@@ -3,7 +3,7 @@ type: maintenance-log
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-05
 tags:
   - 知识库
   - log
@@ -109,3 +109,32 @@ tags:
   - `Templates/web-clipper-ai-knowledge-raw-source.json`
   - `Templates/web-clipper-ai-knowledge-raw-source-with-interpreter.json`
 - 本次维护结论写入 [[07-Reviews/Knowledge-Base/2026-05-31-weekly-maintenance]]。
+
+## 2026-06-02
+
+- 同步 AI-Agent-Learning 2026-06-02 P0-04 PASS：更新 Python 容器概念卡、阶段 0 课程页、项目记录和复盘记录。
+
+## 2026-06-04
+
+### AI 开发学习路线与学习原则
+
+- 新增 [[01-Maps/AI 开发学习路线]]，把 AI 开发主线、工程基础支撑层、技术动态关注层和只记录不深入层合并成当前学习框架。
+- 新增 [[08-Memory/AI 学习原则]]，记录长期目标、学习节奏和新技术处理规则。
+- 同步更新 [[index]]、[[README]] 和 [[01-Maps/AI 知识库总地图]] 的入口链接。
+
+### MCP 与 Python 官方文档入口整理
+
+- 新增 MCP 官方文档 raw source：[[raw/articles/mcp-official-docs-intro]]。
+- 新增 Python 3 官方文档 raw source：[[raw/articles/python-3-official-documentation]]。
+- 新增 [[01-Maps/MCP/mcp-official-docs-map|MCP Official Docs Map]] 和 [[02-Concepts/MCP/model-context-protocol|Model Context Protocol]] 概念卡。
+- 新增 [[01-Maps/Python/python-official-docs-map|Python Official Docs Map]] 和 [[03-Courses/Python/Python-Basics/python-core-reading-route|Python 官方手册核心阅读路线]]。
+- 更新全局索引、总地图、raw source 索引、课程索引和概念卡索引。
+- 运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：`OK: True`，`Broken links: 0`，`Missing frontmatter: 0`。
+
+## 2026-06-05
+
+### Daily Practice 2026-06-04 PASS
+
+- 批改 [[07-Reviews/Daily-Practice/2026-06-04-review]] 第四轮订正，最终判定 `PASS`。
+- 新增 [[02-Concepts/Python/python-functions|Python 函数、参数与 return]]，沉淀 `return` vs `print`、函数参数、返回值、函数拆分和 `return` 缩进位置。
+- 更新 [[02-Concepts/Python/README|Python 概念卡]] 与 [[index|AI Knowledge Index]]。

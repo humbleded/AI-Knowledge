@@ -16,6 +16,7 @@ tags:
 
 - [[Python/README|Python]]
 - [[LLM/README|LLM]]
+- [[MCP/README|MCP]]
 
 ## 规则
 
@@ -23,4 +24,3 @@ tags:
 - 文件名使用英文小写短横线。
 - 新增概念时优先放进已有主题目录；如果主题目录不存在，再新建目录和 `README.md`。
 - 课程笔记不要直接堆到这里，应放到 `03-Courses`，只把可复用概念抽成卡片。
-
