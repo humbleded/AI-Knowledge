@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-06-05
+updated: 2026-06-06
 tags:
   - 知识库
   - index
@@ -41,6 +41,7 @@ tags:
 - [[02-Concepts/README|概念卡片总索引]]
 - [[02-Concepts/Python/README|Python 概念卡]]
 - [[02-Concepts/Python/python-functions|Python 函数、参数与 return]]
+- [[02-Concepts/Python/python-list-dict-set|Python list、dict、set]]
 - [[02-Concepts/LLM/README|LLM 概念卡]]
 - [[02-Concepts/MCP/README|MCP 概念卡]]
 - [[02-Concepts/MCP/model-context-protocol|Model Context Protocol]]
@@ -88,6 +89,7 @@ tags:
 - [[07-Reviews/AI-Agent-Learning/2026-05-28-stage0-p0-03-pass-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-06-02-stage0-p0-04-pass-review]]
 - [[07-Reviews/Daily-Practice/2026-06-04-review]]
+- [[07-Reviews/Daily-Practice/2026-06-05-review]]
 - [[07-Reviews/Knowledge-Base/2026-05-29-karpathy-health-check]]
 - [[07-Reviews/Knowledge-Base/2026-05-29-vault-check-automation]]
 - [[07-Reviews/Knowledge-Base/2026-05-31-weekly-maintenance]]
