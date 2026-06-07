@@ -14,6 +14,19 @@ tags:
 
 # MCP Official Docs Intro
 
+## 中文速读
+
+- 这是 Model Context Protocol 的官方入门页，适合先建立“它是什么、解决什么问题、有哪些角色”的整体心智模型。
+- 学 MCP 时，重点不是背某个 SDK 的 API，而是先理解 protocol（协议）、client、server、tool、resource 这些稳定概念。
+- 真正开始实现前，应重新查看官方文档，因为 spec、SDK 页面和最佳实践仍可能继续变化。
+
+## 关键术语
+
+- `protocol`（协议）：约定 client 和 server 如何交换能力与上下文。
+- `client`（客户端）：消费 MCP 能力的一侧，通常是 AI application 或 agent runtime。
+- `server`（服务端）：暴露 tools、resources、prompts 等能力的一侧。
+- `workflows`（工作流）：通过 MCP 接入的外部步骤、工具链或业务流程。
+
 ## Source
 
 - Official page: https://modelcontextprotocol.io/docs/getting-started/intro

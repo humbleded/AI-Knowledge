@@ -3,7 +3,7 @@ type: maintenance-log
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-06-06
+updated: 2026-06-07
 tags:
   - 知识库
   - log
@@ -147,3 +147,27 @@ tags:
 - 更新 [[02-Concepts/Python/python-functions|Python 函数、参数与 return]]，补充可测试函数、`score_answer()`、`redirect_stdout` 手动测试和普通空格缩进注意事项。
 - 更新 [[02-Concepts/Python/python-list-dict-set|Python list、dict、set]]，补充访问方式对比和任务改名时同步迁移 `task_status` 的模式。
 - 更新 [[index|AI Knowledge Index]]，补入容器概念卡入口。
+
+## 2026-06-07
+
+### Weekly Maintenance
+
+- 复查 [[00-Inbox/README|00-Inbox]]、[[raw/README|raw]]、[[index|index.md]]、[[log|log.md]] 和最近 Git 变更。
+- 运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 110`
+  - `Links: 576`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+- 当前 `00-Inbox` 仍只有 `README.md`，没有新的临时资料待分拣。
+- `raw/` 本周新增的官方文档 source notes 已有对应编译目标：
+  - [[raw/articles/python-3-official-documentation]]
+  - [[raw/articles/mcp-official-docs-intro]]
+- 为上述两份英文 raw source 补充 `## 中文速读` 和 `## 关键术语`，落实全库中文辅助阅读规则。
+- 新增本次周维护复盘 [[07-Reviews/Knowledge-Base/2026-06-07-weekly-maintenance]] 并更新全局索引。
+- 完成编辑后再次运行严格检查：
+  - `OK: True`
+  - `Markdown files: 111`
+  - `Links: 594`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
