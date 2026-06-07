@@ -3,7 +3,7 @@ type: maintenance-log
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-06-07
+updated: 2026-06-08
 tags:
   - 知识库
   - log
@@ -171,3 +171,18 @@ tags:
   - `Links: 594`
   - `Broken links: 0`
   - `Missing frontmatter: 0`
+
+## 2026-06-08
+
+### Weekly Maintenance
+
+- 复查 [[00-Inbox/README|00-Inbox]]、[[raw/README|raw]]、[[index|index.md]]、[[log|log.md]] 和最近 Git 变更。
+- 运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 111`
+  - `Links: 594`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+- 当前 `00-Inbox` 仍只有 `README.md`，没有新的临时资料待整理。
+- `raw/` 当前没有新增 source notes 或失联编译目标；2026-06-07 已补中文辅助阅读的两份官方文档 raw notes 本轮继续保持有效。
+- 新增本次周维护复盘 [[07-Reviews/Knowledge-Base/2026-06-08-weekly-maintenance]] 并更新全局索引。

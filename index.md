@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-06-06
+updated: 2026-06-08
 tags:
   - 知识库
   - index
@@ -94,6 +94,7 @@ tags:
 - [[07-Reviews/Knowledge-Base/2026-05-29-vault-check-automation]]
 - [[07-Reviews/Knowledge-Base/2026-05-31-weekly-maintenance]]
 - [[07-Reviews/Knowledge-Base/2026-06-07-weekly-maintenance]]
+- [[07-Reviews/Knowledge-Base/2026-06-08-weekly-maintenance]]
 - [[08-Memory/知识库长期记忆规则]]
 - [[08-Memory/全库中文辅助阅读规则]]
 - [[08-Memory/AI 学习原则]]
