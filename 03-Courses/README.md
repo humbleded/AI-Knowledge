@@ -3,7 +3,7 @@ type: map
 topic: Courses
 status: active
 created: 2026-05-28
-updated: 2026-05-29
+updated: 2026-06-10
 tags:
   - 课程笔记
   - 知识库
@@ -32,6 +32,7 @@ tags:
 ### Agent
 
 - [[Agent/AI-Agent-Learning/README|AI-Agent-Learning]]
+- [[Agent/AI-Agent-Learning/stage0_5-engineering-basics|AI-Agent-Learning 阶段 0.5：工程基础随用随补]]
 - [[Agent/AI-Agent-Learning/Agent-Learning-Hub 中文路线索引]]
 - [[Agent/AI-Agent-Learning/Datawhale hello-agents 中文学习索引]]
 - [[Agent/AI-Agent-Learning/Agentic Design Patterns 中文模式索引]]

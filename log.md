@@ -3,7 +3,7 @@ type: maintenance-log
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-06-08
+updated: 2026-06-10
 tags:
   - 知识库
   - log
@@ -186,3 +186,30 @@ tags:
 - 当前 `00-Inbox` 仍只有 `README.md`，没有新的临时资料待整理。
 - `raw/` 当前没有新增 source notes 或失联编译目标；2026-06-07 已补中文辅助阅读的两份官方文档 raw notes 本轮继续保持有效。
 - 新增本次周维护复盘 [[07-Reviews/Knowledge-Base/2026-06-08-weekly-maintenance]] 并更新全局索引。
+
+## 2026-06-09
+
+### AI-Agent-Learning P0-05 PASS
+
+- 批改 `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-09.md`，P0-05 函数、参数、返回值最终判定 `PASS`。
+- 更新 [[02-Concepts/Python/python-functions|Python 函数、参数与 return]]，补充 P0-05 的函数拆分、返回值测试和 `days <= 0` 边界提醒。
+- 新增 [[04-Projects/Python/AI-Agent-Learning/p0-05-plan-functions|P0-05 函数、参数、返回值]] 项目记录。
+- 新增 [[07-Reviews/AI-Agent-Learning/2026-06-09-stage0-p0-05-pass-review|2026-06-09 阶段 0 复盘：P0-05]]。
+- 更新 [[03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]、[[04-Projects/README|项目记录索引]] 和 [[index|AI Knowledge Index]]。
+
+## 2026-06-10
+
+### AI-Agent-Learning 路线调整：工程基础随用随补
+
+- 调整 `C:\Users\26823\Desktop\AI-Agent-Learning` 的 tracker、progress 和 README：`B0-Gate` 不再作为进入 L1 的硬门槛。
+- 新增 [[03-Courses/Agent/AI-Agent-Learning/stage0_5-engineering-basics|阶段 0.5：工程基础随用随补]]，记录 P0 后半段到 L1/API/Agent 的最短路径。
+- 更新 [[01-Maps/AI 开发学习路线]] 和 [[08-Memory/AI 学习原则]]：工程基础作为支撑层，放到 API、Tool Calling、Memory、RAG、本地部署项目中按需补。
+- 更新 [[03-Courses/Agent/AI-Agent-Learning/README|AI-Agent-Learning]]、[[03-Courses/README|课程笔记索引]]、[[01-Maps/AI-Agent-Learning 跳转索引]]、[[03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]] 和 [[index|AI Knowledge Index]]。
+
+### AI-Agent-Learning P0-06 PASS
+
+- 批改 `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-10.md`，P0-06 模块、第三方包、venv 判定 `PASS`。
+- 新增 [[02-Concepts/Python/python-venv-pip-env|Python 项目环境管理：venv、pip 与 .env]]，沉淀虚拟环境、`pip install` 安装位置、`.env` 和 API Key 不硬编码。
+- 新增 [[04-Projects/Python/AI-Agent-Learning/p0-06-env-check|P0-06 模块、第三方包、venv]] 项目记录。
+- 新增 [[07-Reviews/AI-Agent-Learning/2026-06-10-stage0-p0-06-pass-review|2026-06-10 阶段 0 复盘：P0-06]]。
+- 更新 [[03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]、[[03-Courses/Agent/AI-Agent-Learning/README|AI-Agent-Learning]]、[[04-Projects/README|项目记录索引]]、[[01-Maps/AI-Agent-Learning 跳转索引]] 和 [[index|AI Knowledge Index]]。

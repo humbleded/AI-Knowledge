@@ -3,7 +3,7 @@ type: learning-map
 topic: AI 开发学习路线
 status: active
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-06-10
 tags:
   - 学习路线
   - AI工程
@@ -18,22 +18,29 @@ tags:
 
 这些是当前重点学习内容，优先通过小项目和代码练习推进。
 
-- Python
-- FastAPI
-- Docker
-- MCP
-- AI Agent
-- RAG
+- Python 最小开发能力：函数、文件、异常、JSON、HTTP、venv。
+- 大模型 API：环境变量、SDK、单轮、多轮、流式输出、错误处理。
+- Prompt 与结构化输出：摘要、分类、JSON、schema。
+- Tool Calling：让模型选择工具，让程序执行工具。
+- 最小 Agent：ReAct、Planning、Reflection、停止条件和错误恢复。
+- RAG、LangGraph、MCP：在有最小 Agent 经验后逐步推进。
 - 项目实战
+
+当前最短进入 Agent 的路径：
+
+`P0-06 -> P0-07 -> P0-08 -> P0-09 -> P0-Gate -> L1 -> PR2 -> T3 -> A4`
+
+阶段 0.5 的工程基础改为随用随补，不再整块卡住第一次进入大模型 API 和 Agent。
 
 ## 第二层：工程基础支撑
 
-这些内容需要加入学习框架，但作为支撑层逐步补齐，不抢占 AI 主线。
+这些内容需要加入学习框架，但作为支撑层逐步补齐，不抢占 AI 主线。判断标准不是“先完整学完”，而是“当前 Agent/API 项目是否用得到”。
 
-- 数据库：先学 SQL、PostgreSQL、基本索引、事务、ORM。
-- Linux：先学文件、权限、进程、端口、日志、常用命令。
-- 网络基础：先学 HTTP、DNS、TCP 基础、端口、代理、CORS、WebSocket。
-- Git、CI、日志、测试、部署：随着项目需要逐步补。
+- 环境和命令行：在 `venv`、包安装、环境变量、路径、进程和日志排错时补。
+- 网络基础：在 HTTP 请求、API 调用、tool API、timeout、status code 出问题时补。
+- 数据库：在 Memory、学习记录持久化、RAG 元数据或聊天历史需要保存时补。
+- Docker：在需要 PostgreSQL、本地多服务、部署、volume、network、logs 时补。
+- FastAPI、Git、CI、日志、测试、部署：随着项目需要逐步补。
 
 暂不深入：
 
@@ -86,6 +93,7 @@ tags:
 ## 当前执行方式
 
 - 每日执行和代码练习继续放在 `C:\Users\26823\Desktop\AI-Agent-Learning`。
+- 当前执行顺序：先补完 Python 后半段，再进入 L1 大模型 API；工程基础嵌入 Agent/API 项目中补齐。
 - 稳定概念沉淀到 `D:\AI-Knowledge\02-Concepts`。
 - 课程、路线和索引沉淀到 `D:\AI-Knowledge\03-Courses` 或 `D:\AI-Knowledge\01-Maps`。
 - 长期偏好和学习原则沉淀到 `D:\AI-Knowledge\08-Memory`。

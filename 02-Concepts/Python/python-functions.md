@@ -3,7 +3,7 @@ type: concept
 topic: Python functions
 status: usable
 created: 2026-06-05
-updated: 2026-06-06
+updated: 2026-06-09
 tags:
   - Python
   - 函数
@@ -106,11 +106,35 @@ def score_answer(answer):
 - 测试：测试代码可以比较返回值，例如 `make_plan("练习函数", 3) == expected`。
 - 修改：以后计划格式变化时，主要改 `make_plan()`，不用到处找重复代码。
 
+## P0-05 练习检查点
+
+`AI-Agent-Learning` 的 P0-05 练习把函数拆成两层：
+
+- `make_plan(goal, days)`：接收学习目标和天数，返回计划列表。
+- `score_answer(answer)`：接收一段回答文本，返回 0-100 的练习分。
+- `main()`：负责 `input()` 和 `print()`，调用上面两个函数。
+
+这个结构体现了一个很重要的习惯：核心逻辑先返回值，交互层再决定如何显示。这样 `make_plan()` 和 `score_answer()` 可以被手动断言或单元测试直接检查。
+
+```python
+plan = make_plan("函数", 3)
+assert isinstance(plan, list)
+assert len(plan) == 3
+assert "函数" in plan[0]
+
+assert score_answer("") == 0
+assert score_answer("   ") == 0
+```
+
+一个小边界：如果 `days <= 0`，当前最小实现可能返回空列表。学习早期可以接受，但更完整的程序应该在 `main()` 或 `make_plan()` 中明确校验“计划天数必须是正整数”。
+
 ## 关联
 
 - [[python-input-print]]
 - [[python-f-string]]
 - [[python-conditionals-and-loops]]
 - [[python-list-dict-set]]
+- [[../../04-Projects/Python/AI-Agent-Learning/p0-05-plan-functions]]
+- [[../../07-Reviews/AI-Agent-Learning/2026-06-09-stage0-p0-05-pass-review]]
 - [[../../07-Reviews/Daily-Practice/2026-06-04-review]]
 - [[../../07-Reviews/Daily-Practice/2026-06-05-review]]

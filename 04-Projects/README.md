@@ -3,7 +3,7 @@ type: map
 topic: Projects
 status: active
 created: 2026-05-28
-updated: 2026-05-29
+updated: 2026-06-10
 tags:
   - 项目记录
   - 知识库
@@ -24,6 +24,9 @@ tags:
 - [[Python/AI-Agent-Learning/p0-01-hello-script|P0-01 环境与第一个程序]]
 - [[Python/AI-Agent-Learning/p0-02-profile-script|P0-02 数据类型与变量]]
 - [[Python/AI-Agent-Learning/p0-03-scheduler|P0-03 条件判断、模式匹配、循环]]
+- [[Python/AI-Agent-Learning/p0-04-tasks|P0-04 list、tuple、dict、set]]
+- [[Python/AI-Agent-Learning/p0-05-plan-functions|P0-05 函数、参数、返回值]]
+- [[Python/AI-Agent-Learning/p0-06-env-check|P0-06 模块、第三方包、venv]]
 
 ### Agent
 

@@ -22,6 +22,7 @@ tags:
 - [[python-conditionals-and-loops|Python 条件判断与循环]]
 - [[python-match-case|Python match/case]]
 - [[python-list-dict-set|Python list、dict、set]]
+- [[python-venv-pip-env|Python 项目环境管理：venv、pip 与 .env]]
 
 ## 对应课程
 

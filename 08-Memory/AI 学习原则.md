@@ -3,7 +3,7 @@ type: memory-rule
 topic: AI 学习原则
 status: active
 created: 2026-06-04
-updated: 2026-06-04
+updated: 2026-06-10
 tags:
   - 学习原则
   - AI工程
@@ -26,22 +26,35 @@ tags:
 
 ### 第一层：重点学习
 
-- Python
-- FastAPI
-- Docker
-- MCP
+- Python 最小开发能力
+- 大模型 API
+- Prompt 与结构化输出
+- Tool Calling
 - AI Agent
 - RAG
+- MCP
 - 项目实战
 
 ### 第二层：工程基础支撑
 
+- FastAPI
 - 数据库
 - Linux
 - 网络基础
+- Docker
 - Git、CI、日志、测试、部署
 
 这些内容要加入学习框架，但按项目需要逐步补齐，不替代 AI 开发主线。
+
+## 工程基础处理规则
+
+不要把工程基础当成进入 Agent 前必须整块学完的前置课程。当前原则是：
+
+- 先补齐 Python 后半段的最小能力：模块/venv、异常、文件/JSON、HTTP。
+- `P0-Gate` 通过后优先进入大模型 API。
+- Linux、网络、数据库、Docker 放进 Agent/API/RAG 项目里随用随补。
+- 每次只补当前任务需要的最小工程知识。
+- 只有当项目需要本地多服务、数据库持久化、Docker Compose、Memory/RAG 或部署时，再做完整工程基础整合关卡。
 
 ### 第三层：保持关注
 

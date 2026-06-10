@@ -3,6 +3,7 @@ type: map
 topic: AI-Agent-Learning 跳转索引
 status: active
 created: 2026-05-28
+updated: 2026-06-10
 tags:
   - AI-Agent-Learning
   - 索引
@@ -34,11 +35,18 @@ tags:
 - [[AI Agent 学习资源地图]]
 - [[../03-Courses/Agent/AI-Agent-Learning/README|AI-Agent-Learning 知识沉淀]]
 - [[../03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]
+- [[../03-Courses/Agent/AI-Agent-Learning/stage0_5-engineering-basics|阶段 0.5：工程基础随用随补]]
 - [[../04-Projects/Python/AI-Agent-Learning/p0-01-hello-script|P0-01 环境与第一个程序]]
 - [[../04-Projects/Python/AI-Agent-Learning/p0-02-profile-script|P0-02 数据类型与变量]]
 - [[../04-Projects/Python/AI-Agent-Learning/p0-03-scheduler|P0-03 条件判断、模式匹配、循环]]
+- [[../04-Projects/Python/AI-Agent-Learning/p0-04-tasks|P0-04 list、tuple、dict、set]]
+- [[../04-Projects/Python/AI-Agent-Learning/p0-05-plan-functions|P0-05 函数、参数、返回值]]
+- [[../04-Projects/Python/AI-Agent-Learning/p0-06-env-check|P0-06 模块、第三方包、venv]]
 - [[../07-Reviews/AI-Agent-Learning/2026-05-27-stage0-p0-01-p0-02-pass-review|2026-05-27 阶段 0 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-05-28-stage0-p0-03-pass-review|2026-05-28 P0-03 PASS 复盘]]
+- [[../07-Reviews/AI-Agent-Learning/2026-06-02-stage0-p0-04-pass-review|2026-06-02 P0-04 PASS 复盘]]
+- [[../07-Reviews/AI-Agent-Learning/2026-06-09-stage0-p0-05-pass-review|2026-06-09 P0-05 PASS 复盘]]
+- [[../07-Reviews/AI-Agent-Learning/2026-06-10-stage0-p0-06-pass-review|2026-06-10 P0-06 PASS 复盘]]
 
 ## 外部资源中文索引
 
@@ -54,6 +62,9 @@ tags:
 
 - [stage0 code](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage0/)
 - [stage0 notes](file:///C:/Users/26823/Desktop/AI-Agent-Learning/notes/stage0/)
+- [stage0_5 code](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage0_5/)
+- [stage0_5 notes](file:///C:/Users/26823/Desktop/AI-Agent-Learning/notes/stage0_5/)
+- [stage0_5 resources](file:///C:/Users/26823/Desktop/AI-Agent-Learning/resources/stage0_5/)
 - [stage1 code](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage1/)
 - [stage1 notes](file:///C:/Users/26823/Desktop/AI-Agent-Learning/notes/stage1/)
 - [stage2 code](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage2/)
