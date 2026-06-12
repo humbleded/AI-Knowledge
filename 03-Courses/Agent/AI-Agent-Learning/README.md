@@ -3,7 +3,7 @@ type: course-index
 topic: AI-Agent-Learning
 status: active
 created: 2026-05-28
-updated: 2026-06-10
+updated: 2026-06-11
 tags:
   - AI-Agent
   - Python
@@ -23,8 +23,8 @@ tags:
 
 - [[../../Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]
 - [[stage0_5-engineering-basics|阶段 0.5：工程基础随用随补]]
-- 已通过：P0-01、P0-02、P0-03、P0-04、P0-05、P0-06
-- 下一项：P0-07 异常、调试、单元测试
+- 已通过：P0-01、P0-02、P0-03、P0-04、P0-05、P0-06、P0-07
+- 下一项：P0-08 文件、JSON、CSV
 
 ## 当前执行策略
 
@@ -51,8 +51,10 @@ tags:
 - [[../../../04-Projects/Python/AI-Agent-Learning/p0-04-tasks]]
 - [[../../../04-Projects/Python/AI-Agent-Learning/p0-05-plan-functions]]
 - [[../../../04-Projects/Python/AI-Agent-Learning/p0-06-env-check]]
+- [[../../../04-Projects/Python/AI-Agent-Learning/p0-07-safe-divide]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-05-27-stage0-p0-01-p0-02-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-05-28-stage0-p0-03-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-06-02-stage0-p0-04-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-06-09-stage0-p0-05-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-06-10-stage0-p0-06-pass-review]]
+- [[../../../07-Reviews/AI-Agent-Learning/2026-06-11-stage0-p0-07-pass-review]]

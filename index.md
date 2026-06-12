@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-06-10
+updated: 2026-06-13
 tags:
   - 知识库
   - index
@@ -41,8 +41,10 @@ tags:
 - [[02-Concepts/README|概念卡片总索引]]
 - [[02-Concepts/Python/README|Python 概念卡]]
 - [[02-Concepts/Python/python-functions|Python 函数、参数与 return]]
+- [[02-Concepts/Python/python-functools-partial|Python 偏函数 functools.partial 与默认参数]]
 - [[02-Concepts/Python/python-list-dict-set|Python list、dict、set]]
 - [[02-Concepts/Python/python-venv-pip-env|Python 项目环境管理：venv、pip 与 .env]]
+- [[02-Concepts/Python/python-exceptions-debugging-testing|Python 异常、调试与单元测试]]
 - [[02-Concepts/LLM/README|LLM 概念卡]]
 - [[02-Concepts/MCP/README|MCP 概念卡]]
 - [[02-Concepts/MCP/model-context-protocol|Model Context Protocol]]
@@ -85,6 +87,7 @@ tags:
 - [[04-Projects/Python/AI-Agent-Learning/p0-04-tasks]]
 - [[04-Projects/Python/AI-Agent-Learning/p0-05-plan-functions]]
 - [[04-Projects/Python/AI-Agent-Learning/p0-06-env-check]]
+- [[04-Projects/Python/AI-Agent-Learning/p0-07-safe-divide]]
 - [[04-Projects/Agent/AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引]]
 
 ## 复盘与记忆
@@ -94,6 +97,7 @@ tags:
 - [[07-Reviews/AI-Agent-Learning/2026-06-02-stage0-p0-04-pass-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-06-09-stage0-p0-05-pass-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-06-10-stage0-p0-06-pass-review]]
+- [[07-Reviews/AI-Agent-Learning/2026-06-11-stage0-p0-07-pass-review]]
 - [[07-Reviews/Daily-Practice/2026-06-04-review]]
 - [[07-Reviews/Daily-Practice/2026-06-05-review]]
 - [[07-Reviews/Knowledge-Base/2026-05-29-karpathy-health-check]]

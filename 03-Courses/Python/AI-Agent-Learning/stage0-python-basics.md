@@ -3,7 +3,7 @@ type: course-note
 topic: AI-Agent-Learning Stage 0
 status: active
 created: 2026-05-28
-updated: 2026-06-10
+updated: 2026-06-11
 tags:
   - Python
   - AI-Agent
@@ -28,6 +28,7 @@ tags:
 | P0-04 | list、tuple、dict、set | PASS | [[../../../04-Projects/Python/AI-Agent-Learning/p0-04-tasks]] | 能用 list/dict/set 管理任务、状态和去重 |
 | P0-05 | 函数、参数、返回值 | PASS | [[../../../04-Projects/Python/AI-Agent-Learning/p0-05-plan-functions]] | 能用函数参数接收输入，用 `return` 交回结果，并在 `main()` 中调用函数 |
 | P0-06 | 模块、第三方包、venv | PASS | [[../../../04-Projects/Python/AI-Agent-Learning/p0-06-env-check]] | 能用 `.venv` 隔离依赖，安装第三方包，并用 `.env` 读取本地配置 |
+| P0-07 | 异常、调试、单元测试 | PASS | [[../../../04-Projects/Python/AI-Agent-Learning/p0-07-safe-divide]] | 能用 `try/except` 处理除零和非数字输入，并用样例覆盖正常与异常场景 |
 
 ## 已掌握概念
 
@@ -40,20 +41,21 @@ tags:
 - [[../../../02-Concepts/Python/python-functions]]
 - [[../../../02-Concepts/Python/python-list-dict-set]]
 - [[../../../02-Concepts/Python/python-venv-pip-env]]
+- [[../../../02-Concepts/Python/python-exceptions-debugging-testing]]
 
 ## 下一步
 
-下一项是 P0-07：异常、调试、单元测试。
+下一项是 P0-08：文件、JSON、CSV。
 
 要做的代码是：
 
-- `code/stage0/p0_07_safe_divide.py`
+- `code/stage0/p0_08_progress_file.py`
 
 要能回答：
 
-- `try/except` 捕获的是什么？
-- 为什么不能什么异常都直接忽略？
-- 单元测试的价值是什么？
+- 文本文件和 JSON 文件分别适合保存什么？
+- 文件路径错误时如何定位？
+- 读写文件为什么要考虑编码？
 
 ## 和工程基础的关系
 

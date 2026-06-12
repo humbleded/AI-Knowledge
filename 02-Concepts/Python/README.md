@@ -19,10 +19,12 @@ tags:
 - [[python-type-conversion|Python 类型转换]]
 - [[python-f-string|Python f-string]]
 - [[python-functions|Python 函数、参数与 return]]
+- [[python-functools-partial|Python 偏函数 functools.partial 与默认参数]]
 - [[python-conditionals-and-loops|Python 条件判断与循环]]
 - [[python-match-case|Python match/case]]
 - [[python-list-dict-set|Python list、dict、set]]
 - [[python-venv-pip-env|Python 项目环境管理：venv、pip 与 .env]]
+- [[python-exceptions-debugging-testing|Python 异常、调试与单元测试]]
 
 ## 对应课程
 

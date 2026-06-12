@@ -3,7 +3,7 @@ type: maintenance-log
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-06-10
+updated: 2026-06-13
 tags:
   - 知识库
   - log
@@ -213,3 +213,20 @@ tags:
 - 新增 [[04-Projects/Python/AI-Agent-Learning/p0-06-env-check|P0-06 模块、第三方包、venv]] 项目记录。
 - 新增 [[07-Reviews/AI-Agent-Learning/2026-06-10-stage0-p0-06-pass-review|2026-06-10 阶段 0 复盘：P0-06]]。
 - 更新 [[03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]、[[03-Courses/Agent/AI-Agent-Learning/README|AI-Agent-Learning]]、[[04-Projects/README|项目记录索引]]、[[01-Maps/AI-Agent-Learning 跳转索引]] 和 [[index|AI Knowledge Index]]。
+
+## 2026-06-11
+
+### AI-Agent-Learning P0-07 PASS
+
+- 批改 `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-11.md`，P0-07 异常、调试、单元测试判定 `PASS`。
+- 新增 [[02-Concepts/Python/python-exceptions-debugging-testing|Python 异常、调试与单元测试]]，沉淀 `try/except`、不要吞异常、调试与测试覆盖正常/异常场景。
+- 新增 [[04-Projects/Python/AI-Agent-Learning/p0-07-safe-divide|P0-07 异常、调试、单元测试]] 项目记录。
+- 新增 [[07-Reviews/AI-Agent-Learning/2026-06-11-stage0-p0-07-pass-review|2026-06-11 阶段 0 复盘：P0-07]]。
+- 更新 [[03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]、[[03-Courses/Agent/AI-Agent-Learning/README|AI-Agent-Learning]]、[[04-Projects/README|项目记录索引]]、[[01-Maps/AI-Agent-Learning 跳转索引]] 和 [[index|AI Knowledge Index]]。
+
+## 2026-06-13
+
+### Python partial 概念卡
+
+- 新增并整理 [[02-Concepts/Python/python-functools-partial|Python 偏函数 functools.partial 与默认参数]]。
+- 补充 [[02-Concepts/Python/README|Python 概念卡]] 与 [[index|AI Knowledge Index]] 导航。
