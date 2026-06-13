@@ -3,7 +3,7 @@ type: course-note
 topic: AI-Agent-Learning Stage 0
 status: active
 created: 2026-05-28
-updated: 2026-06-11
+updated: 2026-06-13
 tags:
   - Python
   - AI-Agent
@@ -29,6 +29,7 @@ tags:
 | P0-05 | 函数、参数、返回值 | PASS | [[../../../04-Projects/Python/AI-Agent-Learning/p0-05-plan-functions]] | 能用函数参数接收输入，用 `return` 交回结果，并在 `main()` 中调用函数 |
 | P0-06 | 模块、第三方包、venv | PASS | [[../../../04-Projects/Python/AI-Agent-Learning/p0-06-env-check]] | 能用 `.venv` 隔离依赖，安装第三方包，并用 `.env` 读取本地配置 |
 | P0-07 | 异常、调试、单元测试 | PASS | [[../../../04-Projects/Python/AI-Agent-Learning/p0-07-safe-divide]] | 能用 `try/except` 处理除零和非数字输入，并用样例覆盖正常与异常场景 |
+| P0-08 | 文件、JSON、CSV | PASS | [[../../../04-Projects/Python/AI-Agent-Learning/p0-08-progress-file]] | 能读任务文本、写入 JSON，并确认 JSON 可被 Python 重新解析 |
 
 ## 已掌握概念
 
@@ -42,20 +43,21 @@ tags:
 - [[../../../02-Concepts/Python/python-list-dict-set]]
 - [[../../../02-Concepts/Python/python-venv-pip-env]]
 - [[../../../02-Concepts/Python/python-exceptions-debugging-testing]]
+- [[../../../02-Concepts/Python/python-file-json-serialization]]
 
 ## 下一步
 
-下一项是 P0-08：文件、JSON、CSV。
+下一项是 P0-09：HTTP 请求。
 
 要做的代码是：
 
-- `code/stage0/p0_08_progress_file.py`
+- `code/stage0/p0_09_http_request.py`
 
 要能回答：
 
-- 文本文件和 JSON 文件分别适合保存什么？
-- 文件路径错误时如何定位？
-- 读写文件为什么要考虑编码？
+- HTTP 请求和本地函数调用有什么区别？
+- status code、headers、JSON 分别是什么？
+- 请求失败时如何区分网络错误、服务器错误和 JSON 解析失败？
 
 ## 和工程基础的关系
 

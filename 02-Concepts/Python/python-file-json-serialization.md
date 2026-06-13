@@ -1,0 +1,116 @@
+---
+type: concept
+topic: Python file IO JSON serialization
+status: usable
+created: 2026-06-13
+updated: 2026-06-13
+tags:
+  - Python
+  - 文件读写
+  - JSON
+  - 序列化
+---
+
+# Python 文件读写与 JSON 序列化
+
+## 核心结论
+
+文件读写解决“数据如何落到磁盘上”，JSON 序列化解决“Python 数据结构如何变成可保存、可交换的文本格式”。
+
+- 文本文件适合保存给人阅读的普通文字、日志、逐行任务清单。
+- JSON 适合保存结构化数据，例如 `list`、`dict`、字符串、数字、布尔值和 `null`。
+- Python 读写中文文件时应显式写 `encoding="utf-8"`，避免换机器、换终端或换系统后出现乱码或 `UnicodeDecodeError`。
+
+## 文本文件和 JSON 的边界
+
+文本文件偏“人读”：
+
+```text
+学习文件读写
+学习 JSON
+练习异常处理
+```
+
+JSON 偏“程序读”和“结构化交换”：
+
+```json
+[
+  {
+    "name": "学习文件读写",
+    "status": "todo"
+  }
+]
+```
+
+如果只需要一行一条记录，文本文件很轻量；如果每条记录还要带状态、分数、日期、标签，就应该用 JSON 或数据库。
+
+## `json.dumps()` 与 `json.loads()`
+
+`json.dumps()` 把 Python 数据变成 JSON 字符串：
+
+```python
+json_text = json.dumps(data, ensure_ascii=False, indent=2)
+```
+
+`json.loads()` 把 JSON 字符串变回 Python 数据：
+
+```python
+data = json.loads(json_text)
+```
+
+常见方向：
+
+- `dict` / `list` -> JSON 字符串：`json.dumps()`
+- JSON 字符串 -> `dict` / `list`：`json.loads()`
+- Python 数据 -> JSON 文件：`json.dump(data, file)`
+- JSON 文件 -> Python 数据：`json.load(file)`
+
+## 为什么要写 `ensure_ascii=False`
+
+`json.dumps()` 默认会把中文转成 `\uXXXX` 形式。这样程序仍能读，但人看起来不直观。
+
+写中文 JSON 时常用：
+
+```python
+json.dumps(data, ensure_ascii=False, indent=2)
+```
+
+这样输出文件能直接看到中文，例如 `"学习 JSON"`。
+
+## 路径错误怎么排查
+
+遇到 `FileNotFoundError` 或路径不对，按这个顺序排查：
+
+1. 看报错里的完整路径，确认程序到底在找哪个文件。
+2. 确认当前工作目录是否正确，例如 PowerShell 里运行 `pwd`。
+3. 确认目标文件是否真的存在，例如 `Test-Path resources/stage0_tasks.txt`。
+4. 检查代码里的路径拼接，是相对路径、绝对路径，还是从 `__file__` 推出来的项目路径。
+
+## P0-08 最小流程
+
+1. 准备输入文本路径和输出 JSON 路径。
+2. 如果任务文本不存在，创建示例文本。
+3. 读取文本，每行变成一个任务名。
+4. 把任务名转换成结构化字典列表。
+5. 写入 JSON，再读回 JSON，确认能被 Python 重新解析。
+
+## 常见坑
+
+- 代码能跑不等于真正掌握；至少要能说清楚“读文本 -> 建结构 -> 写 JSON -> 读回验证”这条链路。
+- 写死绝对路径能在当前机器运行，但换目录或换机器容易失效；项目练习更推荐从项目根目录拼路径。
+- `read_json(path)` 只是调用但不保存返回值时，虽然能证明 JSON 可解析，但不方便后续使用；更清楚的写法是 `loaded = read_json(path)`。
+- 调试时可以打印目录列表，但最终脚本应减少无关输出，让结果聚焦在任务本身。
+
+## 来源
+
+- AI-Agent-Learning P0-08：`C:\Users\26823\Desktop\AI-Agent-Learning\code\stage0\p0_08_progress_file.py`
+- 每日记录：`C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-13.md`
+- 阅读材料：廖雪峰 Python 教程 `文件读写`、`操作文件和目录`、`序列化`
+
+## 相关链接
+
+- [[README|Python 概念卡]]
+- [[python-exceptions-debugging-testing|Python 异常、调试与单元测试]]
+- [[../../03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]
+- [[../../04-Projects/Python/AI-Agent-Learning/p0-08-progress-file|P0-08 文件、JSON、CSV]]
+- [[../../07-Reviews/AI-Agent-Learning/2026-06-13-stage0-p0-08-pass-review|2026-06-13 阶段 0 复盘：P0-08]]

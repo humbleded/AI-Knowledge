@@ -230,3 +230,16 @@ tags:
 
 - 新增并整理 [[02-Concepts/Python/python-functools-partial|Python 偏函数 functools.partial 与默认参数]]。
 - 补充 [[02-Concepts/Python/README|Python 概念卡]] 与 [[index|AI Knowledge Index]] 导航。
+
+### Python and / or 短路与返回原值
+
+- 新增 [[02-Concepts/Python/python-and-or-short-circuit|Python and / or 短路与返回原值]]，沉淀 `and` / `or` 返回原始操作数、短路行为和 `not > and > or` 优先级。
+- 更新 [[02-Concepts/Python/README|Python 概念卡]] 与 [[index|AI Knowledge Index]] 导航。
+
+### AI-Agent-Learning P0-08 PASS
+
+- 同步 `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-13.md`，P0-08 文件、JSON、CSV 判定 `PASS`。
+- 新增 [[02-Concepts/Python/python-file-json-serialization|Python 文件读写与 JSON 序列化]]，沉淀文本文件与 JSON 的边界、`json.dumps()` / `json.loads()`、`ensure_ascii=False`、路径排查和编码注意点。
+- 新增 [[04-Projects/Python/AI-Agent-Learning/p0-08-progress-file|P0-08 文件、JSON、CSV]] 项目记录。
+- 新增 [[07-Reviews/AI-Agent-Learning/2026-06-13-stage0-p0-08-pass-review|2026-06-13 阶段 0 复盘：P0-08]]。
+- 更新 [[03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]、[[03-Courses/Agent/AI-Agent-Learning/README|AI-Agent-Learning]]、[[04-Projects/README|项目记录索引]]、[[01-Maps/AI-Agent-Learning 跳转索引]] 和 [[index|AI Knowledge Index]]。

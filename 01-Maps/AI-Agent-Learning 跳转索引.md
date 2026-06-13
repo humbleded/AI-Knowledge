@@ -3,7 +3,7 @@ type: map
 topic: AI-Agent-Learning 跳转索引
 status: active
 created: 2026-05-28
-updated: 2026-06-11
+updated: 2026-06-13
 tags:
   - AI-Agent-Learning
   - 索引
@@ -43,12 +43,14 @@ tags:
 - [[../04-Projects/Python/AI-Agent-Learning/p0-05-plan-functions|P0-05 函数、参数、返回值]]
 - [[../04-Projects/Python/AI-Agent-Learning/p0-06-env-check|P0-06 模块、第三方包、venv]]
 - [[../04-Projects/Python/AI-Agent-Learning/p0-07-safe-divide|P0-07 异常、调试、单元测试]]
+- [[../04-Projects/Python/AI-Agent-Learning/p0-08-progress-file|P0-08 文件、JSON、CSV]]
 - [[../07-Reviews/AI-Agent-Learning/2026-05-27-stage0-p0-01-p0-02-pass-review|2026-05-27 阶段 0 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-05-28-stage0-p0-03-pass-review|2026-05-28 P0-03 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-06-02-stage0-p0-04-pass-review|2026-06-02 P0-04 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-06-09-stage0-p0-05-pass-review|2026-06-09 P0-05 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-06-10-stage0-p0-06-pass-review|2026-06-10 P0-06 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-06-11-stage0-p0-07-pass-review|2026-06-11 P0-07 PASS 复盘]]
+- [[../07-Reviews/AI-Agent-Learning/2026-06-13-stage0-p0-08-pass-review|2026-06-13 P0-08 PASS 复盘]]
 
 ## 外部资源中文索引
 

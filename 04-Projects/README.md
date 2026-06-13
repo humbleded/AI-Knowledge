@@ -3,7 +3,7 @@ type: map
 topic: Projects
 status: active
 created: 2026-05-28
-updated: 2026-06-11
+updated: 2026-06-13
 tags:
   - 项目记录
   - 知识库
@@ -28,6 +28,7 @@ tags:
 - [[Python/AI-Agent-Learning/p0-05-plan-functions|P0-05 函数、参数、返回值]]
 - [[Python/AI-Agent-Learning/p0-06-env-check|P0-06 模块、第三方包、venv]]
 - [[Python/AI-Agent-Learning/p0-07-safe-divide|P0-07 异常、调试、单元测试]]
+- [[Python/AI-Agent-Learning/p0-08-progress-file|P0-08 文件、JSON、CSV]]
 
 ### Agent
 

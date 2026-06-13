@@ -16,6 +16,7 @@ tags:
 - [[python-input-print|Python input() 与 print()]]
 - [[python-variables|Python 变量]]
 - [[python-basic-data-types|Python 基础数据类型]]
+- [[python-and-or-short-circuit|Python and / or 短路与返回原值]]
 - [[python-type-conversion|Python 类型转换]]
 - [[python-f-string|Python f-string]]
 - [[python-functions|Python 函数、参数与 return]]
@@ -25,6 +26,8 @@ tags:
 - [[python-list-dict-set|Python list、dict、set]]
 - [[python-venv-pip-env|Python 项目环境管理：venv、pip 与 .env]]
 - [[python-exceptions-debugging-testing|Python 异常、调试与单元测试]]
+- [[python-file-json-serialization|Python 文件读写与 JSON 序列化]]
+- [[python-http-requests|Python HTTP 请求：URL、headers、status code 与 JSON]]
 
 ## 对应课程
 
