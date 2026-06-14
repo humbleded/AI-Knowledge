@@ -3,7 +3,7 @@ type: maintenance-log
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-06-13
+updated: 2026-06-14
 tags:
   - 知识库
   - log
@@ -243,3 +243,21 @@ tags:
 - 新增 [[04-Projects/Python/AI-Agent-Learning/p0-08-progress-file|P0-08 文件、JSON、CSV]] 项目记录。
 - 新增 [[07-Reviews/AI-Agent-Learning/2026-06-13-stage0-p0-08-pass-review|2026-06-13 阶段 0 复盘：P0-08]]。
 - 更新 [[03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]、[[03-Courses/Agent/AI-Agent-Learning/README|AI-Agent-Learning]]、[[04-Projects/README|项目记录索引]]、[[01-Maps/AI-Agent-Learning 跳转索引]] 和 [[index|AI Knowledge Index]]。
+
+## 2026-06-14
+
+### AI-Agent-Learning P0-Gate + L1-01 PASS
+
+- 同步 `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-14.md`，`P0-Gate Python 基础闯关` 与 `L1-01 API Key 与 SDK` 判定 `PASS`。
+- 新增 [[02-Concepts/Python/python-json-learning-log-cli|Python JSON 学习日志 CLI：list[dict] 与输入校验]]，沉淀学习记录 CLI 的数据结构、输入校验、旧脏数据清理提醒。
+- 新增 [[02-Concepts/LLM/api-key-and-sdk|API Key 与 SDK：调用模型的门禁卡和快递柜台]]，沉淀 API Key、模型名、SDK、环境变量和 GitHub 发布前的安全边界。
+- 新增 [[04-Projects/Python/AI-Agent-Learning/p0-09-http-request|P0-09 HTTP 请求]]、[[04-Projects/Python/AI-Agent-Learning/p0-gate-learning-log|P0-Gate Python 基础闯关]] 与 [[04-Projects/LLM/AI-Agent-Learning/l1-01-first-call|L1-01 API Key 与 SDK]] 项目记录。
+- 新增 [[03-Courses/LLM/AI-Agent-Learning/stage1-llm-api-basics|阶段 1：大模型 API 入门]]。
+- 新增 [[07-Reviews/AI-Agent-Learning/2026-06-14-stage0-p0-gate-l1-01-pass-review|2026-06-14 阶段 0 / 阶段 1 复盘：P0-Gate + L1-01]]。
+- 更新 [[03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]、[[03-Courses/Agent/AI-Agent-Learning/README|AI-Agent-Learning]]、[[03-Courses/README|课程笔记索引]]、[[04-Projects/README|项目记录索引]]、[[04-Projects/LLM/README|LLM 项目记录]]、[[01-Maps/AI-Agent-Learning 跳转索引]] 和 [[index|AI Knowledge Index]]。
+- 完成后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 135`
+  - `Links: 832`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`

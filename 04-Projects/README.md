@@ -3,7 +3,7 @@ type: map
 topic: Projects
 status: active
 created: 2026-05-28
-updated: 2026-06-13
+updated: 2026-06-14
 tags:
   - 项目记录
   - 知识库
@@ -18,6 +18,7 @@ tags:
 ### LLM
 
 - [[LLM/README|LLM 项目记录]]
+- [[LLM/AI-Agent-Learning/l1-01-first-call|L1-01 API Key 与 SDK]]
 
 ### Python
 
@@ -29,6 +30,8 @@ tags:
 - [[Python/AI-Agent-Learning/p0-06-env-check|P0-06 模块、第三方包、venv]]
 - [[Python/AI-Agent-Learning/p0-07-safe-divide|P0-07 异常、调试、单元测试]]
 - [[Python/AI-Agent-Learning/p0-08-progress-file|P0-08 文件、JSON、CSV]]
+- [[Python/AI-Agent-Learning/p0-09-http-request|P0-09 HTTP 请求]]
+- [[Python/AI-Agent-Learning/p0-gate-learning-log|P0-Gate Python 基础闯关]]
 
 ### Agent
 

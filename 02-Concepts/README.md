@@ -17,6 +17,7 @@ tags:
 - [[Python/README|Python]]
 - [[LLM/README|LLM]]
 - [[MCP/README|MCP]]
+- [[Engineering/README|Engineering]]
 
 ## 规则
 

@@ -3,7 +3,7 @@ type: map
 topic: AI-Agent-Learning 跳转索引
 status: active
 created: 2026-05-28
-updated: 2026-06-13
+updated: 2026-06-14
 tags:
   - AI-Agent-Learning
   - 索引
@@ -35,6 +35,7 @@ tags:
 - [[AI Agent 学习资源地图]]
 - [[../03-Courses/Agent/AI-Agent-Learning/README|AI-Agent-Learning 知识沉淀]]
 - [[../03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]
+- [[../03-Courses/LLM/AI-Agent-Learning/stage1-llm-api-basics|阶段 1：大模型 API 入门]]
 - [[../03-Courses/Agent/AI-Agent-Learning/stage0_5-engineering-basics|阶段 0.5：工程基础随用随补]]
 - [[../04-Projects/Python/AI-Agent-Learning/p0-01-hello-script|P0-01 环境与第一个程序]]
 - [[../04-Projects/Python/AI-Agent-Learning/p0-02-profile-script|P0-02 数据类型与变量]]
@@ -44,6 +45,9 @@ tags:
 - [[../04-Projects/Python/AI-Agent-Learning/p0-06-env-check|P0-06 模块、第三方包、venv]]
 - [[../04-Projects/Python/AI-Agent-Learning/p0-07-safe-divide|P0-07 异常、调试、单元测试]]
 - [[../04-Projects/Python/AI-Agent-Learning/p0-08-progress-file|P0-08 文件、JSON、CSV]]
+- [[../04-Projects/Python/AI-Agent-Learning/p0-09-http-request|P0-09 HTTP 请求]]
+- [[../04-Projects/Python/AI-Agent-Learning/p0-gate-learning-log|P0-Gate Python 基础闯关]]
+- [[../04-Projects/LLM/AI-Agent-Learning/l1-01-first-call|L1-01 API Key 与 SDK]]
 - [[../07-Reviews/AI-Agent-Learning/2026-05-27-stage0-p0-01-p0-02-pass-review|2026-05-27 阶段 0 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-05-28-stage0-p0-03-pass-review|2026-05-28 P0-03 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-06-02-stage0-p0-04-pass-review|2026-06-02 P0-04 PASS 复盘]]
@@ -51,6 +55,7 @@ tags:
 - [[../07-Reviews/AI-Agent-Learning/2026-06-10-stage0-p0-06-pass-review|2026-06-10 P0-06 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-06-11-stage0-p0-07-pass-review|2026-06-11 P0-07 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-06-13-stage0-p0-08-pass-review|2026-06-13 P0-08 PASS 复盘]]
+- [[../07-Reviews/AI-Agent-Learning/2026-06-14-stage0-p0-gate-l1-01-pass-review|2026-06-14 P0-Gate + L1-01 PASS 复盘]]
 
 ## 外部资源中文索引
 

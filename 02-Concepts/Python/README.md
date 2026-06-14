@@ -3,6 +3,7 @@ type: concept-index
 topic: Python
 status: active
 created: 2026-05-28
+updated: 2026-06-14
 tags:
   - Python
   - 概念卡
@@ -27,6 +28,7 @@ tags:
 - [[python-venv-pip-env|Python 项目环境管理：venv、pip 与 .env]]
 - [[python-exceptions-debugging-testing|Python 异常、调试与单元测试]]
 - [[python-file-json-serialization|Python 文件读写与 JSON 序列化]]
+- [[python-json-learning-log-cli|Python JSON 学习日志 CLI：list[dict] 与输入校验]]
 - [[python-http-requests|Python HTTP 请求：URL、headers、status code 与 JSON]]
 
 ## 对应课程

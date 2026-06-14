@@ -3,7 +3,7 @@ type: project-index
 topic: LLM
 status: active
 created: 2026-05-29
-updated: 2026-05-29
+updated: 2026-06-14
 tags:
   - LLM
   - Project
@@ -17,6 +17,10 @@ tags:
 ## Karpathy Zero to Hero 实践
 
 - [[micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]]
+
+## AI-Agent-Learning 实践
+
+- [[AI-Agent-Learning/l1-01-first-call|L1-01 API Key 与 SDK]]
 
 后续实践记录建议按主题拆分：
 

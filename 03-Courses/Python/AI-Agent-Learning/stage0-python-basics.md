@@ -3,7 +3,7 @@ type: course-note
 topic: AI-Agent-Learning Stage 0
 status: active
 created: 2026-05-28
-updated: 2026-06-13
+updated: 2026-06-14
 tags:
   - Python
   - AI-Agent
@@ -30,6 +30,8 @@ tags:
 | P0-06 | 模块、第三方包、venv | PASS | [[../../../04-Projects/Python/AI-Agent-Learning/p0-06-env-check]] | 能用 `.venv` 隔离依赖，安装第三方包，并用 `.env` 读取本地配置 |
 | P0-07 | 异常、调试、单元测试 | PASS | [[../../../04-Projects/Python/AI-Agent-Learning/p0-07-safe-divide]] | 能用 `try/except` 处理除零和非数字输入，并用样例覆盖正常与异常场景 |
 | P0-08 | 文件、JSON、CSV | PASS | [[../../../04-Projects/Python/AI-Agent-Learning/p0-08-progress-file]] | 能读任务文本、写入 JSON，并确认 JSON 可被 Python 重新解析 |
+| P0-09 | HTTP 请求 | PASS | [[../../../04-Projects/Python/AI-Agent-Learning/p0-09-http-request]] | 能用 `requests` 请求公开 API，理解 URL、headers、status code、JSON 和 timeout |
+| P0-Gate | Python 基础闯关 | PASS | [[../../../04-Projects/Python/AI-Agent-Learning/p0-gate-learning-log]] | 能做最小学习日志 CLI：输入记录、保存 JSON、查看最近 7 条并处理异常输入 |
 
 ## 已掌握概念
 
@@ -44,27 +46,23 @@ tags:
 - [[../../../02-Concepts/Python/python-venv-pip-env]]
 - [[../../../02-Concepts/Python/python-exceptions-debugging-testing]]
 - [[../../../02-Concepts/Python/python-file-json-serialization]]
+- [[../../../02-Concepts/Python/python-http-requests]]
+- [[../../../02-Concepts/Python/python-json-learning-log-cli]]
 
 ## 下一步
 
-下一项是 P0-09：HTTP 请求。
+阶段 0 主线已完成，下一项是阶段 1 的 `L1-02 单轮问答`。
 
-要做的代码是：
+阶段 1 当前入口：
 
-- `code/stage0/p0_09_http_request.py`
-
-要能回答：
-
-- HTTP 请求和本地函数调用有什么区别？
-- status code、headers、JSON 分别是什么？
-- 请求失败时如何区分网络错误、服务器错误和 JSON 解析失败？
+- [[../../../03-Courses/LLM/AI-Agent-Learning/stage1-llm-api-basics|阶段 1：大模型 API 入门]]
 
 ## 和工程基础的关系
 
 阶段 0 完成后，不再要求先整块学完 Linux、网络、数据库、Docker 才进入 AI/Agent。新的执行规则是：
 
-- `P0-07` 到 `P0-Gate` 先补齐 Python 的最小开发能力。
-- `P0-Gate` 通过后，直接进入 L1：大模型 API 入门。
+- `P0-07` 到 `P0-Gate` 已补齐 Python 的最小开发能力。
+- `P0-Gate` 已通过，当前已进入 L1：大模型 API 入门。
 - 工程基础放到后续任务里按需补：API 调用时补 HTTP，Memory/RAG 时补数据库，本地多服务或部署时补 Docker。
 
 关联路线：[[../../Agent/AI-Agent-Learning/stage0_5-engineering-basics|阶段 0.5：工程基础随用随补]]

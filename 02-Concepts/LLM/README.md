@@ -3,7 +3,7 @@ type: concept-index
 topic: LLM
 status: active
 created: 2026-05-28
-updated: 2026-05-29
+updated: 2026-06-14
 tags:
   - LLM
   - 概念卡
@@ -26,6 +26,11 @@ tags:
 
 - [[attention|Attention]]：usable，理解 Q/K/V、causal mask 和上下文读取。
 - [[transformer|Transformer]]：usable，理解 GPT 类模型的基本 block。
+
+## 调用与工程
+
+- [[api-key-and-sdk|API Key 与 SDK：调用模型的门禁卡和快递柜台]]：usable，理解 key、模型名、SDK 和环境变量的分工。
+- [[chat-completions-call|调用 LLM：chat.completions 与取回复]]：usable，传 `messages`、取 `response.choices[0].message.content`，含 key/`load_dotenv`、错误提示、封装复用等易错点。
 
 ## 对应课程
 

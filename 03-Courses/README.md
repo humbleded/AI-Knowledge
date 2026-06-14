@@ -3,7 +3,7 @@ type: map
 topic: Courses
 status: active
 created: 2026-05-28
-updated: 2026-06-10
+updated: 2026-06-14
 tags:
   - 课程笔记
   - 知识库
@@ -21,6 +21,7 @@ tags:
 - [[LLM/Karpathy-Zero-to-Hero/01-micrograd|Karpathy Zero to Hero - Micrograd]]
 - [[LLM/Karpathy-Zero-to-Hero/02-makemore|Karpathy Zero to Hero - Makemore]]
 - [[LLM/Karpathy-Zero-to-Hero/05-gpt-from-scratch|Karpathy Zero to Hero - GPT from scratch]]
+- [[LLM/AI-Agent-Learning/stage1-llm-api-basics|AI-Agent-Learning 阶段 1：大模型 API 入门]]
 
 ### Python
 
