@@ -45,6 +45,7 @@ tags:
 - [[../02-Concepts/Python/README|Python 概念卡]]
 - [[../02-Concepts/LLM/README|LLM 概念卡]]
 - [[../02-Concepts/MCP/README|MCP 概念卡]]
+- [[../02-Concepts/Engineering/README|Engineering 概念卡]]
 
 ### 基础能力
 

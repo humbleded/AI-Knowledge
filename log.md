@@ -261,3 +261,28 @@ tags:
   - `Links: 832`
   - `Broken links: 0`
   - `Missing frontmatter: 0`
+
+## 2026-06-15
+
+### Weekly Maintenance
+
+- 复查 [[00-Inbox/README|00-Inbox]]、[[raw/README|raw]]、[[index|index.md]]、[[log|log.md]] 和最近 Git 变更。
+- 初始运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 137`
+  - `Links: 835`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - 警告：1 个重要笔记未被 `index.md` 引用。
+- 当前 `00-Inbox` 仍只有 `README.md`，没有新的临时资料待分拣。
+- `raw/` 当前没有新增 source notes 或失联编译目标；非索引 raw notes 仍为 6 个。
+- 6 月 8 日之后的主要变化来自 AI-Agent-Learning PASS 同步，已沉淀到概念卡、课程页、项目记录和复盘页。
+- 修复索引警告：将 [[02-Concepts/Engineering/README|Engineering 概念卡]] 与 [[02-Concepts/Engineering/debugging-triage|调试与错误恢复：系统化 triage]] 补入 [[index|AI Knowledge Index]]，并同步补入 [[01-Maps/AI 知识库总地图|AI 知识库总地图]]。
+- 新增本次周维护复盘 [[07-Reviews/Knowledge-Base/2026-06-15-weekly-maintenance]]。
+- 完成编辑后再次运行严格检查：
+  - `OK: True`
+  - `Markdown files: 138`
+  - `Links: 859`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Warnings: 0`

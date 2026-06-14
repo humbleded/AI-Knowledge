@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-06-14
+updated: 2026-06-15
 tags:
   - 知识库
   - index
@@ -53,6 +53,8 @@ tags:
 - [[02-Concepts/LLM/README|LLM 概念卡]]
 - [[02-Concepts/MCP/README|MCP 概念卡]]
 - [[02-Concepts/MCP/model-context-protocol|Model Context Protocol]]
+- [[02-Concepts/Engineering/README|Engineering 概念卡]]
+- [[02-Concepts/Engineering/debugging-triage|调试与错误恢复：系统化 triage]]
 
 优先扩写中的 seed 概念：
 
@@ -117,6 +119,7 @@ tags:
 - [[07-Reviews/Knowledge-Base/2026-05-31-weekly-maintenance]]
 - [[07-Reviews/Knowledge-Base/2026-06-07-weekly-maintenance]]
 - [[07-Reviews/Knowledge-Base/2026-06-08-weekly-maintenance]]
+- [[07-Reviews/Knowledge-Base/2026-06-15-weekly-maintenance]]
 - [[08-Memory/知识库长期记忆规则]]
 - [[08-Memory/全库中文辅助阅读规则]]
 - [[08-Memory/AI 学习原则]]
