@@ -3,7 +3,7 @@ type: concept
 topic: Python file IO JSON serialization
 status: usable
 created: 2026-06-13
-updated: 2026-06-13
+updated: 2026-06-17
 tags:
   - Python
   - 文件读写
@@ -64,6 +64,28 @@ data = json.loads(json_text)
 - JSON 字符串 -> `dict` / `list`：`json.loads()`
 - Python 数据 -> JSON 文件：`json.dump(data, file)`
 - JSON 文件 -> Python 数据：`json.load(file)`
+
+记忆口诀：**`dump` 是存（写出去）、`load` 是读（读回来）**；带 `s` 的 `dumps`/`loads` 对**字符串**，不带 `s` 的 `dump`/`load` 配**文件对象**。
+
+## 序列化会改变类型：tuple 读回变 list
+
+JSON 的类型系统比 Python 小：**它没有 `tuple`**。把 tuple 存进 JSON 会被写成数组，读回来变成 `list`——类型在「存盘 → 读回」后悄悄变了。
+
+```python
+import json
+
+msgs = [("user", "你好"), ("assistant", "你好呀")]   # 每条是 tuple
+back = json.loads(json.dumps(msgs))
+
+print(back == msgs)        # False！tuple 已变成 list
+print(type(back[0]))       # <class 'list'>
+```
+
+- `back == msgs` 是 `False`，因为 `["user","你好"]`（list）≠ `("user","你好")`（tuple）。
+- 启示：**别依赖「存盘读回后还是原来的类型」**；需要严格类型/不可变时，JSON 序列化不是可靠手段。
+- 反过来，用 `dict` / `list` 存（如多轮对话的 `history = [{"role":..,"content":..}, ...]`）就没这个坑——dict 读回还是 dict、list 还是 list，`for m in history`、`m["role"]` 照常用。
+
+> 辨析：tuple「不可变」指不能改 tuple **内部**的元素，**不是**不能往外层 `list` 里 `append`。所以「用 tuple 存就没法加历史」是误解——能加，只是存盘读回会丢类型。
 
 ## 为什么要写 `ensure_ascii=False`
 
