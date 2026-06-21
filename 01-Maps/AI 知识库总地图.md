@@ -3,6 +3,7 @@ type: map
 topic: AI 知识库总地图
 status: active
 created: 2026-05-28
+updated: 2026-06-21
 tags:
   - 知识库
   - 地图
@@ -70,11 +71,15 @@ tags:
 - [[../02-Concepts/LLM/embedding|Embedding]]
 - [[../02-Concepts/LLM/attention|Attention]]
 - [[../02-Concepts/LLM/transformer|Transformer]]
+- [[../02-Concepts/LLM/llm-essence-and-hallucination|LLM 本质与幻觉]]
 - [[../03-Courses/LLM/Karpathy-Zero-to-Hero/05-gpt-from-scratch|GPT from scratch]]
 - 训练、推理、微调
 
 ### AI 工程能力
 
+- [[../02-Concepts/LLM/message-roles-and-instruction-hierarchy|消息角色与指令优先级]]
+- [[../02-Concepts/LLM/multi-turn-stateless-memory|多轮对话与客户端记忆]]
+- [[../02-Concepts/LLM/streaming-output|流式输出]]
 - RAG
 - Agent
 - Tool calling

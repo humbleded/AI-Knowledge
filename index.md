@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-06-15
+updated: 2026-06-21
 tags:
   - 知识库
   - index
@@ -50,6 +50,10 @@ tags:
 - [[02-Concepts/Python/python-json-learning-log-cli|Python JSON 学习日志 CLI：list[dict] 与输入校验]]
 - [[02-Concepts/LLM/api-key-and-sdk|API Key 与 SDK：调用模型的门禁卡和快递柜台]]
 - [[02-Concepts/LLM/chat-completions-call|调用 LLM：chat.completions 与取回复]]
+- [[02-Concepts/LLM/message-roles-and-instruction-hierarchy|消息角色与指令优先级]]
+- [[02-Concepts/LLM/llm-essence-and-hallucination|LLM 本质与幻觉]]
+- [[02-Concepts/LLM/multi-turn-stateless-memory|多轮对话：接口无状态与客户端记忆]]
+- [[02-Concepts/LLM/streaming-output|流式输出：stream=True 与逐 chunk 处理]]
 - [[02-Concepts/LLM/README|LLM 概念卡]]
 - [[02-Concepts/MCP/README|MCP 概念卡]]
 - [[02-Concepts/MCP/model-context-protocol|Model Context Protocol]]
@@ -120,6 +124,7 @@ tags:
 - [[07-Reviews/Knowledge-Base/2026-06-07-weekly-maintenance]]
 - [[07-Reviews/Knowledge-Base/2026-06-08-weekly-maintenance]]
 - [[07-Reviews/Knowledge-Base/2026-06-15-weekly-maintenance]]
+- [[07-Reviews/Knowledge-Base/2026-06-21-weekly-maintenance]]
 - [[08-Memory/知识库长期记忆规则]]
 - [[08-Memory/全库中文辅助阅读规则]]
 - [[08-Memory/AI 学习原则]]

@@ -3,7 +3,7 @@ type: maintenance-log
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-06-14
+updated: 2026-06-21
 tags:
   - 知识库
   - log
@@ -283,6 +283,34 @@ tags:
   - `OK: True`
   - `Markdown files: 138`
   - `Links: 859`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Warnings: 0`
+
+## 2026-06-21
+
+### Weekly Maintenance
+
+- 复查 [[00-Inbox/README|00-Inbox]]、[[raw/README|raw]]、[[index|index.md]]、[[log|log.md]] 和 2026-06-15 之后的 Git 变化。
+- 初始运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 142`
+  - `Links: 881`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - 警告：4 个 `usable` LLM 概念卡未被 `index.md` 直接引用。
+- 当前 `00-Inbox` 仍只有 `README.md`；`raw/` 没有新增 source notes，6 个非索引 raw notes 均有来源和编译目标。
+- 将 [[02-Concepts/LLM/message-roles-and-instruction-hierarchy|消息角色与指令优先级]]、[[02-Concepts/LLM/llm-essence-and-hallucination|LLM 本质与幻觉]]、[[02-Concepts/LLM/multi-turn-stateless-memory|多轮对话：接口无状态与客户端记忆]]、[[02-Concepts/LLM/streaming-output|流式输出]] 补入全局索引和相关地图。
+- 根据 OpenAI 官方文档修正 `system` / `developer` 的版本边界：`developer` 高于 `user`，但不能把 `system` 与 `developer` 无条件视为跨模型、跨供应商完全同义。
+- 为 3 份英文 raw source 补充 `## 中文速读` 和 `## 关键术语`，保留原文、URL、技术术语和编译目标：
+  - [[raw/repos/karpathy-micrograd]]
+  - [[raw/repos/karpathy-nn-zero-to-hero]]
+  - [[raw/transcripts/karpathy-micrograd-video]]
+- 新增本次维护复盘 [[07-Reviews/Knowledge-Base/2026-06-21-weekly-maintenance]]。
+- 完成编辑后再次运行严格检查：
+  - `OK: True`
+  - `Markdown files: 143`
+  - `Links: 920`
   - `Broken links: 0`
   - `Missing frontmatter: 0`
   - `Warnings: 0`

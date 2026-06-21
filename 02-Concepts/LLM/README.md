@@ -3,7 +3,7 @@ type: concept-index
 topic: LLM
 status: active
 created: 2026-05-28
-updated: 2026-06-17
+updated: 2026-06-21
 tags:
   - LLM
   - 概念卡
@@ -32,7 +32,7 @@ tags:
 
 - [[api-key-and-sdk|API Key 与 SDK：调用模型的门禁卡和快递柜台]]：usable，理解 key、模型名、SDK 和环境变量的分工。
 - [[chat-completions-call|调用 LLM：chat.completions 与取回复]]：usable，传 `messages`、取 `response.choices[0].message.content`，含 key/`load_dotenv`、错误提示、封装复用等易错点。
-- [[message-roles-and-instruction-hierarchy|消息角色与指令优先级（chain of command）]]：usable，system/developer/user/assistant 四角色何时进 messages、system=developer 新旧叫名、优先级链（平台>system/developer>user>tool）、规则放 system 的两点理由、上下文窗口≠幻觉。
+- [[message-roles-and-instruction-hierarchy|消息角色与指令优先级（chain of command）]]：usable，developer/system/user/assistant/tool 的分工、`developer` 高于 `user`、`system` 与 `developer` 的模型/API 版本边界、全局规则应进入供应商支持的应用级指令槽位、上下文窗口≠幻觉。
 - [[multi-turn-stateless-memory|多轮对话：接口无状态与客户端记忆]]：usable，服务端不记上一轮，记忆=客户端每轮重发 `[SYSTEM]+history+本轮`（SYSTEM 也每轮发）；append=记不记 / trim=记多久；SYSTEM 固定不裁 vs history 动态会裁。
 - [[streaming-output|流式输出：stream=True 与逐 chunk 处理]]：usable，`stream=True`+`for chunk`+`delta.content or ""` 三件套；None 两场景（思考阶段/末块）；推理模型两条流 `reasoning_content`/`content`；拼回完整文本才能进 history；错误 return 字符串而非 None 防毒化。
 
