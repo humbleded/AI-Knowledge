@@ -3,8 +3,10 @@ type: concept
 topic: LLM
 status: usable
 created: 2026-06-17
+updated: 2026-06-27
 source:
   - AI-Agent-Learning L1-03
+  - AI-Agent-Learning L1-Gate 设计准备
 tags:
   - LLM
   - 多轮对话
@@ -64,6 +66,8 @@ while True:
 - 以为「SYSTEM 只发一次、之后模型就记住了」——错。无状态 = 每轮都要把 SYSTEM 连同 history 重发。
 - 删了 `append` 还按「N 轮上限 / 切片」去想——此时 history 恒为空，trim 无东西可砍。
 - 忘记历史（没喂够上下文）≠ 幻觉（无依据编造）。trim 丢历史属于前者。
+- **顺序坑：trim 砍在 append 之前（先砍后存）**——砍的是「还没算上本轮」的旧 history，于是每轮实际发出去的历史比 `MAX_TURNS` 多一轮，限长滞后、形同失效。顺序必须「**先存（成对 append user+assistant）后砍**」，trim 放在循环末尾。
+- 把 `[SYSTEM] + history` 写成 `SYSTEM + history`——`dict + list` 直接相加报 `TypeError`，单个 dict 要 `[ ]` 包成 list（见 [[../Python/python-list-dict-set|Python list、dict、set]]）。
 
 ## 关联
 
