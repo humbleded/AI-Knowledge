@@ -75,3 +75,4 @@ target: [t1, t2, t3, t4]
 - [[tokenization]]
 - [[attention]]
 - [[transformer]]
+- [[sampling-params-and-cost]]：本节「采样方式」的展开——temperature/top-k/top-p 的直觉、DeepSeek 温度表与 token 成本。

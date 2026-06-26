@@ -3,7 +3,7 @@ type: maintenance-log
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-06-21
+updated: 2026-06-25
 tags:
   - 知识库
   - log
@@ -314,3 +314,24 @@ tags:
   - `Broken links: 0`
   - `Missing frontmatter: 0`
   - `Warnings: 0`
+
+## 2026-06-23
+
+### AI-Agent-Learning B0-02 网络基础与 HTTP PASS
+
+- 检查 `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-23.md`，`B0-02 网络基础与 HTTP`（阶段 0.5 工程基础穿插，6/24 顺延补做）判定 `PASS`。重跑 `code/stage0_5/b0_02_http_probe.py` 四场景（正常 2xx / 404 非 2xx / DNS 失败 / 超时）全部按预期；16 题练习全 PASS（B3/C2/C4/D1/D2 经订正）。
+- 新增 [[02-Concepts/Engineering/http-and-network-basics|一次 HTTP 请求的全链路与三类错误处理]]，沉淀：`requests.get` 背后 7 步、DNS/IP/端口、HTTP 报文结构、状态码（401 vs 403、4xx vs 5xx）、**requests 不对 4xx/5xx 抛异常**、三类错误 + 三层防护（timeout / try-except / 主动 check status_code）、timeout 保护客户端、`except` 子类在前基类兜底、`/` vs `//`。
+- 更新 [[02-Concepts/Engineering/README|Engineering 概念卡]]（新增「网络与 HTTP」分类）、[[02-Concepts/Python/python-http-requests|Python HTTP 请求]]（互链进阶卡）。
+- 更新 [[03-Courses/Agent/AI-Agent-Learning/stage0_5-engineering-basics|阶段 0.5：工程基础随用随补]]（B0-02 已补课记录）、[[01-Maps/AI-Agent-Learning 跳转索引]]。
+- 回填执行区 `tracker/progress.md`（B0-02 → `PASS`，最近日期 2026-06-23）。
+
+## 2026-06-25
+
+### AI-Agent-Learning PR2-02 摘要与改写（概念预习）
+
+- 检查 `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-25.md`：阶段 2 `PR2-02 摘要与改写`概念预习——读 llm-cookbook「文本概括 Summarizing」+「文本转换 Transforming」两章、记笔记 `notes/stage2/pr2_02_summarizer_notes.md`、15 题练习（A–D）全 PASS（A4/B1/C4 经一次订正）。今天纯概念无代码，动手 `code/stage2/pr2_02_summarizer.py` 按规则排 L1-Gate 后，故 `PR2-02` 判 `DOING`（非 PASS）。
+- 新增概念卡 [[02-Concepts/LLM/summarizing-and-transforming|摘要与改写：Summarizing(压信息) vs Transforming(换外壳)]]，沉淀：信息量尺子、控长度三单位 + 软约束（要严格卡死靠代码 `len()` 截）、概括(求全) vs 提取(求专)、判断漏重点（先定义重点 + 体检三件套）、转换四类、锁 JSON 摘要 prompt 5 要素、真实场景（邮件处理器待办用提取字段兜底 / 客服历史摘要省 token）。复习点：PR2-01 老弱点 **few-shot 真实示例 ≠ schema** 本次一次答对。
+- 更新 [[02-Concepts/LLM/README|LLM 概念卡索引]]（登记新卡）。
+- 新增阶段课程页 [[03-Courses/LLM/AI-Agent-Learning/stage2-prompt-structured-output|阶段 2：Prompt 与结构化输出]]（覆盖 PR2-01 + PR2-02，均 `DOING`：概念完成、动手留 L1-Gate 后）。
+- 更新 [[01-Maps/AI-Agent-Learning 跳转索引]]（加阶段 2 课程页链接）。
+- 回填执行区 `tracker/progress.md`（PR2-02 → `DOING`，最近日期 2026-06-25）。

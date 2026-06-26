@@ -130,6 +130,7 @@ P0-09 需要优先记住这几个：
 
 ## 相关
 
+- [[../Engineering/http-and-network-basics|一次 HTTP 请求的全链路与三类错误处理]]（B0-02 进阶：DNS/IP/端口、报文结构、三类错误、timeout、`requests` 不对 4xx/5xx 抛异常）
 - [[python-venv-pip-env|Python 项目环境管理：venv、pip 与 .env]]
 - [[python-exceptions-debugging-testing|Python 异常、调试与单元测试]]
 - [[../../07-Reviews/AI-Agent-Learning/2026-06-13-stage0-p0-08-pass-review]]

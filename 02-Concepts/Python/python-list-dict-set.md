@@ -3,7 +3,7 @@ type: concept
 topic: Python
 status: usable
 created: 2026-06-02
-updated: 2026-06-06
+updated: 2026-06-27
 tags:
   - Python
   - 编程基础
@@ -65,6 +65,31 @@ tags = {"python", "agent", "python"}
 
 `remove(value)` 按值删除，`pop(index)` 按位置删除并返回被删除的元素。
 
+## list 拼接：`+` 两边必须都是 list（拼 messages 常踩）
+
+`list + list` 把两个列表接成一个新列表。关键限制：`+` **两边都必须是 list**，不能拿 list 直接加一个 dict、字符串或单个元素。
+
+```python
+[1, 2] + [3]        # [1, 2, 3]  ✅ list + list
+[1, 2] + 3          # ❌ TypeError: can only concatenate list (not "int") to list
+{"a": 1} + [2]      # ❌ TypeError: unsupported operand type(s) for +: 'dict' and 'list'
+```
+
+想把**单个 dict（或单个值）拼进 list**，先用 `[ ]` 把它包成「单元素 list」再相加：
+
+```python
+SYSTEM = {"role": "system", "content": "..."}
+history = [{"role": "user", "content": "hi"}, {"role": "assistant", "content": "你好"}]
+
+[SYSTEM] + history + [{"role": "user", "content": question}]   # ✅ 三个都是 list
+SYSTEM + history                                                # ❌ dict + list 直接相加报错
+```
+
+这正是拼 LLM `messages` 的标准写法：`SYSTEM` 和本轮 user 都是 dict，必须各自用 `[ ]` 包成单元素 list，才能和 list 形态的 `history` 用 `+` 接到一起。
+
+- 错误理解：`SYSTEM + history` 能把 system 放到历史前面。
+- 正确理解：`dict + list` 类型不匹配，直接 `TypeError`；要写成 `[SYSTEM] + history`。
+
 ## 修改任务名时同步迁移状态
 
 如果任务名同时存在于 `tasks` 列表和 `task_status` 字典里，改名时必须同步迁移状态。否则列表里的任务名和字典里的 key 会断开。
@@ -103,4 +128,5 @@ task_status == {"task2": "done", "task4": "todo"}
 
 - [[python-basic-data-types]]
 - [[python-conditionals-and-loops]]
+- [[../LLM/multi-turn-stateless-memory|多轮对话：接口无状态与客户端记忆]]：`[SYSTEM] + history + [user]` 拼 messages 正是「单个 dict 要 `[ ]` 包成 list」的应用。
 - [[../../07-Reviews/Daily-Practice/2026-06-05-review]]

@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-06-21
+updated: 2026-06-23
 tags:
   - 知识库
   - index
@@ -54,11 +54,14 @@ tags:
 - [[02-Concepts/LLM/llm-essence-and-hallucination|LLM 本质与幻觉]]
 - [[02-Concepts/LLM/multi-turn-stateless-memory|多轮对话：接口无状态与客户端记忆]]
 - [[02-Concepts/LLM/streaming-output|流式输出：stream=True 与逐 chunk 处理]]
+- [[02-Concepts/LLM/sampling-params-and-cost|采样参数与成本：temperature 与 token 计费]]
+- [[02-Concepts/LLM/prompt-engineering-basics|Prompt 工程基础：角色扮演 / few-shot / CoT / 清晰指令]]
 - [[02-Concepts/LLM/README|LLM 概念卡]]
 - [[02-Concepts/MCP/README|MCP 概念卡]]
 - [[02-Concepts/MCP/model-context-protocol|Model Context Protocol]]
 - [[02-Concepts/Engineering/README|Engineering 概念卡]]
 - [[02-Concepts/Engineering/debugging-triage|调试与错误恢复：系统化 triage]]
+- [[02-Concepts/Engineering/http-and-network-basics|一次 HTTP 请求的全链路与三类错误处理]]
 
 优先扩写中的 seed 概念：
 

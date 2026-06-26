@@ -3,7 +3,7 @@ type: map
 topic: AI-Agent-Learning 跳转索引
 status: active
 created: 2026-05-28
-updated: 2026-06-14
+updated: 2026-06-25
 tags:
   - AI-Agent-Learning
   - 索引
@@ -36,7 +36,9 @@ tags:
 - [[../03-Courses/Agent/AI-Agent-Learning/README|AI-Agent-Learning 知识沉淀]]
 - [[../03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]
 - [[../03-Courses/LLM/AI-Agent-Learning/stage1-llm-api-basics|阶段 1：大模型 API 入门]]
+- [[../03-Courses/LLM/AI-Agent-Learning/stage2-prompt-structured-output|阶段 2：Prompt 与结构化输出]]
 - [[../03-Courses/Agent/AI-Agent-Learning/stage0_5-engineering-basics|阶段 0.5：工程基础随用随补]]
+- [[../02-Concepts/Engineering/http-and-network-basics|B0-02 一次 HTTP 请求的全链路与三类错误处理（概念卡）]]
 - [[../04-Projects/Python/AI-Agent-Learning/p0-01-hello-script|P0-01 环境与第一个程序]]
 - [[../04-Projects/Python/AI-Agent-Learning/p0-02-profile-script|P0-02 数据类型与变量]]
 - [[../04-Projects/Python/AI-Agent-Learning/p0-03-scheduler|P0-03 条件判断、模式匹配、循环]]
