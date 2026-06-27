@@ -3,7 +3,7 @@ type: map
 topic: AI-Agent-Learning 跳转索引
 status: active
 created: 2026-05-28
-updated: 2026-06-25
+updated: 2026-06-27
 tags:
   - AI-Agent-Learning
   - 索引
@@ -51,6 +51,7 @@ tags:
 - [[../04-Projects/Python/AI-Agent-Learning/p0-gate-learning-log|P0-Gate Python 基础闯关]]
 - [[../04-Projects/LLM/AI-Agent-Learning/l1-01-first-call|L1-01 API Key 与 SDK]]
 - [[../04-Projects/LLM/AI-Agent-Learning/l1-gate-cli-chatbot|L1-Gate CLI Chatbot（阶段 1 整合关）]]
+- [[../04-Projects/LLM/AI-Agent-Learning/pr2-01-02-handson|PR2-01/02 动手：prompt 对比 + 摘要器]]
 - [[../02-Concepts/LLM/api-params-vs-sdk-client-params|API 参数 vs SDK 客户端参数（概念卡）]]
 - [[../07-Reviews/AI-Agent-Learning/2026-05-27-stage0-p0-01-p0-02-pass-review|2026-05-27 阶段 0 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-05-28-stage0-p0-03-pass-review|2026-05-28 P0-03 PASS 复盘]]
@@ -61,6 +62,7 @@ tags:
 - [[../07-Reviews/AI-Agent-Learning/2026-06-13-stage0-p0-08-pass-review|2026-06-13 P0-08 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-06-14-stage0-p0-gate-l1-01-pass-review|2026-06-14 P0-Gate + L1-01 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-06-27-stage1-l1-gate-pass-review|2026-06-27 L1-Gate PASS 复盘（阶段 1 收尾）]]
+- [[../07-Reviews/AI-Agent-Learning/2026-06-27-pr2-01-02-handson-review|2026-06-27 PR2-01/02 动手 PASS 复盘]]
 
 ## 外部资源中文索引
 

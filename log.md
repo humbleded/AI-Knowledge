@@ -3,7 +3,7 @@ type: maintenance-log
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-06-25
+updated: 2026-06-27
 tags:
   - 知识库
   - log
@@ -349,3 +349,14 @@ tags:
 - 更新课程页 [[03-Courses/LLM/AI-Agent-Learning/stage1-llm-api-basics|阶段 1：大模型 API 入门]]（加 L1-Gate 行、status → done、下一步指向阶段 2）。
 - 更新 [[01-Maps/AI-Agent-Learning 跳转索引]]（加 L1-Gate 项目页、新概念卡、PASS 复盘链接）。
 - 回填执行区 `tracker/progress.md`（L1-Gate → `PASS`，最近日期 2026-06-27，解锁阶段 2 动手与 PR2-Gate）。
+
+### AI-Agent-Learning PR2-01 / PR2-02 动手交付 PASS（阶段 2 起步）
+
+- 同日 L1-Gate 通关后，带做补完阶段 2 两个动手产物（`code/stage2/pr2_01_prompt_cases.md` + `pr2_01_run_cases.py`、`code/stage2/pr2_02_summarizer.py`），真跑 DeepSeek 验证后判 `PR2-01` / `PR2-02` 均 `PASS`。
+- 更新概念卡 [[02-Concepts/LLM/prompt-engineering-basics|Prompt 基础]]：补「实证：PR2-01 三档对比（few-shot 零增益）」+「工程坑：f-string/.format 撞 prompt 里 JSON 花括号」。
+- 更新概念卡 [[02-Concepts/LLM/summarizing-and-transforming|摘要与改写]]：补「实证：机械版 vs 模型版」+「代码兜底 ≠ 约束模型（prompt 事前软请求 / 代码事后硬保证）」+ 常见坑两条。
+- 新增项目页 [[04-Projects/LLM/AI-Agent-Learning/pr2-01-02-handson|PR2-01/02 动手：prompt 对比 + 摘要器]]。
+- 新增复盘 [[07-Reviews/AI-Agent-Learning/2026-06-27-pr2-01-02-handson-review|2026-06-27 PR2-01/02 动手 PASS 复盘]]：弱点「漏看点名子项」连续两天重现（L1-Gate C1 漏 [SYSTEM] / PR2-02 漏「取值也 strip」）。
+- 更新课程页 [[03-Courses/LLM/AI-Agent-Learning/stage2-prompt-structured-output|阶段 2：Prompt 与结构化输出]]（PR2-01/02 → PASS、下一步指向 PR2-03）。
+- 更新 [[01-Maps/AI-Agent-Learning 跳转索引]]（加项目页 + PASS 复盘链接）。
+- 回填执行区 `tracker/progress.md`（PR2-01、PR2-02 → `PASS`，最近日期 2026-06-27）。

@@ -3,7 +3,7 @@ type: course-note
 topic: AI-Agent-Learning Stage 2
 status: active
 created: 2026-06-25
-updated: 2026-06-25
+updated: 2026-06-27
 tags:
   - LLM
   - prompt
@@ -28,8 +28,8 @@ tags:
 
 | 编号 | 任务 | 状态 | 产物 | 关键结论 |
 |---|---|---|---|---|
-| PR2-01 | Prompt 基础 | DOING | [[../../../02-Concepts/LLM/prompt-engineering-basics]] | 概念+笔记+练习(17 题全 PASS) 完成；四技巧各控一维、zero/few-shot、指令调优 vs few-shot、技巧≠role、锁 JSON 三件套。**动手「3 个 prompt 对比」(`code/stage2/pr2_01_prompt_cases.md`) 排 L1-Gate 后** |
-| PR2-02 | 摘要与改写 | DOING | [[../../../02-Concepts/LLM/summarizing-and-transforming]] | 概念+笔记+练习(15 题全 PASS) 完成；摘要(压信息) vs 改写(换外壳)、控长度软约束、概括 vs 提取、判断漏重点、转换四类。**动手 `code/stage2/pr2_02_summarizer.py` 排 L1-Gate 后** |
+| PR2-01 | Prompt 基础 | **PASS** (2026-06-27) | [[../../../02-Concepts/LLM/prompt-engineering-basics]] | 概念+笔记+练习(17 题全 PASS)；四技巧各控一维、指令调优 vs few-shot、技巧≠role、锁 JSON 三件套。**动手完成**：3 个递进 prompt 真跑 DeepSeek（`pr2_01_prompt_cases.md`）——② 清晰具体可 loads、③ few-shot 与 ② 零增益，坐实「prompt 不是越长越好」；坑 f-string 撞 JSON 花括号 |
+| PR2-02 | 摘要与改写 | **PASS** (2026-06-27) | [[../../../02-Concepts/LLM/summarizing-and-transforming]] | 概念+笔记+练习(15 题全 PASS)；摘要 vs 改写、控长度软约束、概括 vs 提取、判断漏重点、转换四类。**动手完成** `pr2_02_summarizer.py`：机械版 vs 模型版对比，模型版锁 JSON 正好 3 条、≤20/≤60 字稳定；澄清「代码兜底=事后硬保证 ≠ 约束模型」 |
 | PR2-03 | 分类与路由 | TODO | — | 资料：DLAI Inferring + ADP Ch2 Routing |
 | PR2-04 | JSON 与 Schema | TODO | — | 资料：OpenAI Structured Outputs |
 | PR2-Gate | 结构化输出闯关 | TODO | `code/stage2/pr2_gate_email_processor.py` | 邮件 → 分类 + 摘要 + 待办 JSON 并存文件（周末做） |
@@ -43,10 +43,10 @@ tags:
 
 ## 下一步
 
-阶段 2 的概念预习（PR2-01、PR2-02）已完成；**队列里下一个是 `L1-Gate`（阶段 1 收尾整合关，周末做）**。过了 L1-Gate 才正式进入阶段 2 的动手交付：
+L1-Gate 已通关（2026-06-27），阶段 2 动手交付解锁；同日补完 **PR2-01 动手（3 prompt 对比）** 与 **PR2-02 动手（summarizer）** 均 PASS。队列里下一个是 **PR2-03 分类与路由**：
 
 ```text
-L1-Gate(周末) -> PR2-01 动手(3 prompt 对比) -> PR2-02 summarizer -> PR2-03 分类 -> S-03 上下文工程 -> PR2-04 JSON/Schema -> PR2-Gate 邮件处理器
+[已过] L1-Gate -> [已过] PR2-01 动手 -> [已过] PR2-02 summarizer -> PR2-03 分类 -> S-03 上下文工程 -> PR2-04 JSON/Schema -> PR2-Gate 邮件处理器
 ```
 
 PR2-Gate「邮件处理器」会把阶段 2 全部技巧串起来（角色 + 清晰指令 + few-shot + 摘要 + 分类 + 锁 JSON）——本阶段所有概念都为它铺路。

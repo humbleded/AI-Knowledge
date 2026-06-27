@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-06-23
+updated: 2026-06-27
 tags:
   - 知识库
   - index
@@ -56,6 +56,8 @@ tags:
 - [[02-Concepts/LLM/streaming-output|流式输出：stream=True 与逐 chunk 处理]]
 - [[02-Concepts/LLM/sampling-params-and-cost|采样参数与成本：temperature 与 token 计费]]
 - [[02-Concepts/LLM/prompt-engineering-basics|Prompt 工程基础：角色扮演 / few-shot / CoT / 清晰指令]]
+- [[02-Concepts/LLM/summarizing-and-transforming|摘要与改写：Summarizing vs Transforming]]
+- [[02-Concepts/LLM/api-params-vs-sdk-client-params|API 参数 vs SDK 客户端参数]]
 - [[02-Concepts/LLM/README|LLM 概念卡]]
 - [[02-Concepts/MCP/README|MCP 概念卡]]
 - [[02-Concepts/MCP/model-context-protocol|Model Context Protocol]]
@@ -81,6 +83,7 @@ tags:
 - [[03-Courses/LLM/Karpathy-Zero-to-Hero/02-makemore]]
 - [[03-Courses/LLM/Karpathy-Zero-to-Hero/05-gpt-from-scratch]]
 - [[03-Courses/LLM/AI-Agent-Learning/stage1-llm-api-basics]]
+- [[03-Courses/LLM/AI-Agent-Learning/stage2-prompt-structured-output]]
 - [[03-Courses/Python/Python-Basics/python-core-reading-route|Python 官方手册核心阅读路线]]
 - [[03-Courses/Python/AI-Agent-Learning/stage0-python-basics]]
 - [[03-Courses/Agent/AI-Agent-Learning/README]]
@@ -107,6 +110,8 @@ tags:
 - [[04-Projects/Python/AI-Agent-Learning/p0-09-http-request]]
 - [[04-Projects/Python/AI-Agent-Learning/p0-gate-learning-log]]
 - [[04-Projects/LLM/AI-Agent-Learning/l1-01-first-call]]
+- [[04-Projects/LLM/AI-Agent-Learning/l1-gate-cli-chatbot]]
+- [[04-Projects/LLM/AI-Agent-Learning/pr2-01-02-handson]]
 - [[04-Projects/Agent/AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引]]
 
 ## 复盘与记忆
@@ -119,6 +124,8 @@ tags:
 - [[07-Reviews/AI-Agent-Learning/2026-06-11-stage0-p0-07-pass-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-06-13-stage0-p0-08-pass-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-06-14-stage0-p0-gate-l1-01-pass-review]]
+- [[07-Reviews/AI-Agent-Learning/2026-06-27-stage1-l1-gate-pass-review]]
+- [[07-Reviews/AI-Agent-Learning/2026-06-27-pr2-01-02-handson-review]]
 - [[07-Reviews/Daily-Practice/2026-06-04-review]]
 - [[07-Reviews/Daily-Practice/2026-06-05-review]]
 - [[07-Reviews/Knowledge-Base/2026-05-29-karpathy-health-check]]
