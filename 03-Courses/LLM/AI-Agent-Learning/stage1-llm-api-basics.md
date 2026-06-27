@@ -1,9 +1,9 @@
 ---
 type: course-note
 topic: AI-Agent-Learning Stage 1
-status: active
+status: done
 created: 2026-06-14
-updated: 2026-06-18
+updated: 2026-06-27
 tags:
   - LLM
   - API
@@ -28,6 +28,7 @@ tags:
 | L1-03 | 多轮聊天 | PASS | [[../../../02-Concepts/LLM/multi-turn-stateless-memory]] | 接口无状态，记忆 = 客户端每轮重发 `[SYSTEM]+history+本轮`；`append`=记不记 / `trim`=记多久 |
 | L1-04 | 流式输出 | PASS | [[../../../02-Concepts/LLM/streaming-output]] | `stream=True` + `for chunk` + `delta.content or ""`；拼回完整文本才能进 history；错误 `return` 字符串而非 None 防毒化 |
 | L1-05 | 参数实验与成本意识 | PASS | [[../../../02-Concepts/LLM/sampling-params-and-cost]] | temperature = 概率差距悬殊度（低稳高野，`T→0`=贪心）；top-k/p 砍候选名单；DeepSeek 温度表；成本 = 输入(缓存命中/未命中) + 输出，输出最贵 |
+| L1-Gate | API 入门闯关（整合关） | PASS | [[../../../04-Projects/LLM/AI-Agent-Learning/l1-gate-cli-chatbot]] | 整合 L1-01~04 成 CLI Chatbot：多轮+流式可开关+exit+错误兜底+历史限长+timeout；真实 5 轮记忆稳；5 个整合坑（非流式用 `call_messages`、先存后砍、错误返字符串、timeout=30）；API 参数 vs SDK 参数、SSE |
 
 ## 已掌握概念
 
@@ -37,19 +38,17 @@ tags:
 - [[../../../02-Concepts/LLM/multi-turn-stateless-memory]]
 - [[../../../02-Concepts/LLM/streaming-output]]
 - [[../../../02-Concepts/LLM/sampling-params-and-cost]]
+- [[../../../02-Concepts/LLM/api-params-vs-sdk-client-params]]
 - [[../../../02-Concepts/Python/python-venv-pip-env]]
 - [[../../../02-Concepts/Python/python-http-requests]]
 
 ## 下一步
 
-下一项是 `L1-Gate API 入门闯关`（阶段 1 收尾整合关）。
+**阶段 1 全部 PASS（含 L1-Gate）**，正式进入阶段 2「Prompt 与结构化输出」的动手交付。
 
-要做 `code/stage1/l1_gate_cli_chatbot.py`，整合：多轮 + 流式 + 退出命令 + 错误提示 + 历史长度限制。
-
-建议关注：
-
-- 把 L1-01 ~ L1-05 的能力（`call_model` 封装、history 管理、流式、错误提示、参数与成本意识）整合成一个完整 CLI。
-- 闯关是整块任务，安排在精力好的整段时间（基本 = 周末）做，工作日不碰 Gate。
+- 阶段 2 概念预习 PR2-01/PR2-02 早已完成（笔记 + 练习全 PASS），但**动手产物**（PR2-01 三个 prompt 对比、PR2-02 `summarizer.py`）此前排在 L1-Gate 之后，现已解锁。
+- 队列：PR2-01 动手 → PR2-02 摘要 → PR2-03 分类 → S-03 上下文工程 → PR2-04 JSON/Schema →（周末）PR2-Gate 邮件处理器。
+- 见 [[stage2-prompt-structured-output|阶段 2：Prompt 与结构化输出]]。
 
 ## 阶段 0 到阶段 1 的衔接
 

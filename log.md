@@ -335,3 +335,17 @@ tags:
 - 新增阶段课程页 [[03-Courses/LLM/AI-Agent-Learning/stage2-prompt-structured-output|阶段 2：Prompt 与结构化输出]]（覆盖 PR2-01 + PR2-02，均 `DOING`：概念完成、动手留 L1-Gate 后）。
 - 更新 [[01-Maps/AI-Agent-Learning 跳转索引]]（加阶段 2 课程页链接）。
 - 回填执行区 `tracker/progress.md`（PR2-02 → `DOING`，最近日期 2026-06-25）。
+
+## 2026-06-27
+
+### AI-Agent-Learning L1-Gate API 入门闯关 PASS（阶段 1 收尾）
+
+- 复核 `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-27.md`：实现 `code/stage1/l1_gate_cli_chatbot.py`，整合 L1-01~04（多轮 + 流式可开关 + exit + 错误兜底 + 历史限长 + timeout）。**复核实跑**流式真实 5 轮：第 2 轮答出「三玖」、第 4 轮数出「聊了 3 轮」并复述 → 多轮记忆稳；空输入提示、错误兜底不崩、exit 退出码 0。4 必答 + 完整调用链路全过。判 `PASS`，**阶段 1 全部通过**。
+- 新增概念卡 [[02-Concepts/LLM/api-params-vs-sdk-client-params|API 参数 vs SDK 客户端参数]]：API 参数（进请求体、查 DeepSeek 文档）vs SDK 客户端参数（`timeout`/`max_retries`、本机生效、查 OpenAI SDK，所以 DeepSeek API 文档搜不到 timeout）；timeout 两种写法（client 级 / create 级）；本机假服务器实测两种写法均 ~2s 触发 `APITimeoutError`。
+- 更新概念卡 [[02-Concepts/LLM/streaming-output|流式输出]]：补「底层传输：SSE」一节（SSE 单向逐块推 vs 普通请求-响应 vs WebSocket 双向；TTFT）。
+- 更新 [[02-Concepts/LLM/README|LLM 概念卡索引]]（登记新卡）。
+- 新增项目页 [[04-Projects/LLM/AI-Agent-Learning/l1-gate-cli-chatbot|L1-Gate CLI Chatbot]]：完整调用链路 + 5 个整合坑（含今日新坑：非流式误用 `call_model` 列表当字符串 + 丢历史 → 改 `call_messages`）+ 4 必答 + 验证结果。
+- 新增复盘 [[07-Reviews/AI-Agent-Learning/2026-06-27-stage1-l1-gate-pass-review|2026-06-27 L1-Gate PASS 复盘]]：练习 15 题全 PASS（C1 漏 [SYSTEM]、C2 限长后果方向 经订正）；今天最虚 = 对列表/消息的逐条精确追踪。
+- 更新课程页 [[03-Courses/LLM/AI-Agent-Learning/stage1-llm-api-basics|阶段 1：大模型 API 入门]]（加 L1-Gate 行、status → done、下一步指向阶段 2）。
+- 更新 [[01-Maps/AI-Agent-Learning 跳转索引]]（加 L1-Gate 项目页、新概念卡、PASS 复盘链接）。
+- 回填执行区 `tracker/progress.md`（L1-Gate → `PASS`，最近日期 2026-06-27，解锁阶段 2 动手与 PR2-Gate）。
