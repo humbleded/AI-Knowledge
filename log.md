@@ -3,7 +3,7 @@ type: maintenance-log
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-06-27
+updated: 2026-06-28
 tags:
   - 知识库
   - log
@@ -360,3 +360,30 @@ tags:
 - 更新课程页 [[03-Courses/LLM/AI-Agent-Learning/stage2-prompt-structured-output|阶段 2：Prompt 与结构化输出]]（PR2-01/02 → PASS、下一步指向 PR2-03）。
 - 更新 [[01-Maps/AI-Agent-Learning 跳转索引]]（加项目页 + PASS 复盘链接）。
 - 回填执行区 `tracker/progress.md`（PR2-01、PR2-02 → `PASS`，最近日期 2026-06-27）。
+
+## 2026-06-28
+
+### Weekly Maintenance
+
+- 复查 [[00-Inbox/README|00-Inbox]]、[[raw/README|raw]]、[[index|index.md]]、[[log|log.md]]、自动化 memory 和 2026-06-21 之后的 Git 变化。
+- 初始运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 154`
+  - `Links: 1038`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 6`
+  - `Warnings: 0`
+- 当前 [[00-Inbox/README|00-Inbox]] 仍只有 `README.md`；[[raw/README|raw]] 没有新增 source notes，6 个非索引 raw notes 均保留来源线索，且现有英文 raw notes 已有 `## 中文速读` / `## 关键术语`。
+- 复核近期 Git 变化：新增内容主要是 AI-Agent-Learning 的 HTTP、LLM API、Prompt、摘要改写同步，已进入 [[02-Concepts/README|概念卡]]、[[03-Courses/README|课程路线]]、[[04-Projects/README|项目记录]] 与 [[07-Reviews/AI-Agent-Learning/2026-06-27-stage1-l1-gate-pass-review|PASS 复盘]]。
+- 未发现需要移动的 stale materials，也未发现误跟踪的生成文件、临时文件或 Obsidian 本地 app state。
+- 根据 [[08-Memory/全库中文辅助阅读规则|全库中文辅助阅读规则]] 复查：本轮新增核心笔记以中文为主，保留 `HTTP`、`SDK`、`SSE`、`few-shot`、`JSON`、命令、路径和 API 名等技术锚点，不需要额外硬翻译。
+- 新增本次维护复盘 [[07-Reviews/Knowledge-Base/2026-06-28-weekly-maintenance]]，并更新 [[index|index.md]] 与本日志。
+- 完成编辑后再次运行严格检查：
+  - `OK: True`
+  - `Markdown files: 155`
+  - `Links: 1066`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 6`
+  - `Warnings: 0`
