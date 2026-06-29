@@ -30,6 +30,7 @@ tags:
 - [[python-file-json-serialization|Python 文件读写与 JSON 序列化]]
 - [[python-json-learning-log-cli|Python JSON 学习日志 CLI：list[dict] 与输入校验]]
 - [[python-http-requests|Python HTTP 请求：URL、headers、status code 与 JSON]]
+- [[python-strip-and-cleaning-runtime-data|Python strip 与洗运行时脏数据：作用对象(str 非 list)与何时用]]
 
 ## 对应课程
 

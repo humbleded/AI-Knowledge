@@ -7,6 +7,7 @@ updated: 2026-06-27
 tags:
   - AI-Agent-Learning
   - 索引
+updated: 2026-06-28
 ---
 
 # AI-Agent-Learning 跳转索引
@@ -52,7 +53,10 @@ tags:
 - [[../04-Projects/LLM/AI-Agent-Learning/l1-01-first-call|L1-01 API Key 与 SDK]]
 - [[../04-Projects/LLM/AI-Agent-Learning/l1-gate-cli-chatbot|L1-Gate CLI Chatbot（阶段 1 整合关）]]
 - [[../04-Projects/LLM/AI-Agent-Learning/pr2-01-02-handson|PR2-01/02 动手：prompt 对比 + 摘要器]]
+- [[../04-Projects/LLM/AI-Agent-Learning/pr2-03-classifier-routing|PR2-03 动手：分类与路由]]
 - [[../02-Concepts/LLM/api-params-vs-sdk-client-params|API 参数 vs SDK 客户端参数（概念卡）]]
+- [[../02-Concepts/LLM/classification-and-routing|分类与路由（概念卡）]]
+- [[../02-Concepts/Python/python-strip-and-cleaning-runtime-data|Python strip 与洗运行时脏数据（概念卡）]]
 - [[../07-Reviews/AI-Agent-Learning/2026-05-27-stage0-p0-01-p0-02-pass-review|2026-05-27 阶段 0 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-05-28-stage0-p0-03-pass-review|2026-05-28 P0-03 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-06-02-stage0-p0-04-pass-review|2026-06-02 P0-04 PASS 复盘]]
@@ -63,6 +67,7 @@ tags:
 - [[../07-Reviews/AI-Agent-Learning/2026-06-14-stage0-p0-gate-l1-01-pass-review|2026-06-14 P0-Gate + L1-01 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-06-27-stage1-l1-gate-pass-review|2026-06-27 L1-Gate PASS 复盘（阶段 1 收尾）]]
 - [[../07-Reviews/AI-Agent-Learning/2026-06-27-pr2-01-02-handson-review|2026-06-27 PR2-01/02 动手 PASS 复盘]]
+- [[../07-Reviews/AI-Agent-Learning/2026-06-28-pr2-03-classifier-routing-review|2026-06-28 PR2-03 分类与路由 PASS 复盘]]
 
 ## 外部资源中文索引
 

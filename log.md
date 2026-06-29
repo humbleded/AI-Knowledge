@@ -387,3 +387,12 @@ tags:
   - `Missing frontmatter: 0`
   - `Raw non-index files: 6`
   - `Warnings: 0`
+
+### AI-Agent-Learning PR2-03 分类与路由 PASS（同步知识库）
+
+- 复核 `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-28.md`：PR2-03 分类与路由，带读 ADP 第 2 章 Routing + Inferring；练习 15 题全 PASS；动手 `code/stage2/pr2_03_classifier.py`（规则版 dict 遍历 + `all_hits` 诊断 + 15 样例 + 自动归因 + 模型版 + 真实对比）。实跑规则版正确率 73%、4 难样例规则版 0/4→模型版 2/4。判 **PR2-03 PASS**。
+- 新增概念卡 [[02-Concepts/LLM/classification-and-routing|分类与路由]]：分类是路由前半步、四种路由、规则版 vs 模型版（真跑 0/4→2/4）、漏判/撞类用 `all_hits`+`len` 自动归因、模型版三件套（只输出标签词+strip+白名单）、分类质量=标签定义清晰度。
+- 新增概念卡 [[02-Concepts/Python/python-strip-and-cleaning-runtime-data|Python strip 与洗运行时脏数据]]：strip 是 str 方法（贴 list 会 `AttributeError`）、只洗运行时脏数据、自写常量改字面量、配合白名单兜底。
+- 新增项目页 [[04-Projects/LLM/AI-Agent-Learning/pr2-03-classifier-routing|PR2-03 动手：分类与路由]]、复盘 [[07-Reviews/AI-Agent-Learning/2026-06-28-pr2-03-classifier-routing-review|2026-06-28 PR2-03 PASS 复盘]]。
+- 更新 [[02-Concepts/LLM/README|LLM 概念卡索引]]、[[02-Concepts/Python/README|Python 概念卡索引]]、课程页 [[03-Courses/LLM/AI-Agent-Learning/stage2-prompt-structured-output|阶段 2]]（PR2-03 → PASS）、[[01-Maps/AI-Agent-Learning 跳转索引]]（加项目页/概念卡/复盘链接）。
+- 回填执行区 `tracker/progress.md`（PR2-03 → PASS，2026-06-28）与 `daily/2026-06-28.md` 的 Codex 判定区。

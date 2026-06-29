@@ -39,6 +39,7 @@ tags:
 - [[sampling-params-and-cost|采样参数与成本：temperature/top-k/top-p 与 token 计费]]：usable，写字=抽签(Softmax 分数→概率)；temperature 调差距悬殊度(低=陡=稳, 高=平=野, `k=1`≡`T→0`≡贪心)；top-k 固定/top-p 动态砍名单；DeepSeek 温度表(代码0.0/对话1.3/创意1.5)且数字不跨厂商通用；成本=输入(缓存命中/未命中)+输出(最贵)，`usage` 看用量，history 越长越贵。
 - [[prompt-engineering-basics|Prompt 基础：zero/few-shot、角色扮演、上下文示例、CoT]]：usable，四技巧各控一维(角色扮演=怎么说 / 上下文示例=长啥样·格式 / few-shot=划边界+锁格式 / CoT=多步推理)；zero/one/few-shot 唯一区别=给几个样例(≠效果)；指令调优(改模型/训练期) vs few-shot(改 prompt/推理期)；技巧≠role(内容放 system/user)；锁 JSON 三件套模板 + messages 摆法甲/乙；长≠好(相关+清晰)，few-shot 别无脑堆(边际递减+每轮重发烧 token)。
 - [[summarizing-and-transforming|摘要与改写：Summarizing(压信息) vs Transforming(换外壳)]]：usable，判据=信息量变不变(摘要=有损压缩变少 / 改写=换语言·语气·格式·纠错信息不变)；控长度三单位(字/词/句)是软约束(模型无计数器·token≠字词)，严格卡死靠代码 `len()` 截；概括(求全·会捎带) vs 提取(求专·更干净)；判断漏重点先定义重点→体检三件套(人工对照/提取反查/聚焦重摘)；转换四类；锁 JSON 摘要 prompt 5 要素清单；真实场景(邮件处理器待办用提取字段兜底、客服历史摘要省 token=「长≠好」同源)。
+- [[classification-and-routing|分类与路由：Classification(给标签) vs Routing(按标签分流)]]：usable，分类是路由前半步(分类给标签→路由按标签 dict/if 分发)；四种路由(LLM/嵌入/规则/ML)，动手规则版(纯代码字面匹配·快但列不全/撞类) vs 模型版(调 LLM 懂语义·非银弹·边界靠 prompt 定义)；真跑 4 难样例规则版 0/4→模型版 2/4；两类错漏判(命中0类)/撞类(命中≥2类被前者抢)用 all_hits+len 自动归因；模型版三件套(只输出标签词+strip+白名单兜底)；固定标签让下游 if 接得住；分类质量=标签定义在 prompt 的清晰度。
 
 ## 对应课程
 
