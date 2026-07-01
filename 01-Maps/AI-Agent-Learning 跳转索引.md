@@ -56,6 +56,7 @@ updated: 2026-06-28
 - [[../04-Projects/LLM/AI-Agent-Learning/pr2-03-classifier-routing|PR2-03 动手：分类与路由]]
 - [[../02-Concepts/LLM/api-params-vs-sdk-client-params|API 参数 vs SDK 客户端参数（概念卡）]]
 - [[../02-Concepts/LLM/classification-and-routing|分类与路由（概念卡）]]
+- [[../02-Concepts/LLM/context-engineering|上下文工程：策划进窗口的整组 token（概念卡）]]
 - [[../02-Concepts/Python/python-strip-and-cleaning-runtime-data|Python strip 与洗运行时脏数据（概念卡）]]
 - [[../07-Reviews/AI-Agent-Learning/2026-05-27-stage0-p0-01-p0-02-pass-review|2026-05-27 阶段 0 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-05-28-stage0-p0-03-pass-review|2026-05-28 P0-03 PASS 复盘]]

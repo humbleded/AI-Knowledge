@@ -40,6 +40,7 @@ tags:
 - [[prompt-engineering-basics|Prompt 基础：zero/few-shot、角色扮演、上下文示例、CoT]]：usable，四技巧各控一维(角色扮演=怎么说 / 上下文示例=长啥样·格式 / few-shot=划边界+锁格式 / CoT=多步推理)；zero/one/few-shot 唯一区别=给几个样例(≠效果)；指令调优(改模型/训练期) vs few-shot(改 prompt/推理期)；技巧≠role(内容放 system/user)；锁 JSON 三件套模板 + messages 摆法甲/乙；长≠好(相关+清晰)，few-shot 别无脑堆(边际递减+每轮重发烧 token)。
 - [[summarizing-and-transforming|摘要与改写：Summarizing(压信息) vs Transforming(换外壳)]]：usable，判据=信息量变不变(摘要=有损压缩变少 / 改写=换语言·语气·格式·纠错信息不变)；控长度三单位(字/词/句)是软约束(模型无计数器·token≠字词)，严格卡死靠代码 `len()` 截；概括(求全·会捎带) vs 提取(求专·更干净)；判断漏重点先定义重点→体检三件套(人工对照/提取反查/聚焦重摘)；转换四类；锁 JSON 摘要 prompt 5 要素清单；真实场景(邮件处理器待办用提取字段兜底、客服历史摘要省 token=「长≠好」同源)。
 - [[classification-and-routing|分类与路由：Classification(给标签) vs Routing(按标签分流)]]：usable，分类是路由前半步(分类给标签→路由按标签 dict/if 分发)；四种路由(LLM/嵌入/规则/ML)，动手规则版(纯代码字面匹配·快但列不全/撞类) vs 模型版(调 LLM 懂语义·非银弹·边界靠 prompt 定义)；真跑 4 难样例规则版 0/4→模型版 2/4；两类错漏判(命中0类)/撞类(命中≥2类被前者抢)用 all_hits+len 自动归因；模型版三件套(只输出标签词+strip+白名单兜底)；固定标签让下游 if 接得住；分类质量=标签定义在 prompt 的清晰度。
+- [[context-engineering|上下文工程：策划进窗口的整组 token]]：usable，提示工程的**演进**(管整组 token 非一句指令；上下文工程**包含**提示工程=跨层)；**context rot**=token 越多准确回忆越差→上下文是**有限资源+注意力预算**(性能梯度非悬崖)；**最小≠最短**(双向:下限别漏/上限别注水)；**五手段分层**(trim 截断/JIT 检索=基础与按需 ｜ Compaction/结构化笔记/子代理=长时程三件套)+选择经验法则；`trim_history`=truncation 属上下文工程**非**提示工程、与 Compaction(硬删 vs 软压)**平级**；实证真跑 `①100>③50>②25`、②丢名字 ③保名字；坑：`messages=text` 的 400、`history[-0:]`==整表、`split` 按空格不按字。
 
 ## 对应课程
 

@@ -396,3 +396,13 @@ tags:
 - 新增项目页 [[04-Projects/LLM/AI-Agent-Learning/pr2-03-classifier-routing|PR2-03 动手：分类与路由]]、复盘 [[07-Reviews/AI-Agent-Learning/2026-06-28-pr2-03-classifier-routing-review|2026-06-28 PR2-03 PASS 复盘]]。
 - 更新 [[02-Concepts/LLM/README|LLM 概念卡索引]]、[[02-Concepts/Python/README|Python 概念卡索引]]、课程页 [[03-Courses/LLM/AI-Agent-Learning/stage2-prompt-structured-output|阶段 2]]（PR2-03 → PASS）、[[01-Maps/AI-Agent-Learning 跳转索引]]（加项目页/概念卡/复盘链接）。
 - 回填执行区 `tracker/progress.md`（PR2-03 → PASS，2026-06-28）与 `daily/2026-06-28.md` 的 Codex 判定区。
+
+## 2026-06-29
+
+### AI-Agent-Learning S-03 上下文工程 PASS（同步知识库）
+
+- 复核 `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-29.md`：S-03 上下文工程，带读 Hello-Agents 第 9 章（9.1~9.2.3 / 9.7）；练习 15 题全 PASS（B1/B2/B4/C4/D1/D3 经订正闭环）；动手 `code/stage2/s03_context_experiment.py` token 对比实验真跑通。判 **S-03 PASS**。
+- 实跑核验：`① 全量 100 > ③ Compaction 50 > ② 裁剪 25` token；程序检查「三玖」②=`False`（裁剪丢早期信息）/ ③=`True`（Compaction 摘要保人名），真调 DeepSeek 成功。
+- 新增概念卡 [[02-Concepts/LLM/context-engineering|上下文工程：策划进窗口的整组 token]]：提示工程的演进（跨层包含）、context rot/注意力预算/最小≠最短、五手段分层表（trim/JIT ｜ Compaction/结构化笔记/子代理）+ 选择经验法则、`trim_history`=truncation 属上下文工程非提示工程、实验实证、8 个常见坑。
+- 更新 [[02-Concepts/LLM/README|LLM 概念卡索引]]。
+- 回填执行区 `tracker/progress.md`（S-03 → PASS，2026-06-29）与 `daily/2026-06-29.md` 的 Codex 判定区。
