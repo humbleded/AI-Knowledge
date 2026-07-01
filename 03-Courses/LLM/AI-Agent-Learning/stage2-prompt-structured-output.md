@@ -3,7 +3,7 @@ type: course-note
 topic: AI-Agent-Learning Stage 2
 status: active
 created: 2026-06-25
-updated: 2026-06-29
+updated: 2026-06-30
 tags:
   - LLM
   - prompt
@@ -23,6 +23,7 @@ tags:
 - Datawhale **llm-cookbook**《面向开发者的提示工程》（DeepLearning.AI 官方中文版）：第 2 章 提示原则、第 3 章 迭代优化、第 4 章 文本概括、第 6 章 文本转换。
 - DeepLearning.AI《Prompt Engineering for Developers》Guidelines（两原则：写清晰具体指令 / 给模型思考时间）。
 - Hello-Agents 第 3 章 3.2.1 提示工程（PR2-01 主资料）；第 9 章 上下文工程（S-03 主资料）。
+- OpenAI Structured Outputs / DeepSeek JSON Output 官方文档（PR2-04 主资料）。
 
 ## 当前进度
 
@@ -32,10 +33,10 @@ tags:
 | PR2-02 | 摘要与改写 | **PASS** (2026-06-27) | [[../../../02-Concepts/LLM/summarizing-and-transforming]] | 概念+笔记+练习(15 题全 PASS)；摘要 vs 改写、控长度软约束、概括 vs 提取、判断漏重点、转换四类。**动手完成** `pr2_02_summarizer.py`：机械版 vs 模型版对比，模型版锁 JSON 正好 3 条、≤20/≤60 字稳定；澄清「代码兜底=事后硬保证 ≠ 约束模型」 |
 | PR2-03 | 分类与路由 | **PASS** (2026-06-28) | [[../../../02-Concepts/LLM/classification-and-routing]] | 概念+练习(15 题全 PASS)+**动手** `pr2_03_classifier.py`：规则版(dict 遍历)+`all_hits` 诊断+15 样例+自动归因(漏判/撞类)+模型版(只输出标签词+strip+白名单)。真跑规则版 73%、4 难样例规则版 0/4→模型版 2/4。分类是路由前半步、规则版 vs 模型版、分类质量=标签定义清晰度 |
 | S-03 | 上下文工程（补充项） | **PASS** (2026-06-29) | [[../../../02-Concepts/LLM/context-engineering]] | 带读 HA 第9章(9.1~9.2.3/9.7)+练习 15 题全 PASS+**动手** `s03_context_experiment.py` token 对比真跑通(① 100 > ③ 50 > ② 25，程序验证 ②丢名字/③保名字)。context rot/注意力预算/最小≠最短、五手段分层、`trim_history`=truncation 属上下文工程非提示工程、与 Compaction 平级 |
-| PR2-04 | JSON 与 Schema | TODO | — | 资料：OpenAI Structured Outputs（预读笔记 `notes/stage2/pr2_04_structured_output_preview.md` 已备） |
+| PR2-04 | JSON 与 Schema | **PASS** (2026-06-30) | [[../../../02-Concepts/LLM/structured-outputs]] | 带做全链路(预读→规则版→模型版→边界验证)+真跑 `pr2_04_extract_json.py`：规则版 `partition` 解析「标签：值」/ 模型版 `json_object`+schema prompt+`validate`。自由文本语义抽出(「比较急」→priority 高)、规则版抽不到；缺优先级→`priority:null` 不编造。🔑 `json_object`≠dict(仍需 `json.loads`)；真调不可复现(截断/空 content)靠 `except`+`if not content` 兜底 |
 | PR2-Gate | 结构化输出闯关 | TODO | `code/stage2/pr2_gate_email_processor.py` | 邮件 → 分类 + 摘要 + 待办 JSON 并存文件（周末做） |
 
-> 阶段 2 的两个概念预习（PR2-01/02）安排在工作日做；它们的**动手产物**与 PR2-03 起的动手任务，统一排在 **L1-Gate（阶段 1 收尾关）之后**，因为 Gate 要整块周末时间。S-03 上下文工程是挂在「阶段 2 后 / 4 前」的补充项，工作日概念/阅读型，正好穿插完成。
+> 阶段 2 的两个概念预习（PR2-01/02）安排在工作日做；它们的**动手产物**与 PR2-03 起的动手任务，统一排在 **L1-Gate（阶段 1 收尾关）之后**，因为 Gate 要整块周末时间。S-03 上下文工程是挂在「阶段 2 后 / 4 前」的补充项，工作日概念/阅读型穿插完成。PR2-04 预读当天带做完成动手交付。
 
 ## 已掌握概念
 
@@ -43,17 +44,18 @@ tags:
 - [[../../../02-Concepts/LLM/summarizing-and-transforming|摘要与改写：Summarizing vs Transforming]]
 - [[../../../02-Concepts/LLM/classification-and-routing|分类与路由：Classification vs Routing]]
 - [[../../../02-Concepts/LLM/context-engineering|上下文工程：策划进窗口的整组 token]]
+- [[../../../02-Concepts/LLM/structured-outputs|结构化输出：让模型吐出程序能吃的 JSON]]
 
 ## 下一步
 
-**S-03 上下文工程已 PASS（2026-06-29）**。队列里下一个是 **PR2-04 JSON/Schema**，再到 PR2-Gate：
+**PR2-04 JSON/Schema 已 PASS（2026-06-30）**。阶段 2 概念/动手任务全部完成，队列里下一个是 **PR2-Gate 邮件处理器**（周末整块时间）：
 
 ```text
-[已过] PR2-01 动手 -> [已过] PR2-02 summarizer -> [已过] PR2-03 分类与路由 -> [已过] S-03 上下文工程 -> PR2-04 JSON/Schema -> PR2-Gate 邮件处理器
+[已过] PR2-01 动手 -> [已过] PR2-02 summarizer -> [已过] PR2-03 分类与路由 -> [已过] S-03 上下文工程 -> [已过] PR2-04 JSON/Schema -> PR2-Gate 邮件处理器
 ```
 
-PR2-Gate「邮件处理器」会把阶段 2 全部技巧串起来（角色 + 清晰指令 + few-shot + 摘要 + 分类 + 锁 JSON）——本阶段所有概念都为它铺路。PR2-03 模型版没做的「prompt 加每类标签定义」可在 PR2-Gate 一并优化。
+PR2-Gate「邮件处理器」会把阶段 2 全部技巧串起来（角色 + 清晰指令 + few-shot + 摘要 + 分类 + 锁 JSON + `validate` 校验）——本阶段所有概念都为它铺路。PR2-03 模型版没做的「prompt 加每类标签定义」、PR2-04 的 `validate` 校验可在 PR2-Gate 一并整合。
 
 ## 阶段 1 到阶段 2 的衔接
 
-阶段 1 解决「**怎么调模型**」（`call_model` 封装、多轮、流式、参数与成本）；阶段 2 解决「**怎么让模型稳定产出**」（prompt 设计 + 结构化输出）。两者的成本意识一脉相承：阶段 1 的 [[../../../02-Concepts/LLM/sampling-params-and-cost|token 计费]] 直接解释了阶段 2「prompt 长 ≠ 好」「摘要历史省 token」；S-03 [[../../../02-Concepts/LLM/context-engineering|上下文工程]] 进一步把它系统化为「会进窗口的整组 token 是有限资源」。
+阶段 1 解决「**怎么调模型**」（`call_model` 封装、多轮、流式、参数与成本）；阶段 2 解决「**怎么让模型稳定产出**」（prompt 设计 + 结构化输出）。两者的成本意识一脉相承：阶段 1 的 [[../../../02-Concepts/LLM/sampling-params-and-cost|token 计费]] 直接解释了阶段 2「prompt 长 ≠ 好」「摘要历史省 token」；S-03 [[../../../02-Concepts/LLM/context-engineering|上下文工程]] 进一步把它系统化为「会进窗口的整组 token 是有限资源」；PR2-04 [[../../../02-Concepts/LLM/structured-outputs|结构化输出]] 把「让模型稳定产出」推到「产出程序能直接吃的 JSON」。
