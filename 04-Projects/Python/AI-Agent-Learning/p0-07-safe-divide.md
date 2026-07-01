@@ -54,6 +54,6 @@ tags:
 
 PowerShell 管道给 Python 喂输入时，第一行可能带 UTF-8 BOM，导致 `float()` 失败。复查交互脚本时优先使用干净输入流或设置 `PYTHONIOENCODING=utf-8`。
 
-相关概念：[[../../../02-Concepts/Python/python-exceptions-debugging-testing|Python 异常、调试与单元测试]]
+相关概念：[[../../../02-Concepts/Python/异常·调试·测试(Exceptions)|Python 异常、调试与单元测试]]
 
 复盘：[[../../../07-Reviews/AI-Agent-Learning/2026-06-11-stage0-p0-07-pass-review|2026-06-11 阶段 0 复盘：P0-07]]

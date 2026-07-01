@@ -67,6 +67,6 @@ P0-06 已 PASS。
 
 ## 相关
 
-- [[../../../02-Concepts/Python/python-venv-pip-env]]
+- [[../../../02-Concepts/Python/环境管理(venv & pip)]]
 - [[../../../03-Courses/Python/AI-Agent-Learning/stage0-python-basics]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-06-10-stage0-p0-06-pass-review]]

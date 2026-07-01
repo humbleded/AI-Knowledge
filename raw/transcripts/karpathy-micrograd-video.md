@@ -42,8 +42,8 @@ This is the source lecture for the first Karpathy Zero to Hero stage in this vau
 ## Compile Targets
 
 - [[../../03-Courses/LLM/Karpathy-Zero-to-Hero/01-micrograd]]
-- [[../../02-Concepts/LLM/backpropagation]]
-- [[../../02-Concepts/LLM/gradient-descent]]
+- [[../../02-Concepts/LLM/反向传播(Backprop)]]
+- [[../../02-Concepts/LLM/梯度下降(Gradient Descent)]]
 - [[../../04-Projects/LLM/micrograd-backprop-from-scratch]]
 
 ## Next Ingest Step

@@ -17,7 +17,7 @@ tags:
 # PR2-01 / PR2-02 动手：prompt 对比 + 摘要器
 
 > 阶段 2 前两个动手交付，2026-06-27（L1-Gate 通关同日）补完，均 PASS。
-> 概念早已学完（见 [[../../../02-Concepts/LLM/prompt-engineering-basics]]、[[../../../02-Concepts/LLM/summarizing-and-transforming]]），本页记录**动手代码与真跑结果**。
+> 概念早已学完（见 [[../../../02-Concepts/LLM/提示工程基础(Prompt Engineering)]]、[[../../../02-Concepts/LLM/摘要与改写(Summarize & Transform)]]），本页记录**动手代码与真跑结果**。
 
 ## PR2-01：同一任务 3 个递进 prompt 对比
 
@@ -51,10 +51,10 @@ tags:
 
 ## 踩的坑（动手过程）
 
-1. **f-string/.format 撞 prompt 里 JSON 花括号**：静默把 JSON 示例求值成 dict / KeyError → 改字符串拼接。详见 [[../../../02-Concepts/LLM/prompt-engineering-basics]] 工程坑。
+1. **f-string/.format 撞 prompt 里 JSON 花括号**：静默把 JSON 示例求值成 dict / KeyError → 改字符串拼接。详见 [[../../../02-Concepts/LLM/提示工程基础(Prompt Engineering)]] 工程坑。
 2. **`simple_summarize` 漏「取值也 strip」**：`if s.strip()` 过滤了，但取值仍 `s`，换行没洗掉 → 「漏看点名子项」弱点重现。
 3. **prompt 模板忘把 `text` 嵌进去**：只写固定指令，`"""` 里是空的。
-4. **「代码兜底 ≠ 约束模型」**：校验跑在返回之后，只能事后把关+补救，不能反向约束 → 详见 [[../../../02-Concepts/LLM/summarizing-and-transforming]]。
+4. **「代码兜底 ≠ 约束模型」**：校验跑在返回之后，只能事后把关+补救，不能反向约束 → 详见 [[../../../02-Concepts/LLM/摘要与改写(Summarize & Transform)]]。
 
 ## 运行
 
@@ -65,8 +65,8 @@ tags:
 
 ## 关联
 
-- [[../../../02-Concepts/LLM/prompt-engineering-basics|Prompt 基础]]
-- [[../../../02-Concepts/LLM/summarizing-and-transforming|摘要与改写]]
+- [[../../../02-Concepts/LLM/提示工程基础(Prompt Engineering)|Prompt 基础]]
+- [[../../../02-Concepts/LLM/摘要与改写(Summarize & Transform)|摘要与改写]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-06-27-pr2-01-02-handson-review|本次 PASS 复盘]]
 
 ## 来源

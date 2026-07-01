@@ -29,22 +29,22 @@ tags:
 
 | 编号 | 任务 | 状态 | 产物 | 关键结论 |
 |---|---|---|---|---|
-| PR2-01 | Prompt 基础 | **PASS** (2026-06-27) | [[../../../02-Concepts/LLM/prompt-engineering-basics]] | 概念+笔记+练习(17 题全 PASS)；四技巧各控一维、指令调优 vs few-shot、技巧≠role、锁 JSON 三件套。**动手完成**：3 个递进 prompt 真跑 DeepSeek（`pr2_01_prompt_cases.md`）——② 清晰具体可 loads、③ few-shot 与 ② 零增益，坐实「prompt 不是越长越好」；坑 f-string 撞 JSON 花括号 |
-| PR2-02 | 摘要与改写 | **PASS** (2026-06-27) | [[../../../02-Concepts/LLM/summarizing-and-transforming]] | 概念+笔记+练习(15 题全 PASS)；摘要 vs 改写、控长度软约束、概括 vs 提取、判断漏重点、转换四类。**动手完成** `pr2_02_summarizer.py`：机械版 vs 模型版对比，模型版锁 JSON 正好 3 条、≤20/≤60 字稳定；澄清「代码兜底=事后硬保证 ≠ 约束模型」 |
-| PR2-03 | 分类与路由 | **PASS** (2026-06-28) | [[../../../02-Concepts/LLM/classification-and-routing]] | 概念+练习(15 题全 PASS)+**动手** `pr2_03_classifier.py`：规则版(dict 遍历)+`all_hits` 诊断+15 样例+自动归因(漏判/撞类)+模型版(只输出标签词+strip+白名单)。真跑规则版 73%、4 难样例规则版 0/4→模型版 2/4。分类是路由前半步、规则版 vs 模型版、分类质量=标签定义清晰度 |
-| S-03 | 上下文工程（补充项） | **PASS** (2026-06-29) | [[../../../02-Concepts/LLM/context-engineering]] | 带读 HA 第9章(9.1~9.2.3/9.7)+练习 15 题全 PASS+**动手** `s03_context_experiment.py` token 对比真跑通(① 100 > ③ 50 > ② 25，程序验证 ②丢名字/③保名字)。context rot/注意力预算/最小≠最短、五手段分层、`trim_history`=truncation 属上下文工程非提示工程、与 Compaction 平级 |
-| PR2-04 | JSON 与 Schema | **PASS** (2026-06-30) | [[../../../02-Concepts/LLM/structured-outputs]] | 带做全链路(预读→规则版→模型版→边界验证)+真跑 `pr2_04_extract_json.py`：规则版 `partition` 解析「标签：值」/ 模型版 `json_object`+schema prompt+`validate`。自由文本语义抽出(「比较急」→priority 高)、规则版抽不到；缺优先级→`priority:null` 不编造。🔑 `json_object`≠dict(仍需 `json.loads`)；真调不可复现(截断/空 content)靠 `except`+`if not content` 兜底 |
+| PR2-01 | Prompt 基础 | **PASS** (2026-06-27) | [[../../../02-Concepts/LLM/提示工程基础(Prompt Engineering)]] | 概念+笔记+练习(17 题全 PASS)；四技巧各控一维、指令调优 vs few-shot、技巧≠role、锁 JSON 三件套。**动手完成**：3 个递进 prompt 真跑 DeepSeek（`pr2_01_prompt_cases.md`）——② 清晰具体可 loads、③ few-shot 与 ② 零增益，坐实「prompt 不是越长越好」；坑 f-string 撞 JSON 花括号 |
+| PR2-02 | 摘要与改写 | **PASS** (2026-06-27) | [[../../../02-Concepts/LLM/摘要与改写(Summarize & Transform)]] | 概念+笔记+练习(15 题全 PASS)；摘要 vs 改写、控长度软约束、概括 vs 提取、判断漏重点、转换四类。**动手完成** `pr2_02_summarizer.py`：机械版 vs 模型版对比，模型版锁 JSON 正好 3 条、≤20/≤60 字稳定；澄清「代码兜底=事后硬保证 ≠ 约束模型」 |
+| PR2-03 | 分类与路由 | **PASS** (2026-06-28) | [[../../../02-Concepts/LLM/分类与路由(Classification & Routing)]] | 概念+练习(15 题全 PASS)+**动手** `pr2_03_classifier.py`：规则版(dict 遍历)+`all_hits` 诊断+15 样例+自动归因(漏判/撞类)+模型版(只输出标签词+strip+白名单)。真跑规则版 73%、4 难样例规则版 0/4→模型版 2/4。分类是路由前半步、规则版 vs 模型版、分类质量=标签定义清晰度 |
+| S-03 | 上下文工程（补充项） | **PASS** (2026-06-29) | [[../../../02-Concepts/LLM/上下文工程(Context Engineering)]] | 带读 HA 第9章(9.1~9.2.3/9.7)+练习 15 题全 PASS+**动手** `s03_context_experiment.py` token 对比真跑通(① 100 > ③ 50 > ② 25，程序验证 ②丢名字/③保名字)。context rot/注意力预算/最小≠最短、五手段分层、`trim_history`=truncation 属上下文工程非提示工程、与 Compaction 平级 |
+| PR2-04 | JSON 与 Schema | **PASS** (2026-06-30) | [[../../../02-Concepts/LLM/结构化输出(Structured Output)]] | 带做全链路(预读→规则版→模型版→边界验证)+真跑 `pr2_04_extract_json.py`：规则版 `partition` 解析「标签：值」/ 模型版 `json_object`+schema prompt+`validate`。自由文本语义抽出(「比较急」→priority 高)、规则版抽不到；缺优先级→`priority:null` 不编造。🔑 `json_object`≠dict(仍需 `json.loads`)；真调不可复现(截断/空 content)靠 `except`+`if not content` 兜底 |
 | PR2-Gate | 结构化输出闯关 | TODO | `code/stage2/pr2_gate_email_processor.py` | 邮件 → 分类 + 摘要 + 待办 JSON 并存文件（周末做） |
 
 > 阶段 2 的两个概念预习（PR2-01/02）安排在工作日做；它们的**动手产物**与 PR2-03 起的动手任务，统一排在 **L1-Gate（阶段 1 收尾关）之后**，因为 Gate 要整块周末时间。S-03 上下文工程是挂在「阶段 2 后 / 4 前」的补充项，工作日概念/阅读型穿插完成。PR2-04 预读当天带做完成动手交付。
 
 ## 已掌握概念
 
-- [[../../../02-Concepts/LLM/prompt-engineering-basics|Prompt 基础：zero/few-shot、角色扮演、上下文示例、CoT]]
-- [[../../../02-Concepts/LLM/summarizing-and-transforming|摘要与改写：Summarizing vs Transforming]]
-- [[../../../02-Concepts/LLM/classification-and-routing|分类与路由：Classification vs Routing]]
-- [[../../../02-Concepts/LLM/context-engineering|上下文工程：策划进窗口的整组 token]]
-- [[../../../02-Concepts/LLM/structured-outputs|结构化输出：让模型吐出程序能吃的 JSON]]
+- [[../../../02-Concepts/LLM/提示工程基础(Prompt Engineering)|Prompt 基础：zero/few-shot、角色扮演、上下文示例、CoT]]
+- [[../../../02-Concepts/LLM/摘要与改写(Summarize & Transform)|摘要与改写：Summarizing vs Transforming]]
+- [[../../../02-Concepts/LLM/分类与路由(Classification & Routing)|分类与路由：Classification vs Routing]]
+- [[../../../02-Concepts/LLM/上下文工程(Context Engineering)|上下文工程：策划进窗口的整组 token]]
+- [[../../../02-Concepts/LLM/结构化输出(Structured Output)|结构化输出：让模型吐出程序能吃的 JSON]]
 
 ## 下一步
 
@@ -58,4 +58,4 @@ PR2-Gate「邮件处理器」会把阶段 2 全部技巧串起来（角色 + 清
 
 ## 阶段 1 到阶段 2 的衔接
 
-阶段 1 解决「**怎么调模型**」（`call_model` 封装、多轮、流式、参数与成本）；阶段 2 解决「**怎么让模型稳定产出**」（prompt 设计 + 结构化输出）。两者的成本意识一脉相承：阶段 1 的 [[../../../02-Concepts/LLM/sampling-params-and-cost|token 计费]] 直接解释了阶段 2「prompt 长 ≠ 好」「摘要历史省 token」；S-03 [[../../../02-Concepts/LLM/context-engineering|上下文工程]] 进一步把它系统化为「会进窗口的整组 token 是有限资源」；PR2-04 [[../../../02-Concepts/LLM/structured-outputs|结构化输出]] 把「让模型稳定产出」推到「产出程序能直接吃的 JSON」。
+阶段 1 解决「**怎么调模型**」（`call_model` 封装、多轮、流式、参数与成本）；阶段 2 解决「**怎么让模型稳定产出**」（prompt 设计 + 结构化输出）。两者的成本意识一脉相承：阶段 1 的 [[../../../02-Concepts/LLM/采样参数与成本(Sampling)|token 计费]] 直接解释了阶段 2「prompt 长 ≠ 好」「摘要历史省 token」；S-03 [[../../../02-Concepts/LLM/上下文工程(Context Engineering)|上下文工程]] 进一步把它系统化为「会进窗口的整组 token 是有限资源」；PR2-04 [[../../../02-Concepts/LLM/结构化输出(Structured Output)|结构化输出]] 把「让模型稳定产出」推到「产出程序能直接吃的 JSON」。

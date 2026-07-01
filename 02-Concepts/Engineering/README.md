@@ -15,11 +15,11 @@ tags:
 
 ## 调试与质量
 
-- [[debugging-triage|调试与错误恢复：系统化 triage]]：usable，停线规则 + 复现 / 定位 / 缩小 / 修根因 / 防复发 / 验证 六步。
+- [[调试与错误恢复(Triage)|调试与错误恢复：系统化 triage]]：usable，停线规则 + 复现 / 定位 / 缩小 / 修根因 / 防复发 / 验证 六步。
 
 ## 网络与 HTTP
 
-- [[http-and-network-basics|一次 HTTP 请求的全链路与三类错误处理]]：usable，`requests.get` 背后 7 步（DNS/IP/端口/TCP/报文/状态码）+ 三类错误三层防护 + 「requests 不对 4xx/5xx 抛异常」+ timeout 保护客户端 + except 顺序。来自 B0-02。
+- [[HTTP 请求全链路与错误处理|一次 HTTP 请求的全链路与三类错误处理]]：usable，`requests.get` 背后 7 步（DNS/IP/端口/TCP/报文/状态码）+ 三类错误三层防护 + 「requests 不对 4xx/5xx 抛异常」+ timeout 保护客户端 + except 顺序。来自 B0-02。
 
 ## 下一批可新增（按需，等用到再写）
 

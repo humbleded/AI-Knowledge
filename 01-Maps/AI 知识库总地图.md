@@ -55,9 +55,9 @@ tags:
 - [[../03-Courses/Python/Python-Basics/廖雪峰 Python 教程]]
 - [[../03-Courses/Python/Python-Basics/CS50P Weeks 中文学习索引]]
 - [[../03-Courses/Python/Python-Basics/python-core-reading-route|Python 官方手册核心阅读路线]]
-- [[../02-Concepts/Python/python-interpreter|Python Interpreter]]
-- [[../02-Concepts/Python/python-input-print|Python input() 与 print()]]
-- [[../02-Concepts/Python/python-basic-data-types|Python 基础数据类型]]
+- [[../02-Concepts/Python/解释器(Interpreter)|Python Interpreter]]
+- [[../02-Concepts/Python/输入与输出(input & print)|Python input() 与 print()]]
+- [[../02-Concepts/Python/基础数据类型(Data Types)|Python 基础数据类型]]
 - 数学基础
 - 神经网络基础
 - PyTorch
@@ -67,24 +67,24 @@ tags:
 
 ### 大模型能力
 
-- [[../02-Concepts/LLM/tokenization|Tokenization]]
-- [[../02-Concepts/LLM/embedding|Embedding]]
-- [[../02-Concepts/LLM/attention|Attention]]
-- [[../02-Concepts/LLM/transformer|Transformer]]
-- [[../02-Concepts/LLM/llm-essence-and-hallucination|LLM 本质与幻觉]]
+- [[../02-Concepts/LLM/分词(Tokenization)|Tokenization]]
+- [[../02-Concepts/LLM/嵌入(Embedding)|Embedding]]
+- [[../02-Concepts/LLM/注意力机制(Attention)|Attention]]
+- [[../02-Concepts/LLM/Transformer|Transformer]]
+- [[../02-Concepts/LLM/LLM 本质与幻觉(Hallucination)|LLM 本质与幻觉]]
 - [[../03-Courses/LLM/Karpathy-Zero-to-Hero/05-gpt-from-scratch|GPT from scratch]]
 - 训练、推理、微调
 
 ### AI 工程能力
 
-- [[../02-Concepts/LLM/message-roles-and-instruction-hierarchy|消息角色与指令优先级]]
-- [[../02-Concepts/LLM/multi-turn-stateless-memory|多轮对话与客户端记忆]]
-- [[../02-Concepts/LLM/streaming-output|流式输出]]
+- [[../02-Concepts/LLM/消息角色与指令优先级(Instruction Hierarchy)|消息角色与指令优先级]]
+- [[../02-Concepts/LLM/多轮对话与无状态记忆(Stateless Memory)|多轮对话与客户端记忆]]
+- [[../02-Concepts/LLM/流式输出(Streaming)|流式输出]]
 - RAG
 - Agent
 - Tool calling
 - [[MCP/mcp-official-docs-map|MCP]]
-- [[../02-Concepts/MCP/model-context-protocol|Model Context Protocol]]
+- [[../02-Concepts/MCP/MCP(Model Context Protocol)|Model Context Protocol]]
 - Claude Skills
 - [[../03-Courses/Agent/AI-Agent-Learning/Datawhale hello-agents 中文学习索引]]
 - [[../03-Courses/Agent/AI-Agent-Learning/Agentic Design Patterns 中文模式索引]]

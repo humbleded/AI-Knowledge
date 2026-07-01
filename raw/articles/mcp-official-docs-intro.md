@@ -40,7 +40,7 @@ This is the official introduction to Model Context Protocol. It is a good entry 
 ## What To Compile Into Wiki
 
 - MCP official navigation -> [[../../01-Maps/MCP/mcp-official-docs-map]]
-- Core concept -> [[../../02-Concepts/MCP/model-context-protocol]]
+- Core concept -> [[../../02-Concepts/MCP/MCP(Model Context Protocol)]]
 - Agent learning route reference -> [[../../01-Maps/AI Agent 学习资源地图]]
 
 ## Do Not Lose

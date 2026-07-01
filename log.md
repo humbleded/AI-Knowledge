@@ -34,13 +34,13 @@ tags:
 ### LLM/Karpathy 主线内容扩写
 
 - 将 `02-Concepts/LLM` 的 7 张核心概念卡从 seed 扩写到 usable：
-  - [[02-Concepts/LLM/backpropagation]]
-  - [[02-Concepts/LLM/gradient-descent]]
-  - [[02-Concepts/LLM/tokenization]]
-  - [[02-Concepts/LLM/embedding]]
-  - [[02-Concepts/LLM/attention]]
-  - [[02-Concepts/LLM/transformer]]
-  - [[02-Concepts/LLM/autoregressive-generation]]
+  - [[02-Concepts/LLM/反向传播(Backprop)]]
+  - [[02-Concepts/LLM/梯度下降(Gradient Descent)]]
+  - [[02-Concepts/LLM/分词(Tokenization)]]
+  - [[02-Concepts/LLM/嵌入(Embedding)]]
+  - [[02-Concepts/LLM/注意力机制(Attention)]]
+  - [[02-Concepts/LLM/Transformer]]
+  - [[02-Concepts/LLM/自回归生成(Autoregressive)]]
 - 扩写 Karpathy Zero to Hero 三个课程页：
   - [[03-Courses/LLM/Karpathy-Zero-to-Hero/01-micrograd]]
   - [[03-Courses/LLM/Karpathy-Zero-to-Hero/02-makemore]]
@@ -126,7 +126,7 @@ tags:
 
 - 新增 MCP 官方文档 raw source：[[raw/articles/mcp-official-docs-intro]]。
 - 新增 Python 3 官方文档 raw source：[[raw/articles/python-3-official-documentation]]。
-- 新增 [[01-Maps/MCP/mcp-official-docs-map|MCP Official Docs Map]] 和 [[02-Concepts/MCP/model-context-protocol|Model Context Protocol]] 概念卡。
+- 新增 [[01-Maps/MCP/mcp-official-docs-map|MCP Official Docs Map]] 和 [[02-Concepts/MCP/MCP(Model Context Protocol)|Model Context Protocol]] 概念卡。
 - 新增 [[01-Maps/Python/python-official-docs-map|Python Official Docs Map]] 和 [[03-Courses/Python/Python-Basics/python-core-reading-route|Python 官方手册核心阅读路线]]。
 - 更新全局索引、总地图、raw source 索引、课程索引和概念卡索引。
 - 运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：`OK: True`，`Broken links: 0`，`Missing frontmatter: 0`。
@@ -136,7 +136,7 @@ tags:
 ### Daily Practice 2026-06-04 PASS
 
 - 批改 [[07-Reviews/Daily-Practice/2026-06-04-review]] 第四轮订正，最终判定 `PASS`。
-- 新增 [[02-Concepts/Python/python-functions|Python 函数、参数与 return]]，沉淀 `return` vs `print`、函数参数、返回值、函数拆分和 `return` 缩进位置。
+- 新增 [[02-Concepts/Python/函数与参数(Functions)|Python 函数、参数与 return]]，沉淀 `return` vs `print`、函数参数、返回值、函数拆分和 `return` 缩进位置。
 - 更新 [[02-Concepts/Python/README|Python 概念卡]] 与 [[index|AI Knowledge Index]]。
 
 ## 2026-06-06
@@ -144,8 +144,8 @@ tags:
 ### Daily Practice 2026-06-05 PASS
 
 - 批改 [[07-Reviews/Daily-Practice/2026-06-05-review]] 第三轮订正，最终判定 `PASS`。
-- 更新 [[02-Concepts/Python/python-functions|Python 函数、参数与 return]]，补充可测试函数、`score_answer()`、`redirect_stdout` 手动测试和普通空格缩进注意事项。
-- 更新 [[02-Concepts/Python/python-list-dict-set|Python list、dict、set]]，补充访问方式对比和任务改名时同步迁移 `task_status` 的模式。
+- 更新 [[02-Concepts/Python/函数与参数(Functions)|Python 函数、参数与 return]]，补充可测试函数、`score_answer()`、`redirect_stdout` 手动测试和普通空格缩进注意事项。
+- 更新 [[02-Concepts/Python/list·dict·set 容器|Python list、dict、set]]，补充访问方式对比和任务改名时同步迁移 `task_status` 的模式。
 - 更新 [[index|AI Knowledge Index]]，补入容器概念卡入口。
 
 ## 2026-06-07
@@ -192,7 +192,7 @@ tags:
 ### AI-Agent-Learning P0-05 PASS
 
 - 批改 `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-09.md`，P0-05 函数、参数、返回值最终判定 `PASS`。
-- 更新 [[02-Concepts/Python/python-functions|Python 函数、参数与 return]]，补充 P0-05 的函数拆分、返回值测试和 `days <= 0` 边界提醒。
+- 更新 [[02-Concepts/Python/函数与参数(Functions)|Python 函数、参数与 return]]，补充 P0-05 的函数拆分、返回值测试和 `days <= 0` 边界提醒。
 - 新增 [[04-Projects/Python/AI-Agent-Learning/p0-05-plan-functions|P0-05 函数、参数、返回值]] 项目记录。
 - 新增 [[07-Reviews/AI-Agent-Learning/2026-06-09-stage0-p0-05-pass-review|2026-06-09 阶段 0 复盘：P0-05]]。
 - 更新 [[03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]、[[04-Projects/README|项目记录索引]] 和 [[index|AI Knowledge Index]]。
@@ -209,7 +209,7 @@ tags:
 ### AI-Agent-Learning P0-06 PASS
 
 - 批改 `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-10.md`，P0-06 模块、第三方包、venv 判定 `PASS`。
-- 新增 [[02-Concepts/Python/python-venv-pip-env|Python 项目环境管理：venv、pip 与 .env]]，沉淀虚拟环境、`pip install` 安装位置、`.env` 和 API Key 不硬编码。
+- 新增 [[02-Concepts/Python/环境管理(venv & pip)|Python 项目环境管理：venv、pip 与 .env]]，沉淀虚拟环境、`pip install` 安装位置、`.env` 和 API Key 不硬编码。
 - 新增 [[04-Projects/Python/AI-Agent-Learning/p0-06-env-check|P0-06 模块、第三方包、venv]] 项目记录。
 - 新增 [[07-Reviews/AI-Agent-Learning/2026-06-10-stage0-p0-06-pass-review|2026-06-10 阶段 0 复盘：P0-06]]。
 - 更新 [[03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]、[[03-Courses/Agent/AI-Agent-Learning/README|AI-Agent-Learning]]、[[04-Projects/README|项目记录索引]]、[[01-Maps/AI-Agent-Learning 跳转索引]] 和 [[index|AI Knowledge Index]]。
@@ -219,7 +219,7 @@ tags:
 ### AI-Agent-Learning P0-07 PASS
 
 - 批改 `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-11.md`，P0-07 异常、调试、单元测试判定 `PASS`。
-- 新增 [[02-Concepts/Python/python-exceptions-debugging-testing|Python 异常、调试与单元测试]]，沉淀 `try/except`、不要吞异常、调试与测试覆盖正常/异常场景。
+- 新增 [[02-Concepts/Python/异常·调试·测试(Exceptions)|Python 异常、调试与单元测试]]，沉淀 `try/except`、不要吞异常、调试与测试覆盖正常/异常场景。
 - 新增 [[04-Projects/Python/AI-Agent-Learning/p0-07-safe-divide|P0-07 异常、调试、单元测试]] 项目记录。
 - 新增 [[07-Reviews/AI-Agent-Learning/2026-06-11-stage0-p0-07-pass-review|2026-06-11 阶段 0 复盘：P0-07]]。
 - 更新 [[03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]、[[03-Courses/Agent/AI-Agent-Learning/README|AI-Agent-Learning]]、[[04-Projects/README|项目记录索引]]、[[01-Maps/AI-Agent-Learning 跳转索引]] 和 [[index|AI Knowledge Index]]。
@@ -228,18 +228,18 @@ tags:
 
 ### Python partial 概念卡
 
-- 新增并整理 [[02-Concepts/Python/python-functools-partial|Python 偏函数 functools.partial 与默认参数]]。
+- 新增并整理 [[02-Concepts/Python/偏函数(functools.partial)|Python 偏函数 functools.partial 与默认参数]]。
 - 补充 [[02-Concepts/Python/README|Python 概念卡]] 与 [[index|AI Knowledge Index]] 导航。
 
 ### Python and / or 短路与返回原值
 
-- 新增 [[02-Concepts/Python/python-and-or-short-circuit|Python and / or 短路与返回原值]]，沉淀 `and` / `or` 返回原始操作数、短路行为和 `not > and > or` 优先级。
+- 新增 [[02-Concepts/Python/and-or 短路求值|Python and / or 短路与返回原值]]，沉淀 `and` / `or` 返回原始操作数、短路行为和 `not > and > or` 优先级。
 - 更新 [[02-Concepts/Python/README|Python 概念卡]] 与 [[index|AI Knowledge Index]] 导航。
 
 ### AI-Agent-Learning P0-08 PASS
 
 - 同步 `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-13.md`，P0-08 文件、JSON、CSV 判定 `PASS`。
-- 新增 [[02-Concepts/Python/python-file-json-serialization|Python 文件读写与 JSON 序列化]]，沉淀文本文件与 JSON 的边界、`json.dumps()` / `json.loads()`、`ensure_ascii=False`、路径排查和编码注意点。
+- 新增 [[02-Concepts/Python/文件读写与 JSON 序列化|Python 文件读写与 JSON 序列化]]，沉淀文本文件与 JSON 的边界、`json.dumps()` / `json.loads()`、`ensure_ascii=False`、路径排查和编码注意点。
 - 新增 [[04-Projects/Python/AI-Agent-Learning/p0-08-progress-file|P0-08 文件、JSON、CSV]] 项目记录。
 - 新增 [[07-Reviews/AI-Agent-Learning/2026-06-13-stage0-p0-08-pass-review|2026-06-13 阶段 0 复盘：P0-08]]。
 - 更新 [[03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]、[[03-Courses/Agent/AI-Agent-Learning/README|AI-Agent-Learning]]、[[04-Projects/README|项目记录索引]]、[[01-Maps/AI-Agent-Learning 跳转索引]] 和 [[index|AI Knowledge Index]]。
@@ -249,8 +249,8 @@ tags:
 ### AI-Agent-Learning P0-Gate + L1-01 PASS
 
 - 同步 `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-14.md`，`P0-Gate Python 基础闯关` 与 `L1-01 API Key 与 SDK` 判定 `PASS`。
-- 新增 [[02-Concepts/Python/python-json-learning-log-cli|Python JSON 学习日志 CLI：list[dict] 与输入校验]]，沉淀学习记录 CLI 的数据结构、输入校验、旧脏数据清理提醒。
-- 新增 [[02-Concepts/LLM/api-key-and-sdk|API Key 与 SDK：调用模型的门禁卡和快递柜台]]，沉淀 API Key、模型名、SDK、环境变量和 GitHub 发布前的安全边界。
+- 新增 [[02-Concepts/Python/JSON 学习日志 CLI|Python JSON 学习日志 CLI：list[dict] 与输入校验]]，沉淀学习记录 CLI 的数据结构、输入校验、旧脏数据清理提醒。
+- 新增 [[02-Concepts/LLM/API Key 与 SDK|API Key 与 SDK：调用模型的门禁卡和快递柜台]]，沉淀 API Key、模型名、SDK、环境变量和 GitHub 发布前的安全边界。
 - 新增 [[04-Projects/Python/AI-Agent-Learning/p0-09-http-request|P0-09 HTTP 请求]]、[[04-Projects/Python/AI-Agent-Learning/p0-gate-learning-log|P0-Gate Python 基础闯关]] 与 [[04-Projects/LLM/AI-Agent-Learning/l1-01-first-call|L1-01 API Key 与 SDK]] 项目记录。
 - 新增 [[03-Courses/LLM/AI-Agent-Learning/stage1-llm-api-basics|阶段 1：大模型 API 入门]]。
 - 新增 [[07-Reviews/AI-Agent-Learning/2026-06-14-stage0-p0-gate-l1-01-pass-review|2026-06-14 阶段 0 / 阶段 1 复盘：P0-Gate + L1-01]]。
@@ -277,7 +277,7 @@ tags:
 - 当前 `00-Inbox` 仍只有 `README.md`，没有新的临时资料待分拣。
 - `raw/` 当前没有新增 source notes 或失联编译目标；非索引 raw notes 仍为 6 个。
 - 6 月 8 日之后的主要变化来自 AI-Agent-Learning PASS 同步，已沉淀到概念卡、课程页、项目记录和复盘页。
-- 修复索引警告：将 [[02-Concepts/Engineering/README|Engineering 概念卡]] 与 [[02-Concepts/Engineering/debugging-triage|调试与错误恢复：系统化 triage]] 补入 [[index|AI Knowledge Index]]，并同步补入 [[01-Maps/AI 知识库总地图|AI 知识库总地图]]。
+- 修复索引警告：将 [[02-Concepts/Engineering/README|Engineering 概念卡]] 与 [[02-Concepts/Engineering/调试与错误恢复(Triage)|调试与错误恢复：系统化 triage]] 补入 [[index|AI Knowledge Index]]，并同步补入 [[01-Maps/AI 知识库总地图|AI 知识库总地图]]。
 - 新增本次周维护复盘 [[07-Reviews/Knowledge-Base/2026-06-15-weekly-maintenance]]。
 - 完成编辑后再次运行严格检查：
   - `OK: True`
@@ -300,7 +300,7 @@ tags:
   - `Missing frontmatter: 0`
   - 警告：4 个 `usable` LLM 概念卡未被 `index.md` 直接引用。
 - 当前 `00-Inbox` 仍只有 `README.md`；`raw/` 没有新增 source notes，6 个非索引 raw notes 均有来源和编译目标。
-- 将 [[02-Concepts/LLM/message-roles-and-instruction-hierarchy|消息角色与指令优先级]]、[[02-Concepts/LLM/llm-essence-and-hallucination|LLM 本质与幻觉]]、[[02-Concepts/LLM/multi-turn-stateless-memory|多轮对话：接口无状态与客户端记忆]]、[[02-Concepts/LLM/streaming-output|流式输出]] 补入全局索引和相关地图。
+- 将 [[02-Concepts/LLM/消息角色与指令优先级(Instruction Hierarchy)|消息角色与指令优先级]]、[[02-Concepts/LLM/LLM 本质与幻觉(Hallucination)|LLM 本质与幻觉]]、[[02-Concepts/LLM/多轮对话与无状态记忆(Stateless Memory)|多轮对话：接口无状态与客户端记忆]]、[[02-Concepts/LLM/流式输出(Streaming)|流式输出]] 补入全局索引和相关地图。
 - 根据 OpenAI 官方文档修正 `system` / `developer` 的版本边界：`developer` 高于 `user`，但不能把 `system` 与 `developer` 无条件视为跨模型、跨供应商完全同义。
 - 为 3 份英文 raw source 补充 `## 中文速读` 和 `## 关键术语`，保留原文、URL、技术术语和编译目标：
   - [[raw/repos/karpathy-micrograd]]
@@ -320,8 +320,8 @@ tags:
 ### AI-Agent-Learning B0-02 网络基础与 HTTP PASS
 
 - 检查 `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-23.md`，`B0-02 网络基础与 HTTP`（阶段 0.5 工程基础穿插，6/24 顺延补做）判定 `PASS`。重跑 `code/stage0_5/b0_02_http_probe.py` 四场景（正常 2xx / 404 非 2xx / DNS 失败 / 超时）全部按预期；16 题练习全 PASS（B3/C2/C4/D1/D2 经订正）。
-- 新增 [[02-Concepts/Engineering/http-and-network-basics|一次 HTTP 请求的全链路与三类错误处理]]，沉淀：`requests.get` 背后 7 步、DNS/IP/端口、HTTP 报文结构、状态码（401 vs 403、4xx vs 5xx）、**requests 不对 4xx/5xx 抛异常**、三类错误 + 三层防护（timeout / try-except / 主动 check status_code）、timeout 保护客户端、`except` 子类在前基类兜底、`/` vs `//`。
-- 更新 [[02-Concepts/Engineering/README|Engineering 概念卡]]（新增「网络与 HTTP」分类）、[[02-Concepts/Python/python-http-requests|Python HTTP 请求]]（互链进阶卡）。
+- 新增 [[02-Concepts/Engineering/HTTP 请求全链路与错误处理|一次 HTTP 请求的全链路与三类错误处理]]，沉淀：`requests.get` 背后 7 步、DNS/IP/端口、HTTP 报文结构、状态码（401 vs 403、4xx vs 5xx）、**requests 不对 4xx/5xx 抛异常**、三类错误 + 三层防护（timeout / try-except / 主动 check status_code）、timeout 保护客户端、`except` 子类在前基类兜底、`/` vs `//`。
+- 更新 [[02-Concepts/Engineering/README|Engineering 概念卡]]（新增「网络与 HTTP」分类）、[[02-Concepts/Python/HTTP 请求(requests)|Python HTTP 请求]]（互链进阶卡）。
 - 更新 [[03-Courses/Agent/AI-Agent-Learning/stage0_5-engineering-basics|阶段 0.5：工程基础随用随补]]（B0-02 已补课记录）、[[01-Maps/AI-Agent-Learning 跳转索引]]。
 - 回填执行区 `tracker/progress.md`（B0-02 → `PASS`，最近日期 2026-06-23）。
 
@@ -330,7 +330,7 @@ tags:
 ### AI-Agent-Learning PR2-02 摘要与改写（概念预习）
 
 - 检查 `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-25.md`：阶段 2 `PR2-02 摘要与改写`概念预习——读 llm-cookbook「文本概括 Summarizing」+「文本转换 Transforming」两章、记笔记 `notes/stage2/pr2_02_summarizer_notes.md`、15 题练习（A–D）全 PASS（A4/B1/C4 经一次订正）。今天纯概念无代码，动手 `code/stage2/pr2_02_summarizer.py` 按规则排 L1-Gate 后，故 `PR2-02` 判 `DOING`（非 PASS）。
-- 新增概念卡 [[02-Concepts/LLM/summarizing-and-transforming|摘要与改写：Summarizing(压信息) vs Transforming(换外壳)]]，沉淀：信息量尺子、控长度三单位 + 软约束（要严格卡死靠代码 `len()` 截）、概括(求全) vs 提取(求专)、判断漏重点（先定义重点 + 体检三件套）、转换四类、锁 JSON 摘要 prompt 5 要素、真实场景（邮件处理器待办用提取字段兜底 / 客服历史摘要省 token）。复习点：PR2-01 老弱点 **few-shot 真实示例 ≠ schema** 本次一次答对。
+- 新增概念卡 [[02-Concepts/LLM/摘要与改写(Summarize & Transform)|摘要与改写：Summarizing(压信息) vs Transforming(换外壳)]]，沉淀：信息量尺子、控长度三单位 + 软约束（要严格卡死靠代码 `len()` 截）、概括(求全) vs 提取(求专)、判断漏重点（先定义重点 + 体检三件套）、转换四类、锁 JSON 摘要 prompt 5 要素、真实场景（邮件处理器待办用提取字段兜底 / 客服历史摘要省 token）。复习点：PR2-01 老弱点 **few-shot 真实示例 ≠ schema** 本次一次答对。
 - 更新 [[02-Concepts/LLM/README|LLM 概念卡索引]]（登记新卡）。
 - 新增阶段课程页 [[03-Courses/LLM/AI-Agent-Learning/stage2-prompt-structured-output|阶段 2：Prompt 与结构化输出]]（覆盖 PR2-01 + PR2-02，均 `DOING`：概念完成、动手留 L1-Gate 后）。
 - 更新 [[01-Maps/AI-Agent-Learning 跳转索引]]（加阶段 2 课程页链接）。
@@ -341,8 +341,8 @@ tags:
 ### AI-Agent-Learning L1-Gate API 入门闯关 PASS（阶段 1 收尾）
 
 - 复核 `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-27.md`：实现 `code/stage1/l1_gate_cli_chatbot.py`，整合 L1-01~04（多轮 + 流式可开关 + exit + 错误兜底 + 历史限长 + timeout）。**复核实跑**流式真实 5 轮：第 2 轮答出「三玖」、第 4 轮数出「聊了 3 轮」并复述 → 多轮记忆稳；空输入提示、错误兜底不崩、exit 退出码 0。4 必答 + 完整调用链路全过。判 `PASS`，**阶段 1 全部通过**。
-- 新增概念卡 [[02-Concepts/LLM/api-params-vs-sdk-client-params|API 参数 vs SDK 客户端参数]]：API 参数（进请求体、查 DeepSeek 文档）vs SDK 客户端参数（`timeout`/`max_retries`、本机生效、查 OpenAI SDK，所以 DeepSeek API 文档搜不到 timeout）；timeout 两种写法（client 级 / create 级）；本机假服务器实测两种写法均 ~2s 触发 `APITimeoutError`。
-- 更新概念卡 [[02-Concepts/LLM/streaming-output|流式输出]]：补「底层传输：SSE」一节（SSE 单向逐块推 vs 普通请求-响应 vs WebSocket 双向；TTFT）。
+- 新增概念卡 [[02-Concepts/LLM/API 参数与 SDK 客户端参数|API 参数 vs SDK 客户端参数]]：API 参数（进请求体、查 DeepSeek 文档）vs SDK 客户端参数（`timeout`/`max_retries`、本机生效、查 OpenAI SDK，所以 DeepSeek API 文档搜不到 timeout）；timeout 两种写法（client 级 / create 级）；本机假服务器实测两种写法均 ~2s 触发 `APITimeoutError`。
+- 更新概念卡 [[02-Concepts/LLM/流式输出(Streaming)|流式输出]]：补「底层传输：SSE」一节（SSE 单向逐块推 vs 普通请求-响应 vs WebSocket 双向；TTFT）。
 - 更新 [[02-Concepts/LLM/README|LLM 概念卡索引]]（登记新卡）。
 - 新增项目页 [[04-Projects/LLM/AI-Agent-Learning/l1-gate-cli-chatbot|L1-Gate CLI Chatbot]]：完整调用链路 + 5 个整合坑（含今日新坑：非流式误用 `call_model` 列表当字符串 + 丢历史 → 改 `call_messages`）+ 4 必答 + 验证结果。
 - 新增复盘 [[07-Reviews/AI-Agent-Learning/2026-06-27-stage1-l1-gate-pass-review|2026-06-27 L1-Gate PASS 复盘]]：练习 15 题全 PASS（C1 漏 [SYSTEM]、C2 限长后果方向 经订正）；今天最虚 = 对列表/消息的逐条精确追踪。
@@ -353,8 +353,8 @@ tags:
 ### AI-Agent-Learning PR2-01 / PR2-02 动手交付 PASS（阶段 2 起步）
 
 - 同日 L1-Gate 通关后，带做补完阶段 2 两个动手产物（`code/stage2/pr2_01_prompt_cases.md` + `pr2_01_run_cases.py`、`code/stage2/pr2_02_summarizer.py`），真跑 DeepSeek 验证后判 `PR2-01` / `PR2-02` 均 `PASS`。
-- 更新概念卡 [[02-Concepts/LLM/prompt-engineering-basics|Prompt 基础]]：补「实证：PR2-01 三档对比（few-shot 零增益）」+「工程坑：f-string/.format 撞 prompt 里 JSON 花括号」。
-- 更新概念卡 [[02-Concepts/LLM/summarizing-and-transforming|摘要与改写]]：补「实证：机械版 vs 模型版」+「代码兜底 ≠ 约束模型（prompt 事前软请求 / 代码事后硬保证）」+ 常见坑两条。
+- 更新概念卡 [[02-Concepts/LLM/提示工程基础(Prompt Engineering)|Prompt 基础]]：补「实证：PR2-01 三档对比（few-shot 零增益）」+「工程坑：f-string/.format 撞 prompt 里 JSON 花括号」。
+- 更新概念卡 [[02-Concepts/LLM/摘要与改写(Summarize & Transform)|摘要与改写]]：补「实证：机械版 vs 模型版」+「代码兜底 ≠ 约束模型（prompt 事前软请求 / 代码事后硬保证）」+ 常见坑两条。
 - 新增项目页 [[04-Projects/LLM/AI-Agent-Learning/pr2-01-02-handson|PR2-01/02 动手：prompt 对比 + 摘要器]]。
 - 新增复盘 [[07-Reviews/AI-Agent-Learning/2026-06-27-pr2-01-02-handson-review|2026-06-27 PR2-01/02 动手 PASS 复盘]]：弱点「漏看点名子项」连续两天重现（L1-Gate C1 漏 [SYSTEM] / PR2-02 漏「取值也 strip」）。
 - 更新课程页 [[03-Courses/LLM/AI-Agent-Learning/stage2-prompt-structured-output|阶段 2：Prompt 与结构化输出]]（PR2-01/02 → PASS、下一步指向 PR2-03）。
@@ -391,8 +391,8 @@ tags:
 ### AI-Agent-Learning PR2-03 分类与路由 PASS（同步知识库）
 
 - 复核 `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-28.md`：PR2-03 分类与路由，带读 ADP 第 2 章 Routing + Inferring；练习 15 题全 PASS；动手 `code/stage2/pr2_03_classifier.py`（规则版 dict 遍历 + `all_hits` 诊断 + 15 样例 + 自动归因 + 模型版 + 真实对比）。实跑规则版正确率 73%、4 难样例规则版 0/4→模型版 2/4。判 **PR2-03 PASS**。
-- 新增概念卡 [[02-Concepts/LLM/classification-and-routing|分类与路由]]：分类是路由前半步、四种路由、规则版 vs 模型版（真跑 0/4→2/4）、漏判/撞类用 `all_hits`+`len` 自动归因、模型版三件套（只输出标签词+strip+白名单）、分类质量=标签定义清晰度。
-- 新增概念卡 [[02-Concepts/Python/python-strip-and-cleaning-runtime-data|Python strip 与洗运行时脏数据]]：strip 是 str 方法（贴 list 会 `AttributeError`）、只洗运行时脏数据、自写常量改字面量、配合白名单兜底。
+- 新增概念卡 [[02-Concepts/LLM/分类与路由(Classification & Routing)|分类与路由]]：分类是路由前半步、四种路由、规则版 vs 模型版（真跑 0/4→2/4）、漏判/撞类用 `all_hits`+`len` 自动归因、模型版三件套（只输出标签词+strip+白名单）、分类质量=标签定义清晰度。
+- 新增概念卡 [[02-Concepts/Python/strip() 与数据清洗|Python strip 与洗运行时脏数据]]：strip 是 str 方法（贴 list 会 `AttributeError`）、只洗运行时脏数据、自写常量改字面量、配合白名单兜底。
 - 新增项目页 [[04-Projects/LLM/AI-Agent-Learning/pr2-03-classifier-routing|PR2-03 动手：分类与路由]]、复盘 [[07-Reviews/AI-Agent-Learning/2026-06-28-pr2-03-classifier-routing-review|2026-06-28 PR2-03 PASS 复盘]]。
 - 更新 [[02-Concepts/LLM/README|LLM 概念卡索引]]、[[02-Concepts/Python/README|Python 概念卡索引]]、课程页 [[03-Courses/LLM/AI-Agent-Learning/stage2-prompt-structured-output|阶段 2]]（PR2-03 → PASS）、[[01-Maps/AI-Agent-Learning 跳转索引]]（加项目页/概念卡/复盘链接）。
 - 回填执行区 `tracker/progress.md`（PR2-03 → PASS，2026-06-28）与 `daily/2026-06-28.md` 的 Codex 判定区。
@@ -403,6 +403,15 @@ tags:
 
 - 复核 `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-29.md`：S-03 上下文工程，带读 Hello-Agents 第 9 章（9.1~9.2.3 / 9.7）；练习 15 题全 PASS（B1/B2/B4/C4/D1/D3 经订正闭环）；动手 `code/stage2/s03_context_experiment.py` token 对比实验真跑通。判 **S-03 PASS**。
 - 实跑核验：`① 全量 100 > ③ Compaction 50 > ② 裁剪 25` token；程序检查「三玖」②=`False`（裁剪丢早期信息）/ ③=`True`（Compaction 摘要保人名），真调 DeepSeek 成功。
-- 新增概念卡 [[02-Concepts/LLM/context-engineering|上下文工程：策划进窗口的整组 token]]：提示工程的演进（跨层包含）、context rot/注意力预算/最小≠最短、五手段分层表（trim/JIT ｜ Compaction/结构化笔记/子代理）+ 选择经验法则、`trim_history`=truncation 属上下文工程非提示工程、实验实证、8 个常见坑。
+- 新增概念卡 [[02-Concepts/LLM/上下文工程(Context Engineering)|上下文工程：策划进窗口的整组 token]]：提示工程的演进（跨层包含）、context rot/注意力预算/最小≠最短、五手段分层表（trim/JIT ｜ Compaction/结构化笔记/子代理）+ 选择经验法则、`trim_history`=truncation 属上下文工程非提示工程、实验实证、8 个常见坑。
 - 更新 [[02-Concepts/LLM/README|LLM 概念卡索引]]。
 - 回填执行区 `tracker/progress.md`（S-03 → PASS，2026-06-29）与 `daily/2026-06-29.md` 的 Codex 判定区。
+
+## 2026-07-02
+
+### 概念卡文件名中文化（02-Concepts 全量）
+
+- 41 张概念卡文件名由英文短横线改为「中文(短英文)」：LLM 20 张（如 tokenization → 分词(Tokenization)）、Python 18 张（如 python-functools-partial → 偏函数(functools.partial)）、Engineering 2 张、MCP 1 张（model-context-protocol → MCP(Model Context Protocol)）。
+- 全库 wikilink 同步改写约 424 处 + 各 README 索引显示文字理为中文，校验零断链；每张卡 frontmatter `aliases:` 保留旧英文名（旧链接与英文搜索不受影响）。
+- 更新命名规则：[[01-Maps/标签与命名规范]] 与 [[02-Concepts/README|概念卡片索引]] 改为「中文(短英文)」；AI-Agent-Learning 仓库 CLAUDE.md 同步该约定（以后新卡直接中文名）。
+- 边界：03-Courses / 04-Projects / 07-Reviews 文件名保持英文任务编号锚定（L1-Gate、PR2-03 等），不改。

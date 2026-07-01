@@ -58,7 +58,7 @@ tags:
 
 ## 沉淀
 
-- 概念卡：[[../../02-Concepts/LLM/classification-and-routing|分类与路由]]、[[../../02-Concepts/Python/python-strip-and-cleaning-runtime-data|Python strip 与洗运行时脏数据]]
+- 概念卡：[[../../02-Concepts/LLM/分类与路由(Classification & Routing)|分类与路由]]、[[../../02-Concepts/Python/strip() 与数据清洗|Python strip 与洗运行时脏数据]]
 - 项目页：[[../../04-Projects/LLM/AI-Agent-Learning/pr2-03-classifier-routing|PR2-03 动手]]
 
 ## 下一步

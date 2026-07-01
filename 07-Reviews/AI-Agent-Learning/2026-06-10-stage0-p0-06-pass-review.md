@@ -56,6 +56,6 @@ tags:
 
 ## 相关
 
-- [[../../02-Concepts/Python/python-venv-pip-env]]
+- [[../../02-Concepts/Python/环境管理(venv & pip)]]
 - [[../../03-Courses/Python/AI-Agent-Learning/stage0-python-basics]]
 - [[../../04-Projects/Python/AI-Agent-Learning/p0-06-env-check]]

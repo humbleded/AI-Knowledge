@@ -17,7 +17,7 @@ tags:
 
 # PR2-03 动手：分类与路由（规则版 + 模型版 + 真实对比）
 
-> 阶段 2 第三个动手交付，2026-06-28 PASS。概念见 [[../../../02-Concepts/LLM/classification-and-routing]]。
+> 阶段 2 第三个动手交付，2026-06-28 PASS。概念见 [[../../../02-Concepts/LLM/分类与路由(Classification & Routing)]]。
 > 本页记录**动手代码与真跑结果**。
 
 ## 任务
@@ -57,7 +57,7 @@ tags:
 ## 踩的坑（动手过程，绕两圈才透）
 
 1. **规则版 vs 模型版一度搞反**：以为「两个都调模型、规则版用 prompt 限制」→ 纠正：**规则版=纯代码零模型调用**，模型版才调且更需约束。
-2. **`strip()` 误用**（最值钱）：把 strip 当万能去空格贴到 `[list].strip()` → `AttributeError` 崩；还给自写常量 `"工作".strip()` 贴。纠正：strip 只洗运行时脏数据，自写常量改字面量。详见 [[../../../02-Concepts/Python/python-strip-and-cleaning-runtime-data]]。
+2. **`strip()` 误用**（最值钱）：把 strip 当万能去空格贴到 `[list].strip()` → `AttributeError` 崩；还给自写常量 `"工作".strip()` 贴。纠正：strip 只洗运行时脏数据，自写常量改字面量。详见 [[../../../02-Concepts/Python/strip() 与数据清洗]]。
 3. **标签定义带尾随空格** `"账单 "` → 下游 `==` 失败（自己跑不报错、接下游才炸）。
 4. **`LABEL=`（大写）兜底没生效**：写了白名单但赋值到空气变量，`label`（小写）没改——「看起来做了，其实没做到目标上」。
 5. **单引号跨多行 → SyntaxError**：多行 prompt 用三引号 `"""`。
@@ -73,8 +73,8 @@ PYTHONUTF8=1 .venv/Scripts/python.exe code/stage2/pr2_03_classifier.py
 
 ## 关联
 
-- [[../../../02-Concepts/LLM/classification-and-routing|分类与路由（概念卡）]]
-- [[../../../02-Concepts/Python/python-strip-and-cleaning-runtime-data|Python strip 与洗运行时脏数据]]
+- [[../../../02-Concepts/LLM/分类与路由(Classification & Routing)|分类与路由（概念卡）]]
+- [[../../../02-Concepts/Python/strip() 与数据清洗|Python strip 与洗运行时脏数据]]
 - [[pr2-01-02-handson|PR2-01/02 动手]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-06-28-pr2-03-classifier-routing-review|本次 PASS 复盘]]
 

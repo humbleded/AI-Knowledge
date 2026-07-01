@@ -75,7 +75,7 @@ list 3 True
 
 ## 相关概念
 
-- [[../../../02-Concepts/Python/python-file-json-serialization|Python 文件读写与 JSON 序列化]]
-- [[../../../02-Concepts/Python/python-exceptions-debugging-testing|Python 异常、调试与单元测试]]
+- [[../../../02-Concepts/Python/文件读写与 JSON 序列化|Python 文件读写与 JSON 序列化]]
+- [[../../../02-Concepts/Python/异常·调试·测试(Exceptions)|Python 异常、调试与单元测试]]
 
 复盘：[[../../../07-Reviews/AI-Agent-Learning/2026-06-13-stage0-p0-08-pass-review|2026-06-13 阶段 0 复盘：P0-08]]

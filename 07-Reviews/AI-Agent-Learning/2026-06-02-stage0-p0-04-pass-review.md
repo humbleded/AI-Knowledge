@@ -53,6 +53,6 @@ tags:
 
 ## 相关
 
-- [[../../02-Concepts/Python/python-list-dict-set]]
+- [[../../02-Concepts/Python/list·dict·set 容器]]
 - [[../../03-Courses/Python/AI-Agent-Learning/stage0-python-basics]]
 - [[../../04-Projects/Python/AI-Agent-Learning/p0-04-tasks]]

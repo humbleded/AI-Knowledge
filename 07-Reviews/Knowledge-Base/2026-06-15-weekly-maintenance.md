@@ -17,7 +17,7 @@ tags:
 
 本次维护以巡检和索引修复为主。`00-Inbox` 仍没有新增待分拣材料，`raw/` 没有新的散落 source notes；6 月 8 日之后的主要变化来自 AI-Agent-Learning PASS 同步，已经沉淀为概念卡、课程页、项目记录和复盘页。
 
-严格检查发现 1 个可修复警告：[[../../02-Concepts/Engineering/debugging-triage|调试与错误恢复：系统化 triage]] 已是 `usable` 重要概念，但没有直接进入 [[../../index|AI Knowledge Index]]。本轮已补齐全局索引和总地图入口。
+严格检查发现 1 个可修复警告：[[../../02-Concepts/Engineering/调试与错误恢复(Triage)|调试与错误恢复：系统化 triage]] 已是 `usable` 重要概念，但没有直接进入 [[../../index|AI Knowledge Index]]。本轮已补齐全局索引和总地图入口。
 
 ## 本次严格检查
 
@@ -68,7 +68,7 @@ Warnings: 0
 
 ## 本次处理
 
-- 更新 [[../../index|index.md]]：补入 Engineering 概念卡入口、[[../../02-Concepts/Engineering/debugging-triage|调试与错误恢复：系统化 triage]] 和本次周维护入口。
+- 更新 [[../../index|index.md]]：补入 Engineering 概念卡入口、[[../../02-Concepts/Engineering/调试与错误恢复(Triage)|调试与错误恢复：系统化 triage]] 和本次周维护入口。
 - 更新 [[../../01-Maps/AI 知识库总地图|AI 知识库总地图]]：补入 Engineering 概念卡入口。
 - 更新 [[../../log|log.md]]：记录本轮巡检、索引修复和严格检查结果。
 

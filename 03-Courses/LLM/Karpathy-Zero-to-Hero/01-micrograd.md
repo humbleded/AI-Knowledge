@@ -25,7 +25,7 @@ Micrograd 是 Karpathy 路线的神经网络最小闭环：用很少的代码实
 - 理解计算图如何记录运算依赖。
 - 理解链式法则如何在图上反向传播。
 - 理解 `loss.backward()` 本质上做了什么。
-- 理解 [[../../../02-Concepts/LLM/backpropagation]] 和 [[../../../02-Concepts/LLM/gradient-descent]] 的分工。
+- 理解 [[../../../02-Concepts/LLM/反向传播(Backprop)]] 和 [[../../../02-Concepts/LLM/梯度下降(Gradient Descent)]] 的分工。
 - 从零实现一个极小 autograd 引擎。
 
 ## 关键概念
@@ -71,8 +71,8 @@ loss.backward()
 
 完成本节后应产生或更新：
 
-- [[../../../02-Concepts/LLM/backpropagation]]
-- [[../../../02-Concepts/LLM/gradient-descent]]
+- [[../../../02-Concepts/LLM/反向传播(Backprop)]]
+- [[../../../02-Concepts/LLM/梯度下降(Gradient Descent)]]
 - [[../../../04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]]
 - [[../../../log|维护日志]]
 - [[../../../raw/repos/karpathy-micrograd]]
@@ -81,6 +81,6 @@ loss.backward()
 
 ## 相关概念
 
-- [[../../../02-Concepts/LLM/backpropagation]]
-- [[../../../02-Concepts/LLM/gradient-descent]]
+- [[../../../02-Concepts/LLM/反向传播(Backprop)]]
+- [[../../../02-Concepts/LLM/梯度下降(Gradient Descent)]]
 - [[../../../01-Maps/Karpathy AI 学习路线]]

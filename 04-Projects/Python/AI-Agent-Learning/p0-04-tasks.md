@@ -54,6 +54,6 @@ P0-04 已 PASS。
 
 ## 相关
 
-- [[../../../02-Concepts/Python/python-list-dict-set]]
+- [[../../../02-Concepts/Python/list·dict·set 容器]]
 - [[../../../03-Courses/Python/AI-Agent-Learning/stage0-python-basics]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-06-02-stage0-p0-04-pass-review]]

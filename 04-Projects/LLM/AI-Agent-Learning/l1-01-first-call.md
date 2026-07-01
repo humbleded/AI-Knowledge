@@ -64,7 +64,7 @@ tags:
 
 ## 相关概念
 
-- [[../../../02-Concepts/LLM/api-key-and-sdk|API Key 与 SDK：调用模型的门禁卡和快递柜台]]
-- [[../../../02-Concepts/LLM/chat-completions-call|调用 LLM：chat.completions 与取回复]]
+- [[../../../02-Concepts/LLM/API Key 与 SDK|API Key 与 SDK：调用模型的门禁卡和快递柜台]]
+- [[../../../02-Concepts/LLM/调用 chat.completions|调用 LLM：chat.completions 与取回复]]
 
 复盘：[[../../../07-Reviews/AI-Agent-Learning/2026-06-14-stage0-p0-gate-l1-01-pass-review|2026-06-14 阶段 0 / 阶段 1 复盘]]

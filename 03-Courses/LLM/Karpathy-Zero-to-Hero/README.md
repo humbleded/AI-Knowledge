@@ -26,13 +26,13 @@ tags:
 
 ## 配套概念卡
 
-- [[../../../02-Concepts/LLM/backpropagation]]
-- [[../../../02-Concepts/LLM/gradient-descent]]
-- [[../../../02-Concepts/LLM/tokenization]]
-- [[../../../02-Concepts/LLM/embedding]]
-- [[../../../02-Concepts/LLM/attention]]
-- [[../../../02-Concepts/LLM/transformer]]
-- [[../../../02-Concepts/LLM/autoregressive-generation]]
+- [[../../../02-Concepts/LLM/反向传播(Backprop)]]
+- [[../../../02-Concepts/LLM/梯度下降(Gradient Descent)]]
+- [[../../../02-Concepts/LLM/分词(Tokenization)]]
+- [[../../../02-Concepts/LLM/嵌入(Embedding)]]
+- [[../../../02-Concepts/LLM/注意力机制(Attention)]]
+- [[../../../02-Concepts/LLM/Transformer]]
+- [[../../../02-Concepts/LLM/自回归生成(Autoregressive)]]
 
 ## 实践输出
 

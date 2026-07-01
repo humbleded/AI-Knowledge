@@ -55,8 +55,8 @@ L1-01：
 
 ## 同步内容
 
-- Python 概念卡：[[../../02-Concepts/Python/python-json-learning-log-cli|Python JSON 学习日志 CLI：list[dict] 与输入校验]]
-- LLM 概念卡：[[../../02-Concepts/LLM/api-key-and-sdk|API Key 与 SDK：调用模型的门禁卡和快递柜台]]
+- Python 概念卡：[[../../02-Concepts/Python/JSON 学习日志 CLI|Python JSON 学习日志 CLI：list[dict] 与输入校验]]
+- LLM 概念卡：[[../../02-Concepts/LLM/API Key 与 SDK|API Key 与 SDK：调用模型的门禁卡和快递柜台]]
 - Python 项目记录：[[../../04-Projects/Python/AI-Agent-Learning/p0-gate-learning-log|P0-Gate Python 基础闯关]]
 - LLM 项目记录：[[../../04-Projects/LLM/AI-Agent-Learning/l1-01-first-call|L1-01 API Key 与 SDK]]
 - 阶段 0 页面：[[../../03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]

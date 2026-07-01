@@ -41,10 +41,10 @@ Warnings: 4 important notes not referenced by index.md
 
 涉及的 4 个概念卡：
 
-- [[../../02-Concepts/LLM/message-roles-and-instruction-hierarchy|消息角色与指令优先级]]
-- [[../../02-Concepts/LLM/llm-essence-and-hallucination|LLM 本质与幻觉]]
-- [[../../02-Concepts/LLM/multi-turn-stateless-memory|多轮对话：接口无状态与客户端记忆]]
-- [[../../02-Concepts/LLM/streaming-output|流式输出：stream=True 与逐 chunk 处理]]
+- [[../../02-Concepts/LLM/消息角色与指令优先级(Instruction Hierarchy)|消息角色与指令优先级]]
+- [[../../02-Concepts/LLM/LLM 本质与幻觉(Hallucination)|LLM 本质与幻觉]]
+- [[../../02-Concepts/LLM/多轮对话与无状态记忆(Stateless Memory)|多轮对话：接口无状态与客户端记忆]]
+- [[../../02-Concepts/LLM/流式输出(Streaming)|流式输出：stream=True 与逐 chunk 处理]]
 
 修复后结果：
 
@@ -78,7 +78,7 @@ Warnings: 0
 
 ## 来源核验与修正
 
-[[../../02-Concepts/LLM/message-roles-and-instruction-hierarchy|消息角色与指令优先级]] 原先把 `system` 与 `developer` 写成完全同级的新旧名称。2026-06-21 对照 OpenAI 官方资料后，修正为：
+[[../../02-Concepts/LLM/消息角色与指令优先级(Instruction Hierarchy)|消息角色与指令优先级]] 原先把 `system` 与 `developer` 写成完全同级的新旧名称。2026-06-21 对照 OpenAI 官方资料后，修正为：
 
 - 当前 OpenAI Text Generation 文档明确 `developer` instructions 优先于 `user`。
 - Reasoning Best Practices 说明从 `o1-2024-12-17` 开始，推理模型使用 `developer` messages 取代 `system` messages。

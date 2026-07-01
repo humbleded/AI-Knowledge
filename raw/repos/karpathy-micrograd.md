@@ -43,9 +43,9 @@ The repository positions micrograd as a tiny scalar-valued autograd engine plus 
 
 ## What To Compile Into Wiki
 
-- `Value` object design -> [[../../02-Concepts/LLM/backpropagation]]
-- reverse-mode autodiff -> [[../../02-Concepts/LLM/backpropagation]]
-- SGD parameter update -> [[../../02-Concepts/LLM/gradient-descent]]
+- `Value` object design -> [[../../02-Concepts/LLM/反向传播(Backprop)]]
+- reverse-mode autodiff -> [[../../02-Concepts/LLM/反向传播(Backprop)]]
+- SGD parameter update -> [[../../02-Concepts/LLM/梯度下降(Gradient Descent)]]
 - runnable practice -> [[../../04-Projects/LLM/micrograd-backprop-from-scratch]]
 
 ## Do Not Lose

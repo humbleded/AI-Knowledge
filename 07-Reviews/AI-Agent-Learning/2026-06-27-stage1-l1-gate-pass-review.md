@@ -52,8 +52,8 @@ tags:
 
 ## 沉淀到知识库
 
-- 新增概念卡：[[../../02-Concepts/LLM/api-params-vs-sdk-client-params|API 参数 vs SDK 客户端参数]]
-- 更新概念卡：[[../../02-Concepts/LLM/streaming-output|流式输出]]（补 SSE 底层传输）
+- 新增概念卡：[[../../02-Concepts/LLM/API 参数与 SDK 客户端参数|API 参数 vs SDK 客户端参数]]
+- 更新概念卡：[[../../02-Concepts/LLM/流式输出(Streaming)|流式输出]]（补 SSE 底层传输）
 - 新增项目页：[[../../04-Projects/LLM/AI-Agent-Learning/l1-gate-cli-chatbot|L1-Gate CLI Chatbot]]
 - 更新课程页：[[../../03-Courses/LLM/AI-Agent-Learning/stage1-llm-api-basics|阶段 1：大模型 API 入门]]
 

@@ -35,19 +35,19 @@ tags:
 
 ## 已掌握概念
 
-- [[../../../02-Concepts/Python/python-interpreter]]
-- [[../../../02-Concepts/Python/python-input-print]]
-- [[../../../02-Concepts/Python/python-variables]]
-- [[../../../02-Concepts/Python/python-basic-data-types]]
-- [[../../../02-Concepts/Python/python-type-conversion]]
-- [[../../../02-Concepts/Python/python-f-string]]
-- [[../../../02-Concepts/Python/python-functions]]
-- [[../../../02-Concepts/Python/python-list-dict-set]]
-- [[../../../02-Concepts/Python/python-venv-pip-env]]
-- [[../../../02-Concepts/Python/python-exceptions-debugging-testing]]
-- [[../../../02-Concepts/Python/python-file-json-serialization]]
-- [[../../../02-Concepts/Python/python-http-requests]]
-- [[../../../02-Concepts/Python/python-json-learning-log-cli]]
+- [[../../../02-Concepts/Python/解释器(Interpreter)]]
+- [[../../../02-Concepts/Python/输入与输出(input & print)]]
+- [[../../../02-Concepts/Python/变量(Variables)]]
+- [[../../../02-Concepts/Python/基础数据类型(Data Types)]]
+- [[../../../02-Concepts/Python/类型转换(Type Conversion)]]
+- [[../../../02-Concepts/Python/f-string 格式化]]
+- [[../../../02-Concepts/Python/函数与参数(Functions)]]
+- [[../../../02-Concepts/Python/list·dict·set 容器]]
+- [[../../../02-Concepts/Python/环境管理(venv & pip)]]
+- [[../../../02-Concepts/Python/异常·调试·测试(Exceptions)]]
+- [[../../../02-Concepts/Python/文件读写与 JSON 序列化]]
+- [[../../../02-Concepts/Python/HTTP 请求(requests)]]
+- [[../../../02-Concepts/Python/JSON 学习日志 CLI]]
 
 ## 下一步
 

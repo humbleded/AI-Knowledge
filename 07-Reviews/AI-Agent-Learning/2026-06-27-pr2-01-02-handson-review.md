@@ -45,4 +45,4 @@ tags:
 
 - [[2026-06-27-stage1-l1-gate-pass-review|同日 L1-Gate PASS 复盘]]
 - [[../../04-Projects/LLM/AI-Agent-Learning/pr2-01-02-handson|PR2-01/02 动手项目页]]
-- [[../../02-Concepts/LLM/prompt-engineering-basics|Prompt 基础]]、[[../../02-Concepts/LLM/summarizing-and-transforming|摘要与改写]]
+- [[../../02-Concepts/LLM/提示工程基础(Prompt Engineering)|Prompt 基础]]、[[../../02-Concepts/LLM/摘要与改写(Summarize & Transform)|摘要与改写]]

@@ -48,7 +48,7 @@ print(f"你好，{name}！你的学习目标是：{goal}。")
 
 ## 相关概念
 
-- [[../../../02-Concepts/Python/python-interpreter]]
-- [[../../../02-Concepts/Python/python-input-print]]
-- [[../../../02-Concepts/Python/python-f-string]]
+- [[../../../02-Concepts/Python/解释器(Interpreter)]]
+- [[../../../02-Concepts/Python/输入与输出(input & print)]]
+- [[../../../02-Concepts/Python/f-string 格式化]]
 

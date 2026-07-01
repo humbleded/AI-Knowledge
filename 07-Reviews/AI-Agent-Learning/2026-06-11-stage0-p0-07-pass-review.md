@@ -43,6 +43,6 @@ tags:
 
 ## 同步内容
 
-- 概念卡：[[../../02-Concepts/Python/python-exceptions-debugging-testing|Python 异常、调试与单元测试]]
+- 概念卡：[[../../02-Concepts/Python/异常·调试·测试(Exceptions)|Python 异常、调试与单元测试]]
 - 项目记录：[[../../04-Projects/Python/AI-Agent-Learning/p0-07-safe-divide|P0-07 异常、调试、单元测试]]
 - 阶段页：[[../../03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]

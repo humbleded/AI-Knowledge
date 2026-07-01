@@ -67,8 +67,8 @@ minutes = float(input(...))
 
 ## 相关概念
 
-- [[../../../02-Concepts/Python/python-variables]]
-- [[../../../02-Concepts/Python/python-basic-data-types]]
-- [[../../../02-Concepts/Python/python-type-conversion]]
-- [[../../../02-Concepts/Python/python-f-string]]
+- [[../../../02-Concepts/Python/变量(Variables)]]
+- [[../../../02-Concepts/Python/基础数据类型(Data Types)]]
+- [[../../../02-Concepts/Python/类型转换(Type Conversion)]]
+- [[../../../02-Concepts/Python/f-string 格式化]]
 

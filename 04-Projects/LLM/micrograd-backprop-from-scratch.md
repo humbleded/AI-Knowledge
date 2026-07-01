@@ -19,7 +19,7 @@ tags:
 
 ## 项目目标
 
-用最小代码复现 micrograd 的核心思想：构建标量计算图，执行 forward pass，调用 `backward()` 反向传播梯度，再用 [[../../02-Concepts/LLM/gradient-descent]] 更新参数。
+用最小代码复现 micrograd 的核心思想：构建标量计算图，执行 forward pass，调用 `backward()` 反向传播梯度，再用 [[../../02-Concepts/LLM/梯度下降(Gradient Descent)]] 更新参数。
 
 这个项目用于把 [[../../03-Courses/LLM/Karpathy-Zero-to-Hero/01-micrograd]] 从课程理解推进到可运行实验。
 
@@ -78,7 +78,7 @@ _backward: 如何把当前梯度传给前驱节点
 按反向拓扑顺序执行每个节点的 _backward()
 ```
 
-这对应 [[../../02-Concepts/LLM/backpropagation]] 中的链式法则。
+这对应 [[../../02-Concepts/LLM/反向传播(Backprop)]] 中的链式法则。
 
 ### 4. 参数更新
 
@@ -153,8 +153,8 @@ loss_end=0.021629
 ## 相关笔记
 
 - [[../../03-Courses/LLM/Karpathy-Zero-to-Hero/01-micrograd]]
-- [[../../02-Concepts/LLM/backpropagation]]
-- [[../../02-Concepts/LLM/gradient-descent]]
+- [[../../02-Concepts/LLM/反向传播(Backprop)]]
+- [[../../02-Concepts/LLM/梯度下降(Gradient Descent)]]
 - [[../../01-Maps/Karpathy AI 学习路线]]
 - [[../../raw/repos/karpathy-micrograd]]
 - [[../../raw/repos/karpathy-nn-zero-to-hero]]

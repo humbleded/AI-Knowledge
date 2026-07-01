@@ -64,8 +64,8 @@ tags:
 
 ## 相关概念
 
-- [[../../../02-Concepts/Python/python-json-learning-log-cli|Python JSON 学习日志 CLI：list[dict] 与输入校验]]
-- [[../../../02-Concepts/Python/python-file-json-serialization|Python 文件读写与 JSON 序列化]]
-- [[../../../02-Concepts/Python/python-list-dict-set|Python list、dict、set]]
+- [[../../../02-Concepts/Python/JSON 学习日志 CLI|Python JSON 学习日志 CLI：list[dict] 与输入校验]]
+- [[../../../02-Concepts/Python/文件读写与 JSON 序列化|Python 文件读写与 JSON 序列化]]
+- [[../../../02-Concepts/Python/list·dict·set 容器|Python list、dict、set]]
 
 复盘：[[../../../07-Reviews/AI-Agent-Learning/2026-06-14-stage0-p0-gate-l1-01-pass-review|2026-06-14 阶段 0 / 阶段 1 复盘]]

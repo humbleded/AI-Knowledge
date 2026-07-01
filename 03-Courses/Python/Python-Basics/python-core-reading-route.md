@@ -25,11 +25,11 @@ tags:
 
 对应概念卡：
 
-- [[../../../02-Concepts/Python/python-interpreter|Python Interpreter]]
-- [[../../../02-Concepts/Python/python-input-print|Python input() 与 print()]]
-- [[../../../02-Concepts/Python/python-basic-data-types|Python 基础数据类型]]
-- [[../../../02-Concepts/Python/python-conditionals-and-loops|Python 条件判断与循环]]
-- [[../../../02-Concepts/Python/python-list-dict-set|Python list、dict、set]]
+- [[../../../02-Concepts/Python/解释器(Interpreter)|Python Interpreter]]
+- [[../../../02-Concepts/Python/输入与输出(input & print)|Python input() 与 print()]]
+- [[../../../02-Concepts/Python/基础数据类型(Data Types)|Python 基础数据类型]]
+- [[../../../02-Concepts/Python/条件判断与循环(if & for)|Python 条件判断与循环]]
+- [[../../../02-Concepts/Python/list·dict·set 容器|Python list、dict、set]]
 
 ## 第二阶段：能写可维护程序
 

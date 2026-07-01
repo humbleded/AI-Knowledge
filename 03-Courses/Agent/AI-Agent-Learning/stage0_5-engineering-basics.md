@@ -49,7 +49,7 @@ P0-06 模块/venv
 
 ## 已补课记录（PASS）
 
-- **B0-02 网络基础与 HTTP**（2026-06-23 PASS）：搞懂 `requests.get()` 全链路（DNS/IP/端口/TCP/报文/状态码）、三类错误 + 三层防护（timeout / try-except / 主动 check status_code）、`requests` 不对 4xx/5xx 抛异常、timeout 保护客户端、`except` 子类在前基类兜底、`/` vs `//`。产物 `code/stage0_5/b0_02_http_probe.py` 实测四场景（正常 2xx / 404 非 2xx / DNS 失败 / 超时）通过。概念卡 → [[../../../02-Concepts/Engineering/http-and-network-basics|HTTP 全链路与三类错误处理]]。
+- **B0-02 网络基础与 HTTP**（2026-06-23 PASS）：搞懂 `requests.get()` 全链路（DNS/IP/端口/TCP/报文/状态码）、三类错误 + 三层防护（timeout / try-except / 主动 check status_code）、`requests` 不对 4xx/5xx 抛异常、timeout 保护客户端、`except` 子类在前基类兜底、`/` vs `//`。产物 `code/stage0_5/b0_02_http_probe.py` 实测四场景（正常 2xx / 404 非 2xx / DNS 失败 / 超时）通过。概念卡 → [[../../../02-Concepts/Engineering/HTTP 请求全链路与错误处理|HTTP 全链路与三类错误处理]]。
 
 ## B0-Gate 的新定位
 
@@ -72,7 +72,7 @@ P0-06 模块/venv
 ## 相关链接
 
 - [[README|AI-Agent-Learning]]
-- [[../../../02-Concepts/Engineering/http-and-network-basics|一次 HTTP 请求的全链路与三类错误处理（B0-02）]]
+- [[../../../02-Concepts/Engineering/HTTP 请求全链路与错误处理|一次 HTTP 请求的全链路与三类错误处理（B0-02）]]
 - [[../../Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]
 - [[../../../01-Maps/AI 开发学习路线]]
 - [[../../../08-Memory/AI 学习原则]]

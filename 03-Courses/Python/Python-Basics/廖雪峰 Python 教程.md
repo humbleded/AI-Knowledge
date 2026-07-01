@@ -51,6 +51,6 @@ tags:
 ## 相关
 
 - [[../AI-Agent-Learning/stage0-python-basics]]
-- [[../../../02-Concepts/Python/python-input-print]]
-- [[../../../02-Concepts/Python/python-basic-data-types]]
+- [[../../../02-Concepts/Python/输入与输出(input & print)]]
+- [[../../../02-Concepts/Python/基础数据类型(Data Types)]]
 

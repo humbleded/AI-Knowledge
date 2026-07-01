@@ -31,8 +31,8 @@ tags:
 
 建议笔记：
 
-- [[../02-Concepts/LLM/backpropagation]]
-- [[../02-Concepts/LLM/gradient-descent]]
+- [[../02-Concepts/LLM/反向传播(Backprop)]]
+- [[../02-Concepts/LLM/梯度下降(Gradient Descent)]]
 - [[../03-Courses/LLM/Karpathy-Zero-to-Hero/01-micrograd]]
 
 实践任务：
@@ -47,8 +47,8 @@ tags:
 
 建议笔记：
 
-- [[../02-Concepts/LLM/tokenization]]
-- [[../02-Concepts/LLM/embedding]]
+- [[../02-Concepts/LLM/分词(Tokenization)]]
+- [[../02-Concepts/LLM/嵌入(Embedding)]]
 - [[../03-Courses/LLM/Karpathy-Zero-to-Hero/02-makemore]]
 
 实践任务：
@@ -63,9 +63,9 @@ tags:
 
 建议笔记：
 
-- [[../02-Concepts/LLM/attention]]
-- [[../02-Concepts/LLM/transformer]]
-- [[../02-Concepts/LLM/autoregressive-generation]]
+- [[../02-Concepts/LLM/注意力机制(Attention)]]
+- [[../02-Concepts/LLM/Transformer]]
+- [[../02-Concepts/LLM/自回归生成(Autoregressive)]]
 - [[../03-Courses/LLM/Karpathy-Zero-to-Hero/05-gpt-from-scratch]]
 
 实践任务：

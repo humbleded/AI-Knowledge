@@ -59,6 +59,6 @@ P0-05 已 PASS。
 
 ## 相关
 
-- [[../../../02-Concepts/Python/python-functions]]
+- [[../../../02-Concepts/Python/函数与参数(Functions)]]
 - [[../../../03-Courses/Python/AI-Agent-Learning/stage0-python-basics]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-06-09-stage0-p0-05-pass-review]]

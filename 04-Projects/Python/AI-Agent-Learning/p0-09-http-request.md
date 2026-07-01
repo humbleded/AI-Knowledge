@@ -50,6 +50,6 @@ tags:
 
 ## 相关概念
 
-- [[../../../02-Concepts/Python/python-http-requests|Python HTTP 请求：URL、headers、status code 与 JSON]]
+- [[../../../02-Concepts/Python/HTTP 请求(requests)|Python HTTP 请求：URL、headers、status code 与 JSON]]
 
 复盘：[[../../../07-Reviews/AI-Agent-Learning/2026-06-14-stage0-p0-gate-l1-01-pass-review|2026-06-14 阶段 0 / 阶段 1 复盘]]

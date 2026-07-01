@@ -41,7 +41,7 @@ tags:
 
 ## 学习产出
 
-- 一张概念卡：[[../../02-Concepts/MCP/model-context-protocol]]
+- 一张概念卡：[[../../02-Concepts/MCP/MCP(Model Context Protocol)]]
 - 一个最小本地 MCP server 项目记录。
 - 一份 client/server/host 的架构图或文字说明。
 - 一份安全检查清单：哪些 tool 可以执行、哪些资源只读、哪些调用需要用户确认。
