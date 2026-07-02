@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-06-28
+updated: 2026-07-02
 tags:
   - 知识库
   - index
@@ -48,6 +48,7 @@ tags:
 - [[02-Concepts/Python/异常·调试·测试(Exceptions)|Python 异常、调试与单元测试]]
 - [[02-Concepts/Python/文件读写与 JSON 序列化|Python 文件读写与 JSON 序列化]]
 - [[02-Concepts/Python/JSON 学习日志 CLI|Python JSON 学习日志 CLI：list[dict] 与输入校验]]
+- [[02-Concepts/Python/strip() 与数据清洗|Python strip 与洗运行时脏数据]]
 - [[02-Concepts/LLM/API Key 与 SDK|API Key 与 SDK：调用模型的门禁卡和快递柜台]]
 - [[02-Concepts/LLM/调用 chat.completions|调用 LLM：chat.completions 与取回复]]
 - [[02-Concepts/LLM/消息角色与指令优先级(Instruction Hierarchy)|消息角色与指令优先级]]
@@ -55,8 +56,12 @@ tags:
 - [[02-Concepts/LLM/多轮对话与无状态记忆(Stateless Memory)|多轮对话：接口无状态与客户端记忆]]
 - [[02-Concepts/LLM/流式输出(Streaming)|流式输出：stream=True 与逐 chunk 处理]]
 - [[02-Concepts/LLM/采样参数与成本(Sampling)|采样参数与成本：temperature 与 token 计费]]
+- [[02-Concepts/LLM/特殊Token(Special Tokens)|特殊Token：模型词表里的控制暗号]]
 - [[02-Concepts/LLM/提示工程基础(Prompt Engineering)|Prompt 工程基础：角色扮演 / few-shot / CoT / 清晰指令]]
 - [[02-Concepts/LLM/摘要与改写(Summarize & Transform)|摘要与改写：Summarizing vs Transforming]]
+- [[02-Concepts/LLM/分类与路由(Classification & Routing)|分类与路由：Classification 与 Routing]]
+- [[02-Concepts/LLM/上下文工程(Context Engineering)|上下文工程：策划进窗口的整组 token]]
+- [[02-Concepts/LLM/结构化输出(Structured Output)|结构化输出：让模型吐出程序能吃的 JSON]]
 - [[02-Concepts/LLM/API 参数与 SDK 客户端参数|API 参数 vs SDK 客户端参数]]
 - [[02-Concepts/LLM/README|LLM 概念卡]]
 - [[02-Concepts/MCP/README|MCP 概念卡]]

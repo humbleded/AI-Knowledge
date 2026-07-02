@@ -5,9 +5,10 @@ type: concept
 topic: LLM
 status: usable
 created: 2026-05-28
-updated: 2026-05-29
+updated: 2026-07-02
 source:
   - Karpathy Zero to Hero
+  - DeepSeek 分享对话：上下文工程、路由与特殊 Token
 tags:
   - LLM
   - data
@@ -34,6 +35,7 @@ Tokenization 是把文本切分成模型可处理的 token，并把 token 映射
 - 模型的词表有多大。
 - 同一段文本会占多少上下文长度。
 - 罕见词、中文、代码、空格和标点如何表示。
+- 角色边界、轮次边界、结束信号等 [[特殊Token(Special Tokens)|特殊 token]] 如何表示。
 
 ## 常见粒度
 
@@ -79,4 +81,5 @@ target: [t1, t2, t3]
 
 - [[嵌入(Embedding)]]
 - [[自回归生成(Autoregressive)]]
+- [[特殊Token(Special Tokens)]]
 - [[../../03-Courses/LLM/Karpathy-Zero-to-Hero/02-makemore]]

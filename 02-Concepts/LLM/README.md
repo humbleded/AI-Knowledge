@@ -3,7 +3,7 @@ type: concept-index
 topic: LLM
 status: active
 created: 2026-05-28
-updated: 2026-06-25
+updated: 2026-07-02
 tags:
   - LLM
   - 概念卡
@@ -19,6 +19,7 @@ tags:
 ## 语言建模基础
 
 - [[分词(Tokenization)]]：usable，理解文本如何变成 token ID。
+- [[特殊Token(Special Tokens)]]：usable，理解 EOS/EOT、角色边界、API 消息格式与模型内部 token 序列的区别。
 - [[嵌入(Embedding)]]：usable，理解 token/position 如何变成向量表示。
 - [[自回归生成(Autoregressive)]]：usable，理解下一个 token 预测和生成循环。
 - [[LLM 本质与幻觉(Hallucination)|LLM 本质与幻觉]]：usable，LLM=预测下一个最可能 token；幻觉是"只求像、不求真"的天生副作用(最可能≠最真实)，靠 RAG 等缓解。

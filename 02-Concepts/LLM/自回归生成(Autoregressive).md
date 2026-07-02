@@ -5,9 +5,10 @@ type: concept
 topic: LLM
 status: usable
 created: 2026-05-28
-updated: 2026-05-29
+updated: 2026-07-02
 source:
   - Karpathy Zero to Hero
+  - DeepSeek 分享对话：上下文工程、路由与特殊 Token
 tags:
   - LLM
   - generation
@@ -30,6 +31,8 @@ repeat
 ```
 
 训练时模型学习“下一个 token 是什么”；生成时模型反复使用这个能力。
+
+生成循环不会天然知道“文章写完了”。模型通常要生成 [[特殊Token(Special Tokens)|EOS 这类结束 token]]，或由服务层触发 `max_tokens` / stop sequence 等外部条件，生成才会停止。
 
 ## 和训练目标的关系
 
@@ -78,3 +81,4 @@ target: [t1, t2, t3, t4]
 - [[注意力机制(Attention)]]
 - [[Transformer]]
 - [[采样参数与成本(Sampling)]]：本节「采样方式」的展开——temperature/top-k/top-p 的直觉、DeepSeek 温度表与 token 成本。
+- [[特殊Token(Special Tokens)]]：EOS / EOT 等结束和轮次控制信号。

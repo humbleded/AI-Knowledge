@@ -415,3 +415,11 @@ tags:
 - 全库 wikilink 同步改写约 424 处 + 各 README 索引显示文字理为中文，校验零断链；每张卡 frontmatter `aliases:` 保留旧英文名（旧链接与英文搜索不受影响）。
 - 更新命名规则：[[01-Maps/标签与命名规范]] 与 [[02-Concepts/README|概念卡片索引]] 改为「中文(短英文)」；AI-Agent-Learning 仓库 CLAUDE.md 同步该约定（以后新卡直接中文名）。
 - 边界：03-Courses / 04-Projects / 07-Reviews 文件名保持英文任务编号锚定（L1-Gate、PR2-03 等），不改。
+
+### DeepSeek 分享对话整理：上下文工程、路由与特殊 Token
+
+- 整理分享页 <https://chat.deepseek.com/share/tefftbktdjn3xpztg6>，新增 raw 来源摘要 [[raw/conversations/deepseek-share-context-routing-jit|DeepSeek 分享对话：上下文工程、路由与特殊 Token]]。
+- 新增概念卡 [[02-Concepts/LLM/特殊Token(Special Tokens)|特殊Token：模型词表里的控制暗号]]，沉淀 API 消息格式 vs 模型内部序列、EOS/EOT、文本结束 vs 序列结束。
+- 更新 [[02-Concepts/LLM/上下文工程(Context Engineering)|上下文工程]]：补充 Compaction 的召回/精确度、JIT vs 结构化笔记、JIT 与渐进式披露、引用元数据。
+- 更新 [[02-Concepts/LLM/分类与路由(Classification & Routing)|分类与路由]]：补充“标签 -> 路由 -> JIT”的上下文节约设计，以及四类路由的严格分类。
+- 更新 [[02-Concepts/LLM/API Key 与 SDK|API Key 与 SDK]]、[[02-Concepts/LLM/采样参数与成本(Sampling)|采样参数与成本]]、[[02-Concepts/LLM/LLM 本质与幻觉(Hallucination)|LLM 本质与幻觉]]、[[02-Concepts/LLM/分词(Tokenization)|分词]]、[[02-Concepts/LLM/自回归生成(Autoregressive)|自回归生成]] 的相关补充和互链。

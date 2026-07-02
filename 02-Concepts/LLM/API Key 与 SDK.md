@@ -5,8 +5,10 @@ type: concept
 topic: LLM API Key SDK
 status: usable
 created: 2026-06-14
+updated: 2026-07-02
 source:
   - AI-Agent-Learning L1-01
+  - DeepSeek 分享对话：上下文工程、路由与特殊 Token
 tags:
   - LLM
   - API
@@ -59,6 +61,14 @@ api_key = os.environ.get("DEEPSEEK_API_KEY")
 client = OpenAI(api_key=api_key, base_url="https://api.deepseek.com")
 ```
 
+这几行可以拆成三步：
+
+1. `load_dotenv()`：读取项目里的 `.env` 文件，把里面的键值对加载进当前 Python 进程的环境变量。
+2. `os.environ.get("DEEPSEEK_API_KEY")`：从环境变量里取出 key；如果没有取到，默认返回 `None`。
+3. `OpenAI(api_key=api_key, base_url="https://api.deepseek.com")`：把 key 和 DeepSeek 兼容 OpenAI SDK 的服务地址交给客户端。
+
+注意：`os.environ.get()` 只是“读取”，不会凭空创建 key；真正的来源还是 `.env` 或系统环境变量。
+
 如果换一个终端后突然取不到 key，要先区分：
 
 - `.env` 文件里是否真的写了 `DEEPSEEK_API_KEY=...`。
@@ -74,6 +84,13 @@ model = os.environ.get("DEEPSEEK_MODEL", "deepseek-chat")
 ```
 
 这样换模型时不用改业务代码，只改配置。
+
+这一行的意思是：
+
+- 如果环境变量里配置了 `DEEPSEEK_MODEL`，就用配置值。
+- 如果没配置，就退回默认值 `"deepseek-chat"`。
+
+这是一种“配置优先、默认兜底”的写法，适合本地练习和小项目。生产项目里默认值也要跟当前厂商模型名保持同步，避免默认模型名过期。
 
 ## 常见坑
 
