@@ -7,7 +7,7 @@ updated: 2026-06-27
 tags:
   - AI-Agent-Learning
   - 索引
-updated: 2026-06-30
+updated: 2026-07-03
 ---
 
 # AI-Agent-Learning 跳转索引
@@ -58,6 +58,7 @@ updated: 2026-06-30
 - [[../02-Concepts/LLM/分类与路由(Classification & Routing)|分类与路由（概念卡）]]
 - [[../02-Concepts/LLM/上下文工程(Context Engineering)|上下文工程：策划进窗口的整组 token（概念卡）]]
 - [[../02-Concepts/LLM/结构化输出(Structured Output)|结构化输出：让模型吐出程序能吃的 JSON（概念卡）]]
+- [[../02-Concepts/LLM/函数调用(Function Calling)|函数调用 / Tool Calling：模型点菜、程序炒菜（概念卡）]]
 - [[../02-Concepts/Python/strip() 与数据清洗|Python strip 与洗运行时脏数据（概念卡）]]
 - [[../07-Reviews/AI-Agent-Learning/2026-05-27-stage0-p0-01-p0-02-pass-review|2026-05-27 阶段 0 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-05-28-stage0-p0-03-pass-review|2026-05-28 P0-03 PASS 复盘]]

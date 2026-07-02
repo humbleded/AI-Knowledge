@@ -423,3 +423,14 @@ tags:
 - 更新 [[02-Concepts/LLM/上下文工程(Context Engineering)|上下文工程]]：补充 Compaction 的召回/精确度、JIT vs 结构化笔记、JIT 与渐进式披露、引用元数据。
 - 更新 [[02-Concepts/LLM/分类与路由(Classification & Routing)|分类与路由]]：补充“标签 -> 路由 -> JIT”的上下文节约设计，以及四类路由的严格分类。
 - 更新 [[02-Concepts/LLM/API Key 与 SDK|API Key 与 SDK]]、[[02-Concepts/LLM/采样参数与成本(Sampling)|采样参数与成本]]、[[02-Concepts/LLM/LLM 本质与幻觉(Hallucination)|LLM 本质与幻觉]]、[[02-Concepts/LLM/分词(Tokenization)|分词]]、[[02-Concepts/LLM/自回归生成(Autoregressive)|自回归生成]] 的相关补充和互链。
+
+## 2026-07-03
+
+### AI-Agent-Learning T3-01 函数调用概念 PASS（学习日 2026-07-01，同步知识库）
+
+- 复核 `daily/2026-07-01.md`：T3-01 工作日填充预习（PR2-Gate 留周末）——带读 HF agents-course 4 节（7 题边读边练）＋共写笔记 `notes/stage3/t3_01_function_calling.md`（「概念笔记共写」新约定首跑：用户原话落盘＋⚠️订正/💡补充标注）＋练习 13 题全 PASS。判 **T3-01 PASS**。
+- 实跑验证：用户 C3 分发器答案组装脚本跑通（`json.loads`→`TOOLS[name](**args)`→`role:"tool"` 拼回，asserts 全过）；坏 Action 确认抛 `JSONDecodeError`（ValueError 子类）。
+- 新增概念卡 [[02-Concepts/LLM/函数调用(Function Calling)|函数调用]]：7 步链（模型决策 vs 程序执行）、停止并解析防自编 Observation、FC vs 手搓（训练焊权重 vs prompt 软请求）、最小分发器、7 条坑。
+- 更新 [[02-Concepts/LLM/README|LLM 概念卡索引]]、[[01-Maps/AI-Agent-Learning 跳转索引]]。
+- 回填执行区 `tracker/progress.md`（T3-01 → PASS，2026-07-01）与 `daily/2026-07-01.md` Codex 判定区。
+- 错题本 `tracker/weak-points.md`：WP-02/WP-05/WP-06 独立复测通过升 ✅（下次回炉 2026-07-15）；WP-01 命中通过降 🟡；新增 WP-14（🔴 自编 Observation 代码实景识别）、WP-15（🟡 术语绑定：Observation 槽位名 / JSONDecodeError≠TypeError）。
