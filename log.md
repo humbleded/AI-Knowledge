@@ -434,3 +434,34 @@ tags:
 - 更新 [[02-Concepts/LLM/README|LLM 概念卡索引]]、[[01-Maps/AI-Agent-Learning 跳转索引]]。
 - 回填执行区 `tracker/progress.md`（T3-01 → PASS，2026-07-01）与 `daily/2026-07-01.md` Codex 判定区。
 - 错题本 `tracker/weak-points.md`：WP-02/WP-05/WP-06 独立复测通过升 ✅（下次回炉 2026-07-15）；WP-01 命中通过降 🟡；新增 WP-14（🔴 自编 Observation 代码实景识别）、WP-15（🟡 术语绑定：Observation 槽位名 / JSONDecodeError≠TypeError）。
+
+## 2026-07-05
+
+### Weekly Maintenance
+
+- 复查 [[00-Inbox/README|00-Inbox]]、[[raw/README|raw]]、[[index|index.md]]、[[log|log.md]]、自动化 memory 和 2026-06-28 之后的 Git 变化。
+- 初始运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 164`
+  - `Links: 1181`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`
+  - 警告：1 个重要笔记未被 `index.md` 直接引用。
+- 警告明细为 [[02-Concepts/LLM/函数调用(Function Calling)|函数调用]]；该卡已在 [[02-Concepts/LLM/README|LLM 概念卡索引]] 和 [[01-Maps/AI-Agent-Learning 跳转索引]] 中，但全局索引缺直连。
+- 当前 [[00-Inbox/README|00-Inbox]] 仍只有 `README.md`，没有待分拣材料。
+- 当前 [[raw/README|raw]] 有 7 个非索引 source notes；新增 [[raw/conversations/deepseek-share-context-routing-jit|DeepSeek 分享对话]] 已标记 `processed`，保留 `source_url`，并链接到已编译概念卡。
+- 复核近期 Git 变化：PR2-03、S-03、PR2-04、DeepSeek 分享对话、T3-01 函数调用，以及 `02-Concepts` 文件名中文化，均已沉淀到合适 wiki 层；未发现需要移动的 stale materials。
+- 根据 [[08-Memory/全库中文辅助阅读规则|全库中文辅助阅读规则]] 复查：新增核心笔记以中文解释为主，保留 `Function Calling`、`Tool Calling`、`JSONDecodeError`、`TOOLS[name](**args)`、`role:"tool"`、`context engineering`、`JIT`、`Compaction`、命令、路径和 API 名等技术锚点，不硬翻译代码。
+- 更新 [[index|index.md]]：补入 [[02-Concepts/LLM/函数调用(Function Calling)|函数调用]]、[[04-Projects/LLM/AI-Agent-Learning/pr2-03-classifier-routing|PR2-03 项目页]]、[[07-Reviews/AI-Agent-Learning/2026-06-28-pr2-03-classifier-routing-review|PR2-03 PASS 复盘]] 和本周维护入口。
+- 更新 [[01-Maps/AI 知识库总地图|AI 知识库总地图]]：将 `Tool calling` 占位改为函数调用概念卡链接。
+- 修正 [[01-Maps/AI-Agent-Learning 跳转索引]] frontmatter 中重复的 `updated` 字段。
+- 新增本次维护复盘 [[07-Reviews/Knowledge-Base/2026-07-05-weekly-maintenance]]。
+- 完成编辑后再次运行严格检查：
+  - `OK: True`
+  - `Markdown files: 165`
+  - `Links: 1216`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`
+  - `Warnings: 0`

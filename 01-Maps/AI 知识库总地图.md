@@ -3,7 +3,7 @@ type: map
 topic: AI 知识库总地图
 status: active
 created: 2026-05-28
-updated: 2026-06-21
+updated: 2026-07-05
 tags:
   - 知识库
   - 地图
@@ -82,7 +82,7 @@ tags:
 - [[../02-Concepts/LLM/流式输出(Streaming)|流式输出]]
 - RAG
 - Agent
-- Tool calling
+- [[../02-Concepts/LLM/函数调用(Function Calling)|Function Calling / Tool Calling]]
 - [[MCP/mcp-official-docs-map|MCP]]
 - [[../02-Concepts/MCP/MCP(Model Context Protocol)|Model Context Protocol]]
 - Claude Skills

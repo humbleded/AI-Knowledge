@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-07-02
+updated: 2026-07-05
 tags:
   - 知识库
   - index
@@ -62,6 +62,7 @@ tags:
 - [[02-Concepts/LLM/分类与路由(Classification & Routing)|分类与路由：Classification 与 Routing]]
 - [[02-Concepts/LLM/上下文工程(Context Engineering)|上下文工程：策划进窗口的整组 token]]
 - [[02-Concepts/LLM/结构化输出(Structured Output)|结构化输出：让模型吐出程序能吃的 JSON]]
+- [[02-Concepts/LLM/函数调用(Function Calling)|函数调用：模型点菜、程序炒菜（Tool Calling）]]
 - [[02-Concepts/LLM/API 参数与 SDK 客户端参数|API 参数 vs SDK 客户端参数]]
 - [[02-Concepts/LLM/README|LLM 概念卡]]
 - [[02-Concepts/MCP/README|MCP 概念卡]]
@@ -117,6 +118,7 @@ tags:
 - [[04-Projects/LLM/AI-Agent-Learning/l1-01-first-call]]
 - [[04-Projects/LLM/AI-Agent-Learning/l1-gate-cli-chatbot]]
 - [[04-Projects/LLM/AI-Agent-Learning/pr2-01-02-handson]]
+- [[04-Projects/LLM/AI-Agent-Learning/pr2-03-classifier-routing]]
 - [[04-Projects/Agent/AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引]]
 
 ## 复盘与记忆
@@ -131,6 +133,7 @@ tags:
 - [[07-Reviews/AI-Agent-Learning/2026-06-14-stage0-p0-gate-l1-01-pass-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-06-27-stage1-l1-gate-pass-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-06-27-pr2-01-02-handson-review]]
+- [[07-Reviews/AI-Agent-Learning/2026-06-28-pr2-03-classifier-routing-review]]
 - [[07-Reviews/Daily-Practice/2026-06-04-review]]
 - [[07-Reviews/Daily-Practice/2026-06-05-review]]
 - [[07-Reviews/Knowledge-Base/2026-05-29-karpathy-health-check]]
@@ -141,6 +144,7 @@ tags:
 - [[07-Reviews/Knowledge-Base/2026-06-15-weekly-maintenance]]
 - [[07-Reviews/Knowledge-Base/2026-06-21-weekly-maintenance]]
 - [[07-Reviews/Knowledge-Base/2026-06-28-weekly-maintenance]]
+- [[07-Reviews/Knowledge-Base/2026-07-05-weekly-maintenance]]
 - [[08-Memory/知识库长期记忆规则]]
 - [[08-Memory/全库中文辅助阅读规则]]
 - [[08-Memory/AI 学习原则]]
