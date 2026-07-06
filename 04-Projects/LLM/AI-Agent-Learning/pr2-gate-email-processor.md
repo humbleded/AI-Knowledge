@@ -1,8 +1,8 @@
----
+﻿---
 type: project
 topic: LLM
 status: done
-created: 2026-07-06
+created: 2026-07-05
 source:
   - AI-Agent-Learning PR2-Gate
 tags:
@@ -16,7 +16,7 @@ tags:
 
 # PR2-Gate 动手：邮件处理器（分类 + 摘要 + 待办 JSON）
 
-> 阶段 2 收尾关，2026-07-06 PASS。概念见 [[../../../02-Concepts/LLM/结构化输出(Structured Output)]]、[[../../../02-Concepts/Python/文件读写与 JSON 序列化]]。
+> 阶段 2 收尾关，2026-07-05 PASS。概念见 [[../../../02-Concepts/LLM/结构化输出(Structured Output)]]、[[../../../02-Concepts/Python/文件读写与 JSON 序列化]]。
 
 ## 任务
 
@@ -159,11 +159,11 @@ prompt 可以写“必须输出 JSON、字段缺失填 null、不许编造”，
 - [[../../../02-Concepts/LLM/分类与路由(Classification & Routing)|分类与路由]]
 - [[../../../02-Concepts/LLM/结构化输出(Structured Output)|结构化输出]]
 - [[../../../02-Concepts/Python/文件读写与 JSON 序列化|Python 文件读写与 JSON 序列化]]
-- [[../../../07-Reviews/AI-Agent-Learning/2026-07-06-pr2-gate-email-processor-review|PR2-Gate PASS 复盘]]
+- [[../../../07-Reviews/AI-Agent-Learning/2026-07-05-pr2-gate-email-processor-review|PR2-Gate PASS 复盘]]
 
 ## 来源
 
-- AI-Agent-Learning：`daily/2026-07-06.md`
+- AI-Agent-Learning：`daily/2026-07-05.md`
 - AI-Agent-Learning：`code/stage2/pr2_gate_email_processor.py`
 - AI-Agent-Learning：`notes/stage2/pr2_gate_email_processor_notes.md`
 

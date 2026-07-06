@@ -1,11 +1,11 @@
----
+﻿---
 aliases:
   - structured-outputs
 type: concept
 topic: LLM
 status: usable
 created: 2026-06-30
-updated: 2026-07-06
+updated: 2026-07-05
 source:
   - AI-Agent-Learning PR2-04
   - AI-Agent-Learning PR2-Gate
@@ -134,5 +134,5 @@ result = {"todo": "{\"sender\": \"张三\"}"}
 ## 来源
 
 - AI-Agent-Learning PR2-04：产物 `code/stage2/pr2_04_extract_json.py`；预读 `notes/stage2/pr2_04_structured_output_preview.md`；带做与坑 `daily/2026-06-30.md`。
-- AI-Agent-Learning PR2-Gate：产物 `code/stage2/pr2_gate_email_processor.py`、`resources/stage2_email_result.json`；复盘 `daily/2026-07-06.md`。
+- AI-Agent-Learning PR2-Gate：产物 `code/stage2/pr2_gate_email_processor.py`、`resources/stage2_email_result.json`；复盘 `daily/2026-07-05.md`。
 - OpenAI《Structured Outputs》、DeepSeek《JSON Output》官方文档（2026-06-30 抓取）。

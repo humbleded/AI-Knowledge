@@ -3,7 +3,7 @@ type: course-index
 topic: AI-Agent-Learning
 status: active
 created: 2026-05-28
-updated: 2026-06-14
+updated: 2026-07-06
 tags:
   - AI-Agent
   - Python
@@ -23,14 +23,16 @@ tags:
 
 - [[../../Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]
 - [[../../LLM/AI-Agent-Learning/stage1-llm-api-basics|阶段 1：大模型 API 入门]]
+- [[../../LLM/AI-Agent-Learning/stage2-prompt-structured-output|阶段 2：Prompt 与结构化输出]]
 - [[stage0_5-engineering-basics|阶段 0.5：工程基础随用随补]]
-- 已通过：P0-01、P0-02、P0-03、P0-04、P0-05、P0-06、P0-07、P0-08、P0-09、P0-Gate、L1-01
-- 下一项：L1-02 单轮问答
+- [[stage3-tool-calling|阶段 3：Tool Calling / Function Calling]]
+- 已通过：P0-Gate、L1-Gate、PR2-Gate、T3-01、T3-02
+- 下一项：T3-03 文件工具
 
 ## 当前执行策略
 
-- 阶段 0 主线已完成。
-- 当前已进入 L1：大模型 API 入门，下一步做单轮问答、错误提示和调用封装。
+- 阶段 0、阶段 1、阶段 2 主线已完成。
+- 当前进入阶段 3：Tool Calling，下一步做文件工具。
 - 阶段 0.5 工程基础不再整块前置，而是放到 API、Tool Calling、Memory、RAG、本地部署项目中随用随补。
 - `B0-Gate` 作为后续本地栈整合关卡，不阻塞第一次进入 L1/API。
 
@@ -45,7 +47,10 @@ tags:
 ## 已沉淀内容
 
 - [[../../Python/AI-Agent-Learning/stage0-python-basics]]
+- [[../../LLM/AI-Agent-Learning/stage1-llm-api-basics]]
+- [[../../LLM/AI-Agent-Learning/stage2-prompt-structured-output]]
 - [[stage0_5-engineering-basics]]
+- [[stage3-tool-calling]]
 - [[../../../04-Projects/Python/AI-Agent-Learning/p0-01-hello-script]]
 - [[../../../04-Projects/Python/AI-Agent-Learning/p0-02-profile-script]]
 - [[../../../04-Projects/Python/AI-Agent-Learning/p0-03-scheduler]]
@@ -57,6 +62,7 @@ tags:
 - [[../../../04-Projects/Python/AI-Agent-Learning/p0-09-http-request]]
 - [[../../../04-Projects/Python/AI-Agent-Learning/p0-gate-learning-log]]
 - [[../../../04-Projects/LLM/AI-Agent-Learning/l1-01-first-call]]
+- [[../../../04-Projects/Agent/AI-Agent-Learning/t3-02-calculator-tool]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-05-27-stage0-p0-01-p0-02-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-05-28-stage0-p0-03-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-06-02-stage0-p0-04-pass-review]]
@@ -65,3 +71,4 @@ tags:
 - [[../../../07-Reviews/AI-Agent-Learning/2026-06-11-stage0-p0-07-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-06-13-stage0-p0-08-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-06-14-stage0-p0-gate-l1-01-pass-review]]
+- [[../../../07-Reviews/AI-Agent-Learning/2026-07-06-t3-02-calculator-tool-review]]

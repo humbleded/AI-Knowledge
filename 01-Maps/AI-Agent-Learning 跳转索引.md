@@ -1,4 +1,4 @@
----
+﻿---
 type: map
 topic: AI-Agent-Learning 跳转索引
 status: active
@@ -37,6 +37,7 @@ tags:
 - [[../03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]
 - [[../03-Courses/LLM/AI-Agent-Learning/stage1-llm-api-basics|阶段 1：大模型 API 入门]]
 - [[../03-Courses/LLM/AI-Agent-Learning/stage2-prompt-structured-output|阶段 2：Prompt 与结构化输出]]
+- [[../03-Courses/Agent/AI-Agent-Learning/stage3-tool-calling|阶段 3：Tool Calling / Function Calling]]
 - [[../03-Courses/Agent/AI-Agent-Learning/stage0_5-engineering-basics|阶段 0.5：工程基础随用随补]]
 - [[../02-Concepts/Engineering/HTTP 请求全链路与错误处理|B0-02 一次 HTTP 请求的全链路与三类错误处理（概念卡）]]
 - [[../04-Projects/Python/AI-Agent-Learning/p0-01-hello-script|P0-01 环境与第一个程序]]
@@ -54,6 +55,8 @@ tags:
 - [[../04-Projects/LLM/AI-Agent-Learning/pr2-01-02-handson|PR2-01/02 动手：prompt 对比 + 摘要器]]
 - [[../04-Projects/LLM/AI-Agent-Learning/pr2-03-classifier-routing|PR2-03 动手：分类与路由]]
 - [[../04-Projects/LLM/AI-Agent-Learning/pr2-gate-email-processor|PR2-Gate 动手：邮件处理器]]
+- [[../04-Projects/Agent/AI-Agent-Learning/t3-02-calculator-tool|T3-02 动手：计算器工具]]
+- [[../02-Concepts/Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议（概念卡）]]
 - [[../02-Concepts/LLM/API 参数与 SDK 客户端参数|API 参数 vs SDK 客户端参数（概念卡）]]
 - [[../02-Concepts/LLM/分类与路由(Classification & Routing)|分类与路由（概念卡）]]
 - [[../02-Concepts/LLM/上下文工程(Context Engineering)|上下文工程：策划进窗口的整组 token（概念卡）]]
@@ -71,7 +74,8 @@ tags:
 - [[../07-Reviews/AI-Agent-Learning/2026-06-27-stage1-l1-gate-pass-review|2026-06-27 L1-Gate PASS 复盘（阶段 1 收尾）]]
 - [[../07-Reviews/AI-Agent-Learning/2026-06-27-pr2-01-02-handson-review|2026-06-27 PR2-01/02 动手 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-06-28-pr2-03-classifier-routing-review|2026-06-28 PR2-03 分类与路由 PASS 复盘]]
-- [[../07-Reviews/AI-Agent-Learning/2026-07-06-pr2-gate-email-processor-review|2026-07-06 PR2-Gate 邮件处理器 PASS 复盘]]
+- [[../07-Reviews/AI-Agent-Learning/2026-07-05-pr2-gate-email-processor-review|2026-07-05 PR2-Gate 邮件处理器 PASS 复盘]]
+- [[../07-Reviews/AI-Agent-Learning/2026-07-06-t3-02-calculator-tool-review|2026-07-06 T3-02 计算器工具 PASS 复盘]]
 
 ## 外部资源中文索引
 

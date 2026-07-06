@@ -3,7 +3,7 @@ type: concept-index
 topic: Python
 status: active
 created: 2026-05-28
-updated: 2026-07-06
+updated: 2026-07-05
 tags:
   - Python
   - 概念卡
@@ -23,6 +23,7 @@ tags:
 - [[函数与参数(Functions)|Python 函数、参数与 return]]
 - [[偏函数(functools.partial)|Python 偏函数 functools.partial 与默认参数]]
 - [[条件判断与循环(if & for)]]
+- [[if-not-in-成员检查|Python if not in 成员检查：判断值是否不在允许名单里]]
 - [[match-case 分支]]
 - [[list·dict·set 容器]]
 - [[环境管理(venv & pip)|Python 项目环境管理：venv、pip 与 .env]]

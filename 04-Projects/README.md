@@ -1,9 +1,9 @@
----
+﻿---
 type: map
 topic: Projects
 status: active
 created: 2026-05-28
-updated: 2026-06-14
+updated: 2026-07-06
 tags:
   - 项目记录
   - 知识库
@@ -35,6 +35,8 @@ tags:
 
 ### Agent
 
+- [[Agent/README|Agent 项目记录]]
+- [[Agent/AI-Agent-Learning/t3-02-calculator-tool|T3-02 计算器工具]]
 - [[Agent/AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引]]
 
 ## 分类规则

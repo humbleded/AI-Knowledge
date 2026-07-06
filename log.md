@@ -1,4 +1,4 @@
----
+﻿---
 type: maintenance-log
 topic: AI Knowledge
 status: active
@@ -466,17 +466,15 @@ tags:
   - `Raw non-index files: 7`
   - `Warnings: 0`
 
-## 2026-07-06
-
 ### AI-Agent-Learning PR2-Gate 邮件处理器 PASS（同步知识库）
 
-- 复核 `daily/2026-07-06.md`：PR2-Gate 邮件处理器带读 + 14 题练习全部闭环；判 **PR2-Gate PASS**。
+- 复核 `daily/2026-07-05.md`：PR2-Gate 邮件处理器带读 + 14 题练习全部闭环；判 **PR2-Gate PASS**。
 - 实跑 `code/stage2/pr2_gate_email_processor.py`：成功输出 `category/points/summary/todo` 并保存 `resources/stage2_email_result.json`；结果文件可被 `json.loads` 解析，`todo` 五字段齐全。
 - 额外断言：缺 `deadline` 被 `validate_payload` 拦截；按行邮件和普通长文摘要都能产出 3 条；撞类样例按 `RULES` 顺序返回 `投诉`。
 - 更新概念卡 [[02-Concepts/LLM/结构化输出(Structured Output)|结构化输出]]：补 PR2-Gate 工程链路 `json.loads` -> dict -> `validate_payload` -> `json.dump`。
 - 更新概念卡 [[02-Concepts/Python/文件读写与 JSON 序列化|文件读写与 JSON 序列化]]：补 `dict` / JSON 字符串 / JSON 文件三层边界，以及 `dumps` vs `dump` 易错点。
 - 新增项目页 [[04-Projects/LLM/AI-Agent-Learning/pr2-gate-email-processor|PR2-Gate 邮件处理器]]。
-- 新增复盘 [[07-Reviews/AI-Agent-Learning/2026-07-06-pr2-gate-email-processor-review|2026-07-06 PR2-Gate 邮件处理器 PASS 复盘]]。
+- 新增复盘 [[07-Reviews/AI-Agent-Learning/2026-07-05-pr2-gate-email-processor-review|2026-07-05 PR2-Gate 邮件处理器 PASS 复盘]]。
 - 更新 [[03-Courses/LLM/AI-Agent-Learning/stage2-prompt-structured-output|阶段 2：Prompt 与结构化输出]]：PR2-Gate 标记 PASS，阶段 2 收尾，下一步 T3-02。
 - 更新 [[02-Concepts/LLM/README|LLM 概念卡索引]]、[[02-Concepts/Python/README|Python 概念卡索引]]、[[04-Projects/LLM/README|LLM 项目记录]]、[[01-Maps/AI-Agent-Learning 跳转索引]]、[[index|全局索引]]。
 - 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
@@ -485,4 +483,27 @@ tags:
   - `Links: 1249`
   - `Broken links: 0`
   - `Missing frontmatter: 0`
+
+## 2026-07-06
+
+### AI-Agent-Learning T3-02 计算器工具 PASS（同步知识库）
+
+- 复核 `daily/2026-07-06.md`：T3-02 带读 Hello-Agents 4.2.1/4.2.2，完成计算器工具代码与必答问答，判 **T3-02 PASS**。
+- 实跑 `code/stage3/t3_02_calculator_tool.py`：
+  - `CALCULATOR_SCHEMA` 包含 `name/description/parameters`，参数为 `operation/a/b`。
+  - 7 组函数级测试全 PASS：加、减、乘、除、除零、非法操作、非数字。
+  - 交互入口能打印调用参数和结果。
+- 新增概念卡 [[02-Concepts/Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议]]。
+- 新增 Agent 概念索引 [[02-Concepts/Agent/README|Agent 概念卡索引]]。
+- 新增项目页 [[04-Projects/Agent/AI-Agent-Learning/t3-02-calculator-tool|T3-02 计算器工具]]，并补 [[04-Projects/Agent/README|Agent 项目记录]] 与 [[04-Projects/Agent/AI-Agent-Learning/README|AI-Agent-Learning Agent 实践]]。
+- 新增复盘 [[07-Reviews/AI-Agent-Learning/2026-07-06-t3-02-calculator-tool-review|2026-07-06 T3-02 计算器工具 PASS 复盘]]。
+- 新增课程页 [[03-Courses/Agent/AI-Agent-Learning/stage3-tool-calling|阶段 3：Tool Calling / Function Calling]]，并更新 [[03-Courses/Agent/AI-Agent-Learning/README|AI-Agent-Learning 课程索引]]。
+- 更新 [[02-Concepts/README|概念卡片索引]]、[[04-Projects/README|项目记录索引]]、[[01-Maps/AI-Agent-Learning 跳转索引]] 和 [[index|全局索引]]。
+- 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 175`
+  - `Links: 1302`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`
   - `Raw non-index files: 7`

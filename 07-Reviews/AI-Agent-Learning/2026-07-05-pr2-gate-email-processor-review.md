@@ -1,8 +1,8 @@
----
+﻿---
 type: review
 topic: AI-Agent-Learning PR2-Gate
 status: done
-created: 2026-07-06
+created: 2026-07-05
 tags:
   - AI-Agent-Learning
   - PR2-Gate
@@ -12,7 +12,7 @@ tags:
   - 复盘
 ---
 
-# 2026-07-06 PR2-Gate 邮件处理器 PASS 复盘
+# 2026-07-05 PR2-Gate 邮件处理器 PASS 复盘
 
 ## 判定
 

@@ -1,9 +1,9 @@
----
+﻿---
 type: project-index
 topic: LLM
 status: active
 created: 2026-05-29
-updated: 2026-07-06
+updated: 2026-07-05
 tags:
   - LLM
   - Project

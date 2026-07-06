@@ -1,9 +1,9 @@
----
+﻿---
 type: course-note
 topic: AI-Agent-Learning Stage 2
 status: active
 created: 2026-06-25
-updated: 2026-07-06
+updated: 2026-07-05
 tags:
   - LLM
   - prompt
@@ -34,7 +34,7 @@ tags:
 | PR2-03 | 分类与路由 | **PASS** (2026-06-28) | [[../../../02-Concepts/LLM/分类与路由(Classification & Routing)]] | 概念+练习(15 题全 PASS)+**动手** `pr2_03_classifier.py`：规则版(dict 遍历)+`all_hits` 诊断+15 样例+自动归因(漏判/撞类)+模型版(只输出标签词+strip+白名单)。真跑规则版 73%、4 难样例规则版 0/4→模型版 2/4。分类是路由前半步、规则版 vs 模型版、分类质量=标签定义清晰度 |
 | S-03 | 上下文工程（补充项） | **PASS** (2026-06-29) | [[../../../02-Concepts/LLM/上下文工程(Context Engineering)]] | 带读 HA 第9章(9.1~9.2.3/9.7)+练习 15 题全 PASS+**动手** `s03_context_experiment.py` token 对比真跑通(① 100 > ③ 50 > ② 25，程序验证 ②丢名字/③保名字)。context rot/注意力预算/最小≠最短、五手段分层、`trim_history`=truncation 属上下文工程非提示工程、与 Compaction 平级 |
 | PR2-04 | JSON 与 Schema | **PASS** (2026-06-30) | [[../../../02-Concepts/LLM/结构化输出(Structured Output)]] | 带做全链路(预读→规则版→模型版→边界验证)+真跑 `pr2_04_extract_json.py`：规则版 `partition` 解析「标签：值」/ 模型版 `json_object`+schema prompt+`validate`。自由文本语义抽出(「比较急」→priority 高)、规则版抽不到；缺优先级→`priority:null` 不编造。🔑 `json_object`≠dict(仍需 `json.loads`)；真调不可复现(截断/空 content)靠 `except`+`if not content` 兜底 |
-| PR2-Gate | 结构化输出闯关 | **PASS** (2026-07-06) | [[../../../04-Projects/LLM/AI-Agent-Learning/pr2-gate-email-processor]] | **阶段 2 收尾**：邮件 → 分类 + 摘要 + 待办 JSON 并保存文件。实跑输出可解析 JSON；`todo` 五字段齐全；缺字段由 `validate_payload` 拦截；补强 `simple_summarize` 兼容按行邮件和普通长文。三问与 14 题练习闭环 |
+| PR2-Gate | 结构化输出闯关 | **PASS** (2026-07-05) | [[../../../04-Projects/LLM/AI-Agent-Learning/pr2-gate-email-processor]] | **阶段 2 收尾**：邮件 → 分类 + 摘要 + 待办 JSON 并保存文件。实跑输出可解析 JSON；`todo` 五字段齐全；缺字段由 `validate_payload` 拦截；补强 `simple_summarize` 兼容按行邮件和普通长文。三问与 14 题练习闭环 |
 
 > 阶段 2 的两个概念预习（PR2-01/02）安排在工作日做；它们的**动手产物**与 PR2-03 起的动手任务，统一排在 **L1-Gate（阶段 1 收尾关）之后**，因为 Gate 要整块周末时间。S-03 上下文工程是挂在「阶段 2 后 / 4 前」的补充项，工作日概念/阅读型穿插完成。PR2-04 预读当天带做完成动手交付。
 
@@ -48,13 +48,13 @@ tags:
 
 ## 下一步
 
-**PR2-Gate 已 PASS（2026-07-06）**。阶段 2 概念、动手任务和收尾关全部完成；下一步进入阶段 3 动手：**T3-02 计算器工具**。
+**PR2-Gate 已 PASS（2026-07-05）**。阶段 2 概念、动手任务和收尾关全部完成；下一步进入阶段 3 动手：**T3-02 计算器工具**。
 
 ```text
 [已过] PR2-01 动手 -> [已过] PR2-02 summarizer -> [已过] PR2-03 分类与路由 -> [已过] S-03 上下文工程 -> [已过] PR2-04 JSON/Schema -> [已过] PR2-Gate 邮件处理器 -> T3-02 计算器工具
 ```
 
-PR2-Gate「邮件处理器」已经把阶段 2 技巧串起来：摘要、分类、结构化抽取、`dict`/JSON 序列化、`validate` 校验和文件保存。核心复盘见 [[../../../07-Reviews/AI-Agent-Learning/2026-07-06-pr2-gate-email-processor-review|2026-07-06 PR2-Gate PASS 复盘]]。
+PR2-Gate「邮件处理器」已经把阶段 2 技巧串起来：摘要、分类、结构化抽取、`dict`/JSON 序列化、`validate` 校验和文件保存。核心复盘见 [[../../../07-Reviews/AI-Agent-Learning/2026-07-05-pr2-gate-email-processor-review|2026-07-05 PR2-Gate PASS 复盘]]。
 
 ## 阶段 1 到阶段 2 的衔接
 

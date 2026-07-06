@@ -1,4 +1,4 @@
----
+﻿---
 type: global-index
 topic: AI Knowledge
 status: active
@@ -63,6 +63,8 @@ tags:
 - [[02-Concepts/LLM/上下文工程(Context Engineering)|上下文工程：策划进窗口的整组 token]]
 - [[02-Concepts/LLM/结构化输出(Structured Output)|结构化输出：让模型吐出程序能吃的 JSON]]
 - [[02-Concepts/LLM/函数调用(Function Calling)|函数调用：模型点菜、程序炒菜（Tool Calling）]]
+- [[02-Concepts/Agent/README|Agent 概念卡]]
+- [[02-Concepts/Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议：Name / Description / Execution Logic]]
 - [[02-Concepts/LLM/API 参数与 SDK 客户端参数|API 参数 vs SDK 客户端参数]]
 - [[02-Concepts/LLM/README|LLM 概念卡]]
 - [[02-Concepts/MCP/README|MCP 概念卡]]
@@ -93,6 +95,7 @@ tags:
 - [[03-Courses/Python/Python-Basics/python-core-reading-route|Python 官方手册核心阅读路线]]
 - [[03-Courses/Python/AI-Agent-Learning/stage0-python-basics]]
 - [[03-Courses/Agent/AI-Agent-Learning/README]]
+- [[03-Courses/Agent/AI-Agent-Learning/stage3-tool-calling]]
 - [[03-Courses/Agent/AI-Agent-Learning/stage0_5-engineering-basics]]
 
 ## 论文
@@ -120,6 +123,8 @@ tags:
 - [[04-Projects/LLM/AI-Agent-Learning/pr2-01-02-handson]]
 - [[04-Projects/LLM/AI-Agent-Learning/pr2-03-classifier-routing]]
 - [[04-Projects/LLM/AI-Agent-Learning/pr2-gate-email-processor]]
+- [[04-Projects/Agent/AI-Agent-Learning/README]]
+- [[04-Projects/Agent/AI-Agent-Learning/t3-02-calculator-tool]]
 - [[04-Projects/Agent/AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引]]
 
 ## 复盘与记忆
@@ -135,7 +140,8 @@ tags:
 - [[07-Reviews/AI-Agent-Learning/2026-06-27-stage1-l1-gate-pass-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-06-27-pr2-01-02-handson-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-06-28-pr2-03-classifier-routing-review]]
-- [[07-Reviews/AI-Agent-Learning/2026-07-06-pr2-gate-email-processor-review]]
+- [[07-Reviews/AI-Agent-Learning/2026-07-05-pr2-gate-email-processor-review]]
+- [[07-Reviews/AI-Agent-Learning/2026-07-06-t3-02-calculator-tool-review]]
 - [[07-Reviews/Daily-Practice/2026-06-04-review]]
 - [[07-Reviews/Daily-Practice/2026-06-05-review]]
 - [[07-Reviews/Knowledge-Base/2026-05-29-karpathy-health-check]]

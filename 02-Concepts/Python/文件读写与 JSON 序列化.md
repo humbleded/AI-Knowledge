@@ -1,11 +1,11 @@
----
+﻿---
 aliases:
   - python-file-json-serialization
 type: concept
 topic: Python file IO JSON serialization
 status: usable
 created: 2026-06-13
-updated: 2026-07-06
+updated: 2026-07-05
 tags:
   - Python
   - 文件读写
@@ -165,7 +165,7 @@ json.dumps(data, ensure_ascii=False, indent=2)
 - AI-Agent-Learning P0-08：`C:\Users\26823\Desktop\AI-Agent-Learning\code\stage0\p0_08_progress_file.py`
 - AI-Agent-Learning PR2-Gate：`C:\Users\26823\Desktop\AI-Agent-Learning\code\stage2\pr2_gate_email_processor.py`
 - 每日记录：`C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-13.md`
-- 每日记录：`C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-06.md`
+- 每日记录：`C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-05.md`
 - 阅读材料：廖雪峰 Python 教程 `文件读写`、`操作文件和目录`、`序列化`
 
 ## 相关链接
@@ -176,4 +176,4 @@ json.dumps(data, ensure_ascii=False, indent=2)
 - [[../../04-Projects/Python/AI-Agent-Learning/p0-08-progress-file|P0-08 文件、JSON、CSV]]
 - [[../../04-Projects/LLM/AI-Agent-Learning/pr2-gate-email-processor|PR2-Gate 邮件处理器]]
 - [[../../07-Reviews/AI-Agent-Learning/2026-06-13-stage0-p0-08-pass-review|2026-06-13 阶段 0 复盘：P0-08]]
-- [[../../07-Reviews/AI-Agent-Learning/2026-07-06-pr2-gate-email-processor-review|2026-07-06 PR2-Gate PASS 复盘]]
+- [[../../07-Reviews/AI-Agent-Learning/2026-07-05-pr2-gate-email-processor-review|2026-07-05 PR2-Gate PASS 复盘]]
