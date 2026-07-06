@@ -5,8 +5,10 @@ type: concept
 topic: LLM
 status: usable
 created: 2026-06-30
+updated: 2026-07-06
 source:
   - AI-Agent-Learning PR2-04
+  - AI-Agent-Learning PR2-Gate
   - OpenAI Structured Outputs 官方文档
   - DeepSeek JSON Output 官方文档
 tags:
@@ -63,6 +65,25 @@ tags:
 
 `response.choices[0].message.content` **永远是字符串**。`json_object` 只保证「这个字符串的内容是合法 JSON」，**仍要 `json.loads(content)` 才得到 dict**。直接把 content 当 dict 用，下游 `key in payload` 会变成查子串、行为全错。
 
+## 工程链路：JSON 字符串 -> dict -> 校验 -> 文件 JSON
+
+PR2-Gate 把结构化输出接到一个可运行的小工具里，稳定链路是：
+
+```python
+todo_dict = json.loads(model_json_string)   # JSON 字符串 -> Python dict
+validate_payload(todo_dict)                 # 检查字段齐全、可序列化
+result = {"todo": todo_dict, ...}           # 组装内部 dict
+json.dump(result, f, ensure_ascii=False, indent=2)  # 写成文件 JSON
+```
+
+不要把模型返回的 JSON 字符串直接塞进最终 `result`：
+
+```python
+result = {"todo": "{\"sender\": \"张三\"}"}
+```
+
+这种结果虽然外层文件仍可能是合法 JSON，但 `todo` 只是**字符串字段**，后续不能写 `result["todo"]["sender"]`。正确做法是先 `json.loads` 成 Python `dict`。
+
 ## 实证：PR2-04 邮件抽取（真跑 DeepSeek）
 
 规则版 `extract_email`（`partition` 解析「标签：值」）vs 模型版 `extract_email_llm`（`json_object` + schema prompt）：
@@ -75,9 +96,28 @@ tags:
 
 🔑 模型版价值：**读懂语义再结构化**，规则版对自由文本（没有「标签：」）一个字段都抽不到。
 
+## 实证：PR2-Gate 邮件处理器（阶段 2 收尾）
+
+`code/stage2/pr2_gate_email_processor.py` 把阶段 2 能力串成一条流水线：
+
+1. `simple_summarize(text)` 产出 `points/summary`。
+2. `extract_email(text)` 抽取 `todo` dict。
+3. `validate_payload(todo)` 做字段和序列化校验。
+4. `classify(text)` 产出固定分类标签。
+5. `json.dump(result, f, ensure_ascii=False, indent=2)` 保存到 `resources/stage2_email_result.json`。
+
+实跑结果：
+
+- 输出顶层 key：`category/points/summary/todo`。
+- `todo` 五字段齐全：`sender/task/deadline/priority/need_reply`。
+- 结果文件可被 `json.loads` 重新解析。
+- 缺 `deadline` 时抛 `ValueError: 缺失字段: deadline`，坏结果不会落盘。
+- `simple_summarize` 从只按 `。` 切，补强为“有换行按行切，否则按句号切”，兼容邮件和普通长文。
+
 ## 常见坑 / 错误理解 → 正确理解
 
 - ❌ 开了 `json_object` 拿到的就是 dict → ✅ content 永远是 **str**，仍需 `json.loads`。
+- ❌ 模型 JSON 字符串可以直接放进最终结果 → ✅ 先 `json.loads` 成 dict，再 `validate_payload`，最后 `json.dump`。
 - ❌ prompt 里 JSON 样例用**单引号** → ✅ 必须**双引号**，单引号 `json.loads` 抛 `JSONDecodeError`（模型会照样例学）。
 - ⚠️ 真调模型**不可复现**：同一封缺字段邮件两次跑出「**截断**（Unterminated string）」和「**空 content**（None）」两种失败 → `except` + `if not content` 兜住不崩（兜底价值实锤）。
 - ⚠️ `str.split("：", 1)` 遇无冒号行解包崩 → 用 `str.partition("：")`（总返回 3 段、不崩）。
@@ -94,4 +134,5 @@ tags:
 ## 来源
 
 - AI-Agent-Learning PR2-04：产物 `code/stage2/pr2_04_extract_json.py`；预读 `notes/stage2/pr2_04_structured_output_preview.md`；带做与坑 `daily/2026-06-30.md`。
+- AI-Agent-Learning PR2-Gate：产物 `code/stage2/pr2_gate_email_processor.py`、`resources/stage2_email_result.json`；复盘 `daily/2026-07-06.md`。
 - OpenAI《Structured Outputs》、DeepSeek《JSON Output》官方文档（2026-06-30 抓取）。

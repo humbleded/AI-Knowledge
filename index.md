@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-07-05
+updated: 2026-07-06
 tags:
   - 知识库
   - index
@@ -119,6 +119,7 @@ tags:
 - [[04-Projects/LLM/AI-Agent-Learning/l1-gate-cli-chatbot]]
 - [[04-Projects/LLM/AI-Agent-Learning/pr2-01-02-handson]]
 - [[04-Projects/LLM/AI-Agent-Learning/pr2-03-classifier-routing]]
+- [[04-Projects/LLM/AI-Agent-Learning/pr2-gate-email-processor]]
 - [[04-Projects/Agent/AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引]]
 
 ## 复盘与记忆
@@ -134,6 +135,7 @@ tags:
 - [[07-Reviews/AI-Agent-Learning/2026-06-27-stage1-l1-gate-pass-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-06-27-pr2-01-02-handson-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-06-28-pr2-03-classifier-routing-review]]
+- [[07-Reviews/AI-Agent-Learning/2026-07-06-pr2-gate-email-processor-review]]
 - [[07-Reviews/Daily-Practice/2026-06-04-review]]
 - [[07-Reviews/Daily-Practice/2026-06-05-review]]
 - [[07-Reviews/Knowledge-Base/2026-05-29-karpathy-health-check]]

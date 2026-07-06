@@ -3,7 +3,7 @@ type: concept-index
 topic: Python
 status: active
 created: 2026-05-28
-updated: 2026-06-14
+updated: 2026-07-06
 tags:
   - Python
   - 概念卡
@@ -27,7 +27,7 @@ tags:
 - [[list·dict·set 容器]]
 - [[环境管理(venv & pip)|Python 项目环境管理：venv、pip 与 .env]]
 - [[异常·调试·测试(Exceptions)]]
-- [[文件读写与 JSON 序列化]]
+- [[文件读写与 JSON 序列化|文件读写与 JSON 序列化：dict、JSON 字符串、JSON 文件三层边界]]
 - [[JSON 学习日志 CLI|Python JSON 学习日志 CLI：list[dict] 与输入校验]]
 - [[HTTP 请求(requests)|Python HTTP 请求：URL、headers、status code 与 JSON]]
 - [[strip() 与数据清洗|Python strip 与洗运行时脏数据：作用对象(str 非 list)与何时用]]

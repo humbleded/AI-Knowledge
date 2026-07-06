@@ -5,7 +5,7 @@ type: concept
 topic: Python file IO JSON serialization
 status: usable
 created: 2026-06-13
-updated: 2026-06-17
+updated: 2026-07-06
 tags:
   - Python
   - 文件读写
@@ -69,6 +69,39 @@ data = json.loads(json_text)
 
 记忆口诀：**`dump` 是存（写出去）、`load` 是读（读回来）**；带 `s` 的 `dumps`/`loads` 对**字符串**，不带 `s` 的 `dump`/`load` 配**文件对象**。
 
+## 三层边界：dict、JSON 字符串、JSON 文件
+
+PR2-Gate 暴露出一个高频混淆点：**Python `dict`、JSON 字符串、JSON 文件不是一回事**。
+
+| 层 | 形态 | 常用 API | 用途 |
+|---|---|---|---|
+| Python 内部数据 | `dict` / `list` | 直接用 key/index 访问 | 程序内部处理，例如 `result["todo"]["deadline"]` |
+| JSON 字符串 | `str` | `json.dumps` / `json.loads` | 在内存里把 Python 对象和 JSON 文本互转 |
+| JSON 文件 | `.json` 文件 | `json.dump` / `json.load` | 保存到磁盘或从磁盘读回 |
+
+稳定链路：
+
+```python
+# 模型或外部系统给的是 JSON 字符串
+todo_dict = json.loads(model_json_string)
+
+# 程序内部用 dict 做校验和组装
+validate_payload(todo_dict)
+result = {"todo": todo_dict}
+
+# 最后写成文件 JSON
+with open(path, "w", encoding="utf-8") as f:
+    json.dump(result, f, ensure_ascii=False, indent=2)
+```
+
+常见错误：
+
+```python
+result = {"todo": model_json_string}
+```
+
+这样 `todo` 会变成字符串字段，而不是可继续取 key 的 dict；外层文件也许是合法 JSON，但结构不是下游程序想要的。
+
 ## 序列化会改变类型：tuple 读回变 list
 
 JSON 的类型系统比 Python 小：**它没有 `tuple`**。把 tuple 存进 JSON 会被写成数组，读回来变成 `list`——类型在「存盘 → 读回」后悄悄变了。
@@ -121,6 +154,8 @@ json.dumps(data, ensure_ascii=False, indent=2)
 ## 常见坑
 
 - 代码能跑不等于真正掌握；至少要能说清楚“读文本 -> 建结构 -> 写 JSON -> 读回验证”这条链路。
+- `json.dumps` 是转 JSON 字符串，常配合 `print`；`json.dump` 是写文件。别把 `json.dump` 说成“打印给用户看”。
+- 模型返回的 JSON 字符串先 `json.loads`，再做字段校验；不要拿字符串直接喂给期待 dict 的校验函数。
 - 写死绝对路径能在当前机器运行，但换目录或换机器容易失效；项目练习更推荐从项目根目录拼路径。
 - `read_json(path)` 只是调用但不保存返回值时，虽然能证明 JSON 可解析，但不方便后续使用；更清楚的写法是 `loaded = read_json(path)`。
 - 调试时可以打印目录列表，但最终脚本应减少无关输出，让结果聚焦在任务本身。
@@ -128,7 +163,9 @@ json.dumps(data, ensure_ascii=False, indent=2)
 ## 来源
 
 - AI-Agent-Learning P0-08：`C:\Users\26823\Desktop\AI-Agent-Learning\code\stage0\p0_08_progress_file.py`
+- AI-Agent-Learning PR2-Gate：`C:\Users\26823\Desktop\AI-Agent-Learning\code\stage2\pr2_gate_email_processor.py`
 - 每日记录：`C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-06-13.md`
+- 每日记录：`C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-06.md`
 - 阅读材料：廖雪峰 Python 教程 `文件读写`、`操作文件和目录`、`序列化`
 
 ## 相关链接
@@ -137,4 +174,6 @@ json.dumps(data, ensure_ascii=False, indent=2)
 - [[异常·调试·测试(Exceptions)|Python 异常、调试与单元测试]]
 - [[../../03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]
 - [[../../04-Projects/Python/AI-Agent-Learning/p0-08-progress-file|P0-08 文件、JSON、CSV]]
+- [[../../04-Projects/LLM/AI-Agent-Learning/pr2-gate-email-processor|PR2-Gate 邮件处理器]]
 - [[../../07-Reviews/AI-Agent-Learning/2026-06-13-stage0-p0-08-pass-review|2026-06-13 阶段 0 复盘：P0-08]]
+- [[../../07-Reviews/AI-Agent-Learning/2026-07-06-pr2-gate-email-processor-review|2026-07-06 PR2-Gate PASS 复盘]]

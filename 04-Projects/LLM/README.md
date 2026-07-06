@@ -3,7 +3,7 @@ type: project-index
 topic: LLM
 status: active
 created: 2026-05-29
-updated: 2026-06-14
+updated: 2026-07-06
 tags:
   - LLM
   - Project
@@ -21,6 +21,10 @@ tags:
 ## AI-Agent-Learning 实践
 
 - [[AI-Agent-Learning/l1-01-first-call|L1-01 API Key 与 SDK]]
+- [[AI-Agent-Learning/l1-gate-cli-chatbot|L1-Gate CLI Chatbot]]
+- [[AI-Agent-Learning/pr2-01-02-handson|PR2-01/02 Prompt 对比 + 摘要器]]
+- [[AI-Agent-Learning/pr2-03-classifier-routing|PR2-03 分类与路由]]
+- [[AI-Agent-Learning/pr2-gate-email-processor|PR2-Gate 邮件处理器]]
 
 后续实践记录建议按主题拆分：
 
