@@ -507,3 +507,24 @@ tags:
   - `Missing frontmatter: 0`
   - `Raw non-index files: 7`
   - `Raw non-index files: 7`
+
+## 2026-07-07
+
+### AI-Agent-Learning T3-03 文件工具 PASS（同步知识库）
+
+- 复核 `daily/2026-07-07.md`：T3-03 文件工具练习与代码实现达标，判 **T3-03 PASS**。
+- 实跑 `code/stage3/t3_03_file_reader_tool.py`：
+  - `python -m py_compile` 语法通过。
+  - CLI 读取 `sample.txt` 正常。
+  - 函数级覆盖正常读取、长文件截断、文件不存在、目录误读、`..` 沙箱逃逸拒绝、沙箱内归一化允许。
+- 新增概念卡 [[02-Concepts/Agent/文件工具沙箱(File Tool Sandbox)|文件工具沙箱]]。
+- 新增项目页 [[04-Projects/Agent/AI-Agent-Learning/t3-03-file-reader-tool|T3-03 文件工具]]。
+- 新增复盘 [[07-Reviews/AI-Agent-Learning/2026-07-07-t3-03-file-reader-tool-review|2026-07-07 T3-03 文件工具 PASS 复盘]]。
+- 更新 [[02-Concepts/Agent/README|Agent 概念卡索引]]、[[04-Projects/Agent/README|Agent 项目记录]]、[[04-Projects/Agent/AI-Agent-Learning/README|AI-Agent-Learning Agent 实践]]、[[03-Courses/Agent/AI-Agent-Learning/stage3-tool-calling|阶段 3：Tool Calling / Function Calling]]、[[03-Courses/Agent/AI-Agent-Learning/README|AI-Agent-Learning 课程索引]]、[[01-Maps/AI-Agent-Learning 跳转索引]] 和 [[index|全局索引]]。
+- 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 178`
+  - `Links: 1325`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`

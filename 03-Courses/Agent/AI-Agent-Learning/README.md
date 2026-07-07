@@ -3,7 +3,7 @@ type: course-index
 topic: AI-Agent-Learning
 status: active
 created: 2026-05-28
-updated: 2026-07-06
+updated: 2026-07-07
 tags:
   - AI-Agent
   - Python
@@ -26,13 +26,13 @@ tags:
 - [[../../LLM/AI-Agent-Learning/stage2-prompt-structured-output|阶段 2：Prompt 与结构化输出]]
 - [[stage0_5-engineering-basics|阶段 0.5：工程基础随用随补]]
 - [[stage3-tool-calling|阶段 3：Tool Calling / Function Calling]]
-- 已通过：P0-Gate、L1-Gate、PR2-Gate、T3-01、T3-02
-- 下一项：T3-03 文件工具
+- 已通过：P0-Gate、L1-Gate、PR2-Gate、T3-01、T3-02、T3-03
+- 下一项：T3-04 外部 API 工具
 
 ## 当前执行策略
 
 - 阶段 0、阶段 1、阶段 2 主线已完成。
-- 当前进入阶段 3：Tool Calling，下一步做文件工具。
+- 当前进入阶段 3：Tool Calling，下一步做外部 API 工具。
 - 阶段 0.5 工程基础不再整块前置，而是放到 API、Tool Calling、Memory、RAG、本地部署项目中随用随补。
 - `B0-Gate` 作为后续本地栈整合关卡，不阻塞第一次进入 L1/API。
 
@@ -63,6 +63,7 @@ tags:
 - [[../../../04-Projects/Python/AI-Agent-Learning/p0-gate-learning-log]]
 - [[../../../04-Projects/LLM/AI-Agent-Learning/l1-01-first-call]]
 - [[../../../04-Projects/Agent/AI-Agent-Learning/t3-02-calculator-tool]]
+- [[../../../04-Projects/Agent/AI-Agent-Learning/t3-03-file-reader-tool]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-05-27-stage0-p0-01-p0-02-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-05-28-stage0-p0-03-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-06-02-stage0-p0-04-pass-review]]
@@ -72,3 +73,4 @@ tags:
 - [[../../../07-Reviews/AI-Agent-Learning/2026-06-13-stage0-p0-08-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-06-14-stage0-p0-gate-l1-01-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-07-06-t3-02-calculator-tool-review]]
+- [[../../../07-Reviews/AI-Agent-Learning/2026-07-07-t3-03-file-reader-tool-review]]
