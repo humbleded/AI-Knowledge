@@ -3,7 +3,7 @@ type: project-index
 topic: AI-Agent-Learning Agent Projects
 status: active
 created: 2026-07-06
-updated: 2026-07-07
+updated: 2026-07-08
 tags:
   - Agent
   - AI-Agent-Learning
@@ -17,6 +17,7 @@ tags:
 
 - [[t3-02-calculator-tool|T3-02 计算器工具]]
 - [[t3-03-file-reader-tool|T3-03 文件工具]]
+- [[t3-04-public-api-tool|T3-04 外部 API 工具]]
 
 ## 源码阅读
 

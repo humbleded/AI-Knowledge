@@ -3,7 +3,7 @@ type: map
 topic: AI-Agent-Learning 跳转索引
 status: active
 created: 2026-05-28
-updated: 2026-07-07
+updated: 2026-07-08
 tags:
   - AI-Agent-Learning
   - 索引
@@ -57,8 +57,10 @@ tags:
 - [[../04-Projects/LLM/AI-Agent-Learning/pr2-gate-email-processor|PR2-Gate 动手：邮件处理器]]
 - [[../04-Projects/Agent/AI-Agent-Learning/t3-02-calculator-tool|T3-02 动手：计算器工具]]
 - [[../04-Projects/Agent/AI-Agent-Learning/t3-03-file-reader-tool|T3-03 动手：文件工具]]
+- [[../04-Projects/Agent/AI-Agent-Learning/t3-04-public-api-tool|T3-04 动手：外部 API 工具]]
 - [[../02-Concepts/Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议（概念卡）]]
 - [[../02-Concepts/Agent/文件工具沙箱(File Tool Sandbox)|文件工具沙箱（概念卡）]]
+- [[../02-Concepts/Agent/外部 API 工具(External API Tool)|外部 API 工具（概念卡）]]
 - [[../02-Concepts/LLM/API 参数与 SDK 客户端参数|API 参数 vs SDK 客户端参数（概念卡）]]
 - [[../02-Concepts/LLM/分类与路由(Classification & Routing)|分类与路由（概念卡）]]
 - [[../02-Concepts/LLM/上下文工程(Context Engineering)|上下文工程：策划进窗口的整组 token（概念卡）]]
@@ -79,6 +81,7 @@ tags:
 - [[../07-Reviews/AI-Agent-Learning/2026-07-05-pr2-gate-email-processor-review|2026-07-05 PR2-Gate 邮件处理器 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-07-06-t3-02-calculator-tool-review|2026-07-06 T3-02 计算器工具 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-07-07-t3-03-file-reader-tool-review|2026-07-07 T3-03 文件工具 PASS 复盘]]
+- [[../07-Reviews/AI-Agent-Learning/2026-07-08-t3-04-public-api-tool-review|2026-07-08 T3-04 外部 API 工具 PASS 复盘]]
 
 ## 外部资源中文索引
 

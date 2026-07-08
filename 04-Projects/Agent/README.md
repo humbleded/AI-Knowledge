@@ -3,7 +3,7 @@ type: project-index
 topic: Agent
 status: active
 created: 2026-07-06
-updated: 2026-07-07
+updated: 2026-07-08
 tags:
   - Agent
   - Project
@@ -18,4 +18,5 @@ tags:
 - [[AI-Agent-Learning/README]]
 - [[AI-Agent-Learning/t3-02-calculator-tool|T3-02 计算器工具]]
 - [[AI-Agent-Learning/t3-03-file-reader-tool|T3-03 文件工具]]
+- [[AI-Agent-Learning/t3-04-public-api-tool|T3-04 外部 API 工具]]
 - [[AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引|HelloAgents feature-branch-1 源码阅读索引]]

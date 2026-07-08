@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-07-07
+updated: 2026-07-08
 tags:
   - 知识库
   - index
@@ -66,6 +66,7 @@ tags:
 - [[02-Concepts/Agent/README|Agent 概念卡]]
 - [[02-Concepts/Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议：Name / Description / Execution Logic]]
 - [[02-Concepts/Agent/文件工具沙箱(File Tool Sandbox)|文件工具沙箱：resolve + relative_to 的安全边界]]
+- [[02-Concepts/Agent/外部 API 工具(External API Tool)|外部 API 工具：timeout / 错误兜底 / 必要字段摘要]]
 - [[02-Concepts/LLM/API 参数与 SDK 客户端参数|API 参数 vs SDK 客户端参数]]
 - [[02-Concepts/LLM/README|LLM 概念卡]]
 - [[02-Concepts/MCP/README|MCP 概念卡]]
@@ -127,6 +128,7 @@ tags:
 - [[04-Projects/Agent/AI-Agent-Learning/README]]
 - [[04-Projects/Agent/AI-Agent-Learning/t3-02-calculator-tool]]
 - [[04-Projects/Agent/AI-Agent-Learning/t3-03-file-reader-tool]]
+- [[04-Projects/Agent/AI-Agent-Learning/t3-04-public-api-tool]]
 - [[04-Projects/Agent/AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引]]
 
 ## 复盘与记忆
@@ -145,6 +147,7 @@ tags:
 - [[07-Reviews/AI-Agent-Learning/2026-07-05-pr2-gate-email-processor-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-07-06-t3-02-calculator-tool-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-07-07-t3-03-file-reader-tool-review]]
+- [[07-Reviews/AI-Agent-Learning/2026-07-08-t3-04-public-api-tool-review]]
 - [[07-Reviews/Daily-Practice/2026-06-04-review]]
 - [[07-Reviews/Daily-Practice/2026-06-05-review]]
 - [[07-Reviews/Knowledge-Base/2026-05-29-karpathy-health-check]]
