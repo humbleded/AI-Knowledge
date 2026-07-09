@@ -3,7 +3,7 @@ type: concept-index
 topic: Agent
 status: active
 created: 2026-07-06
-updated: 2026-07-08
+updated: 2026-07-10
 tags:
   - Agent
   - 概念卡
@@ -15,6 +15,8 @@ tags:
 
 ## 卡片
 
+- [[智能体(Agent)|智能体：LLM + 工具 + 客户端调度 + Observation 反馈循环]]
+- [[工具调用与动作(Tool Calling and Action)|工具调用与动作：Tool / Tool Calling / Action / Fine-tuning 边界]]
 - [[工具定义与执行协议(Tool Definition)|工具定义与执行协议：Name / Description / Execution Logic]]
 - [[文件工具沙箱(File Tool Sandbox)|文件工具沙箱：resolve + relative_to 的安全边界]]
 - [[外部 API 工具(External API Tool)|外部 API 工具：timeout / 错误兜底 / 必要字段摘要]]

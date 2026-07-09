@@ -529,6 +529,25 @@ tags:
   - `Missing frontmatter: 0`
   - `Raw non-index files: 7`
 
+## 2026-07-10
+
+### AI-Agent-Learning A4-01 什么是 Agent PASS（同步知识库）
+
+- 复核 `daily/2026-07-09.md`：A4-01 什么是 Agent 带读与练习闭环，判 **A4-01 PASS**。
+- A4-01 为概念任务，无需运行代码；已检查问答覆盖 Agent vs Chatbot、Tool/Action/Observation/Final Answer、Tool Calling vs 多步 Agent、代码硬校验。
+- 新增执行区笔记 `notes/stage4/a4_01_what_is_agent.md`。
+- 新增概念卡 [[02-Concepts/Agent/智能体(Agent)|智能体]]。
+- 新增课程阶段页 [[03-Courses/Agent/AI-Agent-Learning/stage4-agent-basics|阶段 4：Agent 基础原理]]。
+- 新增复盘 [[07-Reviews/AI-Agent-Learning/2026-07-09-a4-01-what-is-agent-review|2026-07-09 A4-01 什么是 Agent PASS 复盘]]。
+- 更新 [[02-Concepts/Agent/README|Agent 概念卡索引]]、[[03-Courses/Agent/AI-Agent-Learning/README|AI-Agent-Learning 课程索引]]、[[01-Maps/AI-Agent-Learning 跳转索引]] 和 [[index|全局索引]]。
+- 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 185`
+  - `Links: 1406`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`
+
 ## 2026-07-08
 
 ### AI-Agent-Learning T3-04 外部 API 工具 PASS（同步知识库）

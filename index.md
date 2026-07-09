@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-07-08
+updated: 2026-07-10
 tags:
   - 知识库
   - index
@@ -64,6 +64,8 @@ tags:
 - [[02-Concepts/LLM/结构化输出(Structured Output)|结构化输出：让模型吐出程序能吃的 JSON]]
 - [[02-Concepts/LLM/函数调用(Function Calling)|函数调用：模型点菜、程序炒菜（Tool Calling）]]
 - [[02-Concepts/Agent/README|Agent 概念卡]]
+- [[02-Concepts/Agent/智能体(Agent)|智能体：LLM + 工具 + 客户端调度 + Observation 反馈循环]]
+- [[02-Concepts/Agent/工具调用与动作(Tool Calling and Action)|工具调用与动作：Tool / Tool Calling / Action]]
 - [[02-Concepts/Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议：Name / Description / Execution Logic]]
 - [[02-Concepts/Agent/文件工具沙箱(File Tool Sandbox)|文件工具沙箱：resolve + relative_to 的安全边界]]
 - [[02-Concepts/Agent/外部 API 工具(External API Tool)|外部 API 工具：timeout / 错误兜底 / 必要字段摘要]]
@@ -98,6 +100,7 @@ tags:
 - [[03-Courses/Python/AI-Agent-Learning/stage0-python-basics]]
 - [[03-Courses/Agent/AI-Agent-Learning/README]]
 - [[03-Courses/Agent/AI-Agent-Learning/stage3-tool-calling]]
+- [[03-Courses/Agent/AI-Agent-Learning/stage4-agent-basics]]
 - [[03-Courses/Agent/AI-Agent-Learning/stage0_5-engineering-basics]]
 
 ## 论文
@@ -148,6 +151,7 @@ tags:
 - [[07-Reviews/AI-Agent-Learning/2026-07-06-t3-02-calculator-tool-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-07-07-t3-03-file-reader-tool-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-07-08-t3-04-public-api-tool-review]]
+- [[07-Reviews/AI-Agent-Learning/2026-07-09-a4-01-what-is-agent-review]]
 - [[07-Reviews/Daily-Practice/2026-06-04-review]]
 - [[07-Reviews/Daily-Practice/2026-06-05-review]]
 - [[07-Reviews/Knowledge-Base/2026-05-29-karpathy-health-check]]

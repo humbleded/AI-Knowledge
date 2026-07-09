@@ -3,7 +3,7 @@ type: map
 topic: AI-Agent-Learning 跳转索引
 status: active
 created: 2026-05-28
-updated: 2026-07-08
+updated: 2026-07-10
 tags:
   - AI-Agent-Learning
   - 索引
@@ -38,6 +38,7 @@ tags:
 - [[../03-Courses/LLM/AI-Agent-Learning/stage1-llm-api-basics|阶段 1：大模型 API 入门]]
 - [[../03-Courses/LLM/AI-Agent-Learning/stage2-prompt-structured-output|阶段 2：Prompt 与结构化输出]]
 - [[../03-Courses/Agent/AI-Agent-Learning/stage3-tool-calling|阶段 3：Tool Calling / Function Calling]]
+- [[../03-Courses/Agent/AI-Agent-Learning/stage4-agent-basics|阶段 4：Agent 基础原理]]
 - [[../03-Courses/Agent/AI-Agent-Learning/stage0_5-engineering-basics|阶段 0.5：工程基础随用随补]]
 - [[../02-Concepts/Engineering/HTTP 请求全链路与错误处理|B0-02 一次 HTTP 请求的全链路与三类错误处理（概念卡）]]
 - [[../04-Projects/Python/AI-Agent-Learning/p0-01-hello-script|P0-01 环境与第一个程序]]
@@ -58,6 +59,7 @@ tags:
 - [[../04-Projects/Agent/AI-Agent-Learning/t3-02-calculator-tool|T3-02 动手：计算器工具]]
 - [[../04-Projects/Agent/AI-Agent-Learning/t3-03-file-reader-tool|T3-03 动手：文件工具]]
 - [[../04-Projects/Agent/AI-Agent-Learning/t3-04-public-api-tool|T3-04 动手：外部 API 工具]]
+- [[../02-Concepts/Agent/智能体(Agent)|智能体（概念卡）]]
 - [[../02-Concepts/Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议（概念卡）]]
 - [[../02-Concepts/Agent/文件工具沙箱(File Tool Sandbox)|文件工具沙箱（概念卡）]]
 - [[../02-Concepts/Agent/外部 API 工具(External API Tool)|外部 API 工具（概念卡）]]
@@ -82,6 +84,7 @@ tags:
 - [[../07-Reviews/AI-Agent-Learning/2026-07-06-t3-02-calculator-tool-review|2026-07-06 T3-02 计算器工具 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-07-07-t3-03-file-reader-tool-review|2026-07-07 T3-03 文件工具 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-07-08-t3-04-public-api-tool-review|2026-07-08 T3-04 外部 API 工具 PASS 复盘]]
+- [[../07-Reviews/AI-Agent-Learning/2026-07-09-a4-01-what-is-agent-review|2026-07-09 A4-01 什么是 Agent PASS 复盘]]
 
 ## 外部资源中文索引
 
