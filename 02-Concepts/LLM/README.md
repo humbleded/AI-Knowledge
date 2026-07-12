@@ -3,7 +3,7 @@ type: concept-index
 topic: LLM
 status: active
 created: 2026-05-28
-updated: 2026-07-05
+updated: 2026-07-12
 tags:
   - LLM
   - 概念卡
@@ -43,7 +43,7 @@ tags:
 - [[分类与路由(Classification & Routing)|分类与路由：Classification(给标签) vs Routing(按标签分流)]]：usable，分类是路由前半步(分类给标签→路由按标签 dict/if 分发)；四种路由(LLM/嵌入/规则/ML)，动手规则版(纯代码字面匹配·快但列不全/撞类) vs 模型版(调 LLM 懂语义·非银弹·边界靠 prompt 定义)；真跑 4 难样例规则版 0/4→模型版 2/4；两类错漏判(命中0类)/撞类(命中≥2类被前者抢)用 all_hits+len 自动归因；模型版三件套(只输出标签词+strip+白名单兜底)；固定标签让下游 if 接得住；分类质量=标签定义在 prompt 的清晰度。
 - [[上下文工程(Context Engineering)|上下文工程：策划进窗口的整组 token]]：usable，提示工程的**演进**(管整组 token 非一句指令；上下文工程**包含**提示工程=跨层)；**context rot**=token 越多准确回忆越差→上下文是**有限资源+注意力预算**(性能梯度非悬崖)；**最小≠最短**(双向:下限别漏/上限别注水)；**五手段分层**(trim 截断/JIT 检索=基础与按需 ｜ Compaction/结构化笔记/子代理=长时程三件套)+选择经验法则；`trim_history`=truncation 属上下文工程**非**提示工程、与 Compaction(硬删 vs 软压)**平级**；实证真跑 `①100>③50>②25`、②丢名字 ③保名字；坑：`messages=text` 的 400、`history[-0:]`==整表、`split` 按空格不按字。
 - [[结构化输出(Structured Output)|结构化输出：让模型吐出程序能吃的 JSON]]：usable，两档强度(JSON 模式 `json_object` 只保证合法 JSON / 严格 Schema `strict` 保证字段齐·类型·不多余·枚举·拒答)；schema 锁 4 件事、enum 硬约束(约束解码归零) vs temperature 软；DeepSeek 只有 `json_object`(三硬要求:含"json"·双引号样例·`max_tokens`；空 content 坑)→prompt 写 schema+代码 `validate` 两头夹；🔑 `json_object`≠dict(content 永远是 str 仍需 `json.loads`)；PR2-Gate 稳定链路=`json.loads` 成 dict→`validate_payload`→`json.dump` 文件；实证真跑规则版 vs 模型版(自由文本语义抽取·缺字段 `priority:null` 不编造)、邮件处理器保存可解析 JSON。
-- [[函数调用(Function Calling)|函数调用：模型点菜、程序炒菜（Tool Calling）]]：usable，模型**不执行**工具、只产调用请求(Action=工具名+参数 JSON、吐完即停)；解析/执行/Observation(`role:"tool"` 含报错)拼回整盘重发全在客户端程序、不够再转一轮；「停止并解析」(停=模型侧/解析=程序侧·调用前)防**自编 Observation**(最隐蔽失败、文本不可辨、判别=看代码有无真执行)；Agent=LLM+工具+调度程序的系统(光模型=chatbot)；FC(训练焊权重·`tools`/`tool_calls` 专用字段) vs 手搓 prompt(软请求·概率采样吐歪·「读到≠照做」→代码兜底)；最小分发器 `TOOLS[name](**args)`；坏 Action 抛 `JSONDecodeError`(非 TypeError)。
+- [[函数调用(Function Calling)|函数调用：模型点菜、程序炒菜（Tool Calling）]]：usable，模型**不执行**工具、只产调用请求(Action=工具名+参数 JSON、吐完即停)；解析/执行/Observation(`role:"tool"` 含报错)拼回整盘重发全在客户端程序、不够再转一轮；assistant 返回值虽打印为 `ChatCompletionMessage(...)` 而非 dict，仍可直接 `messages.append(message)` 由 SDK 序列化并完整保留 `tool_calls`/`reasoning_content`，显式转 dict 用 `model_dump(exclude_none=True)`；一条响应可含多个 `tool_call`，每个调用按独立 ID 回填；模型请求/工具轮/调用数/Python 执行数/工具回填数必须分开计；「停止并解析」(停=模型侧/解析=程序侧·调用前)防**自编 Observation**(最隐蔽失败、文本不可辨、判别=看代码有无真执行)；Agent=LLM+工具+调度程序的系统(光模型=chatbot)；FC(训练焊权重·`tools`/`tool_calls` 专用字段) vs 手搓 prompt(软请求·概率采样吐歪·「读到≠照做」→代码兜底)；最小分发器 `TOOLS[name](**args)`；坏 Action 抛 `JSONDecodeError`(非 TypeError)。
 
 ## 对应课程
 
