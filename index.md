@@ -76,6 +76,7 @@ tags:
 - [[02-Concepts/Engineering/README|Engineering 概念卡]]
 - [[02-Concepts/Engineering/调试与错误恢复(Triage)|调试与错误恢复：系统化 triage]]
 - [[02-Concepts/Engineering/HTTP 请求全链路与错误处理|一次 HTTP 请求的全链路与三类错误处理]]
+- [[02-Concepts/Engineering/服务端请求伪造(SSRF)|服务端请求伪造：服务器替攻击者访问内网目标]]
 
 优先扩写中的 seed 概念：
 

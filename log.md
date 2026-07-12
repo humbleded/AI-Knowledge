@@ -590,3 +590,9 @@ tags:
   - `Broken links: 0`
   - `Missing frontmatter: 0`
   - `Raw non-index files: 7`
+
+### SSRF 独立概念卡
+
+- 新增 [[02-Concepts/Engineering/服务端请求伪造(SSRF)|服务端请求伪造（SSRF）]]：整理服务器代发请求的攻击链、`@` hostname 伪装、302 重定向绕过、常见影响与分层防护。
+- 更新 [[02-Concepts/Agent/外部 API 工具(External API Tool)|外部 API 工具]]、[[02-Concepts/Engineering/README|Engineering 概念卡索引]] 和 [[index|全局索引]]，建立 Agent 工具安全与通用 HTTP 安全概念之间的链接。
+- 严格检查 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：`OK: True`，Markdown 188，链接 1455，断链 0，缺失 frontmatter 0。

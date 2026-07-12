@@ -3,7 +3,7 @@ type: concept-index
 topic: Engineering
 status: active
 created: 2026-06-14
-updated: 2026-06-23
+updated: 2026-07-12
 tags:
   - Engineering
   - 概念卡
@@ -20,6 +20,7 @@ tags:
 ## 网络与 HTTP
 
 - [[HTTP 请求全链路与错误处理|一次 HTTP 请求的全链路与三类错误处理]]：usable，`requests.get` 背后 7 步（DNS/IP/端口/TCP/报文/状态码）+ 三类错误三层防护 + 「requests 不对 4xx/5xx 抛异常」+ timeout 保护客户端 + except 顺序。来自 B0-02。
+- [[服务端请求伪造(SSRF)|服务端请求伪造（SSRF）]]：usable，服务器代替攻击者访问 localhost、私网或云 metadata；覆盖 hostname 伪装、重定向绕过与分层防护。
 
 ## 下一批可新增（按需，等用到再写）
 
