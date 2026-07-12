@@ -165,6 +165,7 @@ tags:
 - [[07-Reviews/Knowledge-Base/2026-06-21-weekly-maintenance]]
 - [[07-Reviews/Knowledge-Base/2026-06-28-weekly-maintenance]]
 - [[07-Reviews/Knowledge-Base/2026-07-05-weekly-maintenance]]
+- [[07-Reviews/Knowledge-Base/2026-07-12-weekly-maintenance]]
 - [[08-Memory/知识库长期记忆规则]]
 - [[08-Memory/全库中文辅助阅读规则]]
 - [[08-Memory/AI 学习原则]]

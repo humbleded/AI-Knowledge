@@ -590,3 +590,30 @@ tags:
   - `Broken links: 0`
   - `Missing frontmatter: 0`
   - `Raw non-index files: 7`
+
+### Weekly Maintenance
+
+- 复查 [[00-Inbox/README|00-Inbox]]、[[raw/README|raw]]、[[index|index.md]]、[[log|log.md]]、自动化 memory、[[08-Memory/全库中文辅助阅读规则|全库中文辅助阅读规则]] 和 2026-07-05 之后的 Git 变化。
+- 初始运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 187`
+  - `Links: 1441`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`
+  - `Warnings: 0`
+- [[00-Inbox/README|00-Inbox]] 当前仍只有 `README.md`，没有待分拣资料。
+- [[raw/README|raw]] 当前有 7 个非索引 source notes；本周没有新增 raw source，已有 source notes 保留原始资料层位置。
+- 复核近期 Git 变化：PR2-Gate、T3-02、T3-03、T3-04、A4-01、T3-Gate 相关内容已沉淀到概念卡、课程页、项目记录、复盘页、主题 README、[[01-Maps/AI-Agent-Learning 跳转索引|AI-Agent-Learning 跳转索引]] 和 [[index|全局索引]]。
+- 根据中文辅助阅读规则复查：本周新增 Agent / Tool Calling 笔记以中文解释为主，保留 `Tool Calling`、`Function Calling`、`Agent`、`Observation`、`Final Answer`、`tools` schema、`TOOLS` registry、`SSRF`、命令、路径、API 名和代码片段。
+- 更新 [[01-Maps/AI 知识库总地图|AI 知识库总地图]]：补入 [[02-Concepts/Agent/README|Agent 概念卡]]，并把 AI 工程能力中的 `Agent` 占位改为 [[02-Concepts/Agent/智能体(Agent)|智能体]] 入口。
+- 更新 [[index|index.md]]：补入本周维护复盘 [[07-Reviews/Knowledge-Base/2026-07-12-weekly-maintenance|2026-07-12 Weekly Maintenance]]。
+- 新增本维护复盘 [[07-Reviews/Knowledge-Base/2026-07-12-weekly-maintenance|2026-07-12 Weekly Maintenance]]。
+- 完成编辑后再次运行严格检查：
+  - `OK: True`
+  - `Markdown files: 188`
+  - `Links: 1470`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`
+  - `Warnings: 0`

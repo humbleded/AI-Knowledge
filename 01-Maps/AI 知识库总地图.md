@@ -3,7 +3,7 @@ type: map
 topic: AI 知识库总地图
 status: active
 created: 2026-05-28
-updated: 2026-07-05
+updated: 2026-07-12
 tags:
   - 知识库
   - 地图
@@ -45,6 +45,7 @@ tags:
 - [[../02-Concepts/README|概念卡片索引]]
 - [[../02-Concepts/Python/README|Python 概念卡]]
 - [[../02-Concepts/LLM/README|LLM 概念卡]]
+- [[../02-Concepts/Agent/README|Agent 概念卡]]
 - [[../02-Concepts/MCP/README|MCP 概念卡]]
 - [[../02-Concepts/Engineering/README|Engineering 概念卡]]
 
@@ -81,7 +82,7 @@ tags:
 - [[../02-Concepts/LLM/多轮对话与无状态记忆(Stateless Memory)|多轮对话与客户端记忆]]
 - [[../02-Concepts/LLM/流式输出(Streaming)|流式输出]]
 - RAG
-- Agent
+- [[../02-Concepts/Agent/智能体(Agent)|Agent / 智能体]]
 - [[../02-Concepts/LLM/函数调用(Function Calling)|Function Calling / Tool Calling]]
 - [[MCP/mcp-official-docs-map|MCP]]
 - [[../02-Concepts/MCP/MCP(Model Context Protocol)|Model Context Protocol]]
