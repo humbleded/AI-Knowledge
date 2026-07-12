@@ -3,7 +3,7 @@ type: course-index
 topic: AI-Agent-Learning
 status: active
 created: 2026-05-28
-updated: 2026-07-10
+updated: 2026-07-12
 tags:
   - AI-Agent
   - Python
@@ -27,14 +27,14 @@ tags:
 - [[stage0_5-engineering-basics|阶段 0.5：工程基础随用随补]]
 - [[stage3-tool-calling|阶段 3：Tool Calling / Function Calling]]
 - [[stage4-agent-basics|阶段 4：Agent 基础原理]]
-- 已通过：P0-Gate、L1-Gate、PR2-Gate、T3-01、T3-02、T3-03、T3-04、A4-01（工作日概念预习）
-- 下一项：T3-Gate Tool Calling 闯关
+- 已通过：P0-Gate、L1-Gate、PR2-Gate、T3-01、T3-02、T3-03、T3-04、T3-Gate、A4-01
+- 下一项：A4-02 LLM 与 Agent 基础；同时优先补 W4 算法 DEBT
 
 ## 当前执行策略
 
 - 阶段 0、阶段 1、阶段 2 主线已完成。
-- 当前阶段 3 的单工具练习已完成，下一步做 T3-Gate 多工具助手。
-- 阶段 4 已开始工作日概念预习：A4-01 什么是 Agent 已 PASS；阶段 4 的动手交付和 Gate 仍等 T3-Gate 后推进。
+- 阶段 3 已完成：三工具原生 Tool Calling 闭环与 14 条正式评估通过。
+- 阶段 4 已开始：A4-01 已 PASS，下一步进入 A4-02 LLM 与 Agent 基础；ReAct 对应 A4-03。
 - 阶段 0.5 工程基础不再整块前置，而是放到 API、Tool Calling、Memory、RAG、本地部署项目中随用随补。
 - `B0-Gate` 作为后续本地栈整合关卡，不阻塞第一次进入 L1/API。
 
@@ -68,6 +68,7 @@ tags:
 - [[../../../04-Projects/Agent/AI-Agent-Learning/t3-02-calculator-tool]]
 - [[../../../04-Projects/Agent/AI-Agent-Learning/t3-03-file-reader-tool]]
 - [[../../../04-Projects/Agent/AI-Agent-Learning/t3-04-public-api-tool]]
+- [[../../../04-Projects/Agent/AI-Agent-Learning/t3-gate-tool-assistant]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-05-27-stage0-p0-01-p0-02-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-05-28-stage0-p0-03-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-06-02-stage0-p0-04-pass-review]]
@@ -80,3 +81,4 @@ tags:
 - [[../../../07-Reviews/AI-Agent-Learning/2026-07-07-t3-03-file-reader-tool-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-07-08-t3-04-public-api-tool-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-07-09-a4-01-what-is-agent-review]]
+- [[../../../07-Reviews/AI-Agent-Learning/2026-07-12-t3-gate-tool-calling-review]]

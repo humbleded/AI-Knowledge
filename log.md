@@ -3,7 +3,7 @@ type: maintenance-log
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-06-28
+updated: 2026-07-12
 tags:
   - 知识库
   - log
@@ -566,6 +566,27 @@ tags:
   - `OK: True`
   - `Markdown files: 181`
   - `Links: 1374`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`
+
+## 2026-07-12
+
+### AI-Agent-Learning T3-Gate Tool Calling PASS（同步知识库）
+
+- 复核 `daily/2026-07-11.md` 与 `tracker/progress.md`：T3-Gate 于 2026-07-12 正式判定 **PASS**，阶段 3 全部完成。
+- 新增执行区整合笔记 `notes/stage3/t3_gate_tool_assistant.md`，并按当前代码修订 `notes/stage3/t3_04_public_api_tool.md` 的重定向说明。
+- 更新 [[02-Concepts/LLM/函数调用(Function Calling)|函数调用]]：补多 `tool_call`、独立 ID 回填、五种计数、直接回答与最大轮数语义。
+- 更新 [[02-Concepts/Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议]]：补小写 `tools` schema、大写 `TOOLS` 注册表及客户端校验顺序。
+- 更新 [[02-Concepts/Agent/外部 API 工具(External API Tool)|外部 API 工具]]：补 HTTPS/host/443 allowlist、空端口、SSRF、禁止重定向及剩余 DNS 风险。
+- 新增项目页 [[04-Projects/Agent/AI-Agent-Learning/t3-gate-tool-assistant|T3-Gate 三工具助手]]。
+- 新增复盘 [[07-Reviews/AI-Agent-Learning/2026-07-12-t3-gate-tool-calling-review|2026-07-12 T3-Gate Tool Calling PASS 复盘]]。
+- 更新阶段 3 课程页、课程索引、Agent/LLM 概念索引、项目索引、AI-Agent-Learning 跳转索引与全局索引。
+- 正式证据：`t3-gate-v2` SHA-256 `76664937408435087A48691EE6EBE6287F0127E154CFB51671823950C67C042F`；normal 10/10、failure 3/3、danger 1/1、holdout 3/3；两个独立 evaluator 均为 14/14 PASS，真实 DeepSeek 请求 19 次。
+- 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 187`
+  - `Links: 1441`
   - `Broken links: 0`
   - `Missing frontmatter: 0`
   - `Raw non-index files: 7`

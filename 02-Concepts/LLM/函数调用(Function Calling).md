@@ -6,9 +6,13 @@ type: concept
 topic: LLM
 status: usable
 created: 2026-07-03
+updated: 2026-07-12
 source:
   - AI-Agent-Learning T3-01（2026-07-01 学习日）
+  - AI-Agent-Learning T3-Gate（2026-07-11 ChatCompletionMessage 回填辨析）
+  - AI-Agent-Learning T3-Gate 正式复核（2026-07-12）
   - HF agents-course 中文版 unit1 + bonus-unit1
+  - DeepSeek API Docs：Tool Calls / Thinking Mode
 tags:
   - LLM
   - Agent
@@ -47,6 +51,99 @@ tags:
 - **Observation** ＝ 工具**真实执行结果**（成功数据 / 报错信息 / 状态码都算）——报错也是情报，模型看到才能重试、换参数或如实告知。
 - 接口无状态：Action 与 Observation 都要 append 进 messages **整盘重发**，模型才「看得见」自己刚干了什么（见 [[多轮对话与无状态记忆(Stateless Memory)]]）。
 - 「中间人」永远是模型之外的**客户端程序**——自己写的脚本，或 Claude Code / Codex 这类别人写好的 harness（跑在本机，不是「平台」）。
+
+## assistant 消息对象为什么可以直接 append
+
+```python
+message = response.choices[0].message
+print(message)
+```
+
+打印出来通常是 `ChatCompletionMessage(...)`，而不是 `{...}`。这是因为 `message` 是 SDK 返回的**消息模型对象**，不是普通 `dict`。但 `list.append()` 本来就能保存任意 Python 对象；更关键的是，DeepSeek 使用的 OpenAI 兼容 SDK 能在下一次请求时把这个消息对象序列化成 API 所需的 JSON。
+
+因此，工具调用后应优先完整保存模型刚返回的 assistant 消息：
+
+```python
+messages.append(message)
+```
+
+它会保留 `role`、`content`、`tool_calls` 等字段；Thinking Mode 下还会保留后续请求必须回传的 `reasoning_content`。这也是 DeepSeek 官方 Tool Calls 示例采用的写法。
+
+如果确实需要普通字典，例如调试、持久化或自行组装请求，可以完整转换：
+
+```python
+assistant_message = message.model_dump(exclude_none=True)
+messages.append(assistant_message)
+```
+
+下面这种“外层手写 dict、内层仍放 SDK 对象”的混合写法不一定立刻报错，但容易漏字段，不作为默认写法：
+
+```python
+messages.append({
+    "role": "assistant",
+    "content": message.content,
+    "tool_calls": message.tool_calls,
+})
+```
+
+> [!important] assistant 消息与 tool 消息不是同一种东西
+> assistant 的工具调用请求可以完整追加 `message`；客户端执行函数后生成的工具结果，要转成字符串再追加 `role: "tool"` 消息，并带回匹配的 `tool_call_id`。
+
+```python
+result_json = json.dumps(tool_result, ensure_ascii=False)
+messages.append({
+    "role": "tool",
+    "tool_call_id": tool_call.id,
+    "content": result_json,
+})
+```
+
+还要区分两个动作：
+
+- `messages.append(message)`：把当前消息保存进对话历史。
+- `message = response.choices[0].message`：让变量指向最新一次模型响应。
+
+只 append 不重新赋值，后面检查的仍可能是旧 `message`；只重新赋值不 append，模型下一轮又看不到前一轮的工具调用请求。
+
+## 一次响应可以有多个 tool_call
+
+一个 assistant 响应不等于一次工具调用。模型可以在同一条消息里返回多个 `tool_call`，每个调用都有独立的 `tool_call.id`：
+
+```text
+assistant.tool_calls = [call_calc, call_file]
+  -> role="tool", tool_call_id=call_calc.id
+  -> role="tool", tool_call_id=call_file.id
+```
+
+客户端必须先保存完整 assistant 消息，再逐个处理并按原 ID 回填。即使某个调用因为未知工具、坏参数或安全策略在执行前被拒绝，也要回填一条稳定错误结果；这样模型才能把结果和具体调用对应起来。
+
+```python
+messages.append(message)
+
+for tool_call in message.tool_calls:
+    result = execute_tool_call(tool_call)
+    messages.append({
+        "role": "tool",
+        "tool_call_id": tool_call.id,
+        "content": json.dumps(result, ensure_ascii=False),
+    })
+```
+
+## 五种数量与最大轮数
+
+不要把下面五个数字混成“调用次数”：
+
+| 数量 | 计数单位 |
+|---|---|
+| 模型 API 调用数 | 每次 `chat.completions.create()` |
+| 工具轮数 | 一条含 `tool_calls` 的 assistant 响应被整批处理一次 |
+| `tool_call` 数 | 调用请求的条数；一轮可以有多条 |
+| Python 工具执行数 | 真正进入注册表函数的次数；执行前拒绝不计 |
+| `role="tool"` 回填数 | 每个已处理调用各一条；执行前拒绝也要回填 |
+
+直接回答分支没有 `tool_calls`，客户端应直接返回 `message.content`，不执行工具。
+
+最大轮数限制的是**已完成的工具轮数**。以 `max_tool_rounds=3` 为例，客户端可能先收到第 4 次模型响应，看到它仍要求调用工具后才判断到达上限；第 4 个调用不执行，稳定停止文本直接返回 Agent 调用者，不再发回模型。
 
 ## 停止并解析（stop and parse）
 
@@ -87,6 +184,10 @@ messages.append({"role": "tool", "content": result})   # Observation 拼回
 - ❌ 「prompt 教的工具模型会忘记」 → ✅ 没有忘（每轮都在上下文里），是**不保证遵守**（概率采样）。
 - ⚠️ 自编 Observation 的**代码实景不易识别**：见「一次 call_model 吐出 Action+Observation+答案」的代码，第一眼仍会信结果来自工具（概念背得出≠实景认得出）——判别法＝找有没有真执行。
 - ⚠️ 坏 JSON 抛 `JSONDecodeError`（**值**的问题，ValueError 家族），不是 `TypeError`（类型不匹配操作，如 `answer += None`）。
+- ❌ `message` 打印出来不是 dict，所以不能 append → ✅ `ChatCompletionMessage` 是 SDK 消息对象；Python 列表可以保存它，SDK 会在请求时序列化。需要显式 dict 时用 `message.model_dump(exclude_none=True)`。
+- ❌ 手动只复制 `role/content/tool_calls` 就一定等价 → ✅ 可能漏掉 `reasoning_content` 等字段；优先追加完整 `message`，尤其是 Thinking Mode。
+- ❌ 一条 assistant 响应只会有一个工具调用 → ✅ `tool_calls` 是列表；每个调用有独立 ID 和独立工具结果。
+- ❌ 工具轮数就是 Python 函数执行次数 → ✅ 一轮可含多个调用，且客户端拒绝的调用会回填错误但不进入真实函数。
 
 ## 关联
 
@@ -96,8 +197,12 @@ messages.append({"role": "tool", "content": result})   # Observation 拼回
 - [[提示工程基础(Prompt Engineering)]]：手搓说明书＝prompt 工程；四要素。
 - [[LLM 本质与幻觉(Hallucination)]]：自编 Observation ＝ 幻觉在 Agent 链路里的具体形态。
 - [[MCP(Model Context Protocol)]]：统一「怎么给模型提供工具」的开放协议（阶段 9 展开）。
+- [[../Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议]]：`tools` schema、`TOOLS` 注册表与客户端校验顺序。
+- [[../../04-Projects/Agent/AI-Agent-Learning/t3-gate-tool-assistant|T3-Gate 三工具助手]]：原生三工具闭环与 14 条评估用例。
+- [[../../07-Reviews/AI-Agent-Learning/2026-07-12-t3-gate-tool-calling-review|T3-Gate PASS 复盘]]。
 
 ## 来源
 
 - AI-Agent-Learning T3-01：笔记 `notes/stage3/t3_01_function_calling.md`（共写、含自纠痕迹）；`daily/2026-07-01.md`（带读 7 题＋练习 13 题全 PASS）。
 - HF agents-course 中文版：`unit1/tools.mdx`、`actions.mdx`、`observations.mdx`、`bonus-unit1/what-is-function-calling.mdx`。
+- DeepSeek API Docs：[Tool Calls](https://api-docs.deepseek.com/guides/tool_calls)、[Thinking Mode](https://api-docs.deepseek.com/guides/thinking_mode)。
