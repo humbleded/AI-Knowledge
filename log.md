@@ -617,3 +617,23 @@ tags:
   - `Missing frontmatter: 0`
   - `Raw non-index files: 7`
   - `Warnings: 0`
+
+## 2026-07-15
+
+### AI-Agent-Learning A4-02 LLM 与 Agent 基础 PASS（同步知识库）
+
+- 复核执行区 `daily/2026-07-14.md`、`daily/2026-07-15.md`、指定 Hello-Agents / Hugging Face 资料与定稿 notes，正式判定 **A4-02 PASS**。
+- 更新 [[02-Concepts/LLM/提示工程基础(Prompt Engineering)|提示工程基础]]：补 Instruction Data / Instruction Tuning / Prompting / Few-shot 的对象、参数变化和模型版本持久性边界。
+- 更新 [[02-Concepts/LLM/特殊Token(Special Tokens)|特殊 Token]]：补 Chat Template、模板错配风险与 `apply_chat_template()` 输入转换。
+- 更新 [[02-Concepts/LLM/LLM 本质与幻觉(Hallucination)|LLM 本质与幻觉]]：补三类幻觉、Agent 风险放大、权威事实、客户端硬校验、人工确认和超时保持未知。
+- 去重检查 [[02-Concepts/LLM/多轮对话与无状态记忆(Stateless Memory)|无状态记忆]]、[[02-Concepts/Agent/工具调用与动作(Tool Calling and Action)|工具调用与动作]]、[[02-Concepts/Agent/智能体(Agent)|智能体]]：已有内容准确完整，保持不改。
+- 更新 [[03-Courses/Agent/AI-Agent-Learning/stage4-agent-basics|阶段 4：Agent 基础原理]] 与 [[03-Courses/Agent/AI-Agent-Learning/README|课程索引]]，当前任务切换为 A4-03 ReAct。
+- 新增复盘 [[07-Reviews/AI-Agent-Learning/2026-07-15-a4-02-llm-agent-basics-review|2026-07-15 A4-02 PASS 复盘]]。
+- 更新 [[02-Concepts/LLM/README|LLM 概念索引]]、[[01-Maps/AI-Agent-Learning 跳转索引]] 与 [[index|全局索引]]；未新建重复概念卡。
+- 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 189`
+  - `Links: 1505`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`

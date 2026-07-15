@@ -3,7 +3,7 @@ type: map
 topic: AI-Agent-Learning 跳转索引
 status: active
 created: 2026-05-28
-updated: 2026-07-12
+updated: 2026-07-15
 tags:
   - AI-Agent-Learning
   - 索引
@@ -69,6 +69,9 @@ tags:
 - [[../02-Concepts/LLM/上下文工程(Context Engineering)|上下文工程：策划进窗口的整组 token（概念卡）]]
 - [[../02-Concepts/LLM/结构化输出(Structured Output)|结构化输出：让模型吐出程序能吃的 JSON（概念卡）]]
 - [[../02-Concepts/LLM/函数调用(Function Calling)|函数调用 / Tool Calling：模型点菜、程序炒菜（概念卡）]]
+- [[../02-Concepts/LLM/LLM 本质与幻觉(Hallucination)|LLM 本质与 Agent 幻觉防线（概念卡）]]
+- [[../02-Concepts/LLM/特殊Token(Special Tokens)|特殊 Token 与 Chat Template（概念卡）]]
+- [[../02-Concepts/LLM/提示工程基础(Prompt Engineering)|Instruction Data / Tuning / Prompting 与 Few-shot（概念卡）]]
 - [[../02-Concepts/Python/strip() 与数据清洗|Python strip 与洗运行时脏数据（概念卡）]]
 - [[../07-Reviews/AI-Agent-Learning/2026-05-27-stage0-p0-01-p0-02-pass-review|2026-05-27 阶段 0 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-05-28-stage0-p0-03-pass-review|2026-05-28 P0-03 PASS 复盘]]
@@ -87,6 +90,7 @@ tags:
 - [[../07-Reviews/AI-Agent-Learning/2026-07-08-t3-04-public-api-tool-review|2026-07-08 T3-04 外部 API 工具 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-07-09-a4-01-what-is-agent-review|2026-07-09 A4-01 什么是 Agent PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-07-12-t3-gate-tool-calling-review|2026-07-12 T3-Gate Tool Calling PASS 复盘]]
+- [[../07-Reviews/AI-Agent-Learning/2026-07-15-a4-02-llm-agent-basics-review|2026-07-15 A4-02 LLM 与 Agent 基础 PASS 复盘]]
 
 ## 外部资源中文索引
 

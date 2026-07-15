@@ -3,7 +3,7 @@ type: concept-index
 topic: LLM
 status: active
 created: 2026-05-28
-updated: 2026-07-12
+updated: 2026-07-15
 tags:
   - LLM
   - 概念卡
@@ -19,10 +19,10 @@ tags:
 ## 语言建模基础
 
 - [[分词(Tokenization)]]：usable，理解文本如何变成 token ID。
-- [[特殊Token(Special Tokens)]]：usable，理解 EOS/EOT、角色边界、API 消息格式与模型内部 token 序列的区别。
+- [[特殊Token(Special Tokens)]]：usable，理解 EOS/EOT、API 消息层与 Token 序列层，并能说明 Chat Template 如何序列化角色/边界及模板错配风险。
 - [[嵌入(Embedding)]]：usable，理解 token/position 如何变成向量表示。
 - [[自回归生成(Autoregressive)]]：usable，理解下一个 token 预测和生成循环。
-- [[LLM 本质与幻觉(Hallucination)|LLM 本质与幻觉]]：usable，LLM=预测下一个最可能 token；幻觉是"只求像、不求真"的天生副作用(最可能≠最真实)，靠 RAG 等缓解。
+- [[LLM 本质与幻觉(Hallucination)|LLM 本质与幻觉]]：usable，生成概率高不等于外部事实真实；区分事实性/忠实性/内在幻觉，并用工具事实、代码硬校验和人工确认阻断 Agent 风险放大。
 
 ## Transformer 基础
 
@@ -38,7 +38,7 @@ tags:
 - [[多轮对话与无状态记忆(Stateless Memory)|多轮对话：接口无状态与客户端记忆]]：usable，服务端不记上一轮，记忆=客户端每轮重发 `[SYSTEM]+history+本轮`（SYSTEM 也每轮发）；append=记不记 / trim=记多久；SYSTEM 固定不裁 vs history 动态会裁。
 - [[流式输出(Streaming)|流式输出：stream=True 与逐 chunk 处理]]：usable，`stream=True`+`for chunk`+`delta.content or ""` 三件套；None 两场景（思考阶段/末块）；推理模型两条流 `reasoning_content`/`content`；拼回完整文本才能进 history；错误 return 字符串而非 None 防毒化。
 - [[采样参数与成本(Sampling)|采样参数与成本：temperature/top-k/top-p 与 token 计费]]：usable，写字=抽签(Softmax 分数→概率)；temperature 调差距悬殊度(低=陡=稳, 高=平=野, `k=1`≡`T→0`≡贪心)；top-k 固定/top-p 动态砍名单；DeepSeek 温度表(代码0.0/对话1.3/创意1.5)且数字不跨厂商通用；成本=输入(缓存命中/未命中)+输出(最贵)，`usage` 看用量，history 越长越贵。
-- [[提示工程基础(Prompt Engineering)|Prompt 基础：zero/few-shot、角色扮演、上下文示例、CoT]]：usable，四技巧各控一维(角色扮演=怎么说 / 上下文示例=长啥样·格式 / few-shot=划边界+锁格式 / CoT=多步推理)；zero/one/few-shot 唯一区别=给几个样例(≠效果)；指令调优(改模型/训练期) vs few-shot(改 prompt/推理期)；技巧≠role(内容放 system/user)；锁 JSON 三件套模板 + messages 摆法甲/乙；长≠好(相关+清晰)，few-shot 别无脑堆(边际递减+每轮重发烧 token)。
+- [[提示工程基础(Prompt Engineering)|Prompt 基础：zero/few-shot、角色扮演、上下文示例、CoT]]：usable，四技巧各控一维；区分 Instruction Data（训练样本）、Instruction Tuning（更新参数的训练过程）与 Prompt/Few-shot（当前上下文，不改参数），并判断微调效果只属于被调用的新模型版本。
 - [[摘要与改写(Summarize & Transform)|摘要与改写：Summarizing(压信息) vs Transforming(换外壳)]]：usable，判据=信息量变不变(摘要=有损压缩变少 / 改写=换语言·语气·格式·纠错信息不变)；控长度三单位(字/词/句)是软约束(模型无计数器·token≠字词)，严格卡死靠代码 `len()` 截；概括(求全·会捎带) vs 提取(求专·更干净)；判断漏重点先定义重点→体检三件套(人工对照/提取反查/聚焦重摘)；转换四类；锁 JSON 摘要 prompt 5 要素清单；真实场景(邮件处理器待办用提取字段兜底、客服历史摘要省 token=「长≠好」同源)。
 - [[分类与路由(Classification & Routing)|分类与路由：Classification(给标签) vs Routing(按标签分流)]]：usable，分类是路由前半步(分类给标签→路由按标签 dict/if 分发)；四种路由(LLM/嵌入/规则/ML)，动手规则版(纯代码字面匹配·快但列不全/撞类) vs 模型版(调 LLM 懂语义·非银弹·边界靠 prompt 定义)；真跑 4 难样例规则版 0/4→模型版 2/4；两类错漏判(命中0类)/撞类(命中≥2类被前者抢)用 all_hits+len 自动归因；模型版三件套(只输出标签词+strip+白名单兜底)；固定标签让下游 if 接得住；分类质量=标签定义在 prompt 的清晰度。
 - [[上下文工程(Context Engineering)|上下文工程：策划进窗口的整组 token]]：usable，提示工程的**演进**(管整组 token 非一句指令；上下文工程**包含**提示工程=跨层)；**context rot**=token 越多准确回忆越差→上下文是**有限资源+注意力预算**(性能梯度非悬崖)；**最小≠最短**(双向:下限别漏/上限别注水)；**五手段分层**(trim 截断/JIT 检索=基础与按需 ｜ Compaction/结构化笔记/子代理=长时程三件套)+选择经验法则；`trim_history`=truncation 属上下文工程**非**提示工程、与 Compaction(硬删 vs 软压)**平级**；实证真跑 `①100>③50>②25`、②丢名字 ③保名字；坑：`messages=text` 的 400、`history[-0:]`==整表、`split` 按空格不按字。

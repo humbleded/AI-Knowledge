@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-07-12
+updated: 2026-07-15
 tags:
   - 知识库
   - index
@@ -154,6 +154,7 @@ tags:
 - [[07-Reviews/AI-Agent-Learning/2026-07-08-t3-04-public-api-tool-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-07-09-a4-01-what-is-agent-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-07-12-t3-gate-tool-calling-review]]
+- [[07-Reviews/AI-Agent-Learning/2026-07-15-a4-02-llm-agent-basics-review]]
 - [[07-Reviews/Daily-Practice/2026-06-04-review]]
 - [[07-Reviews/Daily-Practice/2026-06-05-review]]
 - [[07-Reviews/Knowledge-Base/2026-05-29-karpathy-health-check]]

@@ -3,7 +3,7 @@ type: course-stage
 topic: AI-Agent-Learning Stage 4
 status: active
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-15
 tags:
   - Agent
   - AI-Agent-Learning
@@ -16,14 +16,14 @@ tags:
 
 阶段 4 目标是理解 ReAct、Planning、Reflection，并写出最小 Agent。
 
-当前阶段 3 的 T3-Gate 尚未完成，因此阶段 4 先做工作日概念预习；动手交付和 A4-Gate 等 T3-Gate 通过后继续。
+阶段 3 的 T3-Gate 已通过。阶段 4 当前已完成 Agent 定义与 LLM/Agent 基础，下一步进入 A4-03 ReAct，把单轮 Tool Call 链路扩展成多轮 Thought / Action / Observation 循环。
 
 ## 任务状态
 
 | 任务 | 状态 | 日期 | 产物 | 备注 |
 |---|---|---|---|---|
 | A4-01 什么是 Agent | PASS | 2026-07-09 | `notes/stage4/a4_01_what_is_agent.md` | 能定义 Agent，区分 Agent vs Chatbot，说明 Tool/Action/Observation/Final Answer 和代码硬校验 |
-| A4-02 LLM 与 Agent 基础 | TODO |  |  | 下一项概念预习 |
+| A4-02 LLM 与 Agent 基础 | PASS | 2026-07-15 | `notes/stage4/a4_02_llm_agent_basics.md` | LLM/Token/架构、Chat Template、无状态、工具职责与幻觉防线均通过 |
 | A4-03 ReAct | TODO |  |  |  |
 | A4-04 Plan-and-Solve | TODO |  |  |  |
 | A4-05 Reflection | TODO |  |  |  |
@@ -35,14 +35,27 @@ tags:
 - [[../../../02-Concepts/Agent/工具调用与动作(Tool Calling and Action)|工具调用与动作]]
 - [[../../../02-Concepts/Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议]]
 
+## A4-02 已沉淀概念
+
+- [[../../../02-Concepts/LLM/LLM 本质与幻觉(Hallucination)|LLM 本质与幻觉]]
+- [[../../../02-Concepts/LLM/特殊Token(Special Tokens)|特殊 Token 与 Chat Template]]
+- [[../../../02-Concepts/LLM/提示工程基础(Prompt Engineering)|Instruction Data / Tuning / Prompting 与 Few-shot]]
+- [[../../../02-Concepts/LLM/多轮对话与无状态记忆(Stateless Memory)|多轮对话与无状态记忆]]
+- [[../../../02-Concepts/Agent/工具调用与动作(Tool Calling and Action)|工具调用与动作]]
+
 ## 当前易错点
 
 - 格式像 Observation，不代表它是真 Observation；要看代码有没有真实执行工具。
 - Action JSON 要严格可解析，不能有弯引号、未加引号的字符串值、尾逗号。
 - Observation 是工具结果的反馈消息，不是执行者。
+- 微调效果写入新模型权重；后续请求必须调用该模型。Few-shot 只在当前上下文有效。
+- 工具返回失败或超时时，模型自然语言不能覆盖权威结果；未知状态必须保持未知。
 
 ## 相关执行区
 
 - [A4-01 daily](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-07-09.md)
 - [A4-01 notes](file:///C:/Users/26823/Desktop/AI-Agent-Learning/notes/stage4/a4_01_what_is_agent.md)
+- [A4-02 daily（带读与迁移）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-07-14.md)
+- [A4-02 daily（正式练习与复核）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-07-15.md)
+- [A4-02 notes](file:///C:/Users/26823/Desktop/AI-Agent-Learning/notes/stage4/a4_02_llm_agent_basics.md)
 - [progress](file:///C:/Users/26823/Desktop/AI-Agent-Learning/tracker/progress.md)
