@@ -637,3 +637,32 @@ tags:
   - `Broken links: 0`
   - `Missing frontmatter: 0`
   - `Raw non-index files: 7`
+
+## 2026-07-19
+
+### Weekly Maintenance
+
+- 复查 [[00-Inbox/README|00-Inbox]]、[[raw/README|raw]]、[[index|index.md]]、[[log|log.md]]、[[08-Memory/全库中文辅助阅读规则|全库中文辅助阅读规则]] 和 2026-07-12 之后的 Git 变化。
+- 初始运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 189`
+  - `Links: 1505`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`
+  - `Warnings: 0`
+- [[00-Inbox/README|00-Inbox]] 当前仍只有 `README.md`，没有待分拣资料。
+- [[raw/README|raw]] 当前有 7 个非索引 source notes；本周没有新增 raw source，已有 source notes 保留原始资料层位置。
+- 复核近期 Git 变化：2026-07-12 之后只有 `13c7aa6` A4-02 同步提交，已沉淀到 LLM 概念卡、Agent 课程页、AI-Agent-Learning 复盘页、主题 README、[[01-Maps/AI-Agent-Learning 跳转索引|AI-Agent-Learning 跳转索引]] 和 [[index|全局索引]]。
+- 根据中文辅助阅读规则复查：最近新增核心页以中文解释为主，保留 `Instruction Tuning`、`Prompting`、`Few-shot`、`Chat Template`、`apply_chat_template()`、`Hallucination`、`Agent`、`Tool Calling`、路径、命令、API 名和代码片段。英文占比较高的 `copilot/copilot-custom-prompts/` 属于可执行 prompt assets，本次不硬翻译其指令正文。
+- 记录 seed backlog：6 个 Python 入门概念卡、1 个 Claude Skills 课程 seed、1 个 HelloAgents 源码阅读索引 seed，均已在正确目录，后续按学习证据扩写。
+- 新增本维护复盘 [[07-Reviews/Knowledge-Base/2026-07-19-weekly-maintenance|2026-07-19 Weekly Maintenance]]。
+- 更新 [[index|index.md]]：补入本周维护复盘入口。
+- 完成编辑后再次运行严格检查：
+  - `OK: True`
+  - `Markdown files: 190`
+  - `Links: 1528`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`
+  - `Warnings: 0`
