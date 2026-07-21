@@ -1,4 +1,4 @@
-﻿---
+---
 type: concept
 topic: Agent Tool Definition
 status: active
@@ -61,10 +61,10 @@ Execution Logic: 校验 operation/a/b，然后调用 operator.add/sub/mul/truedi
 
 同一个工具在系统里有两种表示，服务于不同对象：
 
-| 名称 | 使用者 | 内容 |
-|---|---|---|
-| 小写 `tools` | 模型 | JSON Schema 菜单：工具名、描述、参数结构 |
-| 大写 `TOOLS` | 客户端 | Python 注册表：工具名到真实函数的映射 |
+| 名称         | 使用者 | 内容                         |
+| ---------- | --- | -------------------------- |
+| 小写 `tools` | 模型  | JSON Schema 菜单：工具名、描述、参数结构 |
+| 大写 `TOOLS` | 客户端 | Python 注册表：工具名到真实函数的映射     |
 
 ```python
 TOOLS = {
