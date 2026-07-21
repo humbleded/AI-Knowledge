@@ -1,16 +1,17 @@
 ---
 aliases:
   - function-calling
-  - tool-calling
+  - 函数调用
 type: concept
 topic: LLM
 status: usable
 created: 2026-07-03
-updated: 2026-07-12
+updated: 2026-07-21
 source:
   - AI-Agent-Learning T3-01（2026-07-01 学习日）
   - AI-Agent-Learning T3-Gate（2026-07-11 ChatCompletionMessage 回填辨析）
   - AI-Agent-Learning T3-Gate 正式复核（2026-07-12）
+  - AI-Agent-Learning 对话：Function Calling / Tool Calling 范围与调用格式辨析（2026-07-21）
   - HF agents-course 中文版 unit1 + bonus-unit1
   - DeepSeek API Docs：Tool Calls / Thinking Mode
 tags:
@@ -22,11 +23,45 @@ tags:
   - Observation
 ---
 
-# 函数调用（Function Calling / Tool Calling）：模型点菜，程序炒菜
+# 函数调用（Function Calling）：模型点菜，程序炒菜
 
 ## 一句话解释
 
-函数调用 ＝ 让 LLM 能「点名要用哪个工具、传什么参数」、由**你的程序**真正执行、结果再喂回模型的整套机制。**模型从不执行任何工具**——它只产出「调用请求」。Tool Calling 与 Function Calling 是**同一机制的两个名字**（OpenAI 早期参数叫 `functions`，后改 `tools`/`tool_calls`，叫法随之泛化）。
+Function Calling 是 **Tool Calling 的一种常见具体形式**：工具以“函数名 + 参数结构”提供给模型，模型生成函数调用请求，再由客户端真正执行。**模型不执行函数**——它只产出“想调用哪个函数、参数是什么”。
+
+## Function Calling 与 Tool Calling 的区别
+
+| 术语 | 范围 | 典型对象 | 例子 |
+|---|---|---|---|
+| `Tool Calling` | 更宽的上位概念：模型请求使用外部能力 | 函数、API、数据库、浏览器、代码执行器等 | 搜索网页、查数据库、调用天气工具 |
+| `Function Calling` | Tool Calling 的函数型具体形式：工具按函数 schema 暴露 | 函数名 + 参数 | `get_weather(city="Singapore")` |
+
+```text
+Tool Calling（工具调用，上位概念）
+  ├─ Function Calling（函数型工具调用）
+  ├─ 浏览器操作
+  ├─ 数据库查询
+  └─ 代码执行等其他工具形式
+```
+
+> [!note] 为什么有些资料会混用两者？
+> 不同平台和教程的命名并不完全统一：有的平台统一使用 `tools` / `tool_calls`，其中具体工具类型仍叫 `function`。因此，**讲概念时记住 Tool Calling 更宽；写代码时以当前平台的字段和 schema 为准**。
+
+## 什么算原生 Function Calling
+
+原生 API Function Calling 通常同时包含三点：
+
+1. 客户端通过 API 的正式参数提交工具 schema；
+2. 模型在 API 规定的结构化字段（如 `tool_calls`）中返回调用请求，而不是只在普通正文里打印一段 JSON；
+3. 客户端根据函数名找到真实函数、校验参数并执行，再按协议回填结果。
+
+下面这段只表达了函数调用请求的**语义核心**：
+
+```json
+{"name":"get_weather","arguments":{"city":"Singapore"}}
+```
+
+它可以称为“简化的 Function Call 表示”，但不是跨厂商统一的完整标准响应。某些兼容 API 还会包上调用 ID、类型和 `function` 层，`arguments` 也可能是等待客户端解析的 JSON 字符串。若同样的 JSON 只是出现在模型的普通文本 `content` 中，它通常属于手写结构化协议，**不能仅凭长得像 JSON 就认定为原生 Function Calling**。
 
 ## 为什么需要工具：补两个洞
 
@@ -151,7 +186,7 @@ for tool_call in message.tool_calls:
 
 「停」防的事故：不停的话，模型顺着训练里见过的剧本把 **Observation 槽位自己编出来**（假天气、假订单），再基于假数据写出自信的最终回答——格式全对、文本上肉眼不可辨，**最隐蔽的失败**。唯一判别法：**看代码有没有真执行**（有没有 TOOLS 注册表 / 分发器 / 真调用）。本质＝把「填 Observation 的权力」锁死在程序手里。
 
-## Function Calling（官方版）vs 手搓 prompt 教学法
+## 原生 API Function Calling vs 手搓 prompt 教学法
 
 | | 手搓（HF unit1 教法） | Function Calling |
 |---|---|---|
@@ -181,6 +216,8 @@ messages.append({"role": "tool", "content": result})   # Observation 拼回
 - ❌ Agent ＝ 会用工具的聪明模型 → ✅ **Agent ＝ LLM(大脑) + 工具(手脚) + 调度程序(脊髓) 组成的系统**；光有模型＝chatbot，能说「我帮你查」但说完啥也不发生。
 - ❌ 「停止」在输出完最终回答之后 → ✅ 在 **Action 吐完瞬间**（×2 踩）；防自编 Observation。
 - ❌ 名字坑：叫「函数调用」→ ✅ 模型**不调用**函数，只**生成调用请求**。
+- ❌ Tool Calling 与 Function Calling 在所有语境下都完全同义 → ✅ 概念上 Tool Calling 更宽，Function Calling 是函数型工具调用；平台命名可能近似混用。
+- ❌ 正文里出现 `{"name": ..., "arguments": ...}` 就一定是原生 Function Calling → ✅ 还要看是否通过正式工具 schema 声明，并由 API 的专用调用字段返回。
 - ❌ 「prompt 教的工具模型会忘记」 → ✅ 没有忘（每轮都在上下文里），是**不保证遵守**（概率采样）。
 - ⚠️ 自编 Observation 的**代码实景不易识别**：见「一次 call_model 吐出 Action+Observation+答案」的代码，第一眼仍会信结果来自工具（概念背得出≠实景认得出）——判别法＝找有没有真执行。
 - ⚠️ 坏 JSON 抛 `JSONDecodeError`（**值**的问题，ValueError 家族），不是 `TypeError`（类型不匹配操作，如 `answer += None`）。
@@ -197,6 +234,7 @@ messages.append({"role": "tool", "content": result})   # Observation 拼回
 - [[提示工程基础(Prompt Engineering)]]：手搓说明书＝prompt 工程；四要素。
 - [[LLM 本质与幻觉(Hallucination)]]：自编 Observation ＝ 幻觉在 Agent 链路里的具体形态。
 - [[MCP(Model Context Protocol)]]：统一「怎么给模型提供工具」的开放协议（阶段 9 展开）。
+- [[../Agent/工具调用与动作(Tool Calling and Action)|工具调用与动作]]：Tool Calling、Function Calling、Action、执行与结果的层级边界。
 - [[../Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议]]：`tools` schema、`TOOLS` 注册表与客户端校验顺序。
 - [[../../04-Projects/Agent/AI-Agent-Learning/t3-gate-tool-assistant|T3-Gate 三工具助手]]：原生三工具闭环与 14 条评估用例。
 - [[../../07-Reviews/AI-Agent-Learning/2026-07-12-t3-gate-tool-calling-review|T3-Gate PASS 复盘]]。
@@ -204,5 +242,6 @@ messages.append({"role": "tool", "content": result})   # Observation 拼回
 ## 来源
 
 - AI-Agent-Learning T3-01：笔记 `notes/stage3/t3_01_function_calling.md`（共写、含自纠痕迹）；`daily/2026-07-01.md`（带读 7 题＋练习 13 题全 PASS）。
+- AI-Agent-Learning 对话：Function Calling / Tool Calling 范围与简化调用 JSON 辨析（2026-07-21）。
 - HF agents-course 中文版：`unit1/tools.mdx`、`actions.mdx`、`observations.mdx`、`bonus-unit1/what-is-function-calling.mdx`。
 - DeepSeek API Docs：[Tool Calls](https://api-docs.deepseek.com/guides/tool_calls)、[Thinking Mode](https://api-docs.deepseek.com/guides/thinking_mode)。

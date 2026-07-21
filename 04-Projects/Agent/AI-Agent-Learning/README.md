@@ -3,7 +3,7 @@ type: project-index
 topic: AI-Agent-Learning Agent Projects
 status: active
 created: 2026-07-06
-updated: 2026-07-12
+updated: 2026-07-22
 tags:
   - Agent
   - AI-Agent-Learning
@@ -19,6 +19,10 @@ tags:
 - [[t3-03-file-reader-tool|T3-03 文件工具]]
 - [[t3-04-public-api-tool|T3-04 外部 API 工具]]
 - [[t3-gate-tool-assistant|T3-Gate 三工具助手]]
+
+## 阶段 4：Agent 控制模式
+
+- [[a4-03-react-agent|A4-03 ReAct Agent]]
 
 ## 源码阅读
 

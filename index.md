@@ -65,6 +65,7 @@ tags:
 - [[02-Concepts/LLM/函数调用(Function Calling)|函数调用：模型点菜、程序炒菜（Tool Calling）]]
 - [[02-Concepts/Agent/README|Agent 概念卡]]
 - [[02-Concepts/Agent/智能体(Agent)|智能体：LLM + 工具 + 客户端调度 + Observation 反馈循环]]
+- [[02-Concepts/Agent/ReAct推理与行动循环(ReAct)|ReAct：Thought / Action / Observation 循环与停止条件]]
 - [[02-Concepts/Agent/工具调用与动作(Tool Calling and Action)|工具调用与动作：Tool / Tool Calling / Action]]
 - [[02-Concepts/Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议：Name / Description / Execution Logic]]
 - [[02-Concepts/Agent/文件工具沙箱(File Tool Sandbox)|文件工具沙箱：resolve + relative_to 的安全边界]]
@@ -133,6 +134,7 @@ tags:
 - [[04-Projects/Agent/AI-Agent-Learning/t3-03-file-reader-tool]]
 - [[04-Projects/Agent/AI-Agent-Learning/t3-04-public-api-tool]]
 - [[04-Projects/Agent/AI-Agent-Learning/t3-gate-tool-assistant]]
+- [[04-Projects/Agent/AI-Agent-Learning/a4-03-react-agent]]
 - [[04-Projects/Agent/AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引]]
 
 ## 复盘与记忆
@@ -155,6 +157,7 @@ tags:
 - [[07-Reviews/AI-Agent-Learning/2026-07-09-a4-01-what-is-agent-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-07-12-t3-gate-tool-calling-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-07-15-a4-02-llm-agent-basics-review]]
+- [[07-Reviews/AI-Agent-Learning/2026-07-22-a4-03-react-review]]
 - [[07-Reviews/Daily-Practice/2026-06-04-review]]
 - [[07-Reviews/Daily-Practice/2026-06-05-review]]
 - [[07-Reviews/Knowledge-Base/2026-05-29-karpathy-health-check]]

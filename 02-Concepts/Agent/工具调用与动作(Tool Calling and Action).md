@@ -3,11 +3,12 @@ type: concept
 topic: Agent
 status: usable
 created: 2026-07-10
-updated: 2026-07-12
+updated: 2026-07-21
 source:
   - AI-Agent-Learning 对话：Tool / Tool Calling / Action / Fine-tuning 辨析（2026-07-10）
   - AI-Agent-Learning 对话：Action / Tool Call / Tool Execution 边界订正（2026-07-11）
   - AI-Agent-Learning T3-Gate 正式复核（2026-07-12）
+  - AI-Agent-Learning 对话：Function Calling / Tool Calling 范围与调用格式辨析（2026-07-21）
 tags:
   - Agent
   - Tool-Calling
@@ -31,12 +32,30 @@ aliases:
 
 再补一层边界：Tool Calling 能力通常由模型厂商训练好，但你在 API 里传 `tools` 参数，只是在提供工具说明书，不是在微调模型。
 
-## 五个词的关系
+## Tool Calling 与 Function Calling
+
+**Tool Calling 是上位概念，Function Calling 是其中常见的函数型实现。**
+
+| 比较项 | Tool Calling | Function Calling |
+|---|---|---|
+| 范围 | 更宽，泛指模型请求使用外部工具 | 更窄，工具以函数名和参数 schema 暴露 |
+| 工具形态 | 函数、API、数据库、浏览器、代码执行器等 | `get_weather(city)` 这类函数接口 |
+| 常见表达 | API 的 `tool_calls`，或 ReAct / 自定义协议里的 Action | 函数名 + `arguments`，常放在 API 的 `tool_calls` 中 |
+
+不同平台可能近似混用这两个名字。例如，API 顶层字段叫 `tools` / `tool_calls`，其中一个具体调用的类型仍可能叫 `function`。术语判断要分两层：
+
+- **概念层**：Tool Calling 更宽，Function Calling 是其子集；
+- **平台实现层**：以当前 API 文档规定的字段和 schema 为准。
+
+手写 ReAct 文本 `Action: Weather[Singapore]` 属于广义 Tool Calling；如果它只是靠 prompt 生成、再由客户端自行解析，就不等于 API 原生 Function Calling。详见 [[../../LLM/函数调用(Function Calling)|函数调用（Function Calling）]]。
+
+## 六个词的关系
 
 | 概念 | 人话解释 | 例子 |
 |---|---|---|
 | `Tool` | 一个可用能力，通常包含工具说明和真实执行函数 | `get_weather(city)`、`calculator(expression)` |
 | `Tool Calling` | 模型说“我要用哪个工具、参数是什么”的请求 | 调用 `calculator`，参数是 `{"expression": "128 * 37"}` |
+| `Function Calling` | Tool Calling 的函数型具体形式 | 请求 `get_weather(city="Singapore")` |
 | `Action` | Agent 决定要采取的下一步动作 | 调工具、查资料、写文件、点击按钮、最终回答等 |
 | `Tool Execution` | 客户端读取 Tool Call 后，真正运行函数或请求外部 API | 执行 `calculator(expression="128 * 37")` |
 | `Tool Result` | 工具真实执行后产生的结果；回填给模型时常叫 `Observation` | `4736`，或结构化成功/错误信息 |
@@ -75,6 +94,8 @@ Action（模型决定：下一步调用 calculator）
 
 > [!warning] 生成 JSON ≠ 执行工具
 > 模型生成 `{"name": "get_weather", "arguments": {"city": "北京"}}`，只表示“请求调用”。只有客户端读取它并运行 `get_weather(city="北京")` 后，工具才真正被执行。
+>
+> 这还是一种**简化表示**，不是跨厂商统一的完整响应格式。若它只是出现在普通正文中，也不能仅凭外形认定为 API 原生 Function Calling。
 
 ## 为什么有些资料直接说 Action 就是 JSON
 
@@ -146,6 +167,9 @@ tools 参数 = 你告诉司机这辆车上有哪些按钮
 - 错误理解：Tool Calling 就是 Tool。  
   正确理解：Tool 是工具本身，Tool Calling 是请求使用工具的动作。
 
+- 错误理解：Tool Calling 与 Function Calling 永远是完全相同的两个名字。
+  正确理解：概念上 Tool Calling 更宽，Function Calling 是函数型工具调用；具体平台可能近似混用术语。
+
 - 错误理解：Tool Calling 后模型自己执行了工具。  
   正确理解：模型只输出工具名和参数；客户端程序才真正执行工具。
 
@@ -170,6 +194,7 @@ tools 参数 = 你告诉司机这辆车上有哪些按钮
 Tool = 能力本身
 Action = 决定下一步做什么
 Tool Call = 模型生成调用请求（工具名 + 参数）
+Function Calling = Tool Calling 的函数型具体形式
 Tool Execution = 客户端真正执行工具
 Tool Result = 真实执行结果，再回填给模型
 Tool Calling 属于 Action 的一种实现形式
@@ -179,7 +204,7 @@ Fine-tuning = 训练或改变模型，不是普通传参
 
 ## 相关链接
 
-- [[../../LLM/函数调用(Function Calling)|函数调用(Function Calling / Tool Calling)]]
+- [[../../LLM/函数调用(Function Calling)|函数调用（Function Calling）：原生调用与手写 JSON 的边界]]
 - [[工具定义与执行协议(Tool Definition)]]
 - [[外部 API 工具(External API Tool)]]
 - [[../../04-Projects/Agent/AI-Agent-Learning/t3-gate-tool-assistant|T3-Gate 三工具助手]]

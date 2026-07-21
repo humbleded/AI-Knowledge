@@ -666,3 +666,37 @@ tags:
   - `Missing frontmatter: 0`
   - `Raw non-index files: 7`
   - `Warnings: 0`
+
+## 2026-07-21
+
+### Function Calling / Tool Calling 术语边界补充
+
+- 更新 [[02-Concepts/LLM/函数调用(Function Calling)|函数调用（Function Calling）]]：将“两个名字完全同义”订正为“Tool Calling 是上位概念，Function Calling 是常见的函数型具体形式”。
+- 补充原生 API Function Calling 的判断条件，并明确 `{"name":"get_weather","arguments":{"city":"Singapore"}}` 只是简化调用表示，不是跨厂商统一的完整响应标准；普通正文中的同形 JSON 也不自动等于原生 Function Calling。
+- 更新 [[02-Concepts/Agent/工具调用与动作(Tool Calling and Action)|工具调用与动作]]：补齐 Tool Calling / Function Calling / Action / Tool Execution 的层级关系，以及 ReAct 手写 Action 与原生 API 调用的边界。
+- 更新 [[02-Concepts/LLM/README|LLM 概念索引]]、[[02-Concepts/Agent/README|Agent 概念索引]]、[[01-Maps/AI 知识库总地图|AI 知识库总地图]] 与相关链接显示名；复用已有概念卡，未新建重复页面。
+- 运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 190`
+  - `Links: 1535`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`
+
+## 2026-07-22
+
+### AI-Agent-Learning A4-03 ReAct PASS（同步知识库）
+
+- 复核执行区 `daily/2026-07-21.md`、`daily/2026-07-22.md` 与 `code/stage4/a4_03_react_agent.py`，正式判定 **A4-03 PASS**；真实脚本完整两轮轨迹通过，内存边界断言 15/15。
+- 新增 [[02-Concepts/Agent/ReAct推理与行动循环(ReAct)|ReAct 推理与行动循环]]：补 Thought / Action / Observation 职责链、成功停止与安全停止、`max_steps`、客户端硬校验及 fake LLM 证据边界。
+- 新增 [[04-Projects/Agent/AI-Agent-Learning/a4-03-react-agent|A4-03 ReAct Agent 项目页]] 与 [[07-Reviews/AI-Agent-Learning/2026-07-22-a4-03-react-review|A4-03 PASS 复盘]]。
+- 更新 [[03-Courses/Agent/AI-Agent-Learning/stage4-agent-basics|阶段 4 课程页]]、课程/项目/概念索引、[[01-Maps/AI-Agent-Learning 跳转索引|跳转索引]]、[[01-Maps/AI 知识库总地图|总地图]] 与 [[index|全局索引]]；下一项切换为 A4-04 Plan-and-Solve。
+- 去重检查 [[02-Concepts/Agent/智能体(Agent)|智能体]] 与 [[02-Concepts/Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议]]：保留已有通用职责说明，只补 ReAct 关联入口，没有复制整页内容。
+- 项目侧复习路由：新增 `CD-004` 与稳定错题 `WP-24`（首轮均 2026-08-05）；`WP-12` 复测通过并升到 `+1月`（2026-08-21）。W4 算法仍为 `DEBT` 0/4，普通课程 PASS 不升级岗位证据。
+- 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 193`
+  - `Links: 1577`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`

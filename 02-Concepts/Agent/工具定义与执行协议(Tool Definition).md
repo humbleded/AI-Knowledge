@@ -3,13 +3,14 @@ type: concept
 topic: Agent Tool Definition
 status: active
 created: 2026-07-06
-updated: 2026-07-12
+updated: 2026-07-21
 source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-06.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage3\t3_02_calculator_tool.py
   - C:\Users\26823\Desktop\AI-Agent-Learning\repos\hello-agents\docs\chapter4\第四章 智能体经典范式构建.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage3\t3_gate_tool_assistant.py
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-11.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-21.md
 tags:
   - Agent
   - Tool-Calling
@@ -146,7 +147,8 @@ else:
 
 ## 相关链接
 
-- [[../LLM/函数调用(Function Calling)|函数调用（Function Calling / Tool Calling）]]
+- [[ReAct推理与行动循环(ReAct)|ReAct 推理与行动循环]]
+- [[../LLM/函数调用(Function Calling)|函数调用（Function Calling）：Tool Calling 的函数型形式]]
 - [[../../04-Projects/Agent/AI-Agent-Learning/t3-02-calculator-tool|T3-02 计算器工具]]
 - [[../../07-Reviews/AI-Agent-Learning/2026-07-06-t3-02-calculator-tool-review|2026-07-06 T3-02 PASS 复盘]]
 - [[../../04-Projects/Agent/AI-Agent-Learning/t3-gate-tool-assistant|T3-Gate 三工具助手]]

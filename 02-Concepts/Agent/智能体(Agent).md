@@ -3,7 +3,7 @@ type: concept
 topic: Agent
 status: usable
 created: 2026-07-10
-updated: 2026-07-10
+updated: 2026-07-22
 source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-09.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\notes\stage4\a4_01_what_is_agent.md
@@ -152,6 +152,7 @@ Observation: {"ok": true, "status_code": 200}
 
 ## 相关链接
 
+- [[ReAct推理与行动循环(ReAct)]]
 - [[工具调用与动作(Tool Calling and Action)]]
 - [[工具定义与执行协议(Tool Definition)]]
 - [[文件工具沙箱(File Tool Sandbox)]]
