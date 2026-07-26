@@ -3,7 +3,7 @@ type: map
 topic: AI 知识库总地图
 status: active
 created: 2026-05-28
-updated: 2026-07-22
+updated: 2026-07-27
 tags:
   - 知识库
   - 地图
@@ -84,6 +84,7 @@ tags:
 - RAG
 - [[../02-Concepts/Agent/智能体(Agent)|Agent / 智能体]]
 - [[../02-Concepts/Agent/ReAct推理与行动循环(ReAct)|ReAct 推理与行动循环]]
+- [[../02-Concepts/Agent/反思机制(Reflection)|Reflection 反思机制]]
 - [[../02-Concepts/LLM/函数调用(Function Calling)|Function Calling（Tool Calling 的函数型形式）]]
 - [[MCP/mcp-official-docs-map|MCP]]
 - [[../02-Concepts/MCP/MCP(Model Context Protocol)|Model Context Protocol]]

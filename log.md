@@ -3,7 +3,7 @@ type: maintenance-log
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-07-12
+updated: 2026-07-27
 tags:
   - 知识库
   - log
@@ -697,6 +697,63 @@ tags:
   - `OK: True`
   - `Markdown files: 193`
   - `Links: 1577`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`
+
+## 2026-07-23
+
+### Reflection 与运行事实复盘的术语边界
+
+- 新增 [[02-Concepts/Agent/反思机制(Reflection)|反思机制（Reflection）]]，沉淀 A4-04-G6 已通过的术语区分。
+- 明确运行复盘回答“发生了什么”，`Reflection` 对照目标评价过程或结果并提出改进；发生时间不是两者的唯一分界。
+- 补充 `Observation -> Reflection -> 重试 / 重写 / 重新 Planning / Memory` 的职责关系，并说明重新规划不自动等于 Reflection。
+- 更新 [[02-Concepts/Agent/README|Agent 概念卡索引]] 与 [[index|全局索引]]。
+- 运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 194`
+  - `Links: 1585`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+
+### Planner 模型输出的安全解析
+
+- 更新 [[02-Concepts/LLM/结构化输出(Structured Output)|结构化输出]]，补充 Markdown Python 代码围栏属于弱文本协议，不等于 API 强制的 Structured Outputs。
+- 记录 `index()` 与链式 `split()` 在缺少开头/结束围栏时的失败差异，并推荐用 `find()` 显式进入失败返回路径。
+- 补充分层防线：围栏完整性检查 -> `ast.literal_eval()` -> 外层类型检查 -> 元素与业务约束检查。
+- 记录两个运行时陷阱：`list[str]` 类型标注不执行校验，且 `all([]) == True`，空计划需要单独拒绝。
+- 运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 194`
+  - `Links: 1586`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+
+## 2026-07-27
+
+### Weekly Maintenance
+
+- 复查 [[00-Inbox/README|00-Inbox]]、[[raw/README|raw]]、[[index|index.md]]、[[log|log.md]]、[[08-Memory/全库中文辅助阅读规则|全库中文辅助阅读规则]] 和 2026-07-19 之后的 Git 变化。
+- 初始运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 194`
+  - `Links: 1586`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`
+- [[00-Inbox/README|00-Inbox]] 当前仍只有 `README.md`，没有待分拣资料。
+- [[raw/README|raw]] 当前有 7 个非索引 source notes；本周没有新增 raw source，已有 source notes 保留原始资料层位置。
+- 复核近期 Git 变化：`676f3cb` 为 Function Calling / Tool Calling 术语边界备份修订；`64236c5` 同步 A4-03 ReAct PASS 成果，已沉淀到 Agent 概念卡、课程页、项目页、复盘页、主题索引和 [[01-Maps/AI 知识库总地图|总地图]]。
+- 复核并纳入 2026-07-23 未提交知识沉淀：新增 [[02-Concepts/Agent/反思机制(Reflection)|反思机制（Reflection）]]，更新 [[02-Concepts/LLM/结构化输出(Structured Output)|结构化输出]] 的 Planner 模型输出安全解析边界，并同步 [[02-Concepts/Agent/README|Agent 概念卡索引]]、[[index|全局索引]] 和本日志。
+- 根据中文辅助阅读规则复查：新增与更新页以中文解释为主，保留 `Reflection`、`Observation`、`Planning`、`Structured Outputs`、`JSON mode`、`ast.literal_eval()`、`index()`、`split()`、`find()`、`list[str]`、`all([])`、路径、命令和代码片段。
+- `函数调用(Function Calling).md` 仅出现 Git 状态/行尾提示，文件 hash 与索引一致，没有实质内容差异；`.obsidian/`、`.claudian/`、本地 app state 与生成缓存未纳入维护提交。
+- 新增本维护复盘 [[07-Reviews/Knowledge-Base/2026-07-27-weekly-maintenance|2026-07-27 Weekly Maintenance]]。
+- 更新 [[01-Maps/AI 知识库总地图|AI 知识库总地图]]：补入 [[02-Concepts/Agent/反思机制(Reflection)|Reflection 反思机制]] 入口。
+- 更新 [[index|index.md]]：补入本周维护复盘入口。
+- 完成编辑后再次运行严格检查：
+  - `OK: True`
+  - `Markdown files: 195`
+  - `Links: 1620`
   - `Broken links: 0`
   - `Missing frontmatter: 0`
   - `Raw non-index files: 7`

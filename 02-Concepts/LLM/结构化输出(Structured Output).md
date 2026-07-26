@@ -5,10 +5,11 @@ type: concept
 topic: LLM
 status: usable
 created: 2026-06-30
-updated: 2026-07-05
+updated: 2026-07-23
 source:
   - AI-Agent-Learning PR2-04
   - AI-Agent-Learning PR2-Gate
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-23.md
   - OpenAI Structured Outputs 官方文档
   - DeepSeek JSON Output 官方文档
 tags:
@@ -84,6 +85,94 @@ result = {"todo": "{\"sender\": \"张三\"}"}
 
 这种结果虽然外层文件仍可能是合法 JSON，但 `todo` 只是**字符串字段**，后续不能写 `result["todo"]["sender"]`。正确做法是先 `json.loads` 成 Python `dict`。
 
+## 弱文本协议：从 Markdown 代码围栏解析 Python 列表
+
+有些教学示例会要求模型返回：
+
+````text
+```python
+["查询天气", "预订酒店", "安排行程"]
+```
+````
+
+这只是客户端和模型约定的**文本协议**，不属于 API 强制保证的 Structured Outputs。模型可能漏掉围栏、返回错误语法，或者返回列表以外的对象，因此必须依次完成：
+
+```text
+围栏完整性检查
+  -> Python 字面量语法解析
+  -> 外层类型检查
+  -> 元素类型和业务约束检查
+```
+
+### `index()` 比链式 `split()` 更明确，但 `find()` 更适合主动兜底
+
+两种常见提取写法：
+
+```python
+# 写法 1：明确查找开始和结束位置
+start = response_text.index("```python") + len("```python")
+end = response_text.index("```", start)
+plan_str = response_text[start:end].strip()
+```
+
+```python
+# 写法 2：依赖切分结果的固定下标
+plan_str = response_text.split("```python")[1].split("```")[0].strip()
+```
+
+| 异常输入 | `index()` | 链式 `split()` |
+|---|---|---|
+| 缺少开头围栏 | 抛 `ValueError` | 读取 `[1]` 时抛 `IndexError` |
+| 有开头、缺少结束围栏 | 抛 `ValueError` | `[0]` 仍可能拿到剩余全文，格式错误未被明确发现 |
+| 可读性 | `start/end` 明确表示边界 | `[1]`、`[0]` 依赖隐含位置 |
+
+如果只在这两种写法中选择，`index()` 更清楚；但模型格式错误属于预期失败分支，使用 `find()` 主动判断通常更稳：
+
+```python
+import ast
+
+
+def parse_plan(response_text: str) -> list[str]:
+    marker = "```python"
+
+    start = response_text.find(marker)
+    if start == -1:
+        return []
+    start += len(marker)
+
+    end = response_text.find("```", start)
+    if end == -1:
+        return []
+
+    plan_str = response_text[start:end].strip()
+    if not plan_str:
+        return []
+
+    try:
+        parsed = ast.literal_eval(plan_str)
+    except (ValueError, SyntaxError):
+        return []
+
+    if not isinstance(parsed, list) or not parsed:
+        return []
+
+    if not all(isinstance(step, str) and step.strip() for step in parsed):
+        return []
+
+    return parsed
+```
+
+### 三个容易漏掉的边界
+
+1. `ast.literal_eval()` 比 `eval()` 安全，因为它不执行任意 Python 代码；但它只负责把合法字面量转成 Python 对象，不保证结果一定是 `list[str]`。
+2. `parsed: list[str] = ast.literal_eval(plan_str)` 中的 `list[str]` 只是类型标注，不会在运行时拦住字典、整数或混合元素列表。
+3. `all([])` 返回 `True`，所以如果业务要求计划不能为空，必须在 `all()` 前单独检查 `not parsed`。
+
+> [!tip] 可复用判断
+> 模型输出应当作不可信外部输入处理：先检查传输/围栏协议，再解析语法，最后验证结构和业务语义。任何一层成功，都不能替代后一层。
+
+如果模型服务支持 JSON mode 或严格 schema，应优先让模型直接返回 JSON，再使用 `json.loads()` 和 schema 校验；Markdown 围栏加 `ast.literal_eval()` 更适合作为教学示例或兼容旧接口的兜底方案。
+
 ## 实证：PR2-04 邮件抽取（真跑 DeepSeek）
 
 规则版 `extract_email`（`partition` 解析「标签：值」）vs 模型版 `extract_email_llm`（`json_object` + schema prompt）：
@@ -135,4 +224,5 @@ result = {"todo": "{\"sender\": \"张三\"}"}
 
 - AI-Agent-Learning PR2-04：产物 `code/stage2/pr2_04_extract_json.py`；预读 `notes/stage2/pr2_04_structured_output_preview.md`；带做与坑 `daily/2026-06-30.md`。
 - AI-Agent-Learning PR2-Gate：产物 `code/stage2/pr2_gate_email_processor.py`、`resources/stage2_email_result.json`；复盘 `daily/2026-07-05.md`。
+- AI-Agent-Learning A4-04-C1：`daily/2026-07-23.md` 中 Planner 计划解析的五类输入契约、首次 `4/5` 验证和缺少围栏时的 `IndexError` 证据。
 - OpenAI《Structured Outputs》、DeepSeek《JSON Output》官方文档（2026-06-30 抓取）。

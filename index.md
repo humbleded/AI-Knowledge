@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-07-19
+updated: 2026-07-27
 tags:
   - 知识库
   - index
@@ -66,6 +66,7 @@ tags:
 - [[02-Concepts/Agent/README|Agent 概念卡]]
 - [[02-Concepts/Agent/智能体(Agent)|智能体：LLM + 工具 + 客户端调度 + Observation 反馈循环]]
 - [[02-Concepts/Agent/ReAct推理与行动循环(ReAct)|ReAct：Thought / Action / Observation 循环与停止条件]]
+- [[02-Concepts/Agent/反思机制(Reflection)|Reflection：评价改进机制，与运行事实复盘区分]]
 - [[02-Concepts/Agent/工具调用与动作(Tool Calling and Action)|工具调用与动作：Tool / Tool Calling / Action]]
 - [[02-Concepts/Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议：Name / Description / Execution Logic]]
 - [[02-Concepts/Agent/文件工具沙箱(File Tool Sandbox)|文件工具沙箱：resolve + relative_to 的安全边界]]
@@ -171,6 +172,7 @@ tags:
 - [[07-Reviews/Knowledge-Base/2026-07-05-weekly-maintenance]]
 - [[07-Reviews/Knowledge-Base/2026-07-12-weekly-maintenance]]
 - [[07-Reviews/Knowledge-Base/2026-07-19-weekly-maintenance]]
+- [[07-Reviews/Knowledge-Base/2026-07-27-weekly-maintenance]]
 - [[08-Memory/知识库长期记忆规则]]
 - [[08-Memory/全库中文辅助阅读规则]]
 - [[08-Memory/AI 学习原则]]
