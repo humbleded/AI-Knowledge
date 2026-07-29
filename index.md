@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-07-27
+updated: 2026-07-30
 tags:
   - 知识库
   - index
@@ -66,6 +66,7 @@ tags:
 - [[02-Concepts/Agent/README|Agent 概念卡]]
 - [[02-Concepts/Agent/智能体(Agent)|智能体：LLM + 工具 + 客户端调度 + Observation 反馈循环]]
 - [[02-Concepts/Agent/ReAct推理与行动循环(ReAct)|ReAct：Thought / Action / Observation 循环与停止条件]]
+- [[02-Concepts/Agent/计划与求解(Plan-and-Solve)|Plan-and-Solve：Planner / Executor、history 与 Replanning 边界]]
 - [[02-Concepts/Agent/反思机制(Reflection)|Reflection：评价改进机制，与运行事实复盘区分]]
 - [[02-Concepts/Agent/工具调用与动作(Tool Calling and Action)|工具调用与动作：Tool / Tool Calling / Action]]
 - [[02-Concepts/Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议：Name / Description / Execution Logic]]
@@ -136,6 +137,7 @@ tags:
 - [[04-Projects/Agent/AI-Agent-Learning/t3-04-public-api-tool]]
 - [[04-Projects/Agent/AI-Agent-Learning/t3-gate-tool-assistant]]
 - [[04-Projects/Agent/AI-Agent-Learning/a4-03-react-agent]]
+- [[04-Projects/Agent/AI-Agent-Learning/a4-04-plan-and-solve]]
 - [[04-Projects/Agent/AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引]]
 
 ## 复盘与记忆
@@ -159,6 +161,7 @@ tags:
 - [[07-Reviews/AI-Agent-Learning/2026-07-12-t3-gate-tool-calling-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-07-15-a4-02-llm-agent-basics-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-07-22-a4-03-react-review]]
+- [[07-Reviews/AI-Agent-Learning/2026-07-30-a4-04-plan-and-solve-review]]
 - [[07-Reviews/Daily-Practice/2026-06-04-review]]
 - [[07-Reviews/Daily-Practice/2026-06-05-review]]
 - [[07-Reviews/Knowledge-Base/2026-05-29-karpathy-health-check]]

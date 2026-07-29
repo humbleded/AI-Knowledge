@@ -3,7 +3,7 @@ type: project-index
 topic: AI-Agent-Learning Agent Projects
 status: active
 created: 2026-07-06
-updated: 2026-07-22
+updated: 2026-07-30
 tags:
   - Agent
   - AI-Agent-Learning
@@ -23,6 +23,7 @@ tags:
 ## 阶段 4：Agent 控制模式
 
 - [[a4-03-react-agent|A4-03 ReAct Agent]]
+- [[a4-04-plan-and-solve|A4-04 Plan-and-Solve]]
 
 ## 源码阅读
 

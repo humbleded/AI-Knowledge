@@ -3,7 +3,7 @@ type: concept
 topic: Reflection
 status: usable
 created: 2026-07-23
-updated: 2026-07-23
+updated: 2026-07-30
 source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-23.md
 tags:
@@ -90,6 +90,7 @@ Action
 ## 相关链接
 
 - [[ReAct推理与行动循环(ReAct)|ReAct 推理与行动循环]]
+- [[计划与求解(Plan-and-Solve)|计划与求解]]
 - [[智能体(Agent)|智能体]]
 - [[工具调用与动作(Tool Calling and Action)|工具调用与动作]]
 

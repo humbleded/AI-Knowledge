@@ -3,7 +3,7 @@ type: map
 topic: AI-Agent-Learning 跳转索引
 status: active
 created: 2026-05-28
-updated: 2026-07-22
+updated: 2026-07-30
 tags:
   - AI-Agent-Learning
   - 索引
@@ -61,8 +61,10 @@ tags:
 - [[../04-Projects/Agent/AI-Agent-Learning/t3-04-public-api-tool|T3-04 动手：外部 API 工具]]
 - [[../04-Projects/Agent/AI-Agent-Learning/t3-gate-tool-assistant|T3-Gate：三工具 Tool Calling 闭环]]
 - [[../04-Projects/Agent/AI-Agent-Learning/a4-03-react-agent|A4-03：ReAct 控制循环]]
+- [[../04-Projects/Agent/AI-Agent-Learning/a4-04-plan-and-solve|A4-04：Plan-and-Solve 计划与执行闭环]]
 - [[../02-Concepts/Agent/智能体(Agent)|智能体（概念卡）]]
 - [[../02-Concepts/Agent/ReAct推理与行动循环(ReAct)|ReAct 推理与行动循环（概念卡）]]
+- [[../02-Concepts/Agent/计划与求解(Plan-and-Solve)|Plan-and-Solve（概念卡）]]
 - [[../02-Concepts/Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议（概念卡）]]
 - [[../02-Concepts/Agent/文件工具沙箱(File Tool Sandbox)|文件工具沙箱（概念卡）]]
 - [[../02-Concepts/Agent/外部 API 工具(External API Tool)|外部 API 工具（概念卡）]]
@@ -94,6 +96,7 @@ tags:
 - [[../07-Reviews/AI-Agent-Learning/2026-07-12-t3-gate-tool-calling-review|2026-07-12 T3-Gate Tool Calling PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-07-15-a4-02-llm-agent-basics-review|2026-07-15 A4-02 LLM 与 Agent 基础 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-07-22-a4-03-react-review|2026-07-22 A4-03 ReAct PASS 复盘]]
+- [[../07-Reviews/AI-Agent-Learning/2026-07-30-a4-04-plan-and-solve-review|2026-07-30 A4-04 Plan-and-Solve PASS 复盘]]
 
 ## 外部资源中文索引
 

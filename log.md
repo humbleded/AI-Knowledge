@@ -757,3 +757,21 @@ tags:
   - `Broken links: 0`
   - `Missing frontmatter: 0`
   - `Raw non-index files: 7`
+
+## 2026-07-30
+
+### AI-Agent-Learning A4-04 Plan-and-Solve PASS（同步知识库）
+
+- 复核执行区 `daily/2026-07-22.md`～`daily/2026-07-30.md` 与 `code/stage4/a4_04_plan_solve_demo.py`，正式判定 **A4-04 PASS**；真实脚本完整输出计划、3 步结果、事实性复盘和最终答案，聚焦边界断言 39/39。
+- 新增 [[02-Concepts/Agent/计划与求解(Plan-and-Solve)|计划与求解]]：沉淀 Planner/Executor 职责、四类执行上下文、`StepResult` 状态合同、静态 Planning/Replanning 边界、事实性复盘和确定性 demo 证据边界。
+- 新增 [[04-Projects/Agent/AI-Agent-Learning/a4-04-plan-and-solve|A4-04 Plan-and-Solve 项目页]] 与 [[07-Reviews/AI-Agent-Learning/2026-07-30-a4-04-plan-and-solve-review|A4-04 PASS 复盘]]。
+- 更新 [[03-Courses/Agent/AI-Agent-Learning/stage4-agent-basics|阶段 4 课程页]]、课程/项目/概念索引、[[01-Maps/AI-Agent-Learning 跳转索引|跳转索引]]、[[01-Maps/AI 知识库总地图|总地图]] 与 [[index|全局索引]]；下一项切换为 A4-05 Reflection。
+- 去重检查 [[02-Concepts/Agent/反思机制(Reflection)|反思机制]] 与 [[02-Concepts/LLM/结构化输出(Structured Output)|结构化输出]]：既有页面已准确覆盖 Reflection/事实复盘和 Planner 文本安全解析，本次只补反向链接，不复制同义章节。
+- 项目侧复习路由：`WP-08` 回炉通过并转入稳定池；新增活跃弱点 `WP-25`、`WP-26` 和核心定义 `CD-005`。WS-02、WS-05 达到 `DIAGNOSED_AND_FIXED`；W4 算法仍为 `DEBT` 0/4，普通课程 PASS 不升级岗位证据。
+- 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 198`
+  - `Links: 1660`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`
