@@ -775,3 +775,30 @@ tags:
   - `Broken links: 0`
   - `Missing frontmatter: 0`
   - `Raw non-index files: 7`
+
+## 2026-08-02
+
+### Weekly Maintenance
+
+- 复查 [[00-Inbox/README|00-Inbox]]、[[raw/README|raw]]、[[index|index.md]]、[[log|log.md]]、[[08-Memory/全库中文辅助阅读规则|全库中文辅助阅读规则]] 和 2026-07-26T23:43:36Z 之后的 Git 变化。
+- 初始运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 198`
+  - `Links: 1660`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`
+- [[00-Inbox/README|00-Inbox]] 当前仍只有 `README.md`，没有待分拣资料。
+- [[raw/README|raw]] 当前有 7 个非索引 source notes；本周没有新增 raw source，已有 source notes 保留原始资料层位置。
+- 复核近期 Git 变化：`cdae99e` 是上次周维护收口提交；`22ede4e` 同步 A4-04 Plan-and-Solve PASS 成果，已沉淀到 [[02-Concepts/Agent/计划与求解(Plan-and-Solve)|计划与求解]]、项目页、复盘页、课程页、主题索引、跳转索引、总地图、[[index|全局索引]] 和本日志。
+- 根据中文辅助阅读规则复查：A4-04 新增与更新页以中文解释为主，保留 `Plan-and-Solve`、`Planner`、`Executor`、`history`、`StepResult`、`None`、`str | None`、`Replanning`、`Reflection`、`ast.literal_eval()`、路径、命令和代码片段。
+- 新增 [[07-Reviews/Knowledge-Base/README|Knowledge-Base 维护复盘索引]] 与本维护复盘 [[07-Reviews/Knowledge-Base/2026-08-02-weekly-maintenance|2026-08-02 Weekly Maintenance]]。
+- 更新 [[01-Maps/AI 知识库总地图|AI 知识库总地图]]：补入 [[07-Reviews/Knowledge-Base/README|Knowledge-Base 维护复盘索引]] 入口。
+- 更新 [[index|index.md]]：补入 Knowledge-Base 复盘索引、本周维护复盘入口和 A4-05 / Memory 当前关注项。
+- 完成编辑后再次运行严格检查：
+  - `OK: True`
+  - `Markdown files: 200`
+  - `Links: 1704`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`
