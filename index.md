@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-08-02
+updated: 2026-08-04
 tags:
   - 知识库
   - index
@@ -67,7 +67,7 @@ tags:
 - [[02-Concepts/Agent/智能体(Agent)|智能体：LLM + 工具 + 客户端调度 + Observation 反馈循环]]
 - [[02-Concepts/Agent/ReAct推理与行动循环(ReAct)|ReAct：Thought / Action / Observation 循环与停止条件]]
 - [[02-Concepts/Agent/计划与求解(Plan-and-Solve)|Plan-and-Solve：Planner / Executor、history 与 Replanning 边界]]
-- [[02-Concepts/Agent/反思机制(Reflection)|Reflection：评价改进机制，与运行事实复盘区分]]
+- [[02-Concepts/Agent/反思机制(Reflection)|Reflection：三阶段改进闭环、停止条件、质量门槛与运行事实复盘边界]]
 - [[02-Concepts/Agent/工具调用与动作(Tool Calling and Action)|工具调用与动作：Tool / Tool Calling / Action]]
 - [[02-Concepts/Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议：Name / Description / Execution Logic]]
 - [[02-Concepts/Agent/文件工具沙箱(File Tool Sandbox)|文件工具沙箱：resolve + relative_to 的安全边界]]
@@ -138,6 +138,7 @@ tags:
 - [[04-Projects/Agent/AI-Agent-Learning/t3-gate-tool-assistant]]
 - [[04-Projects/Agent/AI-Agent-Learning/a4-03-react-agent]]
 - [[04-Projects/Agent/AI-Agent-Learning/a4-04-plan-and-solve]]
+- [[04-Projects/Agent/AI-Agent-Learning/a4-05-reflection-writer]]
 - [[04-Projects/Agent/AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引]]
 
 ## 复盘与记忆
@@ -162,6 +163,7 @@ tags:
 - [[07-Reviews/AI-Agent-Learning/2026-07-15-a4-02-llm-agent-basics-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-07-22-a4-03-react-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-07-30-a4-04-plan-and-solve-review]]
+- [[07-Reviews/AI-Agent-Learning/2026-08-04-a4-05-reflection-review]]
 - [[07-Reviews/Daily-Practice/2026-06-04-review]]
 - [[07-Reviews/Daily-Practice/2026-06-05-review]]
 - [[07-Reviews/Knowledge-Base/README|Knowledge-Base 维护复盘索引]]
@@ -197,5 +199,5 @@ tags:
 - 为 [[04-Projects/LLM/README|LLM 项目记录]] 增加 micrograd 复现实验。
 - 扩展 [[04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]] 的代码注释、可视化或测试。
 - 为 Karpathy 课程补充 raw transcript 或 repo 摘录。
-- 继续关注 A4-05 Reflection 与后续 Memory 相关概念卡是否形成可复用沉淀。
+- 继续关注 A4-Gate 的 problem contract、最小日志、安全停止与后续 Memory 相关概念是否形成可复用沉淀。
 - 继续新增 `cross entropy`、`softmax`、`logits` 等概念卡。
