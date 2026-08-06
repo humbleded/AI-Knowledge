@@ -3,7 +3,7 @@ type: map
 topic: Projects
 status: active
 created: 2026-05-28
-updated: 2026-07-12
+updated: 2026-08-06
 tags:
   - 项目记录
   - 知识库
@@ -32,6 +32,7 @@ tags:
 - [[Python/AI-Agent-Learning/p0-08-progress-file|P0-08 文件、JSON、CSV]]
 - [[Python/AI-Agent-Learning/p0-09-http-request|P0-09 HTTP 请求]]
 - [[Python/AI-Agent-Learning/p0-gate-learning-log|P0-Gate Python 基础闯关]]
+- [[Python/AI-Agent-Learning/w4-02-contains-duplicate|W4-02 存在重复元素]]
 
 ### Agent
 

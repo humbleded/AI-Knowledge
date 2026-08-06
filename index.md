@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-08-04
+updated: 2026-08-06
 tags:
   - 知识库
   - index
@@ -126,6 +126,7 @@ tags:
 - [[04-Projects/Python/AI-Agent-Learning/p0-08-progress-file]]
 - [[04-Projects/Python/AI-Agent-Learning/p0-09-http-request]]
 - [[04-Projects/Python/AI-Agent-Learning/p0-gate-learning-log]]
+- [[04-Projects/Python/AI-Agent-Learning/w4-02-contains-duplicate|W4-02 存在重复元素]]
 - [[04-Projects/LLM/AI-Agent-Learning/l1-01-first-call]]
 - [[04-Projects/LLM/AI-Agent-Learning/l1-gate-cli-chatbot]]
 - [[04-Projects/LLM/AI-Agent-Learning/pr2-01-02-handson]]
@@ -164,6 +165,7 @@ tags:
 - [[07-Reviews/AI-Agent-Learning/2026-07-22-a4-03-react-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-07-30-a4-04-plan-and-solve-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-08-04-a4-05-reflection-review]]
+- [[07-Reviews/AI-Agent-Learning/2026-08-06-w4-alg-f2-contains-duplicate-review]]
 - [[07-Reviews/Daily-Practice/2026-06-04-review]]
 - [[07-Reviews/Daily-Practice/2026-06-05-review]]
 - [[07-Reviews/Knowledge-Base/README|Knowledge-Base 维护复盘索引]]

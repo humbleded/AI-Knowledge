@@ -5,7 +5,7 @@ type: concept
 topic: Python
 status: usable
 created: 2026-06-02
-updated: 2026-06-27
+updated: 2026-08-06
 tags:
   - Python
   - 编程基础
@@ -116,6 +116,36 @@ tasks == ["task4", "task2"]
 task_status == {"task2": "done", "task4": "todo"}
 ```
 
+## 成员检查复杂度与“已见元素”模式
+
+判断列表中是否有重复元素时，可以一边遍历，一边维护“已经见过的值”。容器选型会直接改变复杂度：
+
+| 写法 | 单次成员检查 | 遍历 `n` 个元素的常规结果 | 适用情况 |
+|---|---:|---:|---|
+| `num in seen_list` | `O(n)` | 最坏 `O(n²)` | 数据很小、需要列表顺序或重复项本身 |
+| `num in seen_dict` | 平均 `O(1)` | 平均 `O(n)` | 还要保存下标、次数或其他元数据 |
+| `num in seen_set` | 平均 `O(1)` | 平均 `O(n)` | 只关心某个值是否出现过 |
+
+使用 `dict` 的版本：
+
+```python
+def contains_duplicate(nums: list[int]) -> bool:
+    seen = {}
+
+    for num in nums:
+        if num in seen:
+            return True
+        seen[num] = True
+
+    return False
+```
+
+循环最多处理 `n` 个元素，每次字典查询和写入平均为 `O(1)`，因此平均时间复杂度为 `O(n)`。全部元素都不重复时，字典最多保存 `n` 个键，所以额外空间复杂度为 `O(n)`。
+
+这里只说“平均”很重要：哈希表在极端碰撞下存在更差的理论最坏情况；常规算法题若未特别要求，通常按平均哈希操作分析。若只需要判断存在性，用 `set` 会更直接；需要保留下标或计数时再用 `dict`。
+
+测试预期也必须服从精确的相等语义：`-2 != 2`，绝对值相同不等于整数重复。负数重复案例应真正包含两次同一个值，例如 `[-2, -2, 3]`。
+
 ## set 去重的代价
 
 `set` 的查找和去重通常很快，但代价是：
@@ -132,3 +162,4 @@ task_status == {"task2": "done", "task4": "todo"}
 - [[条件判断与循环(if & for)]]
 - [[../LLM/多轮对话与无状态记忆(Stateless Memory)|多轮对话：接口无状态与客户端记忆]]：`[SYSTEM] + history + [user]` 拼 messages 正是「单个 dict 要 `[ ]` 包成 list」的应用。
 - [[../../07-Reviews/Daily-Practice/2026-06-05-review]]
+- [[../../04-Projects/Python/AI-Agent-Learning/w4-02-contains-duplicate|W4-02 存在重复元素项目记录]]

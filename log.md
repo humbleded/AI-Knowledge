@@ -820,3 +820,20 @@ tags:
   - `Broken links: 0`
   - `Missing frontmatter: 0`
   - `Raw non-index files: 7`
+
+## 2026-08-06
+
+### AI-Agent-Learning W4-ALG-F2 存在重复元素 PASS（同步知识库）
+
+- 复核 `code/algorithms/w4_02_contains_duplicate.py` 与 `daily/2026-08-06.md`，正式判定 **W4-ALG-F2 PASS**；显式测试 8/8、隐藏边界 9/9，返回类型为 `bool` 且不修改输入。
+- 扩写 [[02-Concepts/Python/list·dict·set 容器|Python list、dict、set]]：新增成员检查复杂度、“已见元素”模式、`dict`/`set` 选型、平均哈希复杂度与精确整数相等语义。
+- 新增 [[04-Projects/Python/AI-Agent-Learning/w4-02-contains-duplicate|W4-02 存在重复元素项目页]] 与 [[07-Reviews/AI-Agent-Learning/2026-08-06-w4-alg-f2-contains-duplicate-review|W4-ALG-F2 PASS 复盘]]；更新项目索引与全局索引，没有新建同义哈希表概念卡。
+- W4 算法由 0/4 更新为 1/4，仍为 `DEBT`：两数之和待 2026-08-07～2026-08-11 独立复测，另 2 道新题未开始。
+- A4-Gate 只完成 Problem Contract 设计静态核验，任务仍为 `DOING`；未把未实现的 Agent 循环或 14 条 eval 同步成 PASS 成果。
+- 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 204`
+  - `Links: 1739`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`
