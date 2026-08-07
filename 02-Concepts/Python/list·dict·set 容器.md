@@ -146,6 +146,34 @@ def contains_duplicate(nums: list[int]) -> bool:
 
 测试预期也必须服从精确的相等语义：`-2 != 2`，绝对值相同不等于整数重复。负数重复案例应真正包含两次同一个值，例如 `[-2, -2, 3]`。
 
+## 字符频次计数：扫描量与字典规模分开算
+
+判断两个字符串是否由完全相同的字符及次数组成时，可以分别建立“字符 → 出现次数”的字典，再比较两张字典：
+
+```python
+def is_anagram(s: str, t: str) -> bool:
+    if len(s) != len(t):
+        return False
+
+    count_s = {}
+    count_t = {}
+
+    for char in s:
+        count_s[char] = count_s.get(char, 0) + 1
+    for char in t:
+        count_t[char] = count_t.get(char, 0) + 1
+
+    return count_s == count_t
+```
+
+复杂度要把三件事分开：
+
+1. 一次 `dict.get()` 或写入按常规平均口径是 `O(1)`。
+2. 循环仍要处理全部输入字符。两个长度均为 `n` 的字符串共处理 `2n` 个字符，忽略常数后是 `O(n)`，不会因为字符只有 26 种就变成 `O(1)`。
+3. 字典保存的是不同字符的键，不是每次扫描都新建一个键。题目限定 26 个小写字母时，两张字典的键数都有固定上限，因此额外空间是 `O(1)`；若字符种类不固定，设不同字符总数为 `k`，则额外空间是 `O(k)`，且 `k <= n`，最坏为 `O(n)`。
+
+字典相等比较至多检查已保存的不同键，时间为 `O(k)`；在固定 26 个小写字母的合同下可视为 `O(1)`，在一般字符集下也不超过前面扫描输入的 `O(n)`，所以总体时间仍是 `O(n)`。
+
 ## set 去重的代价
 
 `set` 的查找和去重通常很快，但代价是：
@@ -163,3 +191,4 @@ def contains_duplicate(nums: list[int]) -> bool:
 - [[../LLM/多轮对话与无状态记忆(Stateless Memory)|多轮对话：接口无状态与客户端记忆]]：`[SYSTEM] + history + [user]` 拼 messages 正是「单个 dict 要 `[ ]` 包成 list」的应用。
 - [[../../07-Reviews/Daily-Practice/2026-06-05-review]]
 - [[../../04-Projects/Python/AI-Agent-Learning/w4-02-contains-duplicate|W4-02 存在重复元素项目记录]]
+- [[../../04-Projects/Python/AI-Agent-Learning/w4-03-valid-anagram|W4-03 有效的字母异位词项目记录]]

@@ -837,3 +837,19 @@ tags:
   - `Broken links: 0`
   - `Missing frontmatter: 0`
   - `Raw non-index files: 7`
+
+### AI-Agent-Learning W4-ALG-F3 有效的字母异位词 PASS（同步知识库）
+
+- 复核 `code/algorithms/w4_03_valid_anagram.py` 与 `daily/2026-08-06.md`，正式判定 **W4-ALG-F3 PASS**；显式测试 8/8、穷举性质对照 14641/14641、万字符真假用例 2/2，返回类型均为 `bool`。
+- 扩写 [[02-Concepts/Python/list·dict·set 容器|Python list、dict、set]]：新增字符频次计数，区分单次平均 `O(1)` 字典操作、`n` 次输入扫描和 `k` 个不同键的存储规模。
+- 扩写 [[02-Concepts/Python/异常·调试·测试(Exceptions)|Python 异常、调试与单元测试]]：新增“断言必须调用交付接口”的假绿灯检查。
+- 新增 [[04-Projects/Python/AI-Agent-Learning/w4-03-valid-anagram|W4-03 有效的字母异位词项目页]] 与 [[07-Reviews/AI-Agent-Learning/2026-08-06-w4-alg-f3-valid-anagram-review|W4-ALG-F3 PASS 复盘]]；更新项目索引与全局索引，没有新建同义哈希表或复杂度概念卡。
+- W4 算法由 1/4 更新为 2/4，仍为 `DEBT`：两数之和待 2026-08-07～2026-08-11 独立复测，另 1 道新题未开始。
+- 项目侧复习路由：`WP-28` 转入稳定错题间隔池，2026-08-20 首次回炉；新增活跃弱点 `WP-29`。本题不升级生产工作场景或岗位证据。
+- 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 206`
+  - `Links: 1754`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`

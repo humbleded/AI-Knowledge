@@ -5,7 +5,7 @@ type: concept
 topic: Python exceptions debugging testing
 status: usable
 created: 2026-06-11
-updated: 2026-06-11
+updated: 2026-08-06
 tags:
   - Python
   - 异常处理
@@ -69,6 +69,19 @@ assert safe_divide("abc", "2") == "错误：请输入数字。"
 
 这样以后即使重写交互层，核心逻辑仍然可以快速验证。
 
+## 断言必须调用交付接口，避免“假绿灯”
+
+测试通过只证明“断言实际调用的代码”通过，不会自动证明题目或调用方要求的函数已经实现。
+
+例如交付接口是 `is_anagram()`，但断言全部调用另建的 `is_anagram_dict()`；即使脚本显示 `All tests passed.`，空函数 `is_anagram()` 仍会隐式返回 `None`。这属于假绿灯：测试是绿色，但真正的交付路径没有被覆盖。
+
+最低检查顺序：
+
+1. 所有核心断言直接调用规定的函数名和参数合同。
+2. 检查返回值，也检查返回类型，例如要求布尔值时验证 `is True` / `is False`。
+3. 加入最容易混淆语义的反例，而不只覆盖普通成功案例。例如字母异位词要覆盖“字符种类相同但次数不同”和“长度不同”。
+4. 再用隐藏、性质或大规模测试补覆盖；这些补充测试不能替代交付文件中长期保留的关键断言。
+
 ## P0-07 练习模式
 
 在 `P0-07` 中，稳定做法是：
@@ -84,3 +97,4 @@ assert safe_divide("abc", "2") == "错误：请输入数字。"
 - [[环境管理(venv & pip)|Python 项目环境管理：venv、pip 与 .env]]
 - [[../../03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]
 - [[../../04-Projects/Python/AI-Agent-Learning/p0-07-safe-divide|P0-07 异常、调试、单元测试]]
+- [[../../04-Projects/Python/AI-Agent-Learning/w4-03-valid-anagram|W4-03 有效的字母异位词项目记录]]
