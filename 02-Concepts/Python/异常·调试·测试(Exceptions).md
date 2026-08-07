@@ -5,7 +5,7 @@ type: concept
 topic: Python exceptions debugging testing
 status: usable
 created: 2026-06-11
-updated: 2026-08-06
+updated: 2026-08-07
 tags:
   - Python
   - 异常处理
@@ -82,6 +82,36 @@ assert safe_divide("abc", "2") == "错误：请输入数字。"
 3. 加入最容易混淆语义的反例，而不只覆盖普通成功案例。例如字母异位词要覆盖“字符种类相同但次数不同”和“长度不同”。
 4. 再用隐藏、性质或大规模测试补覆盖；这些补充测试不能替代交付文件中长期保留的关键断言。
 
+## 断言还必须处于可达位置并真正运行
+
+测试代码“写在文件里”不等于它执行过。下面的断言位于函数内部，并排在无条件 `return` 之后，因此调用函数时永远走不到：
+
+```python
+def solve(...):
+    ...
+    return result
+    assert solve(...) == expected  # 不可达
+```
+
+应把测试放到函数外，并保持合法的顶层缩进；也可以放入 `if __name__ == "__main__":` 入口：
+
+```python
+def solve(...):
+    ...
+    return result
+
+
+if __name__ == "__main__":
+    assert solve(...) == expected
+    print("All test cases passed.")
+```
+
+三个证据要分开看：
+
+1. `py_compile` 能发现 `IndentationError` 等语法/缩进错误。
+2. 编译成功不能发现“断言在 `return` 后不可达”这类执行路径问题。
+3. 必须真实运行测试入口，并检查退出码和决定性输出；只有实际执行过的断言才能成为测试证据。
+
 ## P0-07 练习模式
 
 在 `P0-07` 中，稳定做法是：
@@ -98,3 +128,4 @@ assert safe_divide("abc", "2") == "错误：请输入数字。"
 - [[../../03-Courses/Python/AI-Agent-Learning/stage0-python-basics|阶段 0：Python 与开发环境]]
 - [[../../04-Projects/Python/AI-Agent-Learning/p0-07-safe-divide|P0-07 异常、调试、单元测试]]
 - [[../../04-Projects/Python/AI-Agent-Learning/w4-03-valid-anagram|W4-03 有效的字母异位词项目记录]]
+- [[../../04-Projects/Python/AI-Agent-Learning/w4-01-two-sum|W4-01 两数之和项目记录]]

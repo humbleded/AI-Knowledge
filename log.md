@@ -853,3 +853,23 @@ tags:
   - `Broken links: 0`
   - `Missing frontmatter: 0`
   - `Raw non-index files: 7`
+
+## 2026-08-07
+
+### AI-Agent-Learning W4-ALG-F1 两数之和独立复测 PASS（同步知识库）
+
+- 保留 2026-08-05 首次 `RETRY` 历史；2026-08-07 在规定窗口内脱离旧答案重建思路与函数，正式判定 **W4-ALG-F1 PASS（复测）**。
+- 正式证据：项目文件规定案例 3/3；独立函数隐藏检查 5/5；自设计顶层测试 6/6；穷举性质检查 35154/35154，输入未修改。
+- 扩写 [[02-Concepts/Python/list·dict·set 容器|Python list、dict、set]]：新增补数查询、“值 → 下标”映射、先查后存防同一下标自用及平均 `O(n)` / 额外 `O(n)` 因果。
+- 扩写 [[02-Concepts/Python/异常·调试·测试(Exceptions)|Python 异常、调试与单元测试]]：补充断言可达性、顶层缩进、编译检查与真实执行证据的区别。
+- 新增 [[04-Projects/Python/AI-Agent-Learning/w4-01-two-sum|W4-01 两数之和项目页]] 与 [[07-Reviews/AI-Agent-Learning/2026-08-07-w4-alg-f1-two-sum-review|W4-ALG-F1 PASS 复盘]]；更新项目索引与全局索引，没有新建同义哈希表概念卡。
+- W4 算法由 2/4 更新为 3/4，仍为 `DEBT 1`；两数之和债务已经清除，只剩第 4 道新题。
+- A4-Gate 只正式通过 C1 输入切片，整关仍为 `DOING`，未把 DRAFT 合同或未实现循环同步成 PASS 成果。
+- 项目侧复习路由：`WP-17` 升到 `+1月`；`WP-20` 因到期首答失败退回活跃 🟡；`WP-27` 转入稳定池；新增活跃 `WP-30`。回收块虽已完成，dated backlog 仍有 8 项并重新签发 `RECOVERY_BLOCK_PENDING`。
+- 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 208`
+  - `Links: 1769`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`

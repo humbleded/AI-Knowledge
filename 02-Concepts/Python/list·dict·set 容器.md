@@ -5,7 +5,7 @@ type: concept
 topic: Python
 status: usable
 created: 2026-06-02
-updated: 2026-08-06
+updated: 2026-08-07
 tags:
   - Python
   - 编程基础
@@ -146,6 +146,33 @@ def contains_duplicate(nums: list[int]) -> bool:
 
 测试预期也必须服从精确的相等语义：`-2 != 2`，绝对值相同不等于整数重复。负数重复案例应真正包含两次同一个值，例如 `[-2, -2, 3]`。
 
+## 两数之和：补数查询与“值 → 下标”映射
+
+当题目要求找出两个不同元素，使它们的和等于 `target`，遍历到当前数字 `num` 时，真正需要寻找的是它的补数：
+
+```python
+complement = target - num
+```
+
+字典保存“此前见过的数字 → 它的下标”，因为最终结果需要返回下标：
+
+```python
+def two_sum(nums: list[int], target: int) -> list[int]:
+    lookup = {}
+
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in lookup:
+            return [lookup[complement], i]
+        lookup[num] = i
+
+    return []
+```
+
+顺序必须是“先查补数，再保存当前数”。如果先执行 `lookup[num] = i`，当 `target == 2 * num` 时，当前元素可能立刻与自己匹配，重复使用同一个下标。两个不同下标上的相同数值仍然可以组成合法答案，例如 `[4, 4]`；禁止的是同一下标自用，不是禁止重复值。
+
+复杂度仍要把单次操作和整段循环分开：最多遍历 `n` 个元素，每次字典查询/写入平均 `O(1)`，所以平均时间为 `O(n)`；最坏需要保存 `n` 个“值 → 下标”映射，所以额外空间为 `O(n)`。
+
 ## 字符频次计数：扫描量与字典规模分开算
 
 判断两个字符串是否由完全相同的字符及次数组成时，可以分别建立“字符 → 出现次数”的字典，再比较两张字典：
@@ -192,3 +219,4 @@ def is_anagram(s: str, t: str) -> bool:
 - [[../../07-Reviews/Daily-Practice/2026-06-05-review]]
 - [[../../04-Projects/Python/AI-Agent-Learning/w4-02-contains-duplicate|W4-02 存在重复元素项目记录]]
 - [[../../04-Projects/Python/AI-Agent-Learning/w4-03-valid-anagram|W4-03 有效的字母异位词项目记录]]
+- [[../../04-Projects/Python/AI-Agent-Learning/w4-01-two-sum|W4-01 两数之和项目记录]]
