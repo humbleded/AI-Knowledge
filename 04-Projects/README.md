@@ -3,7 +3,7 @@ type: map
 topic: Projects
 status: active
 created: 2026-05-28
-updated: 2026-08-07
+updated: 2026-08-08
 tags:
   - 项目记录
   - 知识库
@@ -35,6 +35,7 @@ tags:
 - [[Python/AI-Agent-Learning/w4-01-two-sum|W4-01 两数之和]]
 - [[Python/AI-Agent-Learning/w4-02-contains-duplicate|W4-02 存在重复元素]]
 - [[Python/AI-Agent-Learning/w4-03-valid-anagram|W4-03 有效的字母异位词]]
+- [[Python/AI-Agent-Learning/w4-04-contains-nearby-duplicate|W4-04 存在相近的重复元素]]
 
 ### Agent
 

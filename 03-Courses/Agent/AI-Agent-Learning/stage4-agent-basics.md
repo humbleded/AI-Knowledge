@@ -3,7 +3,7 @@ type: course-stage
 topic: AI-Agent-Learning Stage 4
 status: active
 created: 2026-07-10
-updated: 2026-08-04
+updated: 2026-08-08
 tags:
   - Agent
   - AI-Agent-Learning
@@ -16,7 +16,7 @@ tags:
 
 阶段 4 目标是理解 ReAct、Planning、Reflection，并写出最小 Agent。
 
-阶段 3 的 T3-Gate 已通过。阶段 4 当前已完成 A4-01～A4-05；下一主任务进入 A4-Gate 最小 Agent 闯关。W4 算法 0/4 的 `DEBT` 独立结转，不由课程任务 PASS 覆盖。
+阶段 3 的 T3-Gate 已通过。阶段 4 当前已完成 A4-01～A4-05；下一主任务为 `DOING` 中的 A4-Gate 最小 Agent 闯关。W4 算法已完成 4/4、内容块 `PASS`，结转债务为 0；它仍与课程任务状态分层记录。
 
 ## 任务状态
 
@@ -27,7 +27,7 @@ tags:
 | A4-03 ReAct | PASS | 2026-07-22 | `code/stage4/a4_03_react_agent.py` | 完整两轮轨迹与 max_steps 通过；15/15 parser/prompt/loop 边界断言通过 |
 | A4-04 Plan-and-Solve | PASS | 2026-07-30 | `code/stage4/a4_04_plan_solve_demo.py` | 可运行计划→执行→事实复盘闭环；39/39 解析、history、复盘与编排边界断言通过 |
 | A4-05 Reflection | PASS | 2026-08-04 | `code/stage4/a4_05_reflection_writer.py` | 初稿/反思/改进/同标准选择闭环；39/39 确定性断言、真实提前停止与真实故障修正路径通过 |
-| A4-Gate 最小 Agent 闯关 | TODO |  |  |  |
+| A4-Gate 最小 Agent 闯关 | DOING | 2026-08-08 | `code/stage4/problem-contract.md`、`code/stage4/a4_gate_research_summary_agent.py` | Problem Contract、C1 133/133、C2a 14/14 已闭合；C2b 保留 1xx `RETRY → PASS` 证据，本地 131/131、独立 646/646 且真实 Wikipedia 无回归；真实 DeepSeek 循环等后续尚未完成 |
 
 ## A4-01 已沉淀概念
 

@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-08-07
+updated: 2026-08-08
 tags:
   - 知识库
   - index
@@ -129,6 +129,7 @@ tags:
 - [[04-Projects/Python/AI-Agent-Learning/w4-01-two-sum|W4-01 两数之和]]
 - [[04-Projects/Python/AI-Agent-Learning/w4-02-contains-duplicate|W4-02 存在重复元素]]
 - [[04-Projects/Python/AI-Agent-Learning/w4-03-valid-anagram|W4-03 有效的字母异位词]]
+- [[04-Projects/Python/AI-Agent-Learning/w4-04-contains-nearby-duplicate|W4-04 存在相近的重复元素]]
 - [[04-Projects/LLM/AI-Agent-Learning/l1-01-first-call]]
 - [[04-Projects/LLM/AI-Agent-Learning/l1-gate-cli-chatbot]]
 - [[04-Projects/LLM/AI-Agent-Learning/pr2-01-02-handson]]
@@ -170,6 +171,7 @@ tags:
 - [[07-Reviews/AI-Agent-Learning/2026-08-06-w4-alg-f2-contains-duplicate-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-08-06-w4-alg-f3-valid-anagram-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-08-07-w4-alg-f1-two-sum-review]]
+- [[07-Reviews/AI-Agent-Learning/2026-08-08-w4-alg-f4-contains-nearby-duplicate-review]]
 - [[07-Reviews/Daily-Practice/2026-06-04-review]]
 - [[07-Reviews/Daily-Practice/2026-06-05-review]]
 - [[07-Reviews/Knowledge-Base/README|Knowledge-Base 维护复盘索引]]

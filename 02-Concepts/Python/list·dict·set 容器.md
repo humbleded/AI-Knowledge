@@ -5,7 +5,7 @@ type: concept
 topic: Python
 status: usable
 created: 2026-06-02
-updated: 2026-08-07
+updated: 2026-08-08
 tags:
   - Python
   - 编程基础
@@ -173,6 +173,48 @@ def two_sum(nums: list[int], target: int) -> list[int]:
 
 复杂度仍要把单次操作和整段循环分开：最多遍历 `n` 个元素，每次字典查询/写入平均 `O(1)`，所以平均时间为 `O(n)`；最坏需要保存 `n` 个“值 → 下标”映射，所以额外空间为 `O(n)`。
 
+## 相近重复：在线维护“值 → 最近下标”
+
+如果题目不只问“有没有重复”，还要求两个相同值的下标距离不超过 `k`，只记录“见过这个值”已经不够。字典应保存：
+
+```text
+值 → 这个值最近一次出现的下标
+```
+
+```python
+def contains_nearby_duplicate(nums: list[int], k: int) -> bool:
+    last_seen = {}
+
+    for i, num in enumerate(nums):
+        if num in last_seen and i - last_seen[num] <= k:
+            return True
+        last_seen[num] = i
+
+    return False
+```
+
+顺序是“先比较，再更新”：
+
+1. 当前值以前出现过，就用当前下标减去它最近一次的下标。
+2. 距离不超过 `k`，立即返回 `True`。
+3. 没命中也要把记录更新为当前下标，给后面的元素保留更近的比较对象。
+
+为什么只保存最近下标就够？固定当前下标 `i` 后，以前出现过的下标越大，`i - 历史下标` 越小。最近一次都超过 `k` 时，更早的下标只会更远；最近一次满足条件时已经可以直接返回。因此不需要保存全部历史下标，也不需要在循环结束后再两两比较。
+
+例如 `nums = [1, 2, 1, 1]`、`k = 1`：
+
+- 下标 `2` 遇到第二个 `1`，与下标 `0` 的距离为 `2`，暂不命中，但要把 `1` 的最近下标更新为 `2`。
+- 下标 `3` 再遇到 `1`，与最近下标 `2` 的距离为 `1`，返回 `True`。
+
+`k = 0` 时一定返回 `False`：题目要求两个下标不同，而不同整数下标的距离至少为 `1`。代码里不需要调用 `abs()`，因为保存的历史下标总小于当前下标，所以 `i - last_seen[num]` 已经非负。
+
+复杂度仍需分三层说明：循环最多处理 `n` 项；每次字典成员检查、读取和写入按平均 `O(1)` 计算；字典最多保存 `n` 个不同值。因此平均时间为 `O(n)`，额外空间为 `O(n)`。
+
+- 错误理解：先遍历完再计算所有重复值的距离，或者一直保留第一次出现的下标。
+- 正确理解：扫描过程中在线判断，并在每次未命中后更新最近下标；这样既不会漏掉后续更近的一对，也避免退化为两两比较。
+
+来源/证据：[[../../04-Projects/Python/AI-Agent-Learning/w4-04-contains-nearby-duplicate|W4-04 存在相近的重复元素]]，规定断言 8/8、性质对照 136717/136717，输入未修改。
+
 ## 字符频次计数：扫描量与字典规模分开算
 
 判断两个字符串是否由完全相同的字符及次数组成时，可以分别建立“字符 → 出现次数”的字典，再比较两张字典：
@@ -220,3 +262,4 @@ def is_anagram(s: str, t: str) -> bool:
 - [[../../04-Projects/Python/AI-Agent-Learning/w4-02-contains-duplicate|W4-02 存在重复元素项目记录]]
 - [[../../04-Projects/Python/AI-Agent-Learning/w4-03-valid-anagram|W4-03 有效的字母异位词项目记录]]
 - [[../../04-Projects/Python/AI-Agent-Learning/w4-01-two-sum|W4-01 两数之和项目记录]]
+- [[../../04-Projects/Python/AI-Agent-Learning/w4-04-contains-nearby-duplicate|W4-04 存在相近的重复元素项目记录]]

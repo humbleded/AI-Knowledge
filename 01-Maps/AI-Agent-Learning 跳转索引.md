@@ -3,7 +3,7 @@ type: map
 topic: AI-Agent-Learning 跳转索引
 status: active
 created: 2026-05-28
-updated: 2026-08-04
+updated: 2026-08-08
 tags:
   - AI-Agent-Learning
   - 索引
@@ -51,6 +51,10 @@ tags:
 - [[../04-Projects/Python/AI-Agent-Learning/p0-08-progress-file|P0-08 文件、JSON、CSV]]
 - [[../04-Projects/Python/AI-Agent-Learning/p0-09-http-request|P0-09 HTTP 请求]]
 - [[../04-Projects/Python/AI-Agent-Learning/p0-gate-learning-log|P0-Gate Python 基础闯关]]
+- [[../04-Projects/Python/AI-Agent-Learning/w4-01-two-sum|W4-01 两数之和]]
+- [[../04-Projects/Python/AI-Agent-Learning/w4-02-contains-duplicate|W4-02 存在重复元素]]
+- [[../04-Projects/Python/AI-Agent-Learning/w4-03-valid-anagram|W4-03 有效的字母异位词]]
+- [[../04-Projects/Python/AI-Agent-Learning/w4-04-contains-nearby-duplicate|W4-04 存在相近的重复元素]]
 - [[../04-Projects/LLM/AI-Agent-Learning/l1-01-first-call|L1-01 API Key 与 SDK]]
 - [[../04-Projects/LLM/AI-Agent-Learning/l1-gate-cli-chatbot|L1-Gate CLI Chatbot（阶段 1 整合关）]]
 - [[../04-Projects/LLM/AI-Agent-Learning/pr2-01-02-handson|PR2-01/02 动手：prompt 对比 + 摘要器]]
@@ -100,6 +104,10 @@ tags:
 - [[../07-Reviews/AI-Agent-Learning/2026-07-22-a4-03-react-review|2026-07-22 A4-03 ReAct PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-07-30-a4-04-plan-and-solve-review|2026-07-30 A4-04 Plan-and-Solve PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-08-04-a4-05-reflection-review|2026-08-04 A4-05 Reflection PASS 复盘]]
+- [[../07-Reviews/AI-Agent-Learning/2026-08-06-w4-alg-f2-contains-duplicate-review|2026-08-06 W4-ALG-F2 存在重复元素 PASS 复盘]]
+- [[../07-Reviews/AI-Agent-Learning/2026-08-06-w4-alg-f3-valid-anagram-review|2026-08-06 W4-ALG-F3 有效的字母异位词 PASS 复盘]]
+- [[../07-Reviews/AI-Agent-Learning/2026-08-07-w4-alg-f1-two-sum-review|2026-08-07 W4-ALG-F1 两数之和 PASS 复盘]]
+- [[../07-Reviews/AI-Agent-Learning/2026-08-08-w4-alg-f4-contains-nearby-duplicate-review|2026-08-08 W4-ALG-F4 存在相近的重复元素 PASS 复盘]]
 
 ## 外部资源中文索引
 

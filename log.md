@@ -873,3 +873,20 @@ tags:
   - `Broken links: 0`
   - `Missing frontmatter: 0`
   - `Raw non-index files: 7`
+
+## 2026-08-08
+
+### AI-Agent-Learning W4-ALG-F4 存在相近的重复元素 PASS（同步知识库）
+
+- 复核 `code/algorithms/w4_04_contains_nearby_duplicate.py` 与 `daily/2026-08-08.md`，正式判定 **W4-ALG-F4 PASS**；规定断言 8/8、性质对照 136717/136717，返回类型与输入未修改均通过。
+- 扩写 [[02-Concepts/Python/list·dict·set 容器|Python list、dict、set]]：新增“值 → 最近下标”、在线比较后更新、最近记录充分性、`k=0` 边界及平均 `O(n)` / 额外 `O(n)` 因果；没有新建同义哈希表概念卡。
+- 新增 [[04-Projects/Python/AI-Agent-Learning/w4-04-contains-nearby-duplicate|W4-04 存在相近的重复元素项目页]] 与 [[07-Reviews/AI-Agent-Learning/2026-08-08-w4-alg-f4-contains-nearby-duplicate-review|W4-ALG-F4 PASS 复盘]]；更新项目索引、AI-Agent-Learning 跳转索引、课程状态页与全局索引。
+- W4 算法由 3/4、`DEBT 1` 收口为 4/4、内容块 `PASS`，结转债务 0；`WP-29` 升入稳定池，2026-08-22 首次回炉，新增活跃 `WP-31`。
+- [[02-Concepts/LLM/采样参数与成本(Sampling)|采样参数与成本]] 已准确覆盖本日通过的 `WP-05/WP-06`，本次保持 no-op；A4-Gate 仍为 `DOING`，未把尚未实现的真实模型循环或 14 条 eval 写成 PASS。
+- 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 210`
+  - `Links: 1791`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`

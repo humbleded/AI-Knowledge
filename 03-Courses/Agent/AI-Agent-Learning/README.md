@@ -3,7 +3,7 @@ type: course-index
 topic: AI-Agent-Learning
 status: active
 created: 2026-05-28
-updated: 2026-08-04
+updated: 2026-08-08
 tags:
   - AI-Agent
   - Python
@@ -28,13 +28,13 @@ tags:
 - [[stage3-tool-calling|阶段 3：Tool Calling / Function Calling]]
 - [[stage4-agent-basics|阶段 4：Agent 基础原理]]
 - 已通过：P0-Gate、L1-Gate、PR2-Gate、T3-01、T3-02、T3-03、T3-04、T3-Gate、A4-01、A4-02、A4-03、A4-04、A4-05
-- 下一项：A4-Gate 最小 Agent 闯关；W4 算法 `DEBT` 仍需先在独立 30～45 分钟回收位中逐题补齐
+- 下一项：A4-Gate 最小 Agent 闯关（`DOING`）；W4 算法已完成 4/4、内容块 `PASS`，无结转债务
 
 ## 当前执行策略
 
 - 阶段 0、阶段 1、阶段 2 主线已完成。
 - 阶段 3 已完成：三工具原生 Tool Calling 闭环与 14 条正式评估通过。
-- 阶段 4 已完成 A4-01~A4-05；下一步进入 A4-Gate problem contract、轻量测试、最小日志与安全停止。
+- 阶段 4 已完成 A4-01~A4-05；A4-Gate 的 Problem Contract、C1、C2a 和 C2b 已闭合，C2b 提交前补出的 1xx 边界也已订正并完成独立全域回归；下一实现单元为真实 DeepSeek 模型/工具循环，之后再完成 Reflection/来源核验、日志、停止/HITL 与 14 条 eval。
 - 阶段 0.5 工程基础不再整块前置，而是放到 API、Tool Calling、Memory、RAG、本地部署项目中随用随补。
 - `B0-Gate` 作为后续本地栈整合关卡，不阻塞第一次进入 L1/API。
 
