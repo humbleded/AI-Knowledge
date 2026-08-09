@@ -3,7 +3,7 @@ type: maintenance-log
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-07-27
+updated: 2026-08-09
 tags:
   - 知识库
   - log
@@ -890,3 +890,13 @@ tags:
   - `Broken links: 0`
   - `Missing frontmatter: 0`
   - `Raw non-index files: 7`
+
+### Knowledge-Base Weekly Maintenance
+
+- 运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`，初始结果通过：210 个 Markdown、1791 个链接、0 断链、0 缺 frontmatter、7 个 raw 非索引文件。
+- 复核 [[00-Inbox/README|00-Inbox]] 和 [[raw/README|raw]]：Inbox 仍只有 `README.md`；raw 没有新增 source note，本次不移动原始资料。
+- 复核 2026-08-02T12:01:05Z 之后的 Git 变化：A4-05 Reflection、W4 哈希/容器算法四题、[[08-Memory/AI 学习原则|AI 学习原则]]更新已经进入对应概念卡、课程页、项目页、复盘、索引和日志。
+- 按 [[08-Memory/全库中文辅助阅读规则|全库中文辅助阅读规则]]复核新增内容，保留 `Reflection`、`self-critique`、`list`、`dict`、`set`、`O(n)`、`O(1)`、路径、命令和代码块等 English technical anchors。
+- 新增 [[07-Reviews/Knowledge-Base/2026-08-09-weekly-maintenance|2026-08-09 Weekly Maintenance]]，更新 [[07-Reviews/Knowledge-Base/README|Knowledge-Base 维护复盘索引]]、[[01-Maps/AI 知识库总地图|总地图]]和 [[index|全局索引]]。
+- 工作树中已有 [[02-Concepts/LLM/提示工程基础(Prompt Engineering)|Prompt Engineering]] 表格对齐改动；本次维护保留但不纳入维护提交。
+- 最终严格检查通过：211 个 Markdown、1824 个链接、0 断链、0 缺 frontmatter、7 个 raw 非索引文件。

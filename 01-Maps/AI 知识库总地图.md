@@ -3,7 +3,7 @@ type: map
 topic: AI 知识库总地图
 status: active
 created: 2026-05-28
-updated: 2026-08-02
+updated: 2026-08-09
 tags:
   - 知识库
   - 地图
@@ -39,6 +39,7 @@ tags:
 - [[../index|全局索引]]
 - [[../log|维护日志]]
 - [[../07-Reviews/Knowledge-Base/README|Knowledge-Base 维护复盘索引]]
+- [[../07-Reviews/Knowledge-Base/2026-08-09-weekly-maintenance|最近一次 Weekly Maintenance：2026-08-09]]
 - [[../07-Reviews/Knowledge-Base/2026-05-29-karpathy-health-check|2026-05-29 Karpathy 知识库健康检查]]
 
 ### 概念卡片

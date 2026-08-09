@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-08-08
+updated: 2026-08-09
 tags:
   - 知识库
   - index
@@ -188,6 +188,7 @@ tags:
 - [[07-Reviews/Knowledge-Base/2026-07-19-weekly-maintenance]]
 - [[07-Reviews/Knowledge-Base/2026-07-27-weekly-maintenance]]
 - [[07-Reviews/Knowledge-Base/2026-08-02-weekly-maintenance]]
+- [[07-Reviews/Knowledge-Base/2026-08-09-weekly-maintenance]]
 - [[08-Memory/知识库长期记忆规则]]
 - [[08-Memory/全库中文辅助阅读规则]]
 - [[08-Memory/AI 学习原则]]
@@ -207,5 +208,5 @@ tags:
 - 为 [[04-Projects/LLM/README|LLM 项目记录]] 增加 micrograd 复现实验。
 - 扩展 [[04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]] 的代码注释、可视化或测试。
 - 为 Karpathy 课程补充 raw transcript 或 repo 摘录。
-- 继续关注 A4-Gate 的 problem contract、最小日志、安全停止与后续 Memory 相关概念是否形成可复用沉淀。
+- 继续关注 A4-Gate 的 problem contract、最小日志、安全停止、真实模型循环与后续 Memory 相关概念是否形成可复用沉淀。
 - 继续新增 `cross entropy`、`softmax`、`logits` 等概念卡。

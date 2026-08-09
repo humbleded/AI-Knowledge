@@ -3,7 +3,7 @@ type: review-index
 topic: Knowledge-Base
 status: active
 created: 2026-08-02
-updated: 2026-08-02
+updated: 2026-08-09
 tags:
   - 知识库
   - Review
@@ -22,6 +22,7 @@ tags:
 
 ## Weekly Maintenance
 
+- [[2026-08-09-weekly-maintenance|2026-08-09 Weekly Maintenance]]
 - [[2026-08-02-weekly-maintenance|2026-08-02 Weekly Maintenance]]
 - [[2026-07-27-weekly-maintenance|2026-07-27 Weekly Maintenance]]
 - [[2026-07-19-weekly-maintenance|2026-07-19 Weekly Maintenance]]
@@ -41,3 +42,4 @@ tags:
 - `index.md`、主题 README、总地图和 `log.md` 是否同步。
 - seed notes 是否过多，是否该按学习证据扩写为 `usable`。
 - 新增英文材料是否按 [[../../08-Memory/全库中文辅助阅读规则|全库中文辅助阅读规则]] 增加中文辅助阅读，同时保留 English technical anchors。
+- AI-Agent-Learning 的 A4-Gate、Memory 相关内容是否形成新的可复用概念、项目记录或复盘。
