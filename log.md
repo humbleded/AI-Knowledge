@@ -3,7 +3,7 @@ type: maintenance-log
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-08-09
+updated: 2026-08-10
 tags:
   - 知识库
   - log
@@ -900,3 +900,19 @@ tags:
 - 新增 [[07-Reviews/Knowledge-Base/2026-08-09-weekly-maintenance|2026-08-09 Weekly Maintenance]]，更新 [[07-Reviews/Knowledge-Base/README|Knowledge-Base 维护复盘索引]]、[[01-Maps/AI 知识库总地图|总地图]]和 [[index|全局索引]]。
 - 工作树中已有 [[02-Concepts/LLM/提示工程基础(Prompt Engineering)|Prompt Engineering]] 表格对齐改动；本次维护保留但不纳入维护提交。
 - 最终严格检查通过：211 个 Markdown、1824 个链接、0 断链、0 缺 frontmatter、7 个 raw 非索引文件。
+
+## 2026-08-10
+
+### Python 真值判断与严格布尔校验
+
+- 去重检查 [[02-Concepts/Python/类型转换(Type Conversion)|Python 类型转换]]、[[02-Concepts/Python/and-or 短路求值|and / or 短路求值]] 与 [[02-Concepts/Python/异常·调试·测试(Exceptions)|异常、调试与测试]]：已有页面只覆盖 `bool(input(...))`、真值运算或测试返回类型的局部边界，没有系统区分 truthiness、equality 与 identity。
+- 新增 [[02-Concepts/Python/真值判断与严格布尔校验(Truthiness)|Python 真值判断与严格布尔校验]]：沉淀普通真假判断、`== True` 与 `is True` 的职责边界，记录 `.get("ok", False)` 仍会放行 truthy 非布尔值的坑，以及 Agent 工具结果的 fail-closed 严格布尔模式。
+- 来源证据为 AI-Agent-Learning `daily/2026-08-10.md` 与 `code/stage4/a4_gate_research_summary_agent.py`；R4b `5/5 PASS`，并有 topic / relative_path 两条真实 DeepSeek 正常链。A4-Gate 仍为 `DOING`，未把 C3c 子切片写成整个 Gate PASS。
+- 更新 [[02-Concepts/Python/README|Python 概念卡索引]] 与 [[index|全局索引]]；总地图已有 Python 概念索引入口，本次保持 no-op；保留既有 Prompt Engineering 未提交改动。
+- 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 212`
+  - `Links: 1838`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`

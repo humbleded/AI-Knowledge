@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-08-09
+updated: 2026-08-10
 tags:
   - 知识库
   - index
@@ -40,6 +40,7 @@ tags:
 
 - [[02-Concepts/README|概念卡片总索引]]
 - [[02-Concepts/Python/README|Python 概念卡]]
+- [[02-Concepts/Python/真值判断与严格布尔校验(Truthiness)|Python 真值判断与严格布尔校验：truthiness / equality / identity]]
 - [[02-Concepts/Python/and-or 短路求值|Python and / or 短路与返回原值]]
 - [[02-Concepts/Python/函数与参数(Functions)|Python 函数、参数与 return]]
 - [[02-Concepts/Python/偏函数(functools.partial)|Python 偏函数 functools.partial 与默认参数]]

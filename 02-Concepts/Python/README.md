@@ -3,7 +3,7 @@ type: concept-index
 topic: Python
 status: active
 created: 2026-05-28
-updated: 2026-07-05
+updated: 2026-08-10
 tags:
   - Python
   - 概念卡
@@ -17,6 +17,7 @@ tags:
 - [[输入与输出(input & print)]]
 - [[变量(Variables)]]
 - [[基础数据类型(Data Types)]]
+- [[真值判断与严格布尔校验(Truthiness)|Python 真值判断与严格布尔校验]]
 - [[and-or 短路求值|Python and / or 短路与返回原值]]
 - [[类型转换(Type Conversion)]]
 - [[f-string 格式化]]
