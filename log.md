@@ -916,3 +916,16 @@ tags:
   - `Broken links: 0`
   - `Missing frontmatter: 0`
   - `Raw non-index files: 7`
+
+### AI-Agent-Learning A4-Gate C3d 来源白名单与 Reflection 边界
+
+- 正式复核 A4-Gate 当日切片：C3c 与 C3d-C1 / C2a / C2b / C3a 均通过；整个 A4-Gate 仍为 `DOING`，未把尚未实现的模型调用、JSON 集成、日志、恢复、HITL 或 14 条 eval 记为完成。
+- 合并更新 [[02-Concepts/Agent/反思机制(Reflection)|反思机制]]：补充 `allowed_sources` 必须从本轮真实 Observation 派生，prompt 中的 allowlist 仍是软约束，解析后的客户端必须硬校验 `sources ⊆ allowed_sources`；同时明确“来源身份在白名单内”不等于“摘要事实已获正文支持”。
+- 更新 [[02-Concepts/Agent/README|Agent 概念卡索引]]；结构化输出、函数调用、HTTP 与严格布尔既有页面已经准确覆盖 S3 回收和当天其他稳定结论，本次保持 no-op，未新建重复概念页、项目 PASS 页或阶段复盘页。
+- 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 212`
+  - `Links: 1840`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`

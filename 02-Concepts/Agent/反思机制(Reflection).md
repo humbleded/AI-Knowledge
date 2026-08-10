@@ -3,13 +3,15 @@ type: concept
 topic: Reflection
 status: usable
 created: 2026-07-23
-updated: 2026-08-04
+updated: 2026-08-10
 source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-23.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-30.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-03.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-04.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-10.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_05_reflection_writer.py
+  - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_gate_research_summary_agent.py
 tags:
   - AI/Agent
   - Reflection
@@ -96,6 +98,31 @@ candidate
 - 工具结果、外部测试和权威事实源提供独立证据；高风险动作还需要人工确认，失败或超时必须保持未知。
 
 代码硬校验不是“让模型一定守规矩”，而是在模型返回之后限制系统能接受什么、拒绝什么。它也不能自动覆盖没有编码进去的质量维度。
+
+### 来源白名单只是引用边界，不是内容证明
+
+研究摘要类 Agent 还要把“来源是谁”和“内容是否受证据支持”分成两层。`allowed_sources`（允许来源集合）必须由**本轮真实 Observation** 派生，不能从模型生成的摘要或反馈里反推：
+
+```text
+本轮真实 Observation
+  |-> read_material：只允许这次实际读取的规范化相对路径
+  `-> search_web：只允许这次 results[*].url 中出现的 URL
+          |
+          `-> allowed_sources
+
+候选摘要 + 完整 content/results + allowed_sources
+  -> Reflection 软评审
+  -> Refinement 结构化候选
+  -> JSON 解析
+  -> 客户端硬校验 sources ⊆ allowed_sources
+```
+
+- Reflection prompt 应同时带上完整的 `content/results` 和 `allowed_sources`：前者用来判断摘要结论有没有正文证据，后者只限定允许引用哪些来源。
+- prompt 中要求“只能从白名单选来源”仍是软约束；模型可能虚构、混入或返回空来源，解析后必须由客户端重新校验。
+- 客户端应拒绝空来源、非字符串来源、全越界来源，以及“一个合法来源 + 一个虚构来源”的混合结果，不能删除坏项后把剩余部分静默当成成功。
+- `source in allowed_sources` 只证明这个来源身份来自本轮 Observation；它**不证明**摘要里的每个事实都由该来源正文支持。内容支持仍要由 Reflection、可执行 evaluator 或人工审核另行判断。
+
+这条边界也解释了为什么“模型说来源真实”不能替代代码检查：模型既是候选内容的生成者，又是软评审参与者；最终可接受集合必须由客户端根据外部执行事实确定。
 
 ## 成本与适用场景
 
@@ -199,3 +226,4 @@ Action
 - `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-30.md`、`daily\2026-08-03.md`：A4-05 带读、三阶段数据依赖、停止条件、成本、适用场景和质量回退证据。
 - `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-04.md`：正式练习、真实 DeepSeek 正常/故障分支与任务级 PASS 复核。
 - `C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_05_reflection_writer.py`：可运行的单轮 Reflection Writer、确定性门槛和审计字段。
+- `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-10.md`、`code\stage4\a4_gate_research_summary_agent.py`：A4-Gate C3d 的 Observation 来源白名单、Reflection / Refinement prompt 与客户端来源子集硬门；这些子检查点已通过，整个 A4-Gate 仍为 `DOING`。
