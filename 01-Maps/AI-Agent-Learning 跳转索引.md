@@ -3,7 +3,7 @@ type: map
 topic: AI-Agent-Learning 跳转索引
 status: active
 created: 2026-05-28
-updated: 2026-08-08
+updated: 2026-08-11
 tags:
   - AI-Agent-Learning
   - 索引
@@ -67,6 +67,7 @@ tags:
 - [[../04-Projects/Agent/AI-Agent-Learning/a4-03-react-agent|A4-03：ReAct 控制循环]]
 - [[../04-Projects/Agent/AI-Agent-Learning/a4-04-plan-and-solve|A4-04：Plan-and-Solve 计划与执行闭环]]
 - [[../04-Projects/Agent/AI-Agent-Learning/a4-05-reflection-writer|A4-05：Reflection Writer 与质量门槛]]
+- [[../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate：研究摘要 Agent（C3d 已通过，整关进行中）]]
 - [[../02-Concepts/Agent/智能体(Agent)|智能体（概念卡）]]
 - [[../02-Concepts/Agent/ReAct推理与行动循环(ReAct)|ReAct 推理与行动循环（概念卡）]]
 - [[../02-Concepts/Agent/计划与求解(Plan-and-Solve)|Plan-and-Solve（概念卡）]]

@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-08-10
+updated: 2026-08-11
 tags:
   - 知识库
   - index
@@ -145,6 +145,7 @@ tags:
 - [[04-Projects/Agent/AI-Agent-Learning/a4-03-react-agent]]
 - [[04-Projects/Agent/AI-Agent-Learning/a4-04-plan-and-solve]]
 - [[04-Projects/Agent/AI-Agent-Learning/a4-05-reflection-writer]]
+- [[04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（进行中）]]
 - [[04-Projects/Agent/AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引]]
 
 ## 复盘与记忆
@@ -210,5 +211,5 @@ tags:
 - 为 [[04-Projects/LLM/README|LLM 项目记录]] 增加 micrograd 复现实验。
 - 扩展 [[04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]] 的代码注释、可视化或测试。
 - 为 Karpathy 课程补充 raw transcript 或 repo 摘录。
-- 继续关注 A4-Gate 的 problem contract、最小日志、安全停止、真实模型循环与后续 Memory 相关概念是否形成可复用沉淀。
+- 继续完成 A4-Gate C4a 的统一步数、七字段日志、一次工具重试与安全停止，再补 HITL、14 条 eval 和正式整关复核；C3d 的真实模型循环与来源硬门已记录在进行中项目页。
 - 继续新增 `cross entropy`、`softmax`、`logits` 等概念卡。

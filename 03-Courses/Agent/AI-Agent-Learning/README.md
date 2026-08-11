@@ -3,7 +3,7 @@ type: course-index
 topic: AI-Agent-Learning
 status: active
 created: 2026-05-28
-updated: 2026-08-08
+updated: 2026-08-11
 tags:
   - AI-Agent
   - Python
@@ -34,7 +34,7 @@ tags:
 
 - 阶段 0、阶段 1、阶段 2 主线已完成。
 - 阶段 3 已完成：三工具原生 Tool Calling 闭环与 14 条正式评估通过。
-- 阶段 4 已完成 A4-01~A4-05；A4-Gate 的 Problem Contract、C1、C2a 和 C2b 已闭合，C2b 提交前补出的 1xx 边界也已订正并完成独立全域回归；下一实现单元为真实 DeepSeek 模型/工具循环，之后再完成 Reflection/来源核验、日志、停止/HITL 与 14 条 eval。
+- 阶段 4 已完成 A4-01~A4-05；A4-Gate 的 Problem Contract、C1/C2、C3a～C3d 已闭合，topic/path 真实 DeepSeek 正常链已通过。下一实现单元为 C4a 的统一步数、七字段日志、一次工具重试与安全停止；之后再完成 HITL allow/deny、14 条 eval 和整关复核。
 - 阶段 0.5 工程基础不再整块前置，而是放到 API、Tool Calling、Memory、RAG、本地部署项目中随用随补。
 - `B0-Gate` 作为后续本地栈整合关卡，不阻塞第一次进入 L1/API。
 
@@ -72,6 +72,7 @@ tags:
 - [[../../../04-Projects/Agent/AI-Agent-Learning/a4-03-react-agent]]
 - [[../../../04-Projects/Agent/AI-Agent-Learning/a4-04-plan-and-solve]]
 - [[../../../04-Projects/Agent/AI-Agent-Learning/a4-05-reflection-writer]]
+- [[../../../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（进行中）]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-05-27-stage0-p0-01-p0-02-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-05-28-stage0-p0-03-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-06-02-stage0-p0-04-pass-review]]

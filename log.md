@@ -935,3 +935,20 @@ tags:
   - `Broken links: 0`
   - `Missing frontmatter: 0`
   - `Raw non-index files: 7`
+
+## 2026-08-11
+
+### AI-Agent-Learning A4-Gate C3d 模型与 JSON 集成（进行中项目记录）
+
+- 按用户明确要求，把今天的学习情况记录到知识库；新增 [[04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（进行中）]]。页面明确区分：`A4-Gate-C3d = PASS`，父任务 `A4-Gate = DOING`，没有提前新建整关 PASS 复盘。
+- 记录 C3d 决定性证据：主审离线 129/129、独立合同 40/40 + fail-closed 3/3 + 入口 7/7；真实 topic 与 `relative_path=sample.txt` 两条 DeepSeek 路径均为 4 次模型调用、恰好 1 次对应工具，结束序列为 `tool_calls → stop → stop → stop`。
+- 记录关键订正与边界：SDK 属性对象层级、`finish_reason` 位于 choice、Reflection 普通文本与 Refinement JSON Output 分工、`json.loads` 与业务 validator 分层、Observation 来源 allowlist 硬门以及 shared client。
+- 更新 Agent 项目 README、Stage 4 课程页、课程索引、AI-Agent-Learning 跳转索引与全局索引；下一切片固定为 C4a 的统一步数、七字段日志、一次重试与安全停止，随后仍需 HITL、14 条 eval 和整关复核。
+- 现有 Reflection、结构化输出、函数调用、分类与 ReAct 概念卡已经准确覆盖今天的稳定概念和两个回收目标，本次保持 no-op，不为日期重复改写。
+- 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 214`
+  - `Links: 1867`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 7`
