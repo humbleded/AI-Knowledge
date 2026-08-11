@@ -1,4 +1,4 @@
-﻿---
+---
 type: concept-index
 topic: Agent
 status: active
