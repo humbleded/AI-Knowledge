@@ -123,6 +123,8 @@ response.status_code # 404
 
 仅仅“能请求 URL”还不够。模型参数和用户输入都不可信，客户端应在真正发请求前限制：
 
+这类“让服务器替攻击者访问其原本无法直接访问的目标”的风险，叫作 [[02-Concepts/Engineering/服务端请求伪造(SSRF)|服务端请求伪造（SSRF）]]。
+
 - scheme 必须是 `https`；
 - hostname 必须在明确 allowlist；
 - 只允许未显式写端口或标准 `443`；
@@ -146,7 +148,7 @@ parsed_url.port in (None, 443)
 
 ### 为什么默认重定向危险
 
-`requests` 默认跟随 301/302 等跳转。如果客户端只检查初始允许 URL，服务器仍可能把请求重定向到 `127.0.0.1`、私网或 metadata 地址，形成 SSRF 绕过。
+`requests` 默认跟随 301/302 等跳转。如果客户端只检查初始允许 URL，服务器仍可能把请求重定向到 `127.0.0.1`、私网或 metadata 地址，形成 [[02-Concepts/Engineering/服务端请求伪造(SSRF)|SSRF]] 绕过。
 
 本次 Gate 采用最保守策略：
 
@@ -182,6 +184,7 @@ requests.get(url, timeout=5, allow_redirects=False)
 
 ## 相关
 
+- [[02-Concepts/Engineering/服务端请求伪造(SSRF)|服务端请求伪造（SSRF）]]
 - [[工具定义与执行协议(Tool Definition)]]
 - [[文件工具沙箱(File Tool Sandbox)]]
 - [[../../Engineering/HTTP 请求全链路与错误处理|HTTP 请求全链路与错误处理]]
