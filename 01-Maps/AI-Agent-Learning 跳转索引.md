@@ -11,50 +11,6 @@ tags:
 
 # AI-Agent-Learning 跳转索引
 
-## 整个学习项目的步骤与流程图
-
-课程状态仍以执行区 `tracker/progress.md` 为唯一事实源；本图是 2026-08-13 的导航快照。绿色勾选表示阶段 Gate 已完成，进行中节点只表示当前已做到的切片，不等于整个阶段 PASS。
-
-| 主步骤 | 当前状态 | 核心产物 / 过关点 |
-|---|---|---|
-| 0. Python 与开发环境 | PASS | Python 基础、测试、文件/HTTP 与 P0-Gate |
-| 1. 大模型 API | PASS | SDK、messages、流式、上下文、成本与 L1-Gate |
-| 2. Prompt 与结构化输出 | PASS | prompt、分类路由、JSON 校验与 PR2-Gate |
-| 3. Tool Calling | PASS | 三工具原生调用、安全边界与 T3-Gate 14 条评估 |
-| 4. Agent 基础 | DOING | A4-01～05 PASS；A4-Gate 已到 C4a-1，下一 C4a-2a |
-| 4.5. LangGraph Lite | TODO | A4-Gate 后迁移一条 state/node/edge/tool/stream/test 路径 |
-| 5.5. 生产后端工程 | TODO | Python 工程化、async、FastAPI、数据层、认证、压测与 BE5-Gate |
-| 6. 领域 RAG | TODO | 解析/索引、pgvector/hybrid/rerank、引用问答、评估与 R6-Gate |
-| 7. 架构、Memory 与安全 | TODO | 设计模式、长期 Memory、多 Agent、威胁模型与 D7-Gate |
-| 8. 可恢复 LangGraph Agent | TODO | persistence/checkpoint/interrupt、Vue 可视化与 G8-Gate |
-| 9. MCP | TODO | STDIO/HTTP、授权、审计、断连测试与 M9-Gate |
-| 10. Eval 与可观测 | TODO | baseline/holdout/候选对比、tracing 与回归门禁 |
-| 11. 上线、作品集与求职 | TODO | CI/CD、smoke/负载/回滚、旗舰补强、简历与面试 |
-| FINAL | TODO | ≥30 条评估、综合故障演练与 FINAL-Gate 答辩 |
-
-```mermaid
-flowchart TD
-    S0["Stage 0：Python 与开发环境 ✅"] --> S1["Stage 1：大模型 API ✅"]
-    S1 --> S2["Stage 2：Prompt 与结构化输出 ✅"]
-    S2 --> S3["Stage 3：Tool Calling ✅"]
-    S3 --> S4["Stage 4：Agent 基础"]
-    S4 --> A4["A4-Gate：DOING<br/>C4a-1 已收口；C4a-2a 下一项"]
-    A4 --> L0["G8-00：LangGraph Lite"]
-    L0 --> BE["BE5：生产后端工程"]
-    BE --> R6["R6：领域 RAG"]
-    R6 --> D7["D7：架构、Memory 与安全"]
-    D7 --> G8["G8：可恢复 LangGraph Agent + Vue"]
-    G8 --> M9["M9：MCP 生产接入"]
-    M9 --> E10["E10：Eval、Tracing 与回归门禁"]
-    E10 --> J11["J11：上线、作品集、简历与面试"]
-    J11 --> FINAL["FINAL-Gate：综合评估与答辩"]
-
-    ALG["算法独立内容块：W4 起持续"] -.并行支撑.-> BE
-    JOB["双轨 JD / 岗位证据审计：W6、W12、W16、W19"] -.阶段校准.-> J11
-```
-
-当前精确接力：先完成 `A4-Gate C4a-2a` 的六步 retry 成功轨迹，再依次做失败恢复、HITL、14 条 eval 和 A4-Gate 正式复核；A4-Gate PASS 后才进入 G8-00。算法与求职审计是并行内容块，不替代主线 Gate。
-
 ## 工作区
 
 - [打开 AI-Agent-Learning 文件夹](file:///C:/Users/26823/Desktop/AI-Agent-Learning/)
