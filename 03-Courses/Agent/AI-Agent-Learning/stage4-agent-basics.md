@@ -3,7 +3,7 @@ type: course-stage
 topic: AI-Agent-Learning Stage 4
 status: active
 created: 2026-07-10
-updated: 2026-08-11
+updated: 2026-08-13
 tags:
   - Agent
   - AI-Agent-Learning
@@ -27,7 +27,7 @@ tags:
 | A4-03 ReAct | PASS | 2026-07-22 | `code/stage4/a4_03_react_agent.py` | 完整两轮轨迹与 max_steps 通过；15/15 parser/prompt/loop 边界断言通过 |
 | A4-04 Plan-and-Solve | PASS | 2026-07-30 | `code/stage4/a4_04_plan_solve_demo.py` | 可运行计划→执行→事实复盘闭环；39/39 解析、history、复盘与编排边界断言通过 |
 | A4-05 Reflection | PASS | 2026-08-04 | `code/stage4/a4_05_reflection_writer.py` | 初稿/反思/改进/同标准选择闭环；39/39 确定性断言、真实提前停止与真实故障修正路径通过 |
-| A4-Gate 最小 Agent 闯关 | DOING | 2026-08-11 | `code/stage4/problem-contract.md`、`code/stage4/a4_gate_research_summary_agent.py` | Problem Contract、C1/C2、C3a～C3d 已闭合；C3d 离线 129/129、独立 40/40 + 3/3 + 7/7，topic/path 真实 DeepSeek 均为 4 次模型 + 1 次对应工具。父 Gate 仍缺七字段日志、统一步数与重试安全停止、HITL、14 条 eval 和整关复核 |
+| A4-Gate 最小 Agent 闯关 | DOING | 2026-08-13 | `code/stage4/problem-contract.md`、`code/stage4/a4_gate_research_summary_agent.py` | Problem Contract、C1/C2、C3a～C3d 与 C4a-1 已闭合；C4a-1 已有共享 request ID、固定七字段日志、正常 step 1～5、双请求隔离与第 7 次调用前硬门。父 Gate 仍缺 C4a-2 retry/失败恢复、HITL、14 条 eval 和整关复核 |
 
 ## A4-01 已沉淀概念
 
@@ -65,7 +65,8 @@ tags:
 
 ## A4-Gate 已沉淀进行中实践
 
-- [[../../../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（C3d 已 PASS，父任务 DOING）]]
+- [[../../../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（C4a-1 已收口，父任务 DOING）]]
+- [[../../../raw/conversations/2026-08-13-ai-agent-learning-a4-gate-c4a-1-session-handoff|C4a-1 会话接力摘要]]
 - [[../../../02-Concepts/Agent/反思机制(Reflection)|Reflection 的 Observation 来源白名单与硬校验边界]]
 - [[../../../02-Concepts/LLM/结构化输出(Structured Output)|结构化输出、finish_reason 与 JSON 解析分层]]
 - [[../../../02-Concepts/LLM/函数调用(Function Calling)|SDK 属性对象与 Tool Calling 协议]]
@@ -108,4 +109,6 @@ tags:
 - [A4-Gate Problem Contract（DRAFT）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage4/problem-contract.md)
 - [A4-Gate 当前代码](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage4/a4_gate_research_summary_agent.py)
 - [A4-Gate C3d 正式证据（2026-08-11）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-11.md)
+- [A4-Gate C4a-1 前半段证据（2026-08-12）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-12.md)
+- [A4-Gate C4a-1 收口证据（2026-08-13）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-13.md)
 - [progress](file:///C:/Users/26823/Desktop/AI-Agent-Learning/tracker/progress.md)

@@ -3,7 +3,7 @@ type: source-index
 topic: conversations
 status: active
 created: 2026-05-29
-updated: 2026-07-02
+updated: 2026-08-13
 tags:
   - Source
   - conversation
@@ -18,3 +18,4 @@ tags:
 - [[../../08-Memory/知识库长期记忆规则]]
 - [[../../07-Reviews/Knowledge-Base/2026-05-29-karpathy-health-check]]
 - [[deepseek-share-context-routing-jit|DeepSeek 分享对话：上下文工程、路由与特殊 Token]]
+- [[2026-08-13-ai-agent-learning-a4-gate-c4a-1-session-handoff|A4-Gate C4a-1 会话接力摘要]]

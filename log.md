@@ -936,6 +936,24 @@ tags:
   - `Missing frontmatter: 0`
   - `Raw non-index files: 7`
 
+## 2026-08-13
+
+### AI-Agent-Learning A4-Gate C4a-1 会话接力与进行中项目同步
+
+- 来源为执行区的 `problem-contract.md`、当前 Agent 代码与 2026-08-12 / 2026-08-13 两份 daily；新建 [[raw/conversations/2026-08-13-ai-agent-learning-a4-gate-c4a-1-session-handoff|C4a-1 会话接力摘要]]，只保存跨会话恢复所需的范围、订正链、最终证据与下一起点，不复制完整聊天，也不替代 `tracker/progress.md`。
+- 合并更新 [[04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent]]：加入 C4a-1a～1k、每请求共享 context、固定七字段日志、MAX 硬门、精确 `finish_reason == "tool_calls"`、A4-Gate 步骤表与当前运行 Mermaid 图。
+- 更新 [[03-Courses/Agent/AI-Agent-Learning/README|AI-Agent-Learning 课程索引]]、[[03-Courses/Agent/AI-Agent-Learning/stage4-agent-basics|阶段 4]]、[[04-Projects/Agent/README|Agent 项目索引]]、[[01-Maps/AI-Agent-Learning 跳转索引|AI-Agent-Learning 跳转索引]]和 [[index|全局索引]]；跳转索引新增整门项目从 Python 到 FINAL-Gate 的步骤表与 Mermaid 主线，并标出算法、岗位审计两条并行支撑线。
+- 精确状态边界：`C4a-1` 教学实现单元已收口，父 `A4-Gate` 仍为 `DOING`。topic/path 正常链均为 step 1～5，事件为 model/tool/model/model/model；两请求 context/logs/request ID 隔离，初始 step 2 时 Refinement 的第 7 次尝试在计时和真实副作用前拒绝。
+- 下一项固定为 `C4a-2a`：可重试工具首次失败后，用同一参数至多再真实尝试一次并成功；每次尝试独立占步、计时、写日志。失败状态映射、HITL、14 条 eval 与父 Gate 正式复核仍未完成。
+- 本次对概念卡、总地图和 `07-Reviews` 保持 no-op：稳定概念已有页面可承载，父 Gate 未 PASS，不能提前新建整关复盘或求职证据。
+- 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 215`
+  - `Links: 1882`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 8`
+
 ## 2026-08-11
 
 ### AI-Agent-Learning A4-Gate C3d 模型与 JSON 集成（进行中项目记录）

@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-08-11
+updated: 2026-08-13
 tags:
   - 知识库
   - index
@@ -211,5 +211,5 @@ tags:
 - 为 [[04-Projects/LLM/README|LLM 项目记录]] 增加 micrograd 复现实验。
 - 扩展 [[04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]] 的代码注释、可视化或测试。
 - 为 Karpathy 课程补充 raw transcript 或 repo 摘录。
-- 继续完成 A4-Gate C4a 的统一步数、七字段日志、一次工具重试与安全停止，再补 HITL、14 条 eval 和正式整关复核；C3d 的真实模型循环与来源硬门已记录在进行中项目页。
+- 继续完成 A4-Gate C4a-2a：可重试工具首次失败后，用同一参数至多再尝试一次并成功，使两次真实工具尝试分别占 step、计时和写日志，形成六步恢复轨迹；C4a-1 的共享账本、七字段日志、五步链与 MAX 硬门已记录在进行中项目页。其后仍需失败恢复、HITL、14 条 eval 和正式整关复核。
 - 继续新增 `cross entropy`、`softmax`、`logits` 等概念卡。
