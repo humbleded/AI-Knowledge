@@ -3,7 +3,7 @@ type: maintenance-log
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-08-10
+updated: 2026-08-16
 tags:
   - 知识库
   - log
@@ -953,6 +953,18 @@ tags:
   - `Broken links: 0`
   - `Missing frontmatter: 0`
   - `Raw non-index files: 8`
+
+## 2026-08-16
+
+### Knowledge-Base Weekly Maintenance
+
+- 运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`，初始结果通过：215 个 Markdown、1882 个链接、0 断链、0 缺 frontmatter、8 个 raw 非索引文件。
+- 复核 [[00-Inbox/README|00-Inbox]] 和 [[raw/README|raw]]：Inbox 仍只有 `README.md`；raw 新增的 [[raw/conversations/2026-08-13-ai-agent-learning-a4-gate-c4a-1-session-handoff|A4-Gate C4a-1 会话接力摘要]] 已标记为 `processed`，并已编译到 A4-Gate 项目页与 Stage 4 课程页，本次不移动原始资料。
+- 复核 2026-08-09T12:02:14Z 之后的 Git 变化：Python truthiness、A4-Gate C3d / C4a-1、Reflection 来源白名单、项目流程图和索引修正已经进入对应概念卡、课程页、项目页、raw conversation、索引和日志。
+- 按 [[08-Memory/全库中文辅助阅读规则|全库中文辅助阅读规则]]复核新增内容，保留 `truthiness`、`allowed_sources`、`Observation`、`Reflection`、`Refinement`、`finish_reason == "tool_calls"`、`MAX_STEPS`、路径、命令和代码块等 English technical anchors。
+- 新增 [[07-Reviews/Knowledge-Base/2026-08-16-weekly-maintenance|2026-08-16 Weekly Maintenance]]，更新 [[07-Reviews/Knowledge-Base/README|Knowledge-Base 维护复盘索引]]、[[01-Maps/AI 知识库总地图|总地图]]和 [[index|全局索引]]。
+- 收口工作树中已有的 [[01-Maps/AI-Agent-Learning 跳转索引|AI-Agent-Learning 跳转索引]] UTF-8 BOM 移除改动；该改动只影响 frontmatter 文件头编码，不改变正文内容。
+- 最终严格检查通过：216 个 Markdown、1909 个链接、0 断链、0 缺 frontmatter、8 个 raw 非索引文件。
 
 ## 2026-08-11
 
