@@ -3,7 +3,7 @@ type: maintenance-log
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-08-16
+updated: 2026-08-19
 tags:
   - 知识库
   - log
@@ -982,3 +982,43 @@ tags:
   - `Broken links: 0`
   - `Missing frontmatter: 0`
   - `Raw non-index files: 7`
+
+## 2026-08-18
+
+### AI-Agent-Learning A4-Gate C4a-2 受控重试与人工接管同步
+
+- 来源为执行区 `problem-contract.md`、当前 Agent 代码、`daily/2026-08-17.md` 与 `daily/2026-08-18.md`；对应实现提交为 [`1434adc`](https://github.com/humbleded/AI-Agent-Learning/commit/1434adcdd6af3ab14c55dff547c08baea9059340)。
+- `C4a-2a` 已闭合一次同工具名、同原始参数的真实重试成功：模型 4 次、工具 2 次、step / 日志 `[1,2,3,4,5,6]`，第一次失败不进入成功 Tool Observation；2026-08-17 另有内存首败注入配合真实 DeepSeek 下游调用的受控恢复证据。
+- `C4a-2b1` 已闭合两种自动恢复耗尽：二次可重试失败为工具 2 次、日志 `[1,2,3]`；重试前无剩余 step 为工具 1 次、日志 `[5,6]`，没有第二次工具副作用。两者都窄映射为严格三字段 `needs_manual`，完整无落盘矩阵 `15/15 PASS`，用户已确认最终轨迹符合意图。
+- 新增 [[02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管]]：拆分原子工具尝试、重试编排、专用耗尽信号与公开人工交接职责，补充精确终点、公开合同、不可扩大映射范围、幂等性迁移边界、验证清单，以及用 spy 检查下一次模型实际收到的 Tool Message、证明首次失败与 Python `None` 未污染消息历史的方法。
+- 合并更新 [[04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent]] 的交付图、运行图、完成切片、决定性证据、当前状态与后续范围；同步更新 [[03-Courses/Agent/AI-Agent-Learning/stage4-agent-basics|阶段 4]]、[[03-Courses/Agent/AI-Agent-Learning/README|课程索引]]、[[04-Projects/Agent/README|Agent 项目索引]]、[[04-Projects/Agent/AI-Agent-Learning/README|Agent 实践索引]]、[[02-Concepts/Agent/README|Agent 概念索引]]、[[01-Maps/AI-Agent-Learning 跳转索引|跳转索引]]与 [[index|全局索引]]。
+- 精确状态边界：本次只同步 `C4a-2a / C4a-2b1` 的教学实现成果；父 `A4-Gate` 继续 `DOING`。未新建整关 PASS 复盘、求职证据或 raw 对话副本，危险动作 HITL 与 14 条 eval 也未标为完成。
+- 2026-08-18 S2 已启动 `A4-Gate-C4a-2b2`，当前为 `DOING / 尚未通过`：只处理有 `run_context` / 七字段账本来源证明的真实工具执行后 `retryable=False → tool_failure`，以及工具成功但空结果 `→ insufficient_evidence`；执行前的同形拒绝仍属动作校验 / 修正范围，未知动作 / 候选恢复、HITL、eval 和父 Gate 正式复核继续留后。
+- 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：
+  - `OK: True`
+  - `Markdown files: 217`
+  - `Links: 1931`
+  - `Broken links: 0`
+  - `Missing frontmatter: 0`
+  - `Raw non-index files: 8`
+
+## 2026-08-19
+
+### `if not response`、`is None` 与 Action 分层校验
+
+- 按用户明确要求，合并更新 [[02-Concepts/Python/真值判断与严格布尔校验(Truthiness)|Python 真值判断与严格布尔校验]]，没有新建重复概念页。
+- 补充 `if not response` 与 `response is None` 的语义边界：前者执行 truthiness（真值）判断，可能调用对象的 `__bool__()` 或 `__len__()`；后者只检查对象身份。加入一个属性完整但 falsey 的 `ApiResponse` 最小示例。
+- 补充 Agent 分层校验结论：严格不等于每层重复全部校验。只负责结构提取的 parser 可以用 `is None` 拦截缺失值并透传其他原始未信任值；执行 / validator 层再检查类型、空白、白名单、Schema 与业务约束。`tool_name=123` 原样进入 `execute_tool_call()` 不代表它合法，而是为了在正确责任层生成具体、安全的错误并保留 Action correction 路径。
+- 来源同时使用 Python 官方 Truth Value Testing / Identity comparisons 文档，以及 AI-Agent-Learning 2026-08-19 的代码与 daily 设计证据；明确标注该实现切片仍在复核中，没有据此宣称父 `A4-Gate` PASS。
+- 该概念卡已由 [[02-Concepts/Python/README|Python 概念索引]]收录，本次索引保持 no-op。完成后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict` 做全库结构检查。
+- 严格检查结果：`OK: True`；217 个 Markdown、1933 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。
+
+### AI-Agent-Learning A4-Gate C4a-2b2 / C4b-1 Action correction 同步
+
+- 来源为执行区 `problem-contract.md`、当前 Agent 代码与 `daily/2026-08-18.md` / `daily/2026-08-19.md`；对应实现与学习证据提交为 [`da7751f`](https://github.com/humbleded/AI-Agent-Learning/commit/da7751f2525c5de3a2ecb7a9da9d94bed7d7f7d3)。`C4a-2b2` 与 `C4b-1 G1 / I1a～I2d / U1` 已完成教学实现、决定性验证和用户审核；父 `A4-Gate` 继续 `DOING`。
+- 合并更新 [[02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管]]，没有新建同义卡：新增 `MAX_STEPS` 全局硬门、Action correction / tool retry 局部额度与 completion budget 三层预算，补充预执行拒绝 provenance、同 ID 安全 Tool Observation、窄异常公开映射和 fail-closed 边界。
+- 四条审核轨迹为：非法后修正成功 `M,M,T,M,M,M`；修正仍非法 `M,M` 且工具 0；初始合法后 retry 成功 `M,T,T,M,M,M`；修正后首工具可重试失败 `M,M,T` 且第二次工具 0。其中两条停止分支分别区分局部上限与完整链预算不足，不能都写成工具重试次数耗尽。
+- 合并更新 [[04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent]] 的交付图、运行图、步骤表、决定性证据、关键订正、安全边界和剩余范围；同步更新 Truthiness 状态证据、Agent 概念索引、课程页、项目索引、跳转索引和全局索引。
+- I2d 原始公开映射矩阵 `15/15` 场景、`138/138` 断言通过；机械清理后 `15/15` 场景、`150/150` 断言通过，`py_compile` / `git diff --check` 均通过。U1 用户审核通过，当前源码 SHA-256 为 `D212A8A6A5B1C70F80B33B420C2253AD2A1F19714FA98984689A81A8CD57B173`，源码 `TODO / NotImplementedError = 0 / 0`。
+- 状态边界：本次没有新建 raw、整关 review 或求职证据。父 Gate 仍缺 candidate / Reflection / final validator 恢复、HITL、14 条 eval、五个必答题与正式复核。
+- 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：`OK: True`，217 个 Markdown、1935 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。

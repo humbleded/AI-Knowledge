@@ -3,7 +3,7 @@ type: map
 topic: AI-Agent-Learning 跳转索引
 status: active
 created: 2026-05-28
-updated: 2026-08-13
+updated: 2026-08-19
 tags:
   - AI-Agent-Learning
   - 索引
@@ -67,7 +67,7 @@ tags:
 - [[../04-Projects/Agent/AI-Agent-Learning/a4-03-react-agent|A4-03：ReAct 控制循环]]
 - [[../04-Projects/Agent/AI-Agent-Learning/a4-04-plan-and-solve|A4-04：Plan-and-Solve 计划与执行闭环]]
 - [[../04-Projects/Agent/AI-Agent-Learning/a4-05-reflection-writer|A4-05：Reflection Writer 与质量门槛]]
-- [[../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate：研究摘要 Agent（C4a-1 已收口，整关进行中）]]
+- [[../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate：研究摘要 Agent（C4b-1 已收口，整关进行中）]]
 - [[../raw/conversations/2026-08-13-ai-agent-learning-a4-gate-c4a-1-session-handoff|2026-08-13 C4a-1 会话接力摘要]]
 - [[../02-Concepts/Agent/智能体(Agent)|智能体（概念卡）]]
 - [[../02-Concepts/Agent/ReAct推理与行动循环(ReAct)|ReAct 推理与行动循环（概念卡）]]
@@ -76,6 +76,7 @@ tags:
 - [[../02-Concepts/Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议（概念卡）]]
 - [[../02-Concepts/Agent/文件工具沙箱(File Tool Sandbox)|文件工具沙箱（概念卡）]]
 - [[../02-Concepts/Agent/外部 API 工具(External API Tool)|外部 API 工具（概念卡）]]
+- [[../02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试、Action correction 与完整链预算（概念卡）]]
 - [[../02-Concepts/LLM/API 参数与 SDK 客户端参数|API 参数 vs SDK 客户端参数（概念卡）]]
 - [[../02-Concepts/LLM/分类与路由(Classification & Routing)|分类与路由（概念卡）]]
 - [[../02-Concepts/LLM/上下文工程(Context Engineering)|上下文工程：策划进窗口的整组 token（概念卡）]]

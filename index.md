@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-08-16
+updated: 2026-08-19
 tags:
   - 知识库
   - index
@@ -73,6 +73,7 @@ tags:
 - [[02-Concepts/Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议：Name / Description / Execution Logic]]
 - [[02-Concepts/Agent/文件工具沙箱(File Tool Sandbox)|文件工具沙箱：resolve + relative_to 的安全边界]]
 - [[02-Concepts/Agent/外部 API 工具(External API Tool)|外部 API 工具：timeout / 错误兜底 / 必要字段摘要]]
+- [[02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管：Action correction、分层预算与稳定公开交接]]
 - [[02-Concepts/LLM/API 参数与 SDK 客户端参数|API 参数 vs SDK 客户端参数]]
 - [[02-Concepts/LLM/README|LLM 概念卡]]
 - [[02-Concepts/MCP/README|MCP 概念卡]]
@@ -145,7 +146,7 @@ tags:
 - [[04-Projects/Agent/AI-Agent-Learning/a4-03-react-agent]]
 - [[04-Projects/Agent/AI-Agent-Learning/a4-04-plan-and-solve]]
 - [[04-Projects/Agent/AI-Agent-Learning/a4-05-reflection-writer]]
-- [[04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（进行中）]]
+- [[04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（C4b-1 已收口，整关进行中）]]
 - [[04-Projects/Agent/AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引]]
 
 ## 复盘与记忆
@@ -212,5 +213,5 @@ tags:
 - 为 [[04-Projects/LLM/README|LLM 项目记录]] 增加 micrograd 复现实验。
 - 扩展 [[04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]] 的代码注释、可视化或测试。
 - 为 Karpathy 课程补充 raw transcript 或 repo 摘录。
-- 继续完成 A4-Gate C4a-2a：可重试工具首次失败后，用同一参数至多再尝试一次并成功，使两次真实工具尝试分别占 step、计时和写日志，形成六步恢复轨迹；C4a-1 的共享账本、七字段日志、五步链与 MAX 硬门已记录在进行中项目页。其后仍需失败恢复、HITL、14 条 eval 和正式整关复核。
+- A4-Gate 的 C4a-2a/2b1/2b2 与 C4b-1 已收口：真实工具终点、Action correction、局部恢复额度、完整链预算和窄公开人工接管都有决定性证据。其后仍需 candidate / Reflection / final validator 恢复、HITL、14 条 eval、五个必答题和正式整关复核；父任务继续 `DOING`。
 - 继续新增 `cross entropy`、`softmax`、`logits` 等概念卡。

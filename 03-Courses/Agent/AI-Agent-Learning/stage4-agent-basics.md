@@ -3,7 +3,7 @@ type: course-stage
 topic: AI-Agent-Learning Stage 4
 status: active
 created: 2026-07-10
-updated: 2026-08-13
+updated: 2026-08-19
 tags:
   - Agent
   - AI-Agent-Learning
@@ -16,7 +16,7 @@ tags:
 
 阶段 4 目标是理解 ReAct、Planning、Reflection，并写出最小 Agent。
 
-阶段 3 的 T3-Gate 已通过。阶段 4 当前已完成 A4-01～A4-05；下一主任务为 `DOING` 中的 A4-Gate 最小 Agent 闯关。W4 算法已完成 4/4、内容块 `PASS`，结转债务为 0；它仍与课程任务状态分层记录。
+阶段 3 的 T3-Gate 已通过。阶段 4 当前已完成 A4-01～A4-05；当前主任务为 `DOING` 中的 A4-Gate 最小 Agent 闯关。W4 算法已完成 4/4、内容块 `PASS`，结转债务为 0；它仍与课程任务状态分层记录。
 
 ## 任务状态
 
@@ -27,7 +27,7 @@ tags:
 | A4-03 ReAct | PASS | 2026-07-22 | `code/stage4/a4_03_react_agent.py` | 完整两轮轨迹与 max_steps 通过；15/15 parser/prompt/loop 边界断言通过 |
 | A4-04 Plan-and-Solve | PASS | 2026-07-30 | `code/stage4/a4_04_plan_solve_demo.py` | 可运行计划→执行→事实复盘闭环；39/39 解析、history、复盘与编排边界断言通过 |
 | A4-05 Reflection | PASS | 2026-08-04 | `code/stage4/a4_05_reflection_writer.py` | 初稿/反思/改进/同标准选择闭环；39/39 确定性断言、真实提前停止与真实故障修正路径通过 |
-| A4-Gate 最小 Agent 闯关 | DOING | 2026-08-13 | `code/stage4/problem-contract.md`、`code/stage4/a4_gate_research_summary_agent.py` | Problem Contract、C1/C2、C3a～C3d 与 C4a-1 已闭合；C4a-1 已有共享 request ID、固定七字段日志、正常 step 1～5、双请求隔离与第 7 次调用前硬门。父 Gate 仍缺 C4a-2 retry/失败恢复、HITL、14 条 eval 和整关复核 |
+| A4-Gate 最小 Agent 闯关 | DOING | 2026-08-19 | `code/stage4/problem-contract.md`、`code/stage4/a4_gate_research_summary_agent.py` | Problem Contract、C1/C2、C3a～C3d、C4a-1、C4a-2a/2b1/2b2 与 C4b-1 已闭合；已有真实工具终点、Action correction、局部恢复额度、完整链预算和窄公开人工接管。父 Gate 仍缺 candidate / Reflection / final validator 恢复、HITL、14 条 eval、五个必答题和正式复核 |
 
 ## A4-01 已沉淀概念
 
@@ -65,8 +65,9 @@ tags:
 
 ## A4-Gate 已沉淀进行中实践
 
-- [[../../../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（C4a-1 已收口，父任务 DOING）]]
+- [[../../../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（C4b-1 已收口，父任务 DOING）]]
 - [[../../../raw/conversations/2026-08-13-ai-agent-learning-a4-gate-c4a-1-session-handoff|C4a-1 会话接力摘要]]
+- [[../../../02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管：Action correction、完整链预算与稳定公开交接]]
 - [[../../../02-Concepts/Agent/反思机制(Reflection)|Reflection 的 Observation 来源白名单与硬校验边界]]
 - [[../../../02-Concepts/LLM/结构化输出(Structured Output)|结构化输出、finish_reason 与 JSON 解析分层]]
 - [[../../../02-Concepts/LLM/函数调用(Function Calling)|SDK 属性对象与 Tool Calling 协议]]
@@ -84,6 +85,9 @@ tags:
 - Replanning 的产物必须是可执行剩余计划，而不是约束清单；后续步骤只能引用前一步实际返回的结果，不能提前写死。
 - Reflection prompt 负责表达评审标准与反馈协议，但仍是软约束；客户端只对已编码门槛作硬判断，`accepted_refinement=True` 不能外推为所有语义质量都改善。
 - 故障注入必须如实区分测试夹具与真实模型输出；不能为了覆盖 Refinement 删除生产提前停止条件。
+- 原子工具入口只知道本次尝试；是否还有重试机会、何时停止自治，必须由持有历史与预算的上层编排判断。
+- 每次真实重试都应重新进入原子入口占 step、计时和记日志，不能手工增加 step 制造没有调用证据的幽灵步号。
+- 自动恢复耗尽只能用专用窄信号映射；宽泛捕获 `RuntimeError` 会把不可重试失败、协议错误和真实 Python 异常错误分类为 `needs_manual`。
 
 ## 相关执行区
 
@@ -111,4 +115,7 @@ tags:
 - [A4-Gate C3d 正式证据（2026-08-11）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-11.md)
 - [A4-Gate C4a-1 前半段证据（2026-08-12）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-12.md)
 - [A4-Gate C4a-1 收口证据（2026-08-13）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-13.md)
+- [A4-Gate C4a-2a 六步恢复与 C4a-2b1 启动证据（2026-08-17）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-17.md)
+- [A4-Gate C4a-2b1 专用信号、15/15 与用户审核（2026-08-18）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-18.md)
+- [A4-Gate C4a-2b2、C4b-1 与策略 B 用户审核（2026-08-19）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-19.md)
 - [progress](file:///C:/Users/26823/Desktop/AI-Agent-Learning/tracker/progress.md)
