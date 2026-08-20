@@ -3,13 +3,14 @@ type: concept
 topic: Agent Bounded Retry and Human Handoff
 status: usable
 created: 2026-08-18
-updated: 2026-08-19
+updated: 2026-08-20
 source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\problem-contract.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_gate_research_summary_agent.py
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-17.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-18.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-19.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-20.md
 tags:
   - AI/Agent
   - Reliability
@@ -29,6 +30,9 @@ aliases:
   - 完整链预算
   - Action Correction
   - 动作修正
+  - Candidate Recovery
+  - 候选摘要恢复
+  - 人工接管证据池
 ---
 
 # 受控重试与人工接管（Bounded Retry and Human Handoff）
@@ -41,7 +45,7 @@ aliases:
 > 本卡总结的是“自动恢复耗尽后停止并交接”。它不等于完整的 HITL（Human-in-the-Loop）确认门：危险动作执行前的 allow / deny 仍是另一条控制流。
 
 > [!note] 当前项目证据边界
-> `A4-Gate-C4a-2a / C4a-2b1 / C4a-2b2 / C4b-1` 的教学、实现与决定性验证已经闭合，但父任务 `A4-Gate` 仍为 `DOING`。尚未完成的是候选摘要、Reflection 与最终 validator 失败恢复、危险动作 HITL、14 条 eval、Gate 五个必答题和整关正式复核。
+> `A4-Gate-C4a-2a / C4a-2b1 / C4a-2b2 / C4b-1 / C4b-2a` 的教学、实现与决定性验证已经闭合，但父任务 `A4-Gate` 仍为 `DOING`。C4b-2a 只关闭“模型 API 已返回、Candidate 响应协议或正文不可用”的受控恢复；Candidate Provider/API 异常、Reflection 与最终 validator 失败恢复、危险动作 HITL、14 条 eval、Gate 五个必答题和整关正式复核尚未完成。
 
 ## 新手比喻：一次派送、调度员与客服出口
 
@@ -93,6 +97,10 @@ Action correction 前：
 第一次真实工具出现 retryable failure 后：
   1 次 retry 工具 + Candidate + Reflection + Refinement
   = 至少还需要 4 个调用位置
+
+Candidate 响应不可用且属于恢复白名单时：
+  1 次 Candidate recovery + Reflection + Refinement
+  = 至少还需要 3 个调用位置
 ```
 
 因此，step 1 的非法 Action 可以使用一次 correction，因为还剩 5 步；若 correction 后的首次真实工具在 step 3 返回可重试失败，剩余只有 3 步，已不足以容纳“再试工具 + 三段下游模型”，必须在第二次工具副作用前停止。
@@ -137,11 +145,13 @@ candidate_summary / tool_name / tool_result
 status / summary / sources
 ```
 
-这两个合同服务于不同层。如果把普通成功和人工接管塞进一个没有判别标签的 `dict`，调用方无法安全区分“继续进入 Reflection”还是“立即结束”。当前实现按失败职责使用三个窄内部异常：
+这两个合同服务于不同层。如果把普通成功和人工接管塞进一个没有判别标签的 `dict`，调用方无法安全区分“继续进入 Reflection”还是“立即结束”。当前实现按失败职责使用五个窄内部异常：
 
 - `AutoRecoveryExhaustedError`：全局 step 硬上限或一次工具重试额度耗尽；
 - `ActionCorrectionBudgetError`：Action correction 局部额度耗尽，或剩余 step 不足以完成修正后的可信结果链；
 - `ToolRetryCompletionBudgetError`：第一次真实工具可重试失败后，剩余 step 不足以容纳“第二次工具 + 完整下游链”。
+- `CandidateRecoveryCompletionBudgetError`：Candidate 属于可恢复分类，但剩余 step 不足以容纳“Candidate recovery + Reflection + Refinement”。
+- `CandidateSummaryStageStopError`：Candidate 阶段已经按 `terminal_response / recovery_exhausted / insufficient_completion_steps` 安全停止，并携带公开入口所需的安全原因、恢复次数、当前 step 与真实来源白名单。
 
 它们只携带构造安全交接说明所需的受控事实，例如精确 `reason`、当前 step、实际尝试/修正次数和已经安全化的最后错误。公开入口必须同时按**精确异常类型**和**精确 reason** fail-closed 地分流；未知 reason、异常子类、普通 `RuntimeError` / `ValueError`、模型 API 异常、工具 Python 异常和协议结构错误继续按原路径传播，不能被一把兜成“达到重试上限”。
 
@@ -191,6 +201,58 @@ status / summary / sources
 
 这两个终点表达的是“无法完成可信链”，不是“已经达到工具重试次数上限”。公开说明必须区分这两件事。
 
+## Candidate 响应：先分类，再决定是否恢复
+
+Candidate recovery 处理的不是“模型调用根本没有发生”，而是：**模型 API 已经返回并正常记账，但返回对象不能形成可用的候选摘要**。Provider / HTTP / SDK 抛出的调用异常属于另一类故障，不能被本分支顺手吞成业务状态。
+
+第一步应使用无副作用分类器，把不可信响应压缩成固定三键内部结果：
+
+```text
+classification / reason / candidate_summary
+```
+
+当前冻结的分类如下：
+
+| 分类 | 安全原因 | 行为 |
+|---|---|---|
+| `valid` | `None` | `finish_reason=stop`、没有 Tool Action、正文为非空字符串；保留原始正文并继续 Reflection |
+| `recoverable` | `invalid_response_shape`、`invalid_candidate_content`、`length`、`unexpected_tool_calls` | 只有完整链预算允许时，依据同一份真实 Tool Observation 恢复一次 |
+| `terminal` | `content_filter`、`insufficient_system_resource`、`missing_finish_reason`、`unknown_finish_reason` | 不尝试用内容修订绕过安全过滤、资源故障或未知协议状态，立即安全停止 |
+
+分类必须先检查 `finish_reason` 的 terminal 语义，再读取 `message / tool_calls / content`。否则，一个已经明确标记为安全过滤或资源不足的响应，可能因为正文结构同时损坏而被错误降级成普通格式重试。
+
+DeepSeek Chat Completions 当前官方响应 schema 把 `stop / length / content_filter / tool_calls / insufficient_system_resource` 列为 `finish_reason` 值，并允许 assistant `content` 为 nullable；这是版本敏感的 Provider 协议事实，检查日期为 2026-08-20。项目自己的 `missing_* / unknown_*` 原因码则是客户端 fail-closed 分类，不是 Provider 原生枚举。
+
+### 一次恢复的消息边界
+
+恢复消息从 Candidate 调用前的历史构造：
+
+```text
+system
+user（规范化请求）
+assistant（合法 Tool Action）
+tool（本轮真实 Tool Observation）
+user（按失败原因生成的证据受限修订指令）
+```
+
+这里有三个关键边界：
+
+1. 失败的 Candidate 响应不加入历史，避免截断文本、坏外壳或未配对 Tool Action 污染下一次调用；
+2. 原 Tool Observation 按对象 identity 浅复用，不重建、不重新序列化，也不再次执行工具；
+3. recovery 调用显式使用 `tool_choice="none"`，只允许根据既有 Observation 从头生成更短或更合规的纯文本摘要。
+
+恢复调用返回后必须再走同一个分类器：第二次结果为 `valid` 才进入 Reflection；第二次为 `terminal` 或仍为 `recoverable` 都立即停止，不能递归、循环或再发第二次 recovery。
+
+### 为什么 step 3 能恢复、step 4 必须停止
+
+正常链的 Candidate 在 step 3 返回失败时，`MAX_STEPS=6` 还剩 step 4～6，刚好容纳：
+
+```text
+step 4 Candidate recovery -> step 5 Reflection -> step 6 Refinement
+```
+
+如果前面已经发生一次 Action correction 或 tool retry，Candidate 会到 step 4 才返回；此时只剩两个调用位置，少于可信尾链所需的三个。即使局部 recovery 次数尚未使用，也必须在新的模型调用、计时和日志之前返回 `needs_manual`。
+
 ## 公开人工接管合同
 
 窄信号到达公开入口后，统一返回严格三字段：
@@ -211,7 +273,29 @@ status / summary / sources
 4. 为什么当前证据不足以继续生成可信结论；
 5. Agent 已停止自治，并把下一步交给人工决定。
 
-没有真实可引用证据时必须使用 `sources=[]`。安全化的 `last_error` 可以被整理进说明，但 raw arguments、原始请求值、prompt/messages、日志、request ID、密钥、异常整串和内部运行上下文不得泄漏，也不应扩展为新的公开字段。
+没有本轮实际取得且通过白名单校验的来源时必须使用 `sources=[]`。安全化的 `last_error` 可以被整理进说明，但 raw arguments、原始请求值、prompt/messages、日志、request ID、密钥、异常整串和内部运行上下文不得泄漏，也不应扩展为新的公开字段。
+
+### 同一个 `sources` 字段在成功与失败中的语义
+
+固定三字段 V1 没有单独的 `answer_citations` 与 `retrieved_evidence`，因此客户端必须结合 `status` 解释 `sources`：
+
+- `status=success`：`sources` 表示已通过校验的摘要实际采用的来源；
+- 非成功状态：若失败前尚未取得真实来源，使用 `[]`；若 Candidate 失败前已经取得并白名单校验了真实来源，可以保留它们，但它们只表示**供人工接管复核的证据池**。
+
+Candidate 失败时的 `summary` 必须明确说明：没有任何 Candidate / 摘要通过校验，非空 `sources` 不代表存在一份已验证摘要，也不是失败摘要的 citations。未来若允许扩展公开 schema，更清晰的做法是把“回答引用”和“已检索证据”拆成不同字段。
+
+> [!warning] 原始理解 → 当前结论
+> 原始偏好是保留这些来源，同时仍把它们理解成“已验证摘要采用的来源”。两句话不能同时成立：既然没有摘要通过 validator，就不存在“已验证摘要采用的引用”。当前合同保留来源值，但把语义订正为“已真实取得、供人工接管复核的证据池”。
+
+```json
+{
+  "status": "needs_manual",
+  "summary": "唯一一次候选恢复仍未得到合法摘要；没有摘要通过校验。sources 仅供人工复核，Agent 已停止自治。",
+  "sources": ["sample.txt"]
+}
+```
+
+来源必须由规范化请求与真实工具结果派生，不能从失败 Candidate、自述引用或异常正文中提取。
 
 ## 四条决定性端到端轨迹
 
@@ -225,6 +309,15 @@ status / summary / sources
 | 修正合法 → 首次真实工具可重试失败 | `M,M,T`，step/log `3/3` | 1 | `needs_manual`；完整链预算不足；第二次工具零副作用 |
 
 第一次失败仍应进入内部调用账本，但不能作为成功的 Tool Observation 写入模型消息历史。失败证据“可审计”不等于失败结果“可作为下一模型的正常工具内容”。
+
+## Candidate recovery 的四条决定性轨迹
+
+| 场景 | 轨迹 | 最终行为 |
+|---|---|---|
+| Candidate 首次合法 | `M,T,M,M,M`，step/log `5/5` | 不发生 recovery；正常进入 Reflection / Refinement 并返回 `success` |
+| step 3 Candidate 可恢复 → recovery 合法 | `M,T,M,M,M,M`，step/log `6/6` | 恢复恰好一次；随后完成 Reflection / Refinement |
+| Candidate 首次 terminal | `M,T,M`，step/log `3/3` | recovery 为 0；保留真实来源证据池并返回 `needs_manual` |
+| Action correction 或 tool retry 后的 step 4 Candidate 可恢复 | 候选失败已占 step 4 | 完整尾链预算不足；recovery 模型调用、计时和日志均为 0，返回 `needs_manual` |
 
 ### 用 spy 证明消息历史没有被失败结果污染
 
@@ -288,6 +381,10 @@ A4-Gate 当前重试的是受控只读工具，这个证据不能直接外推为
 | 修正 `tool_call_id` 时顺手 `.strip()` | Tool Observation 无法与原 assistant tool call 精确关联 | 只用 strip 判空，回填时保留原始 ID |
 | 用工具结果再次调用 Action response parser | parser 负责模型响应外壳，工具结果属于另一数据层 | correction response 只解析一次；工具结果交给终点分类 |
 | corrected Action 再错时直接返回成功形状 | 绕过局部修正上限，可能让无证据状态继续下游 | 再进同一预算门，在新模型调用前窄停止 |
+| 把失败 Candidate 加入 recovery 历史 | 截断内容、坏外壳或未配对 Tool Action 可能继续污染模型 | 从既有真实 Tool Observation 末尾追加新的修订指令 |
+| Candidate 只要失败就原样重试 | 会错误重试安全过滤、资源不足或未知协议漂移 | 先做 `valid / recoverable / terminal` 纯分类，再同时检查完整链预算 |
+| 唯一 recovery 仍失败后继续循环 | 局部次数失控，并挤占 Reflection / Refinement 的可信尾链 | 第二次分类非 `valid` 就停止并交还人工 |
+| 把 `needs_manual.sources` 写成已验证摘要引用 | 没有摘要通过 validator，引用对象并不存在 | 明确它只是实际取得的人工接管证据池，失败说明写清证据缺口 |
 
 ## 验证清单
 
@@ -304,6 +401,11 @@ A4-Gate 当前重试的是受控只读工具，这个证据不能直接外推为
 - [ ] 修正后首次工具若在 step 3 可重试失败，不会执行第二次工具，也不会把“完整链不足”误写成“重试次数耗尽”。
 - [ ] 公开入口按精确异常类型和精确 reason 分支；未知 reason、异常子类、API/协议错误仍原样传播。
 - [ ] `needs_manual` 仍严格只有 `status / summary / sources`，且无真实证据时 `sources=[]`。
+- [ ] Candidate 响应先按固定三键分类；terminal reason 不会被正文结构错误降级成 recoverable。
+- [ ] Candidate recovery 只从既有真实 Tool Observation 构造消息，失败 Candidate 不进入历史，工具不会重跑。
+- [ ] step 3 恰好允许一次 recovery + Reflection + Refinement；step 4 在 recovery 调用前因完整链不足停止。
+- [ ] 唯一 recovery 的第二次分类无论 terminal 还是 recoverable 都不会触发第二次 recovery。
+- [ ] Candidate 失败时，非空 `sources` 只来自真实白名单来源，公开说明明确其为人工接管证据池而非已验证摘要引用。
 - [ ] 不同请求的 step、request ID 和日志相互隔离。
 
 ## 来源与证据
@@ -313,8 +415,11 @@ A4-Gate 当前重试的是受控只读工具，这个证据不能直接外推为
 - [2026-08-17：同参数重试成功与 C4a-2b1 启动](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-17.md)
 - [2026-08-18：专用信号、窄映射、15/15 与用户审核](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-18.md)
 - [2026-08-19：Action correction、完整链预算、公开映射与用户审核](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-19.md)
+- [2026-08-20：Candidate 响应分类、唯一恢复、公开证据池与用户审核](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-20.md)
+- [DeepSeek Chat Completions API：Responses](https://api-docs.deepseek.com/api/create-chat-completion/#responses)（检查日期：2026-08-20）
 - [实现提交 `1434adc`](https://github.com/humbleded/AI-Agent-Learning/commit/1434adcdd6af3ab14c55dff547c08baea9059340)
 - [C4a-2b2 / C4b-1 实现提交 `da7751f`](https://github.com/humbleded/AI-Agent-Learning/commit/da7751f2525c5de3a2ecb7a9da9d94bed7d7f7d3)
+- [C4b-2a Candidate 响应恢复提交 `c8ad8cf`](https://github.com/humbleded/AI-Agent-Learning/commit/c8ad8cf063340d0ac30d8c0d0b48f6add379c145)
 
 ## 相关链接
 

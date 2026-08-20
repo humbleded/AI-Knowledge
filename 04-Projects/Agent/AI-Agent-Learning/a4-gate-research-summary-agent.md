@@ -3,7 +3,7 @@ type: project
 topic: AI-Agent-Learning A4-Gate Research Summary Agent
 status: doing
 created: 2026-08-11
-updated: 2026-08-19
+updated: 2026-08-20
 source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\problem-contract.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_gate_research_summary_agent.py
@@ -13,6 +13,7 @@ source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-17.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-18.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-19.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-20.md
 tags:
   - Agent
   - Tool-Calling
@@ -25,15 +26,15 @@ tags:
 # A4-Gate 研究摘要 Agent（进行中）
 
 > [!important] 状态边界
-> `A4-Gate-C4a-1`、`C4a-2a / 2b1 / 2b2` 与 `C4b-1` 已完成教学实现、决定性验证和用户审核；父任务 `A4-Gate` 仍为 `DOING`。本页记录可复查的进行中项目进展，不是整关 PASS 复盘，也不升级求职证据。
+> `A4-Gate-C4a-1`、`C4a-2a / 2b1 / 2b2`、`C4b-1` 与 `C4b-2a` 已完成教学实现、决定性验证和用户审核；父任务 `A4-Gate` 仍为 `DOING`。本页记录可复查的进行中项目进展，不是整关 PASS 复盘，也不升级求职证据。
 
 ## 目标与当前产物
 
 - 目标：接收 `topic` 或受沙箱约束的 `relative_path`，只执行一个与请求匹配的工具，再基于本轮真实 Observation 生成带来源的三字段研究摘要。
 - 设计合同：`C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\problem-contract.md`，整关通过前保持 `DRAFT`。
 - 当前实现：`C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_gate_research_summary_agent.py`。
-- 证据链：`C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-11.md`、`2026-08-12.md`、`2026-08-13.md`、`2026-08-17.md`、`2026-08-18.md`、`2026-08-19.md`。
-- 当前实现快照（2026-08-19 U1 审核后）：SHA-256 `D212A8A6A5B1C70F80B33B420C2253AD2A1F19714FA98984689A81A8CD57B173`，`TODO / NotImplementedError = 0 / 0`。
+- 证据链：`C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-11.md`、`2026-08-12.md`、`2026-08-13.md`、`2026-08-17.md`、`2026-08-18.md`、`2026-08-19.md`、`2026-08-20.md`。
+- 当前实现快照（2026-08-20 U1 审核后）：SHA-256 `FB269B974AF5524CDD25F397EA15F0D1AA82DCBBB9794031AB6776096CE057B7`，`TODO / NotImplementedError = 0 / 0`。
 
 最终成功对象只能包含：
 
@@ -65,8 +66,9 @@ flowchart LR
     C4A2A --> C4A2B1["C4a-2b1<br/>二次失败 / 无 step<br/>needs_manual PASS"]
     C4A2B1 --> C4A2B2["C4a-2b2<br/>tool_failure / insufficient_evidence PASS"]
     C4A2B2 --> ACTION_REC["C4b-1<br/>Action correction + completion budget PASS"]
-    ACTION_REC --> CAND_REC["candidate / Reflection / final validator<br/>失败恢复与安全停止 ⏳"]
-    CAND_REC --> HITL["HITL<br/>危险 fake allow / deny ⏳"]
+    ACTION_REC --> CAND_REC["C4b-2a<br/>Candidate 响应一次恢复<br/>与安全停止 PASS"]
+    CAND_REC --> REF_VAL_REC["Candidate Provider/API、Reflection<br/>与 final validator 失败恢复 ⏳"]
+    REF_VAL_REC --> HITL["HITL<br/>危险 fake allow / deny ⏳"]
     HITL --> DATA["eval_cases.json<br/>10 normal + 3 failure + 1 danger<br/>至少 3 holdout ⏳"]
     DATA --> REVIEW{"A4-Gate 正式复核 ⏳"}
     REVIEW -->|"确定性合同与安全全过；语义阈值达标"| PASS["A4-Gate PASS"]
@@ -77,8 +79,8 @@ flowchart LR
     classDef pending fill:#fff2cc,stroke:#bf9000,color:#1f1f1f;
     classDef gate fill:#d9eaf7,stroke:#0b5394,color:#1f1f1f;
     class PC designed;
-    class C1,C2,C3A,C3B,C3C,C3D,C4A1,C4A2A,C4A2B1,C4A2B2,ACTION_REC done;
-    class CAND_REC,HITL,DATA,RETRY pending;
+    class C1,C2,C3A,C3B,C3C,C3D,C4A1,C4A2A,C4A2B1,C4A2B2,ACTION_REC,CAND_REC done;
+    class REF_VAL_REC,HITL,DATA,RETRY pending;
     class REVIEW,PASS gate;
 ```
 
@@ -122,29 +124,36 @@ flowchart TD
     EVIDENCE -->|"是"| OBS["Observation<br/>保存真实 content / results 与 allowed_sources ✅"]
 
     OBS --> M2["模型生成候选摘要<br/>无重试正常链为 step 3 ✅"]
-    M2 --> CANDIDATE{"第二模型响应：finish_reason=stop<br/>无 tool_calls、正文非空？ ✅"}
-    CANDIDATE -->|"是"| REFLECT["Reflection：按真实证据与输出合同评审<br/>无重试正常链为 step 4 ✅"]
-    CANDIDATE -->|"否"| CAND_REC
+    M2 --> CAND_CLASS{"Candidate 分类：valid / recoverable / terminal？ ✅"}
+    CAND_CLASS -->|"valid"| REFLECT["Reflection：按真实证据与输出合同评审<br/>无重试正常链为 step 4 ✅"]
+    CAND_CLASS -->|"terminal"| MANUAL_CAND["needs_manual<br/>没有摘要通过校验；sources 仅为人工证据池 ✅"]
+    CAND_CLASS -->|"recoverable"| CAND_BUDGET{"剩余 step 足够容纳<br/>recovery + Reflection + Refinement？ ✅"}
+    CAND_BUDGET -->|"否"| MANUAL_CAND
+    CAND_BUDGET -->|"是"| CAND_FIX["Candidate recovery 恰好一次<br/>复用真实 Observation；tool_choice=none ✅"]
+    CAND_FIX --> CAND_CLASS2{"恢复响应再次分类<br/>是否 valid？ ✅"}
+    CAND_CLASS2 -->|"是"| REFLECT
+    CAND_CLASS2 -->|"terminal / recoverable"| MANUAL_CAND
     REFLECT --> REF_OK{"Reflection 响应：finish_reason=stop<br/>无 tool_calls、反馈非空？ ✅"}
     REF_OK -->|"是"| REFINE["Refinement：JSON Output<br/>无重试正常链为 step 5 ✅"]
-    REF_OK -->|"否"| CAND_REC
+    REF_OK -->|"否"| REF_REC["Reflection 响应失败恢复 ⏳"]
     REFINE --> REFINE_OK{"Refinement 响应：finish_reason=stop<br/>无 tool_calls、正文非空？ ✅"}
     REFINE_OK -->|"是"| PARSE["json.loads：只解析 JSON 语法 ✅"]
-    REFINE_OK -->|"否"| CAND_REC
+    REFINE_OK -->|"否"| VAL_REC["Refinement / 最终 validator 失败恢复 ⏳"]
     PARSE --> JSON_OK{"JSON 语法可解析？ ✅"}
-    JSON_OK -->|"否"| CAND_REC
+    JSON_OK -->|"否"| VAL_REC
     JSON_OK -->|"是"| VALID{"最终 validator<br/>精确三键、类型、状态、非空、来源子集 ✅"}
     VALID -->|"合法且证据充分"| SUCCESS["success<br/>summary + 本轮真实 sources ✅"]
-    VALID -->|"候选不合法但仍可修订"| CAND_REC["仅依据本轮证据修订候选 ⏳"]
-    CAND_REC --> BUDGET_C{"仍有 step 预算？ ⏳"}
-    BUDGET_C -->|"是"| CAND_FIX["重新调用失败的候选 / Reflection / Refinement 阶段<br/>新调用独立占 step / 计时 / 记日志 ⏳"]
-    BUDGET_C -->|"否"| MANUAL_OTHER["needs_manual<br/>candidate / Reflection / validator 恢复耗尽 ⏳"]
-    CAND_FIX -.回到对应阶段的后置守门.-> CANDIDATE
+    VALID -->|"不合法"| VAL_REC
+    REF_REC -.后续冻结恢复成功.-> REFINE
+    REF_REC -.预算耗尽.-> MANUAL_OTHER["needs_manual<br/>Reflection / validator / HITL 后续停止分支 ⏳"]
+    VAL_REC -.后续冻结后重校验.-> VALID
+    VAL_REC -.预算耗尽.-> MANUAL_OTHER
 
     GUARD["全局护栏<br/>每次真实模型/工具调用前 reserve_call_step<br/>MAX_STEPS=6；禁止第 7 次调用 ✅"] -.约束.-> M1
     GUARD -.约束.-> TOOL1
     GUARD -.约束.-> TOOL2
     GUARD -.约束.-> M2
+    GUARD -.约束.-> CAND_FIX
     GUARD -.约束.-> REFLECT
     GUARD -.约束.-> REFINE
 
@@ -153,6 +162,7 @@ flowchart TD
     TOOL_FAIL --> OUT
     INSUFFICIENT --> OUT
     MANUAL_RETRY --> OUT
+    MANUAL_CAND --> OUT
     MANUAL_OTHER --> OUT
     SUCCESS --> OUT
 
@@ -161,20 +171,20 @@ flowchart TD
     classDef terminalDone fill:#d9eaf7,stroke:#0b5394,color:#1f1f1f;
     classDef terminalPending fill:#fce5cd,stroke:#cc4125,color:#1f1f1f;
     classDef note fill:#f3f3f3,stroke:#666666,color:#1f1f1f;
-    class PRE,INIT,M1,F1,ACTION,ACTION_REC,BUDGET_A,M1_CORR,TOOL1,RETRY_OK,TOOL2,RESULT1,RESULT2,EVIDENCE,OBS,M2,CANDIDATE,REFLECT,REF_OK,REFINE,REFINE_OK,PARSE,JSON_OK,VALID done;
-    class RISK,CONFIRM,CAND_REC,BUDGET_C,CAND_FIX pending;
-    class INVALID,SUCCESS,MANUAL_RETRY,MANUAL_ACTION,TOOL_FAIL,INSUFFICIENT terminalDone;
+    class PRE,INIT,M1,F1,ACTION,ACTION_REC,BUDGET_A,M1_CORR,TOOL1,RETRY_OK,TOOL2,RESULT1,RESULT2,EVIDENCE,OBS,M2,CAND_CLASS,CAND_BUDGET,CAND_FIX,CAND_CLASS2,REFLECT,REF_OK,REFINE,REFINE_OK,PARSE,JSON_OK,VALID done;
+    class RISK,CONFIRM,REF_REC,VAL_REC pending;
+    class INVALID,SUCCESS,MANUAL_RETRY,MANUAL_ACTION,MANUAL_CAND,TOOL_FAIL,INSUFFICIENT terminalDone;
     class MANUAL_OTHER terminalPending;
     class PROTOCOL_ERROR note;
     class START,GUARD,OUT note;
 ```
 
 > [!warning] 当前代码与目标图的差异
-> 当前已经验证无重试正常链、一次同参数工具重试、真实不可重试失败、搜索零证据、Action correction、修正/重试完整链预算和对应公开 `needs_manual`。尚未收口的是 candidate、Reflection 与最终 validator 失败恢复、HITL 和 eval；模型响应协议错误、API 异常与未知 reason 按设计继续原样传播，不能宣称所有异常都会被统一成业务状态。
+> 当前已经验证无重试正常链、一次同参数工具重试、真实不可重试失败、搜索零证据、Action correction、修正/重试完整链预算，以及 Candidate 响应协议 / 内容失败的一次恢复与公开 `needs_manual`。尚未收口的是 Candidate Provider/API 异常、Reflection 与最终 validator 失败恢复、HITL 和 eval；这些异常仍按既有边界传播，不能宣称所有异常都会被统一成业务状态。
 
 正常无重试路径只使用 step 1～5，不伪造 step 6。一次工具重试成功路径已经证明正好使用 step 1～6：模型选择 → 工具失败 → 工具重试成功 → 候选模型 → Reflection → Refinement。任何第 7 次模型或工具调用都必须在计时与副作用之前拒绝。
 
-未注入客户端时只创建一个 client；同一请求中的模型调用共用这个对象。每次公开请求只创建一个 `run_context`，其中保存非空 `request_id`、共享 `step` 和独立 `logs` 列表；内部账本不会进入最终三字段业务结果。恢复停止信号中的受控事实只用于生成用户可读的 `summary`，不会扩展成公开顶层字段，也不会公开 raw arguments、原始请求、prompt/messages、日志或 request ID。
+未注入客户端时只创建一个 client；同一请求中的模型调用共用这个对象。每次公开请求只创建一个 `run_context`，其中保存非空 `request_id`、共享 `step` 和独立 `logs` 列表；内部账本不会进入最终三字段业务结果。恢复停止信号中的受控事实只用于生成用户可读的 `summary`，不会扩展成公开顶层字段，也不会公开 raw arguments、原始请求、prompt/messages、日志或 request ID。Candidate 阶段失败前已经取得的真实白名单来源可以保留在 `needs_manual.sources` 中，但只作为人工接管证据池，不代表存在一份已通过校验的摘要。
 
 ## A4-Gate 实现步骤
 
@@ -189,7 +199,9 @@ flowchart TD
 | C4a-2b1 自动恢复耗尽映射 | 已收口 | 二次可重试失败与重试前无剩余 step 均窄映射为严格三字段 `needs_manual` |
 | C4a-2b2 其他工具结果映射 | 已收口 | 只对有账本来源证明的真实工具执行映射 `tool_failure`；工具成功但空结果映射 `insufficient_evidence` |
 | C4b-1 Action correction 与预算停止 | 已收口 | 未知工具、坏 JSON/Schema、路由/值漂移可修正一次；修正局部上限和两类完整链预算在副作用前安全停止 |
-| candidate / Reflection / final validator 恢复 | 未开始 | 候选链协议或验证失败时受控修正/停止 |
+| C4b-2a Candidate 响应协议 / 内容恢复 | 已收口 | 四类 recoverable 最多恢复一次；四类 terminal、恢复耗尽和完整尾链预算不足均安全映射为 `needs_manual` |
+| Candidate Provider/API 异常恢复 | 未开始 | 区分网络、HTTP、SDK 与 Provider 失败是否允许受控重试 |
+| Reflection / final validator 恢复 | 未开始 | Reflection、Refinement 或最终合同校验失败时受控修正/停止 |
 | HITL allow/deny | 未开始 | 危险 fake 在确认门前零执行 |
 | 14 条 eval | 未开始 | 固定 normal/failure/danger/holdout 案例与阈值 |
 | A4-Gate 正式复核 | 未开始 | 只有整关复核通过才可把父任务改为 PASS |
@@ -213,6 +225,22 @@ flowchart TD
 | C4a-2b1 | 已收口 | 编排层发出专用恢复耗尽信号，公开入口只窄捕获该信号并返回 `needs_manual`；普通运行时错误保持原分类 |
 | C4a-2b2 | 已收口 | 真实不可重试工具失败与成功零证据按 provenance 窄分类；执行前同形拒绝不误入工具终点 |
 | C4b-1 G1 / I1a～I2d / U1 | PASS | 策略 B、Action correction、单 Action parser、执行来源分类、主链接线、工具 retry 完整链预算、公开映射与用户审核闭合 |
+| C4b-2a G1～G3 / I1a～I1h / I2 / U1 | PASS | Candidate 三分法、一次证据受限恢复、三步尾链预算、stage resolver、生产接线、人工证据池映射、端到端回归和用户审核闭合 |
+
+## 2026-08-20 C4b-2a Candidate 响应恢复决定性证据
+
+- 本切片只处理“Candidate 模型 API 已返回并记账，但响应协议或正文不可用”。Provider / HTTP / SDK 抛出的异常不在这里重试或公开映射，继续保持原异常边界。
+- 固定分类为：`valid`；四类 `recoverable`——`invalid_response_shape / invalid_candidate_content / length / unexpected_tool_calls`；四类 `terminal`——`content_filter / insufficient_system_resource / missing_finish_reason / unknown_finish_reason`。terminal 的 `finish_reason` 语义优先于 message/content 结构检查。
+- 正常链 Candidate 在 step 3 失败时，剩余 step 4～6 恰好容纳 Candidate recovery、Reflection、Refinement；Action correction 或 tool retry 后 Candidate 位于 step 4，只剩两个位置，必须在 recovery 模型调用、计时和日志前停止。
+- recovery 消息只浅复用 Candidate 调用前的真实 Tool Observation，并追加一条按安全 reason 固定的 user 修订指令；失败 Candidate 不写入历史，不重跑工具，调用显式使用 `tool_choice="none"`。
+- 恢复响应再走同一分类器：只有 `valid` 才继续 Reflection；第二次为 terminal 或 recoverable 都停止，没有循环、递归、第二个恢复调用点或额外 context counter。
+- Candidate 阶段通过 `terminal_response / recovery_exhausted / insufficient_completion_steps` 三种窄停止事实接力；公开入口同时检查精确异常类型、stop kind、reason、恢复次数、step 与来源形状，未知 reason、子类和其他程序异常原样传播。
+- 候选失败后的严格三字段结果为 `needs_manual`。`sources` 只从规范化请求和真实工具结果派生，保留顺序并复制列表；其语义是供人工接管复核的真实证据池，不是已验证摘要引用，`summary` 明确没有 Candidate / 摘要通过校验。
+- 内存端到端验证覆盖 16 类场景、`123/123 PASS`：正常 topic/path 五步链、Candidate recovery 六步成功链、首次/恢复后 terminal、恢复耗尽、两条 step 4 预算停止、Action correction/tool retry 旧链、Provider 异常与无第 7 步副作用均通过。
+- 真实 DeepSeek `relative_path=sample.txt` 正常链退出码 0，返回非空中文摘要与 `sources=["sample.txt"]`；证明 Candidate 新接线没有破坏真实 Action → Tool → Candidate → Reflection → Refinement / validator 正常链。
+- `AST_PARSE = PASS`、`git diff --check` 通过、源码 `TODO / NotImplementedError = 0 / 0`；U1 用户最终审核“通过”。当前源码 SHA-256 为 `FB269B974AF5524CDD25F397EA15F0D1AA82DCBBB9794031AB6776096CE057B7`。
+- 对应实现与学习证据已提交为 [`c8ad8cf`](https://github.com/humbleded/AI-Agent-Learning/commit/c8ad8cf063340d0ac30d8c0d0b48f6add379c145)。
+- 这些证据只关闭 C4b-2a 教学 / 实现子单元。父 `A4-Gate` 仍为 `DOING`，没有新建整关 PASS 复盘或升级岗位证据。
 
 ## 2026-08-19 C4a-2b2 / C4b-1 决定性证据
 
@@ -268,7 +296,7 @@ flowchart TD
 
 1. OpenAI 兼容 SDK 返回的是属性对象，不是嵌套 `dict`；响应必须按 `response → choices[0] → message` 读取。
 2. `finish_reason` 位于 `choice`，不是 `message`；Reflection 与 Refinement 当前只接受 `stop`。
-3. 外部响应缺字段、非 `stop`、意外 tool calls、空正文或坏 JSON 都属于运行时协议失败，应 fail-closed 为 `RuntimeError`，不能泄漏 `AttributeError` 或伪造成功。
+3. 不同模型阶段必须使用各自冻结的协议门：首次 Action 的结构错误继续使用窄协议异常；Candidate 的外壳、结束原因、Tool Action 与正文先归入 `valid / recoverable / terminal`；Reflection / Refinement 的失败恢复仍待后续切片。任何阶段都不能泄漏原生 `AttributeError` 或伪造成功。
 4. `prepare_request()` 返回二项结果，入口必须先解包规范化请求与非法结果；C3c 返回三键字典，必须按精确键取值，不能直接迭代解包字典。
 5. `response_format={"type":"json_object"}` 只约束模型输出形式，SDK 仍返回字符串；必须经过 `json.loads`，再由 validator 做业务合同校验。
 6. 调用前顺序必须是 `reserve → clock → 真实调用`；硬门晚于计时或副作用，就无法证明第 7 次调用为零副作用。
@@ -283,10 +311,14 @@ flowchart TD
 15. Action response parser 与 executor 的职责不能混用：parser 只检查能否确定一个可关联 Action，工具名/参数内容校验留给 executor；工具结果也不能再次交给 Action parser。
 16. `MAX_STEPS` 只负责全局硬门。局部修正/重试额度和完整链预算要在新模型或第二次工具副作用之前独立检查，已知无法完成时应提前停止。
 17. 公开预算映射必须同时匹配精确异常类型和精确 reason；未知 reason 与异常子类 fail-closed 原样传播，不能由默认 `else` 冒充既有停止原因。
+18. Candidate API 已返回但响应不可用，不等于模型调用没有发生；首次 Candidate 仍占 step、写七字段日志，再由纯分类器判断是否可恢复。
+19. Candidate recovery 必须从原 Tool Observation 之后重新生成，不能把失败 Candidate 加入历史，也不能重跑工具；`length` 要从头缩短重写，不能续写截断文本。
+20. 局部 recovery 尚未使用不代表一定能恢复：step 3 还剩三个调用位置时可以完成 recovery + Reflection + Refinement，step 4 只剩两个位置时必须提前停止。
+21. Candidate 失败结果中的非空 `sources` 只表示人工接管证据池，不是已验证摘要 citations；公开说明必须同时写明没有摘要通过校验。
 
 ## 安全边界
 
-- `allowed_sources` 只能从本轮真实 Observation 派生；最终 `sources` 必须是它的非空子集。
+- `allowed_sources` 只能从本轮真实 Observation 派生；`success.sources` 必须是摘要实际采用来源的非空子集。Candidate 失败时可以浅复制真实白名单来源到 `needs_manual.sources`，但只能解释为人工接管证据池。
 - Prompt 中的来源名单是软约束，客户端 validator 才是硬门。
 - 来源身份属于 allowlist 只能证明“引用来自本轮工具结果”，不能单独证明摘要中的每个事实都被正文支持；语义真实性仍需固定 eval 与人工抽查。
 - 非法输入会在 client、模型和工具之前返回；Reflection 与 Refinement 均不暴露工具。
@@ -295,19 +327,22 @@ flowchart TD
 - `MAX_TOOL_RETRIES=1` 表示首次尝试后最多追加 1 次，因此工具总尝试数最多为 2；达到上限后不得出现第三次工具调用。
 - `MAX_ACTION_CORRECTIONS=1` 表示非法 Action 最多请求一次模型修正；修正仍非法时不发第二次 correction，也不执行真实工具。
 - correction 前至少保留 5 个调用位置；第一次工具可重试失败后至少保留 4 个调用位置。完整链不足时停止的原因不能误写为“局部次数已经耗尽”。
+- Candidate recovery 前至少保留 3 个调用位置；恢复消息不包含失败 Candidate，只复用真实 Tool Observation，并显式禁止再次 Tool Action。
+- Candidate 首次 terminal、唯一 recovery 后仍失败或完整链预算不足时，都不得进入 Reflection；公开入口只映射精确的 Candidate stage stop，Provider/SDK 与篡改异常保持原样传播。
 - 当前同参数重试只在受控只读工具上获得证据，不能直接外推到支付、发送、部署等有副作用操作；写操作还需幂等键、去重与 HITL 风险门。
 
 ## 当前切片与后续未完成范围
 
 父任务仍缺：
 
-- candidate、Reflection 与最终 validator 响应/校验失败的受控修正或安全停止。
+- Candidate Provider/API 异常是否允许受控重试，以及对应预算与安全停止。
+- Reflection、Refinement 与最终 validator 响应/校验失败的受控修正或安全停止。
 - HITL：高风险 fake 工具的 allow/deny 可执行证据。
 - `eval_cases.json`：14 条固定案例、至少 3 条 holdout 和正式 Gate 阈值。
 - Gate 的循环、停止、工具恢复、幻觉点和可测试验收规则五个必答题。
 - 正式 Gate 复核；在此之前不新建 A4-Gate PASS 复盘，也不升级岗位证据。
 
-截至 2026-08-19，`C4a-2b2` 与 `C4b-1` 已收口，当前没有活动代码 TODO；它们没有替代父任务剩余范围，也没有把 `tracker/progress.md` 中的 `A4-Gate` 从 `DOING` 改为 `PASS`。
+截至 2026-08-20，`C4a-2b2`、`C4b-1` 与 `C4b-2a` 已收口，当前没有活动代码 TODO；这些子单元没有替代父任务剩余范围，也没有把 `tracker/progress.md` 中的 `A4-Gate` 从 `DOING` 改为 `PASS`。
 
 ## 相关链接
 

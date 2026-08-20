@@ -3,7 +3,7 @@ type: course-index
 topic: AI-Agent-Learning
 status: active
 created: 2026-05-28
-updated: 2026-08-19
+updated: 2026-08-20
 tags:
   - AI-Agent
   - Python
@@ -28,13 +28,13 @@ tags:
 - [[stage3-tool-calling|阶段 3：Tool Calling / Function Calling]]
 - [[stage4-agent-basics|阶段 4：Agent 基础原理]]
 - 已通过：P0-Gate、L1-Gate、PR2-Gate、T3-01、T3-02、T3-03、T3-04、T3-Gate、A4-01、A4-02、A4-03、A4-04、A4-05
-- 当前项：A4-Gate 最小 Agent 闯关（`DOING`）；其中 C4a-1、C4a-2a/2b1/2b2 与 C4b-1 已收口，当前没有活动代码 TODO。W4 算法已完成 4/4、内容块 `PASS`，无结转债务
+- 当前项：A4-Gate 最小 Agent 闯关（`DOING`）；其中 C4a-1、C4a-2a/2b1/2b2、C4b-1 与 C4b-2a 已收口，当前没有活动代码 TODO。W4 算法已完成 4/4、内容块 `PASS`，无结转债务
 
 ## 当前执行策略
 
 - 阶段 0、阶段 1、阶段 2 主线已完成。
 - 阶段 3 已完成：三工具原生 Tool Calling 闭环与 14 条正式评估通过。
-- 阶段 4 已完成 A4-01~A4-05；A4-Gate 的 Problem Contract、C1/C2、C3a～C3d、C4a-1、C4a-2a/2b1/2b2 与 C4b-1 已闭合。当前已有每请求独立 context、七字段调用账本、真实工具终点、Action correction、局部恢复额度、完整链预算与严格三字段人工接管。之后仍需 candidate / Reflection / final validator 恢复、HITL allow/deny、14 条 eval、五个必答题和整关复核；父任务继续 `DOING`。
+- 阶段 4 已完成 A4-01~A4-05；A4-Gate 的 Problem Contract、C1/C2、C3a～C3d、C4a-1、C4a-2a/2b1/2b2、C4b-1 与 C4b-2a 已闭合。当前已有每请求独立 context、七字段调用账本、真实工具终点、Action correction、分层预算、Candidate 响应三分法、一次证据受限恢复与严格三字段人工接管。之后仍需 Candidate Provider/API、Reflection / final validator 恢复、HITL allow/deny、14 条 eval、五个必答题和整关复核；父任务继续 `DOING`。
 - 阶段 0.5 工程基础不再整块前置，而是放到 API、Tool Calling、Memory、RAG、本地部署项目中随用随补。
 - `B0-Gate` 作为后续本地栈整合关卡，不阻塞第一次进入 L1/API。
 
@@ -72,7 +72,7 @@ tags:
 - [[../../../04-Projects/Agent/AI-Agent-Learning/a4-03-react-agent]]
 - [[../../../04-Projects/Agent/AI-Agent-Learning/a4-04-plan-and-solve]]
 - [[../../../04-Projects/Agent/AI-Agent-Learning/a4-05-reflection-writer]]
-- [[../../../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（C4b-1 已收口，整关进行中）]]
+- [[../../../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（C4b-2a 已收口，整关进行中）]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-05-27-stage0-p0-01-p0-02-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-05-28-stage0-p0-03-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-06-02-stage0-p0-04-pass-review]]

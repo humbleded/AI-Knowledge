@@ -3,7 +3,7 @@ type: project-index
 topic: AI-Agent-Learning Agent Projects
 status: active
 created: 2026-07-06
-updated: 2026-08-19
+updated: 2026-08-20
 tags:
   - Agent
   - AI-Agent-Learning
@@ -25,7 +25,7 @@ tags:
 - [[a4-03-react-agent|A4-03 ReAct Agent]]
 - [[a4-04-plan-and-solve|A4-04 Plan-and-Solve]]
 - [[a4-05-reflection-writer|A4-05 Reflection Writer]]
-- [[a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（C4b-1 已收口，整关进行中）]]
+- [[a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（C4b-2a 已收口，整关进行中）]]
 
 ## 源码阅读
 

@@ -1022,3 +1022,16 @@ tags:
 - I2d 原始公开映射矩阵 `15/15` 场景、`138/138` 断言通过；机械清理后 `15/15` 场景、`150/150` 断言通过，`py_compile` / `git diff --check` 均通过。U1 用户审核通过，当前源码 SHA-256 为 `D212A8A6A5B1C70F80B33B420C2253AD2A1F19714FA98984689A81A8CD57B173`，源码 `TODO / NotImplementedError = 0 / 0`。
 - 状态边界：本次没有新建 raw、整关 review 或求职证据。父 Gate 仍缺 candidate / Reflection / final validator 恢复、HITL、14 条 eval、五个必答题与正式复核。
 - 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：`OK: True`，217 个 Markdown、1935 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。
+
+## 2026-08-20
+
+### AI-Agent-Learning A4-Gate C4b-2a Candidate 响应恢复同步
+
+- 来源为执行区 `problem-contract.md`、Agent 代码与 `daily/2026-08-20.md`；对应实现和学习证据提交为 [`c8ad8cf`](https://github.com/humbleded/AI-Agent-Learning/commit/c8ad8cf063340d0ac30d8c0d0b48f6add379c145)。`C4b-2a G1～G3 / I1a～I1h / I2 / U1` 已完成教学实现、决定性验证和用户审核；父 `A4-Gate` 继续 `DOING`。
+- 合并更新 [[02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管]]，没有新建同义卡：新增 Candidate `valid / recoverable / terminal` 三分法、四类恢复白名单与四类 terminal 原因、terminal 优先级、一次证据受限 recovery、三步完整尾链预算和三个 stage stop kind。
+- Candidate recovery 只复用同一份真实 Tool Observation，不重新执行工具，也不把失败 Candidate 写入消息历史；正常 step 3 可以用 step 4～6 完成 recovery + Reflection + Refinement，Action correction 或 tool retry 后的 step 4 Candidate 则在新模型调用前停止。
+- 固定三字段 V1 保留用户选择：Candidate 最终失败时，`needs_manual.sources` 可以保留本轮真实白名单来源，但只解释为供人工接管复核的证据池，不是已验证摘要引用；`summary` 必须明确没有 Candidate / 摘要通过校验。DeepSeek `finish_reason` 与 nullable content 依据官方 Chat Completions Responses schema 于 2026-08-20 复核。
+- 决定性证据为内存端到端 16 类场景、`123/123 PASS`，覆盖正常五步、Candidate recovery 六步、首次 / 恢复后 terminal、恢复耗尽、step 4 预算停止、旧 Action correction / tool retry 回归、Provider 异常和无第 7 步副作用；真实 DeepSeek `relative_path=sample.txt` 正常链退出码 0，返回非空摘要与 `sources=["sample.txt"]`。
+- 合并更新 [[04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent]] 的交付图、运行图、状态表、决定性证据、关键订正、安全边界和剩余范围；同步更新 [[03-Courses/Agent/AI-Agent-Learning/stage4-agent-basics|阶段 4 课程页]]、课程索引、Agent 概念 / 项目索引、[[01-Maps/AI-Agent-Learning 跳转索引|跳转索引]]与 [[index|全局索引]]。
+- [[02-Concepts/Agent/反思机制(Reflection)|Reflection 概念卡]]、AI Agent 学习资源地图和 AI-Agent-Learning 关联方案保持 no-op；Reflection 失败恢复尚未实现。没有新建 raw、整关 PASS review、求职证据或新概念页。
+- 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：`OK: True`，217 个 Markdown、1941 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。
