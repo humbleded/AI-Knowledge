@@ -32,6 +32,9 @@ aliases:
   - 动作修正
   - Candidate Recovery
   - 候选摘要恢复
+  - Reflection Recovery
+  - Reflection 反馈恢复
+  - 反思反馈恢复
   - 人工接管证据池
 ---
 
@@ -45,7 +48,7 @@ aliases:
 > 本卡总结的是“自动恢复耗尽后停止并交接”。它不等于完整的 HITL（Human-in-the-Loop）确认门：危险动作执行前的 allow / deny 仍是另一条控制流。
 
 > [!note] 当前项目证据边界
-> `A4-Gate-C4a-2a / C4a-2b1 / C4a-2b2 / C4b-1 / C4b-2a` 的教学、实现与决定性验证已经闭合，但父任务 `A4-Gate` 仍为 `DOING`。C4b-2a 只关闭“模型 API 已返回、Candidate 响应协议或正文不可用”的受控恢复；Candidate Provider/API 异常、Reflection 与最终 validator 失败恢复、危险动作 HITL、14 条 eval、Gate 五个必答题和整关正式复核尚未完成。
+> `A4-Gate-C4a-2a / C4a-2b1 / C4a-2b2 / C4b-1 / C4b-2a / C4b-2b-1` 的教学、实现、决定性验证和用户审核已经闭合，但父任务 `A4-Gate` 仍为 `DOING`。C4b-2b-1 只关闭“Reflection 模型 API 已返回、反馈响应协议或正文不可用”的受控恢复；Candidate / Reflection Provider/API 异常、Refinement / 最终 validator 失败恢复、危险动作 HITL、14 条 eval、Gate 五个必答题和整关正式复核尚未完成。
 
 ## 新手比喻：一次派送、调度员与客服出口
 
@@ -101,6 +104,10 @@ Action correction 前：
 Candidate 响应不可用且属于恢复白名单时：
   1 次 Candidate recovery + Reflection + Refinement
   = 至少还需要 3 个调用位置
+
+Reflection 反馈响应不可用且属于恢复白名单时：
+  1 次 Reflection recovery + Refinement
+  = 至少还需要 2 个调用位置
 ```
 
 因此，step 1 的非法 Action 可以使用一次 correction，因为还剩 5 步；若 correction 后的首次真实工具在 step 3 返回可重试失败，剩余只有 3 步，已不足以容纳“再试工具 + 三段下游模型”，必须在第二次工具副作用前停止。
@@ -145,13 +152,15 @@ candidate_summary / tool_name / tool_result
 status / summary / sources
 ```
 
-这两个合同服务于不同层。如果把普通成功和人工接管塞进一个没有判别标签的 `dict`，调用方无法安全区分“继续进入 Reflection”还是“立即结束”。当前实现按失败职责使用五个窄内部异常：
+这两个合同服务于不同层。如果把普通成功和人工接管塞进一个没有判别标签的 `dict`，调用方无法安全区分“继续进入下一阶段”还是“立即结束”。当前实现按失败职责使用一组窄内部异常：
 
 - `AutoRecoveryExhaustedError`：全局 step 硬上限或一次工具重试额度耗尽；
 - `ActionCorrectionBudgetError`：Action correction 局部额度耗尽，或剩余 step 不足以完成修正后的可信结果链；
 - `ToolRetryCompletionBudgetError`：第一次真实工具可重试失败后，剩余 step 不足以容纳“第二次工具 + 完整下游链”。
 - `CandidateRecoveryCompletionBudgetError`：Candidate 属于可恢复分类，但剩余 step 不足以容纳“Candidate recovery + Reflection + Refinement”。
 - `CandidateSummaryStageStopError`：Candidate 阶段已经按 `terminal_response / recovery_exhausted / insufficient_completion_steps` 安全停止，并携带公开入口所需的安全原因、恢复次数、当前 step 与真实来源白名单。
+- `ReflectionRecoveryCompletionBudgetError`：Reflection 反馈属于可恢复分类，但剩余 step 不足以同时容纳“Reflection recovery + Refinement”。
+- `ReflectionFeedbackStageStopError`：Reflection 反馈阶段已经按 `terminal_response / recovery_exhausted / insufficient_completion_steps` 安全停止，只携带公开入口所需的阶段事实，不携带失败反馈正文。
 
 它们只携带构造安全交接说明所需的受控事实，例如精确 `reason`、当前 step、实际尝试/修正次数和已经安全化的最后错误。公开入口必须同时按**精确异常类型**和**精确 reason** fail-closed 地分流；未知 reason、异常子类、普通 `RuntimeError` / `ValueError`、模型 API 异常、工具 Python 异常和协议结构错误继续按原路径传播，不能被一把兜成“达到重试上限”。
 
@@ -253,6 +262,38 @@ step 4 Candidate recovery -> step 5 Reflection -> step 6 Refinement
 
 如果前面已经发生一次 Action correction 或 tool retry，Candidate 会到 step 4 才返回；此时只剩两个调用位置，少于可信尾链所需的三个。即使局部 recovery 次数尚未使用，也必须在新的模型调用、计时和日志之前返回 `needs_manual`。
 
+## Reflection 反馈响应：只恢复同一评审，不重做整条链
+
+Reflection recovery 处理的是：**Reflection API 已经返回并完成记账，但响应协议或反馈正文不能形成可用反馈**。它不处理网络、HTTP、SDK 或 Provider 在调用期间直接抛出的异常，也不处理后续 Refinement 响应和最终 validator 失败；这些边界继续保持原异常 identity，等待各自切片冻结策略。
+
+Reflection 反馈先进入无副作用的严格三键分类：
+
+```text
+classification / reason / feedback
+```
+
+| 分类 | 安全原因 | 行为 |
+|---|---|---|
+| `valid` | `None` | `finish_reason=stop`、无 Tool Action、反馈为非空字符串；清理首尾空白后进入 Refinement |
+| `recoverable` | `invalid_response_shape`、`invalid_feedback_content`、`length`、`unexpected_tool_calls` | 只有完整尾链还容纳 recovery 与 Refinement 时，恢复同一次评审一次 |
+| `terminal` | `content_filter`、`insufficient_system_resource`、`missing_finish_reason`、`unknown_finish_reason` | 不绕过安全过滤、资源故障或未知协议状态，立即安全停止 |
+
+这些 `recoverable / terminal` 标签是 A4-Gate 客户端基于冻结合同作出的本地策略分类，不是 Provider 对所有模型、版本或场景的通用重试保证。
+
+恢复 prompt 完整保留原 Reflection prompt，所以仍能看到可信的原始请求、真实 Tool Observation、合法 Candidate、`allowed_sources` 和评审要求；但它的函数签名不接收失败响应或失败反馈，因此不可能把截断文本、坏外壳或异常 Tool Action 回填给模型。恢复调用也不重跑工具，只要求重新完成**同一个 Reflection**，输出非空纯文本反馈，而不是 JSON 或最终 `status / summary / sources`。
+
+恢复响应必须再走同一个分类器：只有 `valid` 才进入 Refinement；第二次仍为 `recoverable` 或转为 `terminal` 都停止。整条链最多只有一个 Reflection recovery 调用点，没有循环、递归或“成功后再临时检查 Refinement 预算”。
+
+### 为什么 step 4 能恢复、step 5 必须停止
+
+在无前序恢复的正常链中，首次 Reflection 位于 step 4。它返回可恢复失败后，剩余两个位置恰好组成完整尾链：
+
+```text
+step 5 Reflection recovery -> step 6 Refinement
+```
+
+如果 Candidate recovery 已占用 step 4，首次 Reflection 会在 step 5 返回失败，此时 `remaining_steps = 6 - 5 = 1`。若贸然恢复，step 6 只能完成 Reflection recovery，Refinement 将需要不存在的 step 7，因此必须在 recovery prompt、模型调用、计时和日志之前停止，并让 step 6 保持未使用。
+
 ## 公开人工接管合同
 
 窄信号到达公开入口后，统一返回严格三字段：
@@ -269,20 +310,20 @@ step 4 Candidate recovery -> step 5 Reflection -> step 6 Refinement
 
 1. 达到了哪个具体阈值；
 2. 实际发起了几次修正或工具尝试；
-3. 最后一个已经安全化的校验或工具错误是什么；
+3. 最后一个已经安全化的阶段失败原因、校验错误或工具错误是什么；
 4. 为什么当前证据不足以继续生成可信结论；
 5. Agent 已停止自治，并把下一步交给人工决定。
 
-没有本轮实际取得且通过白名单校验的来源时必须使用 `sources=[]`。安全化的 `last_error` 可以被整理进说明，但 raw arguments、原始请求值、prompt/messages、日志、request ID、密钥、异常整串和内部运行上下文不得泄漏，也不应扩展为新的公开字段。
+没有本轮实际取得且通过白名单校验的来源时必须使用 `sources=[]`。安全化的失败原因或 `last_error` 可以被整理进说明，但 raw arguments、原始请求值、prompt/messages、日志、request ID、密钥、异常整串和内部运行上下文不得泄漏，也不应扩展为新的公开字段。
 
 ### 同一个 `sources` 字段在成功与失败中的语义
 
 固定三字段 V1 没有单独的 `answer_citations` 与 `retrieved_evidence`，因此客户端必须结合 `status` 解释 `sources`：
 
 - `status=success`：`sources` 表示已通过校验的摘要实际采用的来源；
-- 非成功状态：若失败前尚未取得真实来源，使用 `[]`；若 Candidate 失败前已经取得并白名单校验了真实来源，可以保留它们，但它们只表示**供人工接管复核的证据池**。
+- 非成功状态：若失败前尚未取得真实来源，使用 `[]`；若 Candidate 或 Reflection 阶段失败前已经取得真实来源，可以保留它们，但它们只表示**供人工接管复核的证据池**。
 
-Candidate 失败时的 `summary` 必须明确说明：没有任何 Candidate / 摘要通过校验，非空 `sources` 不代表存在一份已验证摘要，也不是失败摘要的 citations。未来若允许扩展公开 schema，更清晰的做法是把“回答引用”和“已检索证据”拆成不同字段。
+阶段失败时的 `summary` 必须准确说明停在哪一层：Candidate 阶段失败表示没有 Candidate / 摘要通过校验；Reflection 阶段失败表示已有合法 Candidate，但没有最终摘要完成 Reflection → Refinement → 客户端 validator。两种情况下，非空 `sources` 都不代表存在一份已验证摘要，也不是失败摘要的 citations。未来若允许扩展公开 schema，更清晰的做法是把“回答引用”和“已检索证据”拆成不同字段。
 
 > [!warning] 原始理解 → 当前结论
 > 原始偏好是保留这些来源，同时仍把它们理解成“已验证摘要采用的来源”。两句话不能同时成立：既然没有摘要通过 validator，就不存在“已验证摘要采用的引用”。当前合同保留来源值，但把语义订正为“已真实取得、供人工接管复核的证据池”。
@@ -295,7 +336,7 @@ Candidate 失败时的 `summary` 必须明确说明：没有任何 Candidate / �
 }
 ```
 
-来源必须由规范化请求与真实工具结果派生，不能从失败 Candidate、自述引用或异常正文中提取。
+来源必须由规范化请求与真实工具结果派生，不能从失败 Candidate、失败 Reflection、自述引用或异常正文中提取。公开入口还应把内部停止信号声明的 step、恢复次数和来源与本轮 `run_context`、阶段起始 step 及重新派生的真实来源逐值、逐顺序对账；最终返回重新派生来源的新副本，而不是再次信任异常对象里的列表。即使异常类型和 reason 都合法，字段语义被篡改时也必须原样上抛。
 
 ## 四条决定性端到端轨迹
 
@@ -318,6 +359,15 @@ Candidate 失败时的 `summary` 必须明确说明：没有任何 Candidate / �
 | step 3 Candidate 可恢复 → recovery 合法 | `M,T,M,M,M,M`，step/log `6/6` | 恢复恰好一次；随后完成 Reflection / Refinement |
 | Candidate 首次 terminal | `M,T,M`，step/log `3/3` | recovery 为 0；保留真实来源证据池并返回 `needs_manual` |
 | Action correction 或 tool retry 后的 step 4 Candidate 可恢复 | 候选失败已占 step 4 | 完整尾链预算不足；recovery 模型调用、计时和日志均为 0，返回 `needs_manual` |
+
+## Reflection recovery 的四条决定性轨迹
+
+| 场景 | 轨迹 | 最终行为 |
+|---|---|---|
+| step 4 Reflection 首次合法 | 正常五步链 | recovery 为 0；反馈进入 step 5 Refinement 并返回 `success` |
+| step 4 Reflection 可恢复 → recovery 合法 | step 4 失败 → step 5 recovery → step 6 Refinement | 恢复恰好一次；完整可信尾链完成 |
+| step 4 Reflection 首次 terminal，或唯一 recovery 后仍失败 | 首次 terminal 停在 step 4；恢复后停止在 step 5 | 不再恢复、不进入 Refinement；保留真实来源证据池并返回 `needs_manual` |
+| Candidate recovery 后的 step 5 Reflection 可恢复 | Reflection 失败已占 step 5 | 只剩 1 步而完整尾链需要 2 步；recovery 和 Refinement 均为 0，step 6 保持未使用 |
 
 ### 用 spy 证明消息历史没有被失败结果污染
 
@@ -385,6 +435,10 @@ A4-Gate 当前重试的是受控只读工具，这个证据不能直接外推为
 | Candidate 只要失败就原样重试 | 会错误重试安全过滤、资源不足或未知协议漂移 | 先做 `valid / recoverable / terminal` 纯分类，再同时检查完整链预算 |
 | 唯一 recovery 仍失败后继续循环 | 局部次数失控，并挤占 Reflection / Refinement 的可信尾链 | 第二次分类非 `valid` 就停止并交还人工 |
 | 把 `needs_manual.sources` 写成已验证摘要引用 | 没有摘要通过 validator，引用对象并不存在 | 明确它只是实际取得的人工接管证据池，失败说明写清证据缺口 |
+| 把失败 Reflection 正文拼入 recovery prompt | 截断文本、坏外壳或越权 Tool Action 会继续污染同一评审 | recovery helper 不接收失败响应，只复用原可信 Reflection prompt |
+| step 5 先恢复一次，再看能否 Refinement | recovery 会占 step 6，最终稿需要不存在的 step 7 | 发起 recovery 前一次性为 recovery + Refinement 预留 2 步 |
+| 已有合法 Candidate 就宣称成功 | Candidate 尚未完成 Reflection、Refinement 与最终 validator | 公开说明准确标记缺失的下游阶段，并进入人工接管 |
+| 只看异常类型，直接相信其中的 step / attempts / sources | 合法类型的信号仍可能携带伪造语义 | 与当前账本、阶段起点和重新派生的真实来源对账；不一致就上抛 |
 
 ## 验证清单
 
@@ -406,6 +460,11 @@ A4-Gate 当前重试的是受控只读工具，这个证据不能直接外推为
 - [ ] step 3 恰好允许一次 recovery + Reflection + Refinement；step 4 在 recovery 调用前因完整链不足停止。
 - [ ] 唯一 recovery 的第二次分类无论 terminal 还是 recoverable 都不会触发第二次 recovery。
 - [ ] Candidate 失败时，非空 `sources` 只来自真实白名单来源，公开说明明确其为人工接管证据池而非已验证摘要引用。
+- [ ] Reflection 反馈先按固定三键分类；terminal reason 优先，Provider / SDK 异常不被本分支吞掉。
+- [ ] step 4 Reflection 可恢复时轨迹精确为 step 5 recovery → step 6 Refinement；step 5 失败时在 recovery 前停止且不消耗 step 6。
+- [ ] 唯一 Reflection recovery 后的 terminal / recoverable 都不会再次恢复或进入 Refinement；Refinement / validator 失败仍按原异常边界传播。
+- [ ] Reflection `needs_manual` 明确“已有合法 Candidate，但没有最终结果通过 Reflection → Refinement → validator”；来源仍只是人工证据池。
+- [ ] 公开入口重新核对 Reflection 信号的 step、恢复次数与真实来源；伪造字段和异常子类都保持原样传播。
 - [ ] 不同请求的 step、request ID 和日志相互隔离。
 
 ## 来源与证据
@@ -415,11 +474,12 @@ A4-Gate 当前重试的是受控只读工具，这个证据不能直接外推为
 - [2026-08-17：同参数重试成功与 C4a-2b1 启动](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-17.md)
 - [2026-08-18：专用信号、窄映射、15/15 与用户审核](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-18.md)
 - [2026-08-19：Action correction、完整链预算、公开映射与用户审核](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-19.md)
-- [2026-08-20：Candidate 响应分类、唯一恢复、公开证据池与用户审核](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-20.md)
+- [2026-08-20：Candidate / Reflection 响应分类、唯一恢复、公开证据池与用户审核](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-20.md)
 - [DeepSeek Chat Completions API：Responses](https://api-docs.deepseek.com/api/create-chat-completion/#responses)（检查日期：2026-08-20）
 - [实现提交 `1434adc`](https://github.com/humbleded/AI-Agent-Learning/commit/1434adcdd6af3ab14c55dff547c08baea9059340)
 - [C4a-2b2 / C4b-1 实现提交 `da7751f`](https://github.com/humbleded/AI-Agent-Learning/commit/da7751f2525c5de3a2ecb7a9da9d94bed7d7f7d3)
 - [C4b-2a Candidate 响应恢复提交 `c8ad8cf`](https://github.com/humbleded/AI-Agent-Learning/commit/c8ad8cf063340d0ac30d8c0d0b48f6add379c145)
+- [C4b-2b-1 Reflection 反馈恢复提交 `e4a5681`](https://github.com/humbleded/AI-Agent-Learning/commit/e4a56813aa6b4e68ffee4ab7b45d5a3a2c1d2a5f)
 
 ## 相关链接
 

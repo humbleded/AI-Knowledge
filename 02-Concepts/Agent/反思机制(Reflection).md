@@ -3,13 +3,15 @@ type: concept
 topic: Reflection
 status: usable
 created: 2026-07-23
-updated: 2026-08-10
+updated: 2026-08-20
 source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-23.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-30.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-03.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-04.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-10.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-20.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\problem-contract.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_05_reflection_writer.py
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_gate_research_summary_agent.py
 tags:
@@ -124,6 +126,27 @@ candidate
 
 这条边界也解释了为什么“模型说来源真实”不能替代代码检查：模型既是候选内容的生成者，又是软评审参与者；最终可接受集合必须由客户端根据外部执行事实确定。
 
+## Reflection 反馈失败时，恢复的是评审，不是最终答案
+
+Reflection 的输出只是供 Refinement 使用的中间反馈，不是最终摘要。因此，当模型 API 已经返回、但反馈外壳或正文不可用时，一次安全恢复必须保持阶段职责：仍然重新完成同一个 Reflection，只返回纯文本反馈；不能跳过 Refinement，不能直接生成最终三字段结果，也不能把“已有合法 Candidate”误当成成功。
+
+```text
+合法 Candidate
+  -> step 4 Reflection 响应可恢复失败
+  -> step 5 Reflection recovery
+  -> step 6 Refinement
+  -> JSON 解析与客户端 validator
+```
+
+这里有四个关键边界：
+
+- 发起 recovery 前一次性检查完整尾链预算。Reflection recovery 后必需还有一个 Refinement 位置，所以至少需要 2 个剩余 step；若首次 Reflection 已到 step 5，只剩 step 6，就应在新调用前停止。
+- recovery prompt 复用原始可信 Reflection prompt，因此仍包含真实 Observation、合法 Candidate、`allowed_sources` 和原评审标准；失败响应或失败反馈正文不进入 prompt。
+- 同一阶段最多恢复一次。恢复后只有合法反馈能进入 Refinement；terminal 或仍可恢复的响应都安全停止。
+- Provider / HTTP / SDK 异常、Refinement 响应失败和最终 validator 失败属于不同故障边界，不能被 Reflection 反馈恢复分支顺手吞掉。
+
+停止后的 `needs_manual.sources` 仍只表示本轮工具真实取得、供人工复核的证据池。此时已有合法 Candidate，但还没有任何最终摘要完成 Reflection → Refinement → validator；详细的分类、完整链预算、公开信号对账与防篡改边界见 [[受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管]]。
+
 ## 成本与适用场景
 
 每个完整改进轮都会增加 Reflection 与 Refinement 模型调用；后一阶段依赖前一阶段结果，因此通常串行执行，总延迟也会累加。若保存或发送完整轨迹，还会增加上下文与状态管理成本。
@@ -219,6 +242,7 @@ Action
 - [[计划与求解(Plan-and-Solve)|计划与求解]]
 - [[智能体(Agent)|智能体]]
 - [[工具调用与动作(Tool Calling and Action)|工具调用与动作]]
+- [[受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管]]
 
 ## 来源与证据
 
@@ -227,3 +251,5 @@ Action
 - `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-04.md`：正式练习、真实 DeepSeek 正常/故障分支与任务级 PASS 复核。
 - `C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_05_reflection_writer.py`：可运行的单轮 Reflection Writer、确定性门槛和审计字段。
 - `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-10.md`、`code\stage4\a4_gate_research_summary_agent.py`：A4-Gate C3d 的 Observation 来源白名单、Reflection / Refinement prompt 与客户端来源子集硬门；这些子检查点已通过，整个 A4-Gate 仍为 `DOING`。
+- `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-20.md`、`code\stage4\problem-contract.md`、`code\stage4\a4_gate_research_summary_agent.py`：A4-Gate C4b-2b-1 的 Reflection 反馈三分法、一次安全恢复、两步完整尾链预算、阶段停止和公开来源对账；坏协议分支由可重复的 fake / spy 故障注入验证，真实 DeepSeek 只证明正常五步链没有回归。该证据只关闭 C4b-2b-1，父 Gate 仍为 `DOING`。
+- [C4b-2b-1 Reflection 反馈恢复提交 `e4a5681`](https://github.com/humbleded/AI-Agent-Learning/commit/e4a56813aa6b4e68ffee4ab7b45d5a3a2c1d2a5f)

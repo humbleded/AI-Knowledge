@@ -1035,3 +1035,13 @@ tags:
 - 合并更新 [[04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent]] 的交付图、运行图、状态表、决定性证据、关键订正、安全边界和剩余范围；同步更新 [[03-Courses/Agent/AI-Agent-Learning/stage4-agent-basics|阶段 4 课程页]]、课程索引、Agent 概念 / 项目索引、[[01-Maps/AI-Agent-Learning 跳转索引|跳转索引]]与 [[index|全局索引]]。
 - [[02-Concepts/Agent/反思机制(Reflection)|Reflection 概念卡]]、AI Agent 学习资源地图和 AI-Agent-Learning 关联方案保持 no-op；Reflection 失败恢复尚未实现。没有新建 raw、整关 PASS review、求职证据或新概念页。
 - 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：`OK: True`，217 个 Markdown、1941 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。
+
+### AI-Agent-Learning A4-Gate C4b-2b-1 Reflection 反馈恢复同步
+
+- 来源为执行区 `problem-contract.md`、Agent 代码与 `daily/2026-08-20.md`；对应实现和学习证据提交为 [`e4a5681`](https://github.com/humbleded/AI-Agent-Learning/commit/e4a56813aa6b4e68ffee4ab7b45d5a3a2c1d2a5f)。`C4b-2b-1 G1 / I1a～I1d / U1 = PASS`，`I1e / I1f / I2` 是依据既有 PASS 证据完成的同构整理与工程验证；父 `A4-Gate` 继续 `DOING`。
+- 合并更新 [[02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管]]，没有新建 Reflection recovery 同义卡：新增 Reflection 反馈 `valid / recoverable / terminal` 三分法、至多一次安全恢复、两步完整尾链预算、失败反馈隔离、阶段停止与公开 step / attempts / sources 防篡改对账。
+- 合并更新 [[02-Concepts/Agent/反思机制(Reflection)|反思机制]]：明确 recovery 只恢复供 Refinement 使用的中间反馈，合法 Candidate 不是最终成功；step 5 虽剩一个位置，也不能启动需要 recovery + Refinement 两步的半条链。
+- 决定性证据包括 I1d 主矩阵 `223`、独立矩阵 `217`，resolver `136`、公开 mapper `158`、完整入口 fake SDK `50`、topic fake search `5`，以及最终独立终审 `83/83`、`16/16`、AST `11/11`。真实 DeepSeek 只证明 `sample.txt` 正常五步链没有回归；坏协议恢复分支使用确定性 fake / spy 注入，没有冒充真实 Provider 故障。
+- 合并更新 [[04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent]] 的交付图、运行图、状态表、决定性证据、关键订正、安全边界与剩余范围；同步更新 [[03-Courses/Agent/AI-Agent-Learning/stage4-agent-basics|阶段 4 课程页]]、课程索引、Agent 概念 / 项目索引、[[01-Maps/AI-Agent-Learning 跳转索引|跳转索引]]与 [[index|全局索引]]。
+- `AI 知识库总地图`、`AI Agent 学习资源地图`、`AI-Agent-Learning 关联方案`保持 no-op；本次没有新建 raw、整关 PASS review 或岗位证据。Candidate / Reflection Provider/API、Refinement / validator、HITL、14 条 eval、五个必答题与正式整关复核继续留后。
+- 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：`OK: True`，217 个 Markdown、1949 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。
