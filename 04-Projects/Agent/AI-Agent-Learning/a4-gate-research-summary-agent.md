@@ -27,7 +27,7 @@ tags:
 # A4-Gate 研究摘要 Agent（进行中）
 
 > [!important] 状态边界
-> `A4-Gate-C4a-1`、`C4a-2a / 2b1 / 2b2`、`C4b-1`、`C4b-2a`、`C4b-2b-1` 与 `C4b-2b-2a` 已完成教学实现、决定性验证和用户审核；父任务 `A4-Gate` 仍为 `DOING`。本页记录可复查的进行中项目进展，不是整关 PASS 复盘，也不升级求职证据。
+> `A4-Gate-C4a-1`、`C4a-2a / 2b1 / 2b2`、`C4b-1`、`C4b-2a`、`C4b-2b-1`、`C4b-2b-2a` 与 `C4b-2b-2b` 已完成教学实现、决定性验证和用户审核；父任务 `A4-Gate` 仍为 `DOING`。本页记录可复查的进行中项目进展，不是整关 PASS 复盘，也不升级求职证据。
 
 ## 目标与当前产物
 
@@ -35,7 +35,7 @@ tags:
 - 设计合同：`C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\problem-contract.md`，整关通过前保持 `DRAFT`。
 - 当前实现：`C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_gate_research_summary_agent.py`。
 - 证据链：`C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-11.md`、`2026-08-12.md`、`2026-08-13.md`、`2026-08-17.md`、`2026-08-18.md`、`2026-08-19.md`、`2026-08-20.md`、`2026-08-21.md`。
-- 当前实现快照（2026-08-21 C4b-2b-2a U1 审核与 Candidate Provider 防篡改加固后）：SHA-256 `911C1B549EE616D62E6EFB2D1707197E82FA0BCAED5F4D7C46DE27A36D574683`，`TODO / NotImplementedError = 0 / 0`。
+- 当前实现快照（2026-08-21 C4b-2b-2b U1 审核与 Reflection Provider 防篡改加固后）：源码 SHA-256 `2EC6A551552FE34C23AB6CE99DC00F1F5D26A77070AE11BA03E2690BC15B158B`，合同 SHA-256 `CA5073312E85C4F5B5037409834CD6DBCBCD764A5C4B34BEEE56E03E33581994`，`TODO / NotImplementedError = 0 / 0`。
 
 最终成功对象只能包含：
 
@@ -70,8 +70,9 @@ flowchart LR
     ACTION_REC --> CAND_REC["C4b-2a<br/>Candidate 响应一次恢复<br/>与安全停止 PASS"]
     CAND_REC --> REF_FEEDBACK_REC["C4b-2b-1<br/>Reflection 反馈响应恢复<br/>与安全停止 PASS"]
     REF_FEEDBACK_REC --> CAND_PROVIDER["C4b-2b-2a<br/>Candidate Provider/API<br/>一次恢复与安全停止 PASS"]
-    CAND_PROVIDER --> REF_VAL_REC["Reflection Provider/API<br/>与 Refinement / final validator 失败恢复 ⏳"]
-    REF_VAL_REC --> HITL["HITL<br/>危险 fake allow / deny ⏳"]
+    CAND_PROVIDER --> REF_PROVIDER["C4b-2b-2b<br/>Reflection Provider/API<br/>一次恢复与安全停止 PASS"]
+    REF_PROVIDER --> REFINE_VAL_REC["Refinement Provider/API、响应 / JSON<br/>与 final validator 失败恢复 ⏳"]
+    REFINE_VAL_REC --> HITL["HITL<br/>危险 fake allow / deny ⏳"]
     HITL --> DATA["eval_cases.json<br/>10 normal + 3 failure + 1 danger<br/>至少 3 holdout ⏳"]
     DATA --> REVIEW{"A4-Gate 正式复核 ⏳"}
     REVIEW -->|"确定性合同与安全全过；语义阈值达标"| PASS["A4-Gate PASS"]
@@ -82,8 +83,8 @@ flowchart LR
     classDef pending fill:#fff2cc,stroke:#bf9000,color:#1f1f1f;
     classDef gate fill:#d9eaf7,stroke:#0b5394,color:#1f1f1f;
     class PC designed;
-    class C1,C2,C3A,C3B,C3C,C3D,C4A1,C4A2A,C4A2B1,C4A2B2,ACTION_REC,CAND_REC,REF_FEEDBACK_REC,CAND_PROVIDER done;
-    class REF_VAL_REC,HITL,DATA,RETRY pending;
+    class C1,C2,C3A,C3B,C3C,C3D,C4A1,C4A2A,C4A2B1,C4A2B2,ACTION_REC,CAND_REC,REF_FEEDBACK_REC,CAND_PROVIDER,REF_PROVIDER done;
+    class REFINE_VAL_REC,HITL,DATA,RETRY pending;
     class REVIEW,PASS gate;
 ```
 
@@ -137,7 +138,7 @@ flowchart TD
     CAND_PROVIDER_FIX --> CAND_PROVIDER_RESULT{"恢复逻辑调用是否返回 response？ ✅"}
     CAND_PROVIDER_RESULT -->|"是"| CAND_CLASS
     CAND_PROVIDER_RESULT -->|"再次 APIError"| MANUAL_CAND_API
-    CAND_CLASS -->|"valid"| REFLECT["Reflection：按真实证据与输出合同评审<br/>无重试正常链为 step 4 ✅"]
+    CAND_CLASS -->|"valid"| REFLECT["首次 Reflection SDK 逻辑调用<br/>按真实证据与输出合同评审；正常链为 step 4 ✅"]
     CAND_CLASS -->|"terminal"| MANUAL_CAND["needs_manual<br/>没有摘要通过校验；sources 仅为人工证据池 ✅"]
     CAND_CLASS -->|"recoverable"| CAND_BUDGET{"剩余 step 足够容纳<br/>recovery + Reflection + Refinement？ ✅"}
     CAND_BUDGET -->|"否"| MANUAL_CAND
@@ -147,13 +148,24 @@ flowchart TD
     CAND_PROTOCOL_API -->|"最终抛 APIError"| MANUAL_CAND_API
     CAND_CLASS2 -->|"是"| REFLECT
     CAND_CLASS2 -->|"terminal / recoverable"| MANUAL_CAND
-    REFLECT --> REF_CLASS{"Reflection 分类：valid / recoverable / terminal？ ✅"}
+    REFLECT --> REF_API{"Reflection SDK 逻辑调用<br/>是否返回 response？ ✅"}
+    REF_API -->|"是"| REF_CLASS{"Reflection 分类：valid / recoverable / terminal？ ✅"}
+    REF_API -->|"最终抛 APIError"| REF_PROVIDER_CLASS{"公开异常类型 + status_code<br/>recoverable / terminal？ ✅"}
+    REF_PROVIDER_CLASS -->|"terminal"| MANUAL_REF_API["needs_manual<br/>恢复计数按实际额外调用；sources 为人工证据池 ✅"]
+    REF_PROVIDER_CLASS -->|"recoverable"| REF_PROVIDER_BUDGET{"剩余 step 足够容纳<br/>Provider recovery + Refinement？ ✅"}
+    REF_PROVIDER_BUDGET -->|"否"| MANUAL_REF_API
+    REF_PROVIDER_BUDGET -->|"是"| REF_PROVIDER_FIX["唯一 Reflection Provider recovery<br/>同 prompt / client / context ✅"]
+    REF_PROVIDER_FIX --> REF_PROVIDER_RESULT{"恢复逻辑调用是否返回 response？ ✅"}
+    REF_PROVIDER_RESULT -->|"是"| REF_CLASS
+    REF_PROVIDER_RESULT -->|"再次 APIError"| MANUAL_REF_API
     REF_CLASS -->|"valid"| REFINE["Refinement：JSON Output<br/>无重试正常链为 step 5 ✅"]
     REF_CLASS -->|"terminal"| MANUAL_REF["needs_manual<br/>已有合法 Candidate；sources 仅为人工证据池 ✅"]
     REF_CLASS -->|"recoverable"| REF_BUDGET{"剩余 step 足够容纳<br/>Reflection recovery + Refinement？ ✅"}
     REF_BUDGET -->|"否"| MANUAL_REF
-    REF_BUDGET -->|"是"| REF_FIX["Reflection recovery 恰好一次<br/>不回填失败响应；只重做同一评审 ✅"]
-    REF_FIX --> REF_CLASS2{"恢复反馈再次分类<br/>是否 valid？ ✅"}
+    REF_BUDGET -->|"是"| REF_FIX["Reflection protocol recovery 恰好一次<br/>不回填失败响应；只重做同一评审 ✅"]
+    REF_FIX --> REF_PROTOCOL_API{"协议 recovery SDK 调用<br/>是否返回 response？ ✅"}
+    REF_PROTOCOL_API -->|"是"| REF_CLASS2{"恢复反馈再次分类<br/>是否 valid？ ✅"}
+    REF_PROTOCOL_API -->|"最终抛 APIError"| MANUAL_REF_API
     REF_CLASS2 -->|"valid"| REFINE
     REF_CLASS2 -->|"terminal / recoverable"| MANUAL_REF
     REFINE --> REFINE_OK{"Refinement 响应：finish_reason=stop<br/>无 tool_calls、正文非空？ ✅"}
@@ -175,6 +187,7 @@ flowchart TD
     GUARD -.约束.-> CAND_PROVIDER_FIX
     GUARD -.约束.-> CAND_FIX
     GUARD -.约束.-> REFLECT
+    GUARD -.约束.-> REF_PROVIDER_FIX
     GUARD -.约束.-> REF_FIX
     GUARD -.约束.-> REFINE
 
@@ -186,6 +199,7 @@ flowchart TD
     MANUAL_CAND --> OUT
     MANUAL_CAND_API --> OUT
     MANUAL_REF --> OUT
+    MANUAL_REF_API --> OUT
     MANUAL_OTHER --> OUT
     SUCCESS --> OUT
 
@@ -194,20 +208,20 @@ flowchart TD
     classDef terminalDone fill:#d9eaf7,stroke:#0b5394,color:#1f1f1f;
     classDef terminalPending fill:#fce5cd,stroke:#cc4125,color:#1f1f1f;
     classDef note fill:#f3f3f3,stroke:#666666,color:#1f1f1f;
-    class PRE,INIT,M1,F1,ACTION,ACTION_REC,BUDGET_A,M1_CORR,TOOL1,RETRY_OK,TOOL2,RESULT1,RESULT2,EVIDENCE,OBS,M2,CAND_API,CAND_PROVIDER_CLASS,CAND_PROVIDER_BUDGET,CAND_PROVIDER_FIX,CAND_PROVIDER_RESULT,CAND_CLASS,CAND_BUDGET,CAND_FIX,CAND_PROTOCOL_API,CAND_CLASS2,REFLECT,REF_CLASS,REF_BUDGET,REF_FIX,REF_CLASS2,REFINE,REFINE_OK,PARSE,JSON_OK,VALID done;
+    class PRE,INIT,M1,F1,ACTION,ACTION_REC,BUDGET_A,M1_CORR,TOOL1,RETRY_OK,TOOL2,RESULT1,RESULT2,EVIDENCE,OBS,M2,CAND_API,CAND_PROVIDER_CLASS,CAND_PROVIDER_BUDGET,CAND_PROVIDER_FIX,CAND_PROVIDER_RESULT,CAND_CLASS,CAND_BUDGET,CAND_FIX,CAND_PROTOCOL_API,CAND_CLASS2,REFLECT,REF_API,REF_PROVIDER_CLASS,REF_PROVIDER_BUDGET,REF_PROVIDER_FIX,REF_PROVIDER_RESULT,REF_CLASS,REF_BUDGET,REF_FIX,REF_PROTOCOL_API,REF_CLASS2,REFINE,REFINE_OK,PARSE,JSON_OK,VALID done;
     class RISK,CONFIRM,VAL_REC pending;
-    class INVALID,SUCCESS,MANUAL_RETRY,MANUAL_ACTION,MANUAL_CAND,MANUAL_CAND_API,MANUAL_REF,TOOL_FAIL,INSUFFICIENT terminalDone;
+    class INVALID,SUCCESS,MANUAL_RETRY,MANUAL_ACTION,MANUAL_CAND,MANUAL_CAND_API,MANUAL_REF,MANUAL_REF_API,TOOL_FAIL,INSUFFICIENT terminalDone;
     class MANUAL_OTHER terminalPending;
     class PROTOCOL_ERROR note;
     class START,GUARD,OUT note;
 ```
 
 > [!warning] 当前代码与目标图的差异
-> 当前已经验证无重试正常链、一次同参数工具重试、真实不可重试失败、搜索零证据、Action correction、修正/重试完整链预算、Candidate / Reflection 响应协议或内容失败的一次恢复，以及 Candidate Provider/API 的白名单分类、一次 Agent recovery 与公开 `needs_manual`。尚未收口的是 Reflection Provider/API、Refinement / 最终 validator 失败恢复、HITL 和 eval；这些异常仍按既有边界传播，不能宣称所有异常都会被统一成业务状态。
+> 当前已经验证无重试正常链、一次同参数工具重试、真实不可重试失败、搜索零证据、Action correction、修正/重试完整链预算、Candidate / Reflection 响应协议或内容失败的一次恢复，以及 Candidate / Reflection Provider/API 的白名单分类、一次 Agent recovery、独立计数与公开 `needs_manual`。尚未收口的是 Refinement Provider/API、响应 / JSON 与最终 validator 失败恢复、HITL 和 eval；这些异常仍按既有边界传播，不能宣称所有异常都会被统一成业务状态。
 
 正常无重试路径只使用 step 1～5，不伪造 step 6。一次工具重试成功路径已经证明正好使用 step 1～6：模型选择 → 工具失败 → 工具重试成功 → 候选模型 → Reflection → Refinement。任何第 7 次模型或工具调用都必须在计时与副作用之前拒绝。
 
-模型调用账本按 SDK 逻辑调用计数。生产 client 显式固定 `max_retries=2` 与每次物理模型请求 timeout 60 秒；一次逻辑调用最多包含 3 次物理 HTTP 尝试，但仍只占 1 个 Agent step、写 1 条聚合日志。首次 Candidate 加唯一一次 Agent Provider recovery 的极端上限是 2 次逻辑调用、2 个 step、2 条日志和最多 6 次物理 HTTP 尝试；6 是配置推导上限，不是本轮真实异常 transport 计数。
+模型调用账本按 SDK 逻辑调用计数。生产 client 显式固定 `max_retries=2` 与每次物理模型请求 timeout 60 秒；一次逻辑调用最多包含 3 次物理 HTTP 尝试，但仍只占 1 个 Agent step、写 1 条聚合日志。Candidate 或 Reflection 的“首次调用 + 唯一 Agent Provider recovery”极端上限都是 2 次逻辑调用、2 个 step、2 条日志和最多 6 次物理 HTTP 尝试；6 是配置推导上限，不是本轮真实异常 transport 计数。
 
 未注入客户端时只创建一个 client；同一请求中的模型调用共用这个对象。每次公开请求只创建一个 `run_context`，其中保存非空 `request_id`、共享 `step` 和独立 `logs` 列表；内部账本不会进入最终三字段业务结果。恢复停止信号中的受控事实只用于生成用户可读的 `summary`，不会扩展成公开顶层字段，也不会公开 raw arguments、原始请求、prompt/messages、日志或 request ID。Candidate 或 Reflection 阶段失败前已经取得的真实白名单来源可以保留在 `needs_manual.sources` 中，但只作为人工接管证据池，不代表存在一份已通过最终校验的摘要；公开入口会重新从规范化请求与真实工具结果派生来源，不直接信任异常字段。
 
@@ -227,7 +241,8 @@ flowchart TD
 | C4b-2a Candidate 响应协议 / 内容恢复 | 已收口 | 四类 recoverable 最多恢复一次；四类 terminal、恢复耗尽和完整尾链预算不足均安全映射为 `needs_manual` |
 | C4b-2b-1 Reflection 反馈响应协议 / 内容恢复 | 已收口 | 四类 recoverable 最多恢复一次；恢复前同时预留 recovery + Refinement 两步，terminal / 耗尽 / 预算不足安全停止 |
 | Candidate Provider/API 异常恢复 | 已收口 | SDK 内部 retry 与 Agent recovery 分账；timeout / connection / 408 / 409 / 429 / 5xx 白名单、一次完整链预算恢复、两个独立计数和窄停止映射通过 |
-| Reflection Provider/API、Refinement / final validator 恢复 | 未开始 | 分别冻结调用异常、结构化候选失败与最终合同校验失败的受控修正/停止 |
+| Reflection Provider/API 异常恢复 | 已收口 | 首次调用与 protocol recovery 调用位置分开；Provider / protocol 按实际额外调用原因计数，完整链预算、零第三次请求与窄停止映射通过 |
+| Refinement Provider/API、响应 / JSON 与 final validator 恢复 | 未开始 | 分别冻结调用异常、结构化结果失败与最终合同校验失败的受控修正/停止 |
 | HITL allow/deny | 未开始 | 危险 fake 在确认门前零执行 |
 | 14 条 eval | 未开始 | 固定 normal/failure/danger/holdout 案例与阈值 |
 | A4-Gate 正式复核 | 未开始 | 只有整关复核通过才可把父任务改为 PASS |
@@ -254,6 +269,19 @@ flowchart TD
 | C4b-2a G1～G3 / I1a～I1h / I2 / U1 | PASS | Candidate 三分法、一次证据受限恢复、三步尾链预算、stage resolver、生产接线、人工证据池映射、端到端回归和用户审核闭合 |
 | C4b-2b-1 G1 / I1a～I1d / U1；I1e / I1f / I2 助手验证 | PASS / 已验证 | Reflection 反馈三分法、一次安全恢复、两步尾链预算、stage resolver、生产接线、公开信号对账、端到端回归和用户审核闭合 |
 | C4b-2b-2a G1～G4 / I1a / I1b / U1；I1c / I2 助手验证 | PASS / 已验证 | SDK retry / timeout 所有权、Candidate Provider 白名单、一次恢复、双计数、防篡改公开映射、故障注入和真实正常 smoke 闭合 |
+| C4b-2b-2b G1 / I1 / U1；I1b / I2 助手验证 | PASS / 已验证 | Reflection Provider 一次恢复、与 protocol recovery 独立计数、完整链预算、零第三次请求、防篡改公开映射和真实正常 smoke 闭合 |
+
+## 2026-08-21 C4b-2b-2b Reflection Provider/API 恢复决定性证据
+
+- 本切片只处理首次 Reflection SDK 逻辑调用，以及已经因坏响应发出的 Reflection protocol recovery 调用最终抛出公开 `APIError` 的情况；Refinement Provider/API、响应 / JSON、最终 validator、HITL 与 eval 不在本切片完成范围。
+- 用户证据为 `G1 / I1 / U1 = PASS`。G1 保留 `PARTIAL → RETRY → PASS` 的真实订正路径；I1 是用户完成并通过执行检查的代表性核心控制流；I1b / I2 是依据已通过合同完成的同构接线与验证，不冒充新的用户独立编码证据。
+- `reflection_provider_recovery_attempts` 与 `reflection_protocol_recovery_attempts` 只统计因对应原因**真正额外发出的 Agent 级逻辑调用**。它们不统计首次 Reflection、SDK 内部物理重试、Provider 错误事件或本地响应分类；额外调用的角色由发起原因决定，不因后来成功或报错而倒改。
+- A：step 4 首次 Reflection 遇 recoverable Provider 错误，step 5 唯一 Provider recovery 返回合法反馈，再由 step 6 Refinement 收尾，计数 Provider 1 / 协议 0。B：前序恢复把首次 Reflection 推到 step 5 后才遇 Provider 错误，剩余一步无法容纳 recovery + Refinement，因此在新调用前以 0 / 0 停止。C：step 4 坏协议已经触发 step 5 protocol recovery，该调用再遇 Provider 错误时保持 Provider 0 / 协议 1，不重分类同一调用，也不发第三次请求。
+- Provider recovery API 正常返回但反馈协议 / 内容仍坏时，本地分类不增加协议计数；当前轨迹已经到 step 5，不能再容纳 protocol recovery + Refinement，因此以 Provider 1 / 协议 0 停止。唯一 Provider recovery 再抛 APIError 时同样停止，不循环、不进入 Refinement。
+- 首次与唯一 Provider recovery 复用相同 Reflection prompt、同一实际 client 和共享 `run_context`；每个实际逻辑调用各占一个 step、写一条只含安全异常类型的聚合日志。公开入口只接受 exact 窄信号，并重新核对 `APIError` cause、两个计数、共享 step、`reflection_start_step + 1 + provider + protocol` 调用差额，以及从真实 Tool Observation 重新派生的来源。
+- 主组合矩阵 `109/109`、独立终审 `96/96`、`py_compile` 和 `git diff --check` 均通过；产品活动 `TODO / NotImplementedError = 0 / 0`。真实 DeepSeek `relative_path=sample.txt` 正常 smoke 返回 strict 三字段 `success` 与 `sources=["sample.txt"]`，耗时 `6.778s`，只证明本次接线没有破坏真实正常链，不冒充真实 Provider 故障恢复证据。
+- 用户 U1 明确审核“通过”。这些证据只关闭 C4b-2b-2b 教学 / 实现子单元；父 `A4-Gate` 仍为 `DOING`，Problem Contract 总体仍为 `DRAFT`，没有新建整关 PASS 复盘或升级岗位证据。
+- 对应实现与学习证据已提交为 [`427d60c`](https://github.com/humbleded/AI-Agent-Learning/commit/427d60c)。
 
 ## 2026-08-21 C4b-2b-2a Candidate Provider/API 恢复决定性证据
 
@@ -379,6 +407,11 @@ flowchart TD
 28. Provider 分类必须先检查 `APITimeoutError`，再检查其更宽的 `APIConnectionError` 父类；否则 timeout 会丢失自己的安全原因分类。
 29. Provider recovery 与 Candidate 协议 recovery 虽然都可能为 1，但发生在不同调用位置、消耗不同预算，必须用两个计数保存，不能合并成含义模糊的 `retries`。
 30. 默认 client 必须在首次 Candidate 调用前物化一次；若在首次失败后才创建，第一次 raw requester 与 recovery 会使用两个不同实际 client，破坏共享配置和连接池边界。
+31. Provider 错误事件与 Provider recovery 动作不是一回事：只有错误之后真正额外发出新的逻辑调用，Provider counter 才增加；预算不足而停止时即使已经发生 Provider 错误也仍为 0。
+32. Provider / protocol 两类 recovery 按“为什么发出这条额外调用”归属，不按调用后来怎样结束倒改。protocol recovery 最终 timeout 仍是协议 1；若没有第三次请求，Provider 仍为 0。
+33. 本地响应分类不是模型调用，不占 step，也不增加 protocol counter；Provider recovery 返回合法反馈后的本地校验不能误记成协议恢复。
+34. Reflection 的合法反馈仍不是最终结果。Provider 或 protocol recovery 前必须同时为后续 Refinement 保留一个调用位置；`recoverable` 只通过分类门，不代表一定允许重试。
+35. Reflection Provider 公开映射除了 cause 与安全字段，还要核对阶段调用差额 `reflection_start_step + 1 + provider + protocol`；合法异常类型不代表其中的 step 和计数可以直接相信。
 
 ## 安全边界
 
@@ -396,20 +429,22 @@ flowchart TD
 - Candidate Provider recovery 最多一次，必须复用同一 messages、tools、实际 client 和共享 context；两次逻辑调用极端最多 6 次物理 HTTP 尝试，但仍只占 2 个 Agent step、写 2 条聚合日志。
 - Provider/API 分类不读取异常正文、raw response、body、headers 或 request ID；公开 summary 只使用固定安全语义与可选整数状态码，`sources` 继续只是防御复制的人工证据池。
 - Reflection recovery 前至少保留 2 个调用位置；失败反馈不进入恢复 prompt。首次 terminal、唯一 recovery 后仍失败或完整链预算不足时都不得进入 Refinement。
-- Reflection 公开入口同时核对精确停止类型、当前共享 step、阶段调用差额、恢复次数与重新派生来源；Provider/SDK、Refinement、validator 和篡改异常保持原样传播。
+- Reflection Provider recovery 与 protocol recovery 独立计数，并按额外调用的发起原因归属；错误事件、本地分类和未实际使用的额度都不计数，同一个调用也不能同时归入两类。
+- Reflection Provider recovery 最多一次，必须复用同一 Reflection prompt、实际 client 和共享 context；预算不足、唯一恢复再失败、Provider recovery 返回坏反馈或 protocol recovery 自身遇 Provider 错误后，都不得发第三次 Reflection 请求或进入 Refinement。
+- Reflection 公开入口同时核对精确停止类型、真实 `APIError` cause、当前共享 step、`reflection_start_step + 1 + provider + protocol` 调用差额、两套计数与重新派生来源；Refinement、validator、普通 Python 异常和篡改变体保持原样传播。
 - 当前同参数重试只在受控只读工具上获得证据，不能直接外推到支付、发送、部署等有副作用操作；写操作还需幂等键、去重与 HITL 风险门。
 
 ## 当前切片与后续未完成范围
 
 父任务仍缺：
 
-- Reflection Provider/API 异常，以及 Refinement 响应 / 最终 validator 校验失败的受控修正或安全停止。
+- Refinement Provider/API、响应 / JSON 与最终 validator 校验失败的受控修正或安全停止。
 - HITL：高风险 fake 工具的 allow/deny 可执行证据。
 - `eval_cases.json`：14 条固定案例、至少 3 条 holdout 和正式 Gate 阈值。
 - Gate 的循环、停止、工具恢复、幻觉点和可测试验收规则五个必答题。
 - 正式 Gate 复核；在此之前不新建 A4-Gate PASS 复盘，也不升级岗位证据。
 
-截至 2026-08-21，`C4a-2b2`、`C4b-1`、`C4b-2a`、`C4b-2b-1` 与 `C4b-2b-2a` 已收口，当前没有活动代码 TODO；这些子单元没有替代父任务剩余范围，也没有把 `tracker/progress.md` 中的 `A4-Gate` 从 `DOING` 改为 `PASS`。
+截至 2026-08-21，`C4a-2b2`、`C4b-1`、`C4b-2a`、`C4b-2b-1`、`C4b-2b-2a` 与 `C4b-2b-2b` 已收口，当前没有活动代码 TODO；这些子单元没有替代父任务剩余范围，也没有把 `tracker/progress.md` 中的 `A4-Gate` 从 `DOING` 改为 `PASS`。
 
 ## 相关链接
 

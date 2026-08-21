@@ -3,7 +3,7 @@ type: maintenance-log
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-08-19
+updated: 2026-08-21
 tags:
   - 知识库
   - log
@@ -1057,3 +1057,13 @@ tags:
 - 决定性证据为生产 fake/spy 故障矩阵 `14/14 PASS`、停止信号安全矩阵 `5/5 PASS`、factory / client identity 回归 `4/4 PASS`、零 HTTP 真实 factory 配置探针、`py_compile` / `git diff --check`，以及一次真实 DeepSeek `sample.txt` 正常 smoke `status=success` / `sources=["sample.txt"]` / `8.952s`。6 次物理尝试是配置推导上限，不是本轮真实网络故障计数；正常 smoke 也没有冒充 timeout / 429 / 5xx 恢复证据。
 - `AI 知识库总地图`、`AI Agent 学习资源地图`、`AI-Agent-Learning 关联方案`保持 no-op；本次没有新建概念卡、raw、整关 PASS review 或岗位证据。Reflection Provider/API、Refinement / validator、HITL、14 条 eval、五个必答题和正式整关复核继续留后。
 - 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：`OK: True`，217 个 Markdown、1959 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。
+
+### AI-Agent-Learning A4-Gate C4b-2b-2b Reflection Provider/API 恢复同步
+
+- 来源为执行区 `problem-contract.md`、当前 Agent 代码与 `daily/2026-08-21.md`；对应实现与学习证据提交为 [`427d60c`](https://github.com/humbleded/AI-Agent-Learning/commit/427d60c)。`G1 / I1 / U1 = PASS`；I1b / I2 是依据已通过合同完成的机械接线与可执行验证，不冒充新的用户独立编码证据。
+- 合并更新 [[02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管]] 与 [[02-Concepts/Agent/反思机制(Reflection)|反思机制]]，没有新建同义卡：明确 Provider 错误事件不等于 recovery 动作，两套 counter 按额外调用的发起原因归属，本地分类不计模型调用，Reflection recovery 还必须预留后续 Refinement。
+- A / B / C 决定性轨迹分别为 Provider / 协议 `1/0`、`0/0`、`0/1`：正常 step 4 首败可在 step 5 Provider recovery 后进入 step 6 Refinement；首次失败已到 step 5 时因完整链预算不足而零新请求停止；step 5 protocol recovery 自身遇 Provider 错误时不倒改调用角色，也不发第三次请求。
+- 合并更新 [[04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent]] 的完成图、运行图、状态表、决定性证据、关键订正、安全边界和剩余范围；同步更新阶段 4 课程页、课程 / Agent 概念 / Agent 项目索引、AI-Agent-Learning 跳转索引与全局索引。
+- 决定性工程证据为主组合矩阵 `109/109`、独立终审 `96/96`、`py_compile` / `git diff --check`，以及真实 DeepSeek `sample.txt` 正常 smoke `status=success` / `sources=["sample.txt"]` / `6.778s`；正常 smoke 没有冒充真实 Provider 故障注入证据。
+- 状态边界：本次只同步 `C4b-2b-2b` 教学 / 实现子单元；父 `A4-Gate` 继续 `DOING`，Problem Contract 总体仍为 `DRAFT`。没有新建整关 PASS review、raw 或岗位证据；Refinement / validator 恢复、HITL、14 条 eval、五个必答题、合同定稿和正式整关复核继续留后。
+- 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：`OK: True`，217 个 Markdown、1962 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。

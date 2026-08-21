@@ -3,7 +3,7 @@ type: concept
 topic: Reflection
 status: usable
 created: 2026-07-23
-updated: 2026-08-20
+updated: 2026-08-21
 source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-23.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-30.md
@@ -11,6 +11,7 @@ source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-04.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-10.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-20.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-21.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\problem-contract.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_05_reflection_writer.py
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_gate_research_summary_agent.py
@@ -143,7 +144,16 @@ Reflection 的输出只是供 Refinement 使用的中间反馈，不是最终摘
 - 发起 recovery 前一次性检查完整尾链预算。Reflection recovery 后必需还有一个 Refinement 位置，所以至少需要 2 个剩余 step；若首次 Reflection 已到 step 5，只剩 step 6，就应在新调用前停止。
 - recovery prompt 复用原始可信 Reflection prompt，因此仍包含真实 Observation、合法 Candidate、`allowed_sources` 和原评审标准；失败响应或失败反馈正文不进入 prompt。
 - 同一阶段最多恢复一次。恢复后只有合法反馈能进入 Refinement；terminal 或仍可恢复的响应都安全停止。
-- Provider / HTTP / SDK 异常、Refinement 响应失败和最终 validator 失败属于不同故障边界，不能被 Reflection 反馈恢复分支顺手吞掉。
+- Reflection 协议恢复分支不能顺手吞掉 Provider / HTTP / SDK 异常；Reflection Provider/API 由独立 wrapper、完整链预算和窄停止信号处理。Refinement Provider/API、Refinement 响应 / JSON 和最终 validator 失败仍属于后续故障边界。
+
+Reflection Provider recovery 与 protocol recovery 要分成两本账。它们都只统计**因相应原因真正额外发出的逻辑模型调用**，不统计首次 Reflection、SDK 内部物理重试、错误事件、本地分类或只存在但没有使用的恢复额度：
+
+- 前一调用因 Provider/API 错误结束，Agent 真的另发一条请求，才记 Provider recovery；
+- API 已返回坏协议 / 坏正文，Agent 真的另发一条请求，才记 protocol recovery；
+- 一次 protocol recovery 后来 timeout，它仍是 protocol recovery，因为调用角色由“为什么发起”决定，不由“后来怎样失败”倒改；如果 timeout 后没有再发新请求，Provider recovery 仍是 0；
+- Provider recovery 返回合法反馈后的本地校验不是模型请求，因此不会把 protocol recovery 计为 1。
+
+正常链中，step 4 的首次 Reflection 遇 recoverable Provider 错误时，可以在完整链预算允许的前提下执行 step 5 Provider recovery，再由 step 6 Refinement 收尾，计数为 Provider 1 / protocol 0。若前序恢复已把首次 Reflection 推到 step 5，剩余一步无法同时容纳 recovery + Refinement，应在新请求前停止，计数为 0 / 0。若 step 5 本来就是因坏响应发出的 protocol recovery，而该调用以 Provider 错误结束，则计数保持 Provider 0 / protocol 1，并停止而不是发第三次请求。
 
 停止后的 `needs_manual.sources` 仍只表示本轮工具真实取得、供人工复核的证据池。此时已有合法 Candidate，但还没有任何最终摘要完成 Reflection → Refinement → validator；详细的分类、完整链预算、公开信号对账与防篡改边界见 [[受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管]]。
 
@@ -253,3 +263,5 @@ Action
 - `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-10.md`、`code\stage4\a4_gate_research_summary_agent.py`：A4-Gate C3d 的 Observation 来源白名单、Reflection / Refinement prompt 与客户端来源子集硬门；这些子检查点已通过，整个 A4-Gate 仍为 `DOING`。
 - `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-20.md`、`code\stage4\problem-contract.md`、`code\stage4\a4_gate_research_summary_agent.py`：A4-Gate C4b-2b-1 的 Reflection 反馈三分法、一次安全恢复、两步完整尾链预算、阶段停止和公开来源对账；坏协议分支由可重复的 fake / spy 故障注入验证，真实 DeepSeek 只证明正常五步链没有回归。该证据只关闭 C4b-2b-1，父 Gate 仍为 `DOING`。
 - [C4b-2b-1 Reflection 反馈恢复提交 `e4a5681`](https://github.com/humbleded/AI-Agent-Learning/commit/e4a56813aa6b4e68ffee4ab7b45d5a3a2c1d2a5f)
+- `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-21.md`、`code\stage4\problem-contract.md`、`code\stage4\a4_gate_research_summary_agent.py`：A4-Gate C4b-2b-2b 的 Reflection Provider/API 一次恢复、Provider / protocol 独立计数、完整链预算与零第三次请求；真实 DeepSeek 只证明正常链没有回归。该证据只关闭本教学 / 实现子单元，父 Gate 仍为 `DOING`。
+- [C4b-2b-2b Reflection Provider/API 恢复提交 `427d60c`](https://github.com/humbleded/AI-Agent-Learning/commit/427d60c)

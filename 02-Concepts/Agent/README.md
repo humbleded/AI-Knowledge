@@ -23,4 +23,4 @@ tags:
 - [[工具定义与执行协议(Tool Definition)|工具定义与执行协议：tools schema / TOOLS 注册表 / 客户端校验与执行]]
 - [[文件工具沙箱(File Tool Sandbox)|文件工具沙箱：resolve + relative_to 的安全边界]]
 - [[外部 API 工具(External API Tool)|外部 API 工具：HTTPS allowlist / 443 / SSRF / 重定向 / timeout]]
-- [[受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管：SDK / Agent 双层重试、Candidate Provider 与协议 recovery、分层预算和人工证据池]]
+- [[受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管：SDK / Agent 双层重试、Candidate / Reflection Provider 与协议 recovery、分层预算和人工证据池]]
