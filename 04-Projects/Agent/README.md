@@ -3,7 +3,7 @@ type: project-index
 topic: Agent
 status: active
 created: 2026-07-06
-updated: 2026-08-20
+updated: 2026-08-21
 tags:
   - Agent
   - Project
@@ -23,5 +23,5 @@ tags:
 - [[AI-Agent-Learning/a4-03-react-agent|A4-03 ReAct Agent]]
 - [[AI-Agent-Learning/a4-04-plan-and-solve|A4-04 Plan-and-Solve]]
 - [[AI-Agent-Learning/a4-05-reflection-writer|A4-05 Reflection Writer]]
-- [[AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（C4b-2b-1 已收口，整关进行中）]]
+- [[AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（C4b-2b-2a Candidate Provider/API 已收口，整关进行中）]]
 - [[AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引|HelloAgents feature-branch-1 源码阅读索引]]

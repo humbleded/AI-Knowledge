@@ -1045,3 +1045,15 @@ tags:
 - 合并更新 [[04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent]] 的交付图、运行图、状态表、决定性证据、关键订正、安全边界与剩余范围；同步更新 [[03-Courses/Agent/AI-Agent-Learning/stage4-agent-basics|阶段 4 课程页]]、课程索引、Agent 概念 / 项目索引、[[01-Maps/AI-Agent-Learning 跳转索引|跳转索引]]与 [[index|全局索引]]。
 - `AI 知识库总地图`、`AI Agent 学习资源地图`、`AI-Agent-Learning 关联方案`保持 no-op；本次没有新建 raw、整关 PASS review 或岗位证据。Candidate / Reflection Provider/API、Refinement / validator、HITL、14 条 eval、五个必答题与正式整关复核继续留后。
 - 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：`OK: True`，217 个 Markdown、1949 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。
+
+## 2026-08-21
+
+### AI-Agent-Learning A4-Gate C4b-2b-2a Candidate Provider/API 恢复同步
+
+- 来源为执行区 `problem-contract.md`、当前 Agent 代码与 `daily/2026-08-21.md`；对应实现与学习证据提交为 [`5fac2ba`](https://github.com/humbleded/AI-Agent-Learning/commit/5fac2bab123ed31232ca9d96a05d2dca51509d96)。`G1～G4 / I1a / I1b / U1 = PASS`；I1c / I2 是依据已通过合同完成的机械接线与可执行验证，不冒充用户独立编码证据。父 `A4-Gate` 继续 `DOING`，Problem Contract 总体仍为 `DRAFT`。
+- 合并更新 [[02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管]]，没有新建同义卡：新增 SDK 内部 retry 与 Agent Provider recovery 两层账本、Provider/API 白名单与 fail-closed 分类、Candidate Provider / 协议恢复双计数、同一实际 client 复用，以及 narrow signal 对 cause、step、预算和真实来源的防篡改对账。
+- 合并更新 [[02-Concepts/LLM/API 参数与 SDK 客户端参数|API 参数 vs SDK 客户端参数]]：`max_retries=2` 表示首次物理请求之外最多再重试两次；一次逻辑调用极端最多 3 次物理 HTTP 尝试，初始 Candidate + 唯一 Agent recovery 极端为 2 次逻辑调用 / 2 条聚合日志 / 最多 6 次物理尝试。fake / spy 只证明编排，真实 factory 属性证明 `max_retries=2` 与 `timeout=60.0` 配置，`_request_id` 只用于请求定位，真实物理次数仍需 transport / 服务端计数。
+- 合并更新 [[04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent]] 的交付图、运行图、状态表、2026-08-21 决定性证据、关键订正、安全边界和剩余范围；同步更新 [[03-Courses/Agent/AI-Agent-Learning/stage4-agent-basics|阶段 4 课程页]]、课程索引、Agent / LLM 概念索引、Agent 项目索引、[[01-Maps/AI-Agent-Learning 跳转索引|跳转索引]]与 [[index|全局索引]]。
+- 决定性证据为生产 fake/spy 故障矩阵 `14/14 PASS`、停止信号安全矩阵 `5/5 PASS`、factory / client identity 回归 `4/4 PASS`、零 HTTP 真实 factory 配置探针、`py_compile` / `git diff --check`，以及一次真实 DeepSeek `sample.txt` 正常 smoke `status=success` / `sources=["sample.txt"]` / `8.952s`。6 次物理尝试是配置推导上限，不是本轮真实网络故障计数；正常 smoke 也没有冒充 timeout / 429 / 5xx 恢复证据。
+- `AI 知识库总地图`、`AI Agent 学习资源地图`、`AI-Agent-Learning 关联方案`保持 no-op；本次没有新建概念卡、raw、整关 PASS review 或岗位证据。Reflection Provider/API、Refinement / validator、HITL、14 条 eval、五个必答题和正式整关复核继续留后。
+- 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：`OK: True`，217 个 Markdown、1959 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。

@@ -3,7 +3,7 @@ type: concept-index
 topic: Agent
 status: active
 created: 2026-07-06
-updated: 2026-08-20
+updated: 2026-08-21
 tags:
   - Agent
   - 概念卡
@@ -23,4 +23,4 @@ tags:
 - [[工具定义与执行协议(Tool Definition)|工具定义与执行协议：tools schema / TOOLS 注册表 / 客户端校验与执行]]
 - [[文件工具沙箱(File Tool Sandbox)|文件工具沙箱：resolve + relative_to 的安全边界]]
 - [[外部 API 工具(External API Tool)|外部 API 工具：HTTPS allowlist / 443 / SSRF / 重定向 / timeout]]
-- [[受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管：Action correction、Candidate / Reflection recovery、分层预算与人工证据池]]
+- [[受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管：SDK / Agent 双层重试、Candidate Provider 与协议 recovery、分层预算和人工证据池]]

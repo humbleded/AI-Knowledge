@@ -3,7 +3,7 @@ type: course-stage
 topic: AI-Agent-Learning Stage 4
 status: active
 created: 2026-07-10
-updated: 2026-08-20
+updated: 2026-08-21
 tags:
   - Agent
   - AI-Agent-Learning
@@ -27,7 +27,7 @@ tags:
 | A4-03 ReAct | PASS | 2026-07-22 | `code/stage4/a4_03_react_agent.py` | 完整两轮轨迹与 max_steps 通过；15/15 parser/prompt/loop 边界断言通过 |
 | A4-04 Plan-and-Solve | PASS | 2026-07-30 | `code/stage4/a4_04_plan_solve_demo.py` | 可运行计划→执行→事实复盘闭环；39/39 解析、history、复盘与编排边界断言通过 |
 | A4-05 Reflection | PASS | 2026-08-04 | `code/stage4/a4_05_reflection_writer.py` | 初稿/反思/改进/同标准选择闭环；39/39 确定性断言、真实提前停止与真实故障修正路径通过 |
-| A4-Gate 最小 Agent 闯关 | DOING | 2026-08-20 | `code/stage4/problem-contract.md`、`code/stage4/a4_gate_research_summary_agent.py` | Problem Contract、C1/C2、C3a～C3d、C4a-1、C4a-2a/2b1/2b2、C4b-1、C4b-2a 与 C4b-2b-1 已闭合；已有真实工具终点、Action correction、Candidate / Reflection 三分法、各至多一次受限恢复、完整链预算和人工证据池映射。父 Gate 仍缺 Candidate / Reflection Provider/API、Refinement / validator 恢复、HITL、14 条 eval、五个必答题和正式复核 |
+| A4-Gate 最小 Agent 闯关 | DOING | 2026-08-21 | `code/stage4/problem-contract.md`、`code/stage4/a4_gate_research_summary_agent.py` | Problem Contract、C1/C2、C3a～C3d、C4a-1、C4a-2a/2b1/2b2、C4b-1、C4b-2a、C4b-2b-1 与 C4b-2b-2a 已闭合；已有真实工具终点、Action correction、Candidate / Reflection 响应恢复、Candidate Provider/API 一次受控恢复、完整链预算和人工证据池映射。父 Gate 仍缺 Reflection Provider/API、Refinement / validator 恢复、HITL、14 条 eval、五个必答题和正式复核 |
 
 ## A4-01 已沉淀概念
 
@@ -65,7 +65,7 @@ tags:
 
 ## A4-Gate 已沉淀进行中实践
 
-- [[../../../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（C4b-2b-1 已收口，父任务 DOING）]]
+- [[../../../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（C4b-2b-2a Candidate Provider/API 已收口，父任务 DOING）]]
 - [[../../../raw/conversations/2026-08-13-ai-agent-learning-a4-gate-c4a-1-session-handoff|C4a-1 会话接力摘要]]
 - [[../../../02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管：Action correction、完整链预算与稳定公开交接]]
 - [[../../../02-Concepts/Agent/反思机制(Reflection)|Reflection 的 Observation 来源白名单与硬校验边界]]
@@ -92,6 +92,9 @@ tags:
 - Candidate 失败结果可以保留真实白名单来源，但它们只是人工接管证据池，不是已验证摘要引用；失败 Candidate 也不能写入 recovery 消息历史。
 - Reflection recovery 成功只得到供 Refinement 使用的反馈，不是最终结果；失败响应不能进入 recovery prompt，合法 Candidate 也不能替代最终 validator。
 - step 5 的 Reflection 失败虽然还剩一个调用位置，但完整可信尾链需要 recovery + Refinement 两步，因此必须在 recovery 前停止并保留未使用的 step 6。
+- 一次 SDK `.create()` 是一次逻辑模型调用，不一定只有一个物理 HTTP 请求；`max_retries=2` 时单次逻辑调用极端最多有 3 次物理尝试，但 Agent 仍只记一个 step / 聚合日志。
+- fake client 证明应用编排，真实 factory 对象属性证明 `max_retries` / `timeout` 配置，`_request_id` 只帮助定位 Provider 请求；三类证据不能互相替代。
+- Candidate Provider recovery 与 Candidate 协议 recovery 必须分开计数；Provider 1 / 协议 0 与 Provider 0 / 协议 1 的后续禁行条件不同，不能合成一个 `retries=1`。
 
 ## 相关执行区
 
@@ -123,4 +126,5 @@ tags:
 - [A4-Gate C4a-2b1 专用信号、15/15 与用户审核（2026-08-18）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-18.md)
 - [A4-Gate C4a-2b2、C4b-1 与策略 B 用户审核（2026-08-19）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-19.md)
 - [A4-Gate Candidate / Reflection 响应恢复、端到端回归与用户审核（2026-08-20）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-20.md)
+- [A4-Gate SDK retry / timeout 与 Candidate Provider recovery（2026-08-21）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-21.md)
 - [progress](file:///C:/Users/26823/Desktop/AI-Agent-Learning/tracker/progress.md)
