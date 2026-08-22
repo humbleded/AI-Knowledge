@@ -3,7 +3,7 @@ type: project
 topic: AI-Agent-Learning A4-Gate Research Summary Agent
 status: doing
 created: 2026-08-11
-updated: 2026-08-21
+updated: 2026-08-22
 source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\problem-contract.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_gate_research_summary_agent.py
@@ -15,6 +15,7 @@ source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-19.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-20.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-21.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-22.md
 tags:
   - Agent
   - Tool-Calling
@@ -27,15 +28,15 @@ tags:
 # A4-Gate 研究摘要 Agent（进行中）
 
 > [!important] 状态边界
-> `A4-Gate-C4a-1`、`C4a-2a / 2b1 / 2b2`、`C4b-1`、`C4b-2a`、`C4b-2b-1`、`C4b-2b-2a` 与 `C4b-2b-2b` 已完成教学实现、决定性验证和用户审核；父任务 `A4-Gate` 仍为 `DOING`。本页记录可复查的进行中项目进展，不是整关 PASS 复盘，也不升级求职证据。
+> `A4-Gate-C4a-1`、`C4a-2a / 2b1 / 2b2`、`C4b-1`、`C4b-2a`、`C4b-2b-1`、`C4b-2b-2a` 与 `C4b-2b-2b` 已完成教学 / 实现子单元，`C4b-2c` Refinement 恢复已于 2026-08-22 正式 `PASS`；父任务 `A4-Gate` 仍为 `DOING`。本页记录可复查的进行中项目进展，不是整关 PASS 复盘，也不升级求职证据。
 
 ## 目标与当前产物
 
 - 目标：接收 `topic` 或受沙箱约束的 `relative_path`，只执行一个与请求匹配的工具，再基于本轮真实 Observation 生成带来源的三字段研究摘要。
 - 设计合同：`C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\problem-contract.md`，整关通过前保持 `DRAFT`。
 - 当前实现：`C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_gate_research_summary_agent.py`。
-- 证据链：`C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-11.md`、`2026-08-12.md`、`2026-08-13.md`、`2026-08-17.md`、`2026-08-18.md`、`2026-08-19.md`、`2026-08-20.md`、`2026-08-21.md`。
-- 当前实现快照（2026-08-21 C4b-2b-2b U1 审核与 Reflection Provider 防篡改加固后）：源码 SHA-256 `2EC6A551552FE34C23AB6CE99DC00F1F5D26A77070AE11BA03E2690BC15B158B`，合同 SHA-256 `CA5073312E85C4F5B5037409834CD6DBCBCD764A5C4B34BEEE56E03E33581994`，`TODO / NotImplementedError = 0 / 0`。
+- 证据链：`C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-11.md`、`2026-08-12.md`、`2026-08-13.md`、`2026-08-17.md`、`2026-08-18.md`、`2026-08-19.md`、`2026-08-20.md`、`2026-08-21.md`、`2026-08-22.md`。
+- 当前实现快照（2026-08-22 C4b-2c 正式复验后）：源码 SHA-256 `3F5A288019924887A4E80B13A1E7CE8E58089DB02B6A12241E5F8E4A2B021A9A`，合同 SHA-256 `DF30B11582F0C8831244415C20F2BC7E839A83D3AF854CF0F5807BD4DCC9FDDE`，`TODO / NotImplementedError = 0 / 0`。对应实现与学习证据提交为 [`838adba`](https://github.com/humbleded/AI-Agent-Learning/commit/838adba79295c9505885b414977aadfdaf1ae918)。
 
 最终成功对象只能包含：
 
@@ -71,7 +72,7 @@ flowchart LR
     CAND_REC --> REF_FEEDBACK_REC["C4b-2b-1<br/>Reflection 反馈响应恢复<br/>与安全停止 PASS"]
     REF_FEEDBACK_REC --> CAND_PROVIDER["C4b-2b-2a<br/>Candidate Provider/API<br/>一次恢复与安全停止 PASS"]
     CAND_PROVIDER --> REF_PROVIDER["C4b-2b-2b<br/>Reflection Provider/API<br/>一次恢复与安全停止 PASS"]
-    REF_PROVIDER --> REFINE_VAL_REC["Refinement Provider/API、响应 / JSON<br/>与 final validator 失败恢复 ⏳"]
+    REF_PROVIDER --> REFINE_VAL_REC["C4b-2c<br/>Refinement Provider/API、响应 / JSON<br/>与 candidate validator 共享恢复 PASS"]
     REFINE_VAL_REC --> HITL["HITL<br/>危险 fake allow / deny ⏳"]
     HITL --> DATA["eval_cases.json<br/>10 normal + 3 failure + 1 danger<br/>至少 3 holdout ⏳"]
     DATA --> REVIEW{"A4-Gate 正式复核 ⏳"}
@@ -83,8 +84,8 @@ flowchart LR
     classDef pending fill:#fff2cc,stroke:#bf9000,color:#1f1f1f;
     classDef gate fill:#d9eaf7,stroke:#0b5394,color:#1f1f1f;
     class PC designed;
-    class C1,C2,C3A,C3B,C3C,C3D,C4A1,C4A2A,C4A2B1,C4A2B2,ACTION_REC,CAND_REC,REF_FEEDBACK_REC,CAND_PROVIDER,REF_PROVIDER done;
-    class REFINE_VAL_REC,HITL,DATA,RETRY pending;
+    class C1,C2,C3A,C3B,C3C,C3D,C4A1,C4A2A,C4A2B1,C4A2B2,ACTION_REC,CAND_REC,REF_FEEDBACK_REC,CAND_PROVIDER,REF_PROVIDER,REFINE_VAL_REC done;
+    class HITL,DATA,RETRY pending;
     class REVIEW,PASS gate;
 ```
 
@@ -168,17 +169,22 @@ flowchart TD
     REF_PROTOCOL_API -->|"最终抛 APIError"| MANUAL_REF_API
     REF_CLASS2 -->|"valid"| REFINE
     REF_CLASS2 -->|"terminal / recoverable"| MANUAL_REF
-    REFINE --> REFINE_OK{"Refinement 响应：finish_reason=stop<br/>无 tool_calls、正文非空？ ✅"}
-    REFINE_OK -->|"是"| PARSE["json.loads：只解析 JSON 语法 ✅"]
-    REFINE_OK -->|"否"| VAL_REC["Refinement / 最终 validator 失败恢复 ⏳"]
-    PARSE --> JSON_OK{"JSON 语法可解析？ ✅"}
-    JSON_OK -->|"否"| VAL_REC
-    JSON_OK -->|"是"| VALID{"最终 validator<br/>精确三键、类型、状态、非空、来源子集 ✅"}
-    VALID -->|"合法且证据充分"| SUCCESS["success<br/>summary + 本轮真实 sources ✅"]
-    VALID -->|"不合法"| VAL_REC
-    MANUAL_OTHER["needs_manual<br/>Refinement / validator / HITL 后续停止分支 ⏳"]
-    VAL_REC -.后续冻结后重校验.-> VALID
-    VAL_REC -.预算耗尽.-> MANUAL_OTHER
+    REFINE --> REFINE_API{"Refinement SDK 逻辑调用<br/>是否返回 response？ ✅"}
+    REFINE_API -->|"最终抛 APIError"| REFINE_PROVIDER_CLASS{"公开异常类型 + status_code<br/>recoverable / terminal？ ✅"}
+    REFINE_API -->|"是"| REFINE_CLASS{"响应守门 → json.loads → candidate validator<br/>valid / recoverable / terminal？ ✅"}
+    REFINE_PROVIDER_CLASS -->|"terminal"| MANUAL_REFINE["needs_manual<br/>尚无结果通过最终 validator；sources 为人工证据池 ✅"]
+    REFINE_PROVIDER_CLASS -->|"recoverable"| REFINE_REC_BUDGET{"共享 recovery 未使用<br/>且仍有下一 step？ ✅"}
+    REFINE_CLASS -->|"valid"| SUCCESS["success<br/>summary + 本轮真实 sources ✅"]
+    REFINE_CLASS -->|"terminal"| MANUAL_REFINE
+    REFINE_CLASS -->|"recoverable"| REFINE_REC_BUDGET
+    REFINE_CLASS -->|"程序 / 调用方不变量"| PROGRAM_ERROR["普通 Python / 不变量错误<br/>保持原 identity 上抛 ✅"]
+    REFINE_REC_BUDGET -->|"否"| MANUAL_REFINE
+    REFINE_REC_BUDGET -->|"是"| REFINE_REC["唯一 Refinement recovery<br/>Provider=原 prompt；其他=固定安全 prompt ✅"]
+    REFINE_REC --> REFINE_REC_RESULT{"新 response / candidate<br/>重走同一完整校验 ✅"}
+    REFINE_REC_RESULT -->|"valid"| SUCCESS
+    REFINE_REC_RESULT -->|"任一 Provider / response / JSON / candidate 失败"| MANUAL_REFINE
+    REFINE_REC_RESULT -->|"普通程序错误"| PROGRAM_ERROR
+    MANUAL_OTHER["needs_manual<br/>HITL 拒绝 / 未确认停止分支 ⏳"]
 
     GUARD["全局护栏<br/>每次真实模型/工具调用前 reserve_call_step<br/>MAX_STEPS=6；禁止第 7 次调用 ✅"] -.约束.-> M1
     GUARD -.约束.-> TOOL1
@@ -190,6 +196,7 @@ flowchart TD
     GUARD -.约束.-> REF_PROVIDER_FIX
     GUARD -.约束.-> REF_FIX
     GUARD -.约束.-> REFINE
+    GUARD -.约束.-> REFINE_REC
 
     INVALID --> OUT["所有最终结果都恰好：status / summary / sources"]
     MANUAL_ACTION --> OUT
@@ -200,6 +207,7 @@ flowchart TD
     MANUAL_CAND_API --> OUT
     MANUAL_REF --> OUT
     MANUAL_REF_API --> OUT
+    MANUAL_REFINE --> OUT
     MANUAL_OTHER --> OUT
     SUCCESS --> OUT
 
@@ -208,22 +216,22 @@ flowchart TD
     classDef terminalDone fill:#d9eaf7,stroke:#0b5394,color:#1f1f1f;
     classDef terminalPending fill:#fce5cd,stroke:#cc4125,color:#1f1f1f;
     classDef note fill:#f3f3f3,stroke:#666666,color:#1f1f1f;
-    class PRE,INIT,M1,F1,ACTION,ACTION_REC,BUDGET_A,M1_CORR,TOOL1,RETRY_OK,TOOL2,RESULT1,RESULT2,EVIDENCE,OBS,M2,CAND_API,CAND_PROVIDER_CLASS,CAND_PROVIDER_BUDGET,CAND_PROVIDER_FIX,CAND_PROVIDER_RESULT,CAND_CLASS,CAND_BUDGET,CAND_FIX,CAND_PROTOCOL_API,CAND_CLASS2,REFLECT,REF_API,REF_PROVIDER_CLASS,REF_PROVIDER_BUDGET,REF_PROVIDER_FIX,REF_PROVIDER_RESULT,REF_CLASS,REF_BUDGET,REF_FIX,REF_PROTOCOL_API,REF_CLASS2,REFINE,REFINE_OK,PARSE,JSON_OK,VALID done;
-    class RISK,CONFIRM,VAL_REC pending;
-    class INVALID,SUCCESS,MANUAL_RETRY,MANUAL_ACTION,MANUAL_CAND,MANUAL_CAND_API,MANUAL_REF,MANUAL_REF_API,TOOL_FAIL,INSUFFICIENT terminalDone;
+    class PRE,INIT,M1,F1,ACTION,ACTION_REC,BUDGET_A,M1_CORR,TOOL1,RETRY_OK,TOOL2,RESULT1,RESULT2,EVIDENCE,OBS,M2,CAND_API,CAND_PROVIDER_CLASS,CAND_PROVIDER_BUDGET,CAND_PROVIDER_FIX,CAND_PROVIDER_RESULT,CAND_CLASS,CAND_BUDGET,CAND_FIX,CAND_PROTOCOL_API,CAND_CLASS2,REFLECT,REF_API,REF_PROVIDER_CLASS,REF_PROVIDER_BUDGET,REF_PROVIDER_FIX,REF_PROVIDER_RESULT,REF_CLASS,REF_BUDGET,REF_FIX,REF_PROTOCOL_API,REF_CLASS2,REFINE,REFINE_API,REFINE_PROVIDER_CLASS,REFINE_CLASS,REFINE_REC_BUDGET,REFINE_REC,REFINE_REC_RESULT done;
+    class RISK,CONFIRM pending;
+    class INVALID,SUCCESS,MANUAL_RETRY,MANUAL_ACTION,MANUAL_CAND,MANUAL_CAND_API,MANUAL_REF,MANUAL_REF_API,MANUAL_REFINE,TOOL_FAIL,INSUFFICIENT terminalDone;
     class MANUAL_OTHER terminalPending;
-    class PROTOCOL_ERROR note;
+    class PROTOCOL_ERROR,PROGRAM_ERROR note;
     class START,GUARD,OUT note;
 ```
 
 > [!warning] 当前代码与目标图的差异
-> 当前已经验证无重试正常链、一次同参数工具重试、真实不可重试失败、搜索零证据、Action correction、修正/重试完整链预算、Candidate / Reflection 响应协议或内容失败的一次恢复，以及 Candidate / Reflection Provider/API 的白名单分类、一次 Agent recovery、独立计数与公开 `needs_manual`。尚未收口的是 Refinement Provider/API、响应 / JSON 与最终 validator 失败恢复、HITL 和 eval；这些异常仍按既有边界传播，不能宣称所有异常都会被统一成业务状态。
+> 当前已经验证无重试正常链、一次同参数工具重试、真实不可重试失败、搜索零证据、Action correction、修正 / 重试完整链预算，以及 Candidate、Reflection、Refinement 的响应 / Provider 受控恢复与公开 `needs_manual`。尚未收口的是 HITL 与 14 条整关 eval；普通程序错误、非法调用方不变量与未映射协议错误仍按原类型传播，不能宣称所有异常都会被统一成业务状态。
 
 正常无重试路径只使用 step 1～5，不伪造 step 6。一次工具重试成功路径已经证明正好使用 step 1～6：模型选择 → 工具失败 → 工具重试成功 → 候选模型 → Reflection → Refinement。任何第 7 次模型或工具调用都必须在计时与副作用之前拒绝。
 
 模型调用账本按 SDK 逻辑调用计数。生产 client 显式固定 `max_retries=2` 与每次物理模型请求 timeout 60 秒；一次逻辑调用最多包含 3 次物理 HTTP 尝试，但仍只占 1 个 Agent step、写 1 条聚合日志。Candidate 或 Reflection 的“首次调用 + 唯一 Agent Provider recovery”极端上限都是 2 次逻辑调用、2 个 step、2 条日志和最多 6 次物理 HTTP 尝试；6 是配置推导上限，不是本轮真实异常 transport 计数。
 
-未注入客户端时只创建一个 client；同一请求中的模型调用共用这个对象。每次公开请求只创建一个 `run_context`，其中保存非空 `request_id`、共享 `step` 和独立 `logs` 列表；内部账本不会进入最终三字段业务结果。恢复停止信号中的受控事实只用于生成用户可读的 `summary`，不会扩展成公开顶层字段，也不会公开 raw arguments、原始请求、prompt/messages、日志或 request ID。Candidate 或 Reflection 阶段失败前已经取得的真实白名单来源可以保留在 `needs_manual.sources` 中，但只作为人工接管证据池，不代表存在一份已通过最终校验的摘要；公开入口会重新从规范化请求与真实工具结果派生来源，不直接信任异常字段。
+未注入客户端时只创建一个 client；同一请求中的模型调用共用这个对象。每次公开请求只创建一个 `run_context`，其中保存非空 `request_id`、共享 `step` 和独立 `logs` 列表；内部账本不会进入最终三字段业务结果。恢复停止信号中的受控事实只用于生成用户可读的 `summary`，不会扩展成公开顶层字段，也不会公开 raw arguments、原始请求、prompt/messages、日志或 request ID。Candidate、Reflection 或 Refinement 阶段失败前已经取得的真实白名单来源可以保留在 `needs_manual.sources` 中，但只作为人工接管证据池，不代表存在一份已通过最终校验的摘要；公开入口会重新从规范化请求与真实工具结果派生并复制来源，不直接信任异常字段。
 
 ## A4-Gate 实现步骤
 
@@ -242,7 +250,7 @@ flowchart TD
 | C4b-2b-1 Reflection 反馈响应协议 / 内容恢复 | 已收口 | 四类 recoverable 最多恢复一次；恢复前同时预留 recovery + Refinement 两步，terminal / 耗尽 / 预算不足安全停止 |
 | Candidate Provider/API 异常恢复 | 已收口 | SDK 内部 retry 与 Agent recovery 分账；timeout / connection / 408 / 409 / 429 / 5xx 白名单、一次完整链预算恢复、两个独立计数和窄停止映射通过 |
 | Reflection Provider/API 异常恢复 | 已收口 | 首次调用与 protocol recovery 调用位置分开；Provider / protocol 按实际额外调用原因计数，完整链预算、零第三次请求与窄停止映射通过 |
-| Refinement Provider/API、响应 / JSON 与 final validator 恢复 | 未开始 | 分别冻结调用异常、结构化结果失败与最终合同校验失败的受控修正/停止 |
+| C4b-2c Refinement Provider/API、响应 / JSON 与 candidate validator 恢复 | 已正式 PASS | 四个可恢复失败域共享一次 recovery；Provider 原 prompt、其他固定安全 prompt、新 candidate 全量重校验、普通程序错误上抛和窄停止映射均通过 |
 | HITL allow/deny | 未开始 | 危险 fake 在确认门前零执行 |
 | 14 条 eval | 未开始 | 固定 normal/failure/danger/holdout 案例与阈值 |
 | A4-Gate 正式复核 | 未开始 | 只有整关复核通过才可把父任务改为 PASS |
@@ -270,6 +278,17 @@ flowchart TD
 | C4b-2b-1 G1 / I1a～I1d / U1；I1e / I1f / I2 助手验证 | PASS / 已验证 | Reflection 反馈三分法、一次安全恢复、两步尾链预算、stage resolver、生产接线、公开信号对账、端到端回归和用户审核闭合 |
 | C4b-2b-2a G1～G4 / I1a / I1b / U1；I1c / I2 助手验证 | PASS / 已验证 | SDK retry / timeout 所有权、Candidate Provider 白名单、一次恢复、双计数、防篡改公开映射、故障注入和真实正常 smoke 闭合 |
 | C4b-2b-2b G1 / I1 / U1；I1b / I2 助手验证 | PASS / 已验证 | Reflection Provider 一次恢复、与 protocol recovery 独立计数、完整链预算、零第三次请求、防篡改公开映射和真实正常 smoke 闭合 |
+| C4b-2c G1～G3 / I1a / U1-1～U1-3；I1b～I1f / I2 助手验证 | PASS / 已验证 | Refinement Provider、响应、JSON 与 candidate-contract 共享一次 recovery、固定 prompt 信任边界、新候选重校验、普通程序错误上抛、公开停止和用户审核闭合 |
+
+## 2026-08-22 C4b-2c Refinement 恢复决定性证据
+
+- 本切片只处理 Refinement 的 Provider/API、响应外壳 / 正文、JSON 语法与模型 candidate 合同失败。用户证据为 `G1～G3 / I1a / U1-1～U1-3 = PASS`；I1b～I1f / I2 是依据已通过合同完成的机械接线与验证，不冒充用户独立代码证据。
+- `MAX_REFINEMENT_RECOVERIES=1` 由四个可恢复失败域共享，`MAX_STEPS=6` 另行守门。step 5 首败最多使用 step 6；失败域从 JSON 变成 Provider 或反向变化都不重置额度，也不会产生第三次请求或 step 7。
+- Provider 首败逐字符复用原 `refinement_prompt`，builder 调用为 0；响应 / JSON / candidate 失败才使用“原可信 prompt + 固定安全指令”。坏 response / content / candidate、越界 URL、原异常、堆栈和日志均不回填，工具调用与重跑为 0。
+- 每一份 candidate 都重新经过 exact 三键、精确 `status="success"`、非空 `summary / sources` 与来源子集 validator；非法 `allowed_sources` 在首次 SDK 调用前抛出，普通 request / parser / validator 异常保持原 identity。success、stop signal 与 public handoff 的来源均防御复制。
+- 实现阶段证据为主矩阵 `94/94`、补丁回归 `5/5`、独立行为 `45/45`、stop / mapper 对抗 `22/22` 和第二套独立对抗 `102/102`；正式 reviewer 另跑 49/49，独立代码复核 10/10，失败 ID 为 `NONE`。
+- `py_compile`、`git diff --check` 均退出 0，产品活动 `TODO / NotImplementedError = 0 / 0`。真实 DeepSeek `relative_path=sample.txt` 正常 smoke 返回 exact 三字段 `success` 与 `sources=["sample.txt"]`；它只证明真实正常链没有回归，不冒充 Provider 故障注入或父 Gate 14 条 eval。
+- 这些证据只关闭 `C4b-2c` 子单元；父 `A4-Gate` 仍为 `DOING`，Problem Contract 总体仍为 `DRAFT`。对应实现与学习证据已提交为 [`838adba`](https://github.com/humbleded/AI-Agent-Learning/commit/838adba79295c9505885b414977aadfdaf1ae918)；没有新建整关 PASS 复盘或升级岗位证据。
 
 ## 2026-08-21 C4b-2b-2b Reflection Provider/API 恢复决定性证据
 
@@ -379,7 +398,7 @@ flowchart TD
 
 1. OpenAI 兼容 SDK 返回的是属性对象，不是嵌套 `dict`；响应必须按 `response → choices[0] → message` 读取。
 2. `finish_reason` 位于 `choice`，不是 `message`；Reflection 与 Refinement 当前只接受 `stop`。
-3. 不同模型阶段必须使用各自冻结的协议门：首次 Action 的结构错误继续使用窄协议异常；Candidate 与 Reflection 的外壳、结束原因、Tool Action 与正文分别归入 `valid / recoverable / terminal`；Refinement / validator 失败恢复仍待后续切片。任何阶段都不能泄漏原生 `AttributeError` 或伪造成功。
+3. 不同模型阶段必须使用各自冻结的协议门：首次 Action 的结构错误继续使用窄协议异常；Candidate 与 Reflection 的外壳、结束原因、Tool Action 与正文分别归入 `valid / recoverable / terminal`；Refinement 还要把响应守门、JSON 语法和 candidate validator 分层，并让四个失败域共享一次 recovery。任何阶段都不能泄漏原生 `AttributeError` 或伪造成功。
 4. `prepare_request()` 返回二项结果，入口必须先解包规范化请求与非法结果；C3c 返回三键字典，必须按精确键取值，不能直接迭代解包字典。
 5. `response_format={"type":"json_object"}` 只约束模型输出形式，SDK 仍返回字符串；必须经过 `json.loads`，再由 validator 做业务合同校验。
 6. 调用前顺序必须是 `reserve → clock → 真实调用`；硬门晚于计时或副作用，就无法证明第 7 次调用为零副作用。
@@ -412,6 +431,8 @@ flowchart TD
 33. 本地响应分类不是模型调用，不占 step，也不增加 protocol counter；Provider recovery 返回合法反馈后的本地校验不能误记成协议恢复。
 34. Reflection 的合法反馈仍不是最终结果。Provider 或 protocol recovery 前必须同时为后续 Refinement 保留一个调用位置；`recoverable` 只通过分类门，不代表一定允许重试。
 35. Reflection Provider 公开映射除了 cause 与安全字段，还要核对阶段调用差额 `reflection_start_step + 1 + provider + protocol`；合法异常类型不代表其中的 step 和计数可以直接相信。
+36. Refinement recovery 的失败类型变化不会重置局部额度；Provider 使用原 prompt，其他可恢复失败只追加固定安全指令，坏 candidate / URL / 原异常不得进入新 prompt。
+37. candidate recovery 资格不等于接受坏输出；新 candidate 仍必须重过 exact 三字段、状态、非空和来源子集 validator。非法 `allowed_sources` 与普通程序错误必须保持上抛。
 
 ## 安全边界
 
@@ -431,20 +452,20 @@ flowchart TD
 - Reflection recovery 前至少保留 2 个调用位置；失败反馈不进入恢复 prompt。首次 terminal、唯一 recovery 后仍失败或完整链预算不足时都不得进入 Refinement。
 - Reflection Provider recovery 与 protocol recovery 独立计数，并按额外调用的发起原因归属；错误事件、本地分类和未实际使用的额度都不计数，同一个调用也不能同时归入两类。
 - Reflection Provider recovery 最多一次，必须复用同一 Reflection prompt、实际 client 和共享 context；预算不足、唯一恢复再失败、Provider recovery 返回坏反馈或 protocol recovery 自身遇 Provider 错误后，都不得发第三次 Reflection 请求或进入 Refinement。
-- Reflection 公开入口同时核对精确停止类型、真实 `APIError` cause、当前共享 step、`reflection_start_step + 1 + provider + protocol` 调用差额、两套计数与重新派生来源；Refinement、validator、普通 Python 异常和篡改变体保持原样传播。
+- Reflection 公开入口同时核对精确停止类型、真实 `APIError` cause、当前共享 step、`reflection_start_step + 1 + provider + protocol` 调用差额、两套计数与重新派生来源；Refinement 另由独立窄映射核对共享恢复次数、step 算术、完整日志、Provider cause 与真实来源。普通 Python 异常、非法调用方不变量和篡改变体仍保持原样传播。
+- Refinement 的 Provider、响应、JSON 与 candidate-contract 失败共享一次 recovery；坏输出与内部异常不回填，每份新 candidate 重过最终 validator，唯一 recovery 再失败后零第三次请求 / 工具重跑。
 - 当前同参数重试只在受控只读工具上获得证据，不能直接外推到支付、发送、部署等有副作用操作；写操作还需幂等键、去重与 HITL 风险门。
 
 ## 当前切片与后续未完成范围
 
 父任务仍缺：
 
-- Refinement Provider/API、响应 / JSON 与最终 validator 校验失败的受控修正或安全停止。
 - HITL：高风险 fake 工具的 allow/deny 可执行证据。
 - `eval_cases.json`：14 条固定案例、至少 3 条 holdout 和正式 Gate 阈值。
 - Gate 的循环、停止、工具恢复、幻觉点和可测试验收规则五个必答题。
 - 正式 Gate 复核；在此之前不新建 A4-Gate PASS 复盘，也不升级岗位证据。
 
-截至 2026-08-21，`C4a-2b2`、`C4b-1`、`C4b-2a`、`C4b-2b-1`、`C4b-2b-2a` 与 `C4b-2b-2b` 已收口，当前没有活动代码 TODO；这些子单元没有替代父任务剩余范围，也没有把 `tracker/progress.md` 中的 `A4-Gate` 从 `DOING` 改为 `PASS`。
+截至 2026-08-22，`C4a-2b2`、`C4b-1`、`C4b-2a`、`C4b-2b-1`、`C4b-2b-2a`、`C4b-2b-2b` 与 `C4b-2c` 已收口，当前没有活动代码 TODO；这些子单元没有替代父任务剩余范围，也没有把 `tracker/progress.md` 中的 `A4-Gate` 从 `DOING` 改为 `PASS`。
 
 ## 相关链接
 

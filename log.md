@@ -3,7 +3,7 @@ type: maintenance-log
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-08-21
+updated: 2026-08-22
 tags:
   - 知识库
   - log
@@ -1067,3 +1067,16 @@ tags:
 - 决定性工程证据为主组合矩阵 `109/109`、独立终审 `96/96`、`py_compile` / `git diff --check`，以及真实 DeepSeek `sample.txt` 正常 smoke `status=success` / `sources=["sample.txt"]` / `6.778s`；正常 smoke 没有冒充真实 Provider 故障注入证据。
 - 状态边界：本次只同步 `C4b-2b-2b` 教学 / 实现子单元；父 `A4-Gate` 继续 `DOING`，Problem Contract 总体仍为 `DRAFT`。没有新建整关 PASS review、raw 或岗位证据；Refinement / validator 恢复、HITL、14 条 eval、五个必答题、合同定稿和正式整关复核继续留后。
 - 同步后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：`OK: True`，217 个 Markdown、1962 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。
+
+## 2026-08-22
+
+### AI-Agent-Learning A4-Gate C4b-2c Refinement 恢复同步
+
+- 来源为执行区 `daily/2026-08-22.md`、`code/stage4/problem-contract.md` 与 `a4_gate_research_summary_agent.py`；对应实现与学习证据已提交为 [`838adba`](https://github.com/humbleded/AI-Agent-Learning/commit/838adba79295c9505885b414977aadfdaf1ae918)。`A4-Gate-C4b-2c` 已正式 `PASS`，但父 `A4-Gate` 继续 `DOING`，Problem Contract 总体仍为 `DRAFT`。
+- 合并更新 [[02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管]]，没有新建 Refinement recovery 同义卡：新增 Provider、响应、JSON 与 candidate-contract 共用一次 recovery、`MAX_STEPS=6` 独立守门、Provider 原 prompt / 其他固定安全 prompt、坏输出隔离、新 candidate 全量重校验、普通程序错误上抛与来源防御复制。
+- 最小更新 [[02-Concepts/Agent/反思机制(Reflection)|反思机制]] 的下游职责边界；最小纠正 [[02-Concepts/LLM/结构化输出(Structured Output)|结构化输出]] 中“`message.content` 永远是字符串”的过强表述，明确 nullable / 空正文、`finish_reason` 与“响应守门 → JSON 语法解析 → 业务 validator”分层。完整 Refinement 编排仍只放在受控重试主卡，不复制到结构化输出页。
+- 合并更新 [[04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent]] 的完成图、运行控制图、步骤表、完成切片、2026-08-22 决定性证据、关键订正、安全边界与剩余范围；同步更新 [[03-Courses/Agent/AI-Agent-Learning/stage4-agent-basics|阶段 4 课程页]]、课程索引、Agent 概念 / 项目两级 README、[[01-Maps/AI-Agent-Learning 跳转索引|跳转索引]]与 [[index|全局索引]]。
+- 决定性工程证据边界：实现阶段主矩阵 `94/94`、补丁回归 `5/5`、独立行为 `45/45`、stop / mapper 对抗 `22/22`、第二套独立对抗 `102/102`；正式 reviewer 另跑 `49/49`，独立代码复核 `10/10`、失败 ID `NONE`。`py_compile` / `git diff --check` 退出 0，真实 DeepSeek `sample.txt` 正常 smoke 返回 exact 三字段 `success` 与 `sources=["sample.txt"]`；真实 smoke 不冒充 Provider 故障注入或 14 条 Gate eval。
+- no-op：[[02-Concepts/Agent/计划与求解(Plan-and-Solve)|Plan-and-Solve]] 已准确覆盖静态 history 与显式 Replanning 边界；本轮 `CD-005` 首答重现误区、经多级提示后才题级 PASS，因此不把该不稳定证据写成知识增量。API 参数 / SDK 客户端、HTTP、Triage、LLM README、总地图、资源地图、关联方案、开发路线、`07-Reviews`、raw 与岗位证据也保持 no-op。
+- 本次共更新 12 个既有文件（含本日志），零新建概念页、raw、整关 PASS review 或岗位证据。父任务剩余仅记录为 HITL allow / deny、14 条 eval、五个 Gate 必答题、合同总体定稿和整关正式复核。
+- 同步并追加本日志后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：`OK: True`，217 个 Markdown、1971 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。

@@ -3,7 +3,7 @@ type: concept
 topic: Reflection
 status: usable
 created: 2026-07-23
-updated: 2026-08-21
+updated: 2026-08-22
 source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-23.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-30.md
@@ -12,6 +12,7 @@ source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-10.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-20.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-21.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-22.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\problem-contract.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_05_reflection_writer.py
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_gate_research_summary_agent.py
@@ -144,7 +145,7 @@ Reflection 的输出只是供 Refinement 使用的中间反馈，不是最终摘
 - 发起 recovery 前一次性检查完整尾链预算。Reflection recovery 后必需还有一个 Refinement 位置，所以至少需要 2 个剩余 step；若首次 Reflection 已到 step 5，只剩 step 6，就应在新调用前停止。
 - recovery prompt 复用原始可信 Reflection prompt，因此仍包含真实 Observation、合法 Candidate、`allowed_sources` 和原评审标准；失败响应或失败反馈正文不进入 prompt。
 - 同一阶段最多恢复一次。恢复后只有合法反馈能进入 Refinement；terminal 或仍可恢复的响应都安全停止。
-- Reflection 协议恢复分支不能顺手吞掉 Provider / HTTP / SDK 异常；Reflection Provider/API 由独立 wrapper、完整链预算和窄停止信号处理。Refinement Provider/API、Refinement 响应 / JSON 和最终 validator 失败仍属于后续故障边界。
+- Reflection 协议恢复分支不能顺手吞掉 Provider / HTTP / SDK 异常；Reflection Provider/API 由独立 wrapper、完整链预算和窄停止信号处理。进入 Refinement 后由独立 Refinement 编排接管：Provider、响应、JSON 与模型 candidate 合同的可恢复失败共享一次额外模型调用；新的 candidate 仍须重过最终 validator，非法 `allowed_sources` 与普通程序 / 不变量错误保持原异常上抛。详细共享额度与 prompt 信任边界见 [[受控重试与人工接管(Bounded Retry and Human Handoff)#Refinement 恢复：四个失败域，共用一次机会|Refinement 恢复合同]]。
 
 Reflection Provider recovery 与 protocol recovery 要分成两本账。它们都只统计**因相应原因真正额外发出的逻辑模型调用**，不统计首次 Reflection、SDK 内部物理重试、错误事件、本地分类或只存在但没有使用的恢复额度：
 
@@ -265,3 +266,4 @@ Action
 - [C4b-2b-1 Reflection 反馈恢复提交 `e4a5681`](https://github.com/humbleded/AI-Agent-Learning/commit/e4a56813aa6b4e68ffee4ab7b45d5a3a2c1d2a5f)
 - `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-21.md`、`code\stage4\problem-contract.md`、`code\stage4\a4_gate_research_summary_agent.py`：A4-Gate C4b-2b-2b 的 Reflection Provider/API 一次恢复、Provider / protocol 独立计数、完整链预算与零第三次请求；真实 DeepSeek 只证明正常链没有回归。该证据只关闭本教学 / 实现子单元，父 Gate 仍为 `DOING`。
 - [C4b-2b-2b Reflection Provider/API 恢复提交 `427d60c`](https://github.com/humbleded/AI-Agent-Learning/commit/427d60c)
+- `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-22.md`、`code\stage4\problem-contract.md`、`code\stage4\a4_gate_research_summary_agent.py`：A4-Gate C4b-2c 的 Refinement Provider / 响应 / JSON / candidate-contract 共享一次 recovery、新候选重校验、普通程序错误上抛与安全人工接管。该证据只关闭 C4b-2c 子单元，父 Gate 仍为 `DOING`。

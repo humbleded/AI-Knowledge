@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-08-21
+updated: 2026-08-22
 tags:
   - 知识库
   - index
@@ -73,7 +73,7 @@ tags:
 - [[02-Concepts/Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议：Name / Description / Execution Logic]]
 - [[02-Concepts/Agent/文件工具沙箱(File Tool Sandbox)|文件工具沙箱：resolve + relative_to 的安全边界]]
 - [[02-Concepts/Agent/外部 API 工具(External API Tool)|外部 API 工具：timeout / 错误兜底 / 必要字段摘要]]
-- [[02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管：SDK / Agent 双层重试、Candidate / Reflection Provider 与协议 recovery、分层预算与人工证据池]]
+- [[02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管：SDK / Agent 双层重试、Candidate / Reflection / Refinement Provider 与协议 / JSON / candidate-contract recovery、共享预算与人工证据池]]
 - [[02-Concepts/LLM/API 参数与 SDK 客户端参数|API 参数 vs SDK 客户端参数]]
 - [[02-Concepts/LLM/README|LLM 概念卡]]
 - [[02-Concepts/MCP/README|MCP 概念卡]]
@@ -146,7 +146,7 @@ tags:
 - [[04-Projects/Agent/AI-Agent-Learning/a4-03-react-agent]]
 - [[04-Projects/Agent/AI-Agent-Learning/a4-04-plan-and-solve]]
 - [[04-Projects/Agent/AI-Agent-Learning/a4-05-reflection-writer]]
-- [[04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（C4b-2b-2b Reflection Provider/API 已收口，整关进行中）]]
+- [[04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（C4b-2c Refinement 共享恢复已收口，整关进行中）]]
 - [[04-Projects/Agent/AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引]]
 
 ## 复盘与记忆
@@ -213,5 +213,5 @@ tags:
 - 为 [[04-Projects/LLM/README|LLM 项目记录]] 增加 micrograd 复现实验。
 - 扩展 [[04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]] 的代码注释、可视化或测试。
 - 为 Karpathy 课程补充 raw transcript 或 repo 摘录。
-- A4-Gate 的 C4a-2a/2b1/2b2、C4b-1、C4b-2a、C4b-2b-1、C4b-2b-2a 与 C4b-2b-2b 已收口：真实工具终点、Action correction、Candidate / Reflection 响应恢复、两阶段 Provider/API 白名单与一次恢复、独立计数、分层完整链预算、公开信号对账和人工证据池映射都有决定性证据。其后仍需 Refinement Provider/API、响应 / JSON 与 final validator 恢复、HITL、14 条 eval、五个必答题、合同定稿和正式整关复核；父任务继续 `DOING`。
+- A4-Gate 的 C4a-2a/2b1/2b2、C4b-1、C4b-2a、C4b-2b-1、C4b-2b-2a 与 C4b-2b-2b 已完成教学 / 实现子单元，C4b-2c 已正式 `PASS`：真实工具终点、Action correction、Candidate / Reflection / Refinement 的响应与 Provider 恢复、Refinement JSON / candidate validator 共享一次 recovery、分层预算、公开信号对账和人工证据池映射都有决定性证据。其后仍需 HITL、14 条 eval、五个必答题、合同总体定稿和正式整关复核；父任务继续 `DOING`。
 - 继续新增 `cross entropy`、`softmax`、`logits` 等概念卡。

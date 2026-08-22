@@ -5,11 +5,12 @@ type: concept
 topic: LLM
 status: usable
 created: 2026-06-30
-updated: 2026-07-23
+updated: 2026-08-22
 source:
   - AI-Agent-Learning PR2-04
   - AI-Agent-Learning PR2-Gate
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-23.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-22.md
   - OpenAI Structured Outputs 官方文档
   - DeepSeek JSON Output 官方文档
 tags:
@@ -31,7 +32,7 @@ tags:
 
 | 档 | 名字 | 保证什么 | 不保证什么 |
 |---|---|---|---|
-| 弱档 | **JSON 模式**（`json_object`） | 输出是**合法 JSON** | 字段对不对（可能缺 / 多 / 类型错 / 值乱编） |
+| 弱档 | **JSON 模式**（`json_object`） | 在正常取得非空、未截断正文时，以合法 JSON 对象为输出格式目标 | 空 / nullable content、截断、意外 Tool Action、字段缺 / 多、类型错、值乱编与业务合同 |
 | 强档 | **严格 Schema**（`json_schema` + `strict`） | 还保证：字段齐 / 类型对 / 不许多余字段 / 枚举不乱编 / 拒答可检测 | —— |
 
 > 原文：**only Structured Outputs ensure schema adherence**（只有严格 Schema 保证贴合结构；JSON 模式只保证是合法 JSON）。
@@ -47,9 +48,9 @@ tags:
 
 ## 处理异常输出：查 3 处
 
-1. `finish_reason == "length"` → 被 `max_tokens` **截断**（JSON 没写完）
-2. `message.refusal` → **拒答**
-3. `message.content` → 正常，拿去 `json.loads`
+1. 响应外壳与 `finish_reason`：`length` 表示被 `max_tokens` **截断**；安全过滤、资源不足、缺失 / 未知结束原因都不能按正常 JSON 处理。
+2. 意外 Tool Action / `message.refusal`：当前阶段不允许时先停止或按本地合同分类，不能继续读成业务 JSON。
+3. `message.content`：非流式 schema 中可以为 nullable；只有确认它是**非空字符串**后，才交给 `json.loads()`。
 
 ## DeepSeek 落地（只有弱档 json_object）
 
@@ -60,11 +61,11 @@ tags:
 
 坑：偶尔返回**空 content** → `loads` 前 `if not content` 兜底。
 
-> DeepSeek 没有严格 Schema 档 → 用「**prompt 写清 schema（点名字段 + 双引号样例 + 枚举 + 缺失 null）+ Python 端 `validate` 校验**」两头夹，凑出强档效果。
+> DeepSeek 没有严格 Schema 档 → 用「**prompt 写清 schema（点名字段 + 双引号样例 + 枚举 + 缺失 null）+ Python 端 `validate` 校验**」形成生成后的客户端硬门。它能拒绝不合合同的结果，但不等于 Provider 在解码时提供了严格 Schema / constrained decoding。
 
 ## 🔑 最大的坑：`response_format=json_object` ≠ 返回 dict
 
-`response.choices[0].message.content` **永远是字符串**。`json_object` 只保证「这个字符串的内容是合法 JSON」，**仍要 `json.loads(content)` 才得到 dict**。直接把 content 当 dict 用，下游 `key in payload` 会变成查子串、行为全错。
+`response.choices[0].message.content` **不是永远都有字符串**：非流式响应 schema 允许它为 nullable，DeepSeek JSON Output 也提醒可能偶发空正文。客户端必须先完成“响应外壳 → `finish_reason` → 无意外 Tool Action → 非空字符串正文”的守门；只有通过后，才把 `content` 当 `str` 交给 `json.loads()`。即使拿到语法合法 JSON，`json_object` 也不保证外层一定是业务所需的 `dict`，更不保证字段合同；解析后仍要检查外层类型、精确键、字段类型 / 值和业务约束。
 
 ## 工程链路：JSON 字符串 -> dict -> 校验 -> 文件 JSON
 
@@ -205,7 +206,7 @@ def parse_plan(response_text: str) -> list[str]:
 
 ## 常见坑 / 错误理解 → 正确理解
 
-- ❌ 开了 `json_object` 拿到的就是 dict → ✅ content 永远是 **str**，仍需 `json.loads`。
+- ❌ 开了 `json_object` 拿到的就是 dict → ✅ `content` 可能为空 / nullable；通过响应与非空正文守门后才把它当 **str** 做 `json.loads`，解析结果仍需外层类型与业务 validator。
 - ❌ 模型 JSON 字符串可以直接放进最终结果 → ✅ 先 `json.loads` 成 dict，再 `validate_payload`，最后 `json.dump`。
 - ❌ prompt 里 JSON 样例用**单引号** → ✅ 必须**双引号**，单引号 `json.loads` 抛 `JSONDecodeError`（模型会照样例学）。
 - ⚠️ 真调模型**不可复现**：同一封缺字段邮件两次跑出「**截断**（Unterminated string）」和「**空 content**（None）」两种失败 → `except` + `if not content` 兜住不崩（兜底价值实锤）。
@@ -225,4 +226,6 @@ def parse_plan(response_text: str) -> list[str]:
 - AI-Agent-Learning PR2-04：产物 `code/stage2/pr2_04_extract_json.py`；预读 `notes/stage2/pr2_04_structured_output_preview.md`；带做与坑 `daily/2026-06-30.md`。
 - AI-Agent-Learning PR2-Gate：产物 `code/stage2/pr2_gate_email_processor.py`、`resources/stage2_email_result.json`；复盘 `daily/2026-07-05.md`。
 - AI-Agent-Learning A4-04-C1：`daily/2026-07-23.md` 中 Planner 计划解析的五类输入契约、首次 `4/5` 验证和缺少围栏时的 `IndexError` 证据。
-- OpenAI《Structured Outputs》、DeepSeek《JSON Output》官方文档（2026-06-30 抓取）。
+- OpenAI《Structured Outputs》、DeepSeek《JSON Output》官方文档（首次检查：2026-06-30）。
+- [DeepSeek Chat Completions API](https://api-docs.deepseek.com/zh-cn/api/create-chat-completion/) 与 [DeepSeek JSON Output](https://api-docs.deepseek.com/zh-cn/guides/json_mode/)（复核日期：2026-08-22）：非流式 assistant `content` 可为 nullable，`finish_reason` 有多种终点，JSON Output 仍可能出现空正文。
+- AI-Agent-Learning A4-Gate C4b-2c：`daily/2026-08-22.md` 的“响应守门 → JSON 语法解析 → exact 业务 validator”正式执行证据；父 Gate 仍为 `DOING`。

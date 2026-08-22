@@ -3,7 +3,7 @@ type: concept
 topic: Agent Bounded Retry and Human Handoff
 status: usable
 created: 2026-08-18
-updated: 2026-08-21
+updated: 2026-08-22
 source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\problem-contract.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_gate_research_summary_agent.py
@@ -12,6 +12,7 @@ source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-19.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-20.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-21.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-22.md
 tags:
   - AI/Agent
   - Reliability
@@ -39,6 +40,8 @@ aliases:
   - Provider Recovery
   - SDK 自动重试
   - 人工接管证据池
+  - Refinement Recovery
+  - Refinement 恢复
 ---
 
 # 受控重试与人工接管（Bounded Retry and Human Handoff）
@@ -51,7 +54,7 @@ aliases:
 > 本卡总结的是“自动恢复耗尽后停止并交接”。它不等于完整的 HITL（Human-in-the-Loop）确认门：危险动作执行前的 allow / deny 仍是另一条控制流。
 
 > [!note] 当前项目证据边界
-> `A4-Gate-C4a-2a / C4a-2b1 / C4a-2b2 / C4b-1 / C4b-2a / C4b-2b-1 / C4b-2b-2a / C4b-2b-2b` 的教学、实现、决定性验证和用户审核已经闭合，但父任务 `A4-Gate` 仍为 `DOING`。当前已经分别关闭 Candidate 与 Reflection SDK 逻辑调用最终抛出 Provider/API 异常时的一次 Agent 级恢复、独立计数与安全停止；Refinement 响应 / Provider/API 与最终 validator 失败恢复、危险动作 HITL、14 条 eval、Gate 五个必答题、合同定稿和整关正式复核尚未完成。
+> `A4-Gate-C4a-2a / C4a-2b1 / C4a-2b2 / C4b-1 / C4b-2a / C4b-2b-1 / C4b-2b-2a / C4b-2b-2b` 的教学 / 实现子单元已经闭合，`C4b-2c` Refinement 恢复已于 2026-08-22 正式 `PASS`，但父任务 `A4-Gate` 仍为 `DOING`。当前已关闭 Candidate、Reflection 与 Refinement 的受控恢复和安全停止；危险动作 HITL、14 条 eval、Gate 五个必答题、合同总体定稿和整关正式复核尚未完成。
 
 ## 新手比喻：一次派送、调度员与客服出口
 
@@ -111,6 +114,10 @@ Candidate 响应不可用且属于恢复白名单时：
 Reflection 反馈响应不可用且属于恢复白名单时：
   1 次 Reflection recovery + Refinement
   = 至少还需要 2 个调用位置
+
+Refinement 首次失败且属于恢复白名单时：
+  1 次 Refinement recovery
+  = 至少还需要 1 个调用位置
 ```
 
 因此，step 1 的非法 Action 可以使用一次 correction，因为还剩 5 步；若 correction 后的首次真实工具在 step 3 返回可重试失败，剩余只有 3 步，已不足以容纳“再试工具 + 三段下游模型”，必须在第二次工具副作用前停止。
@@ -122,7 +129,7 @@ Reflection 反馈响应不可用且属于恢复白名单时：
 | 层 | 一次计数代表什么 | 由谁拥有 | A4-Gate 的当前配置 |
 |---|---|---|---|
 | SDK 自动重试 | 同一次 SDK 逻辑调用内部，为 timeout、连接失败或特定 HTTP 状态再次发送物理 HTTP 请求 | OpenAI Python SDK / transport | `max_retries=2`，所以一次逻辑调用最多为首次请求 + 2 次重试 = 3 次物理尝试 |
-| Agent Provider recovery | SDK 已经耗尽内部恢复并最终抛出公开 `APIError` 后，Agent 根据阶段语义、错误白名单和完整链预算决定是否重新发起一次新的逻辑调用 | Agent 编排层 | 当前 V1 的 Candidate、Reflection 阶段各自最多 1 次；是否实际发出仍由阶段预算决定 |
+| Agent Provider recovery | SDK 已经耗尽内部恢复并最终抛出公开 `APIError` 后，Agent 根据阶段语义、错误白名单和完整链预算决定是否重新发起一次新的逻辑调用 | Agent 编排层 | 当前 V1 的 Candidate、Reflection 阶段各自最多 1 次；Refinement 的 Provider、响应、JSON 与 candidate-contract 失败共用 1 次；是否实际发出仍由阶段预算决定 |
 
 因此不能把“Agent 在某个阶段最多调用模型两次”误读成“底层最多两个 HTTP 请求”。以当前 Candidate 阶段的极端失败链为例：
 
@@ -136,7 +143,7 @@ Agent 账本仍然只是：2 个 model step + 2 条聚合日志
 
 SDK 内部物理尝试不各自占 Agent step，也不逐次写应用层七字段日志；一次日志的 `duration_ms` 聚合整次 SDK 逻辑调用。否则 SDK 升级或重试配置一变，Agent 的 `MAX_STEPS` 语义就会跟 transport 细节绑死。
 
-Provider/API 分类发生在 SDK **最终仍失败之后**。当前 A4-Gate 在 Candidate 与 Reflection 阶段复用的白名单是：
+Provider/API 分类发生在 SDK **最终仍失败之后**。当前 A4-Gate 在 Candidate、Reflection 与 Refinement 阶段复用的白名单是：
 
 | SDK 最终异常 | Agent 分类 | 原样再发是否可能恢复 |
 |---|---|---|
@@ -203,6 +210,7 @@ status / summary / sources
 - `CandidateProviderStageStopError`：Candidate 的首次逻辑调用或协议 recovery 调用发生 Provider/API 失败后，按 `terminal_error / recovery_failed / insufficient_completion_steps` 停止，并保留两个独立恢复计数与安全异常链。
 - `ReflectionRecoveryCompletionBudgetError`：Reflection 反馈属于可恢复分类，但剩余 step 不足以同时容纳“Reflection recovery + Refinement”。
 - `ReflectionFeedbackStageStopError`：Reflection 反馈阶段已经按 `terminal_response / recovery_exhausted / insufficient_completion_steps` 安全停止，只携带公开入口所需的阶段事实，不携带失败反馈正文。
+- `RefinementStageStopError`：Refinement 的 Provider、响应、JSON 或模型 candidate 合同失败已经按 `terminal / budget_exhausted / recovery_exhausted` 停止；只携带安全失败域、原因、共享恢复次数、step 与真实来源副本。
 
 它们只携带构造安全交接说明所需的受控事实，例如精确 `reason`、当前 step、实际尝试/修正次数和已经安全化的最后错误。公开入口必须同时按**精确异常类型**和**精确 reason** fail-closed 地分流；未知 reason、异常子类、普通 `RuntimeError` / `ValueError`、未被当前阶段窄策略接管的模型 API 异常、工具 Python 异常和协议结构错误继续按原路径传播，不能被一把兜成“达到重试上限”。
 
@@ -211,7 +219,7 @@ status / summary / sources
 
 ## A4-Gate 的恢复停止终点
 
-本项目冻结 `MAX_STEPS = 6`、`MAX_ACTION_CORRECTIONS = 1`、`MAX_TOOL_RETRIES = 1`。这里的“重试上限 1”表示**首次尝试后最多额外重试一次**，所以工具总尝试数最多为 2；“修正上限 1”表示一个非法 Action 最多向模型请求一次修正。
+本项目冻结 `MAX_STEPS = 6`、`MAX_ACTION_CORRECTIONS = 1`、`MAX_TOOL_RETRIES = 1`、`MAX_REFINEMENT_RECOVERIES = 1`。这里的“重试上限 1”表示**首次尝试后最多额外重试一次**，所以工具总尝试数最多为 2；“修正上限 1”表示一个非法 Action 最多向模型请求一次修正；Refinement 的四个可恢复失败域则共同竞争同一个额外模型调用位置。
 
 ### 1. 第二次工具尝试仍是可重试失败
 
@@ -306,7 +314,7 @@ step 4 Candidate recovery -> step 5 Reflection -> step 6 Refinement
 
 ## Reflection 反馈响应：只恢复同一评审，不重做整条链
 
-Reflection 协议 recovery 处理的是：**Reflection API 已经返回并完成记账，但响应协议或反馈正文不能形成可用反馈**。它自身不吞网络、HTTP、SDK 或 Provider 在调用期间抛出的异常；这类异常由相邻的 Reflection Provider wrapper、完整链预算门与窄停止信号独立处理。后续 Refinement 响应 / Provider/API 和最终 validator 失败仍保持原异常边界，等待各自切片冻结策略。
+Reflection 协议 recovery 处理的是：**Reflection API 已经返回并完成记账，但响应协议或反馈正文不能形成可用反馈**。它自身不吞网络、HTTP、SDK 或 Provider 在调用期间抛出的异常；这类异常由相邻的 Reflection Provider wrapper、完整链预算门与窄停止信号独立处理。合法反馈进入 Refinement 后，改由下文的独立 Refinement 编排统一处理 Provider、响应、JSON 与模型 candidate 合同失败；普通程序 / 调用方不变量错误仍按原异常向上暴露。
 
 Reflection 反馈先进入无副作用的严格三键分类：
 
@@ -460,6 +468,63 @@ current_step = reflection_start_step + 1 + provider_attempts + protocol_attempts
 | step 4 Reflection 首次 terminal，或唯一 recovery 后仍失败 | 首次 terminal 停在 step 4；恢复后停止在 step 5 | 不再恢复、不进入 Refinement；保留真实来源证据池并返回 `needs_manual` |
 | Candidate recovery 后的 step 5 Reflection 可恢复 | Reflection 失败已占 step 5 | 只剩 1 步而完整尾链需要 2 步；recovery 和 Refinement 均为 0，step 6 保持未使用 |
 
+## Refinement 恢复：四个失败域，共用一次机会
+
+Refinement 已经是生成最终三字段候选的最后一次模型阶段。API 正常返回并不等于成功：客户端仍要依次守住响应外壳、结束原因、JSON 语法和最终业务合同。当前冻结的失败所有权是：
+
+| 失败位置 | 安全分类与行为 |
+|---|---|
+| Provider/API | 只按公开 `APIError` 类型与整数状态码分类；recoverable 时用逐字符相同的原 Refinement prompt 重发一次，固定 recovery builder 调用为 0 |
+| 响应外壳 / 正文 | 复用 `valid / recoverable / terminal` 守门；只有 recoverable 才构造“原可信 prompt + 固定安全纠错指令” |
+| JSON 语法 | 只有本地 `json.loads()` 抛出的 `JSONDecodeError` 归为 `invalid_json`；其他 parser / Python 异常保持原对象上抛 |
+| 模型 candidate 合同 | 在 `allowed_sources` 本身合法时，非字典、三键 / 类型 / 状态 / 非空条件错误或来源越界都属于模型输出缺陷；丢弃整个旧 candidate 后最多重新生成一次 |
+| 程序 / 调用方不变量 | 非法 `allowed_sources` 或无关普通程序异常不 recovery、不映射成 `needs_manual`，保持原 identity 上抛 |
+
+### 为什么不是每个失败域各重试一次
+
+`MAX_REFINEMENT_RECOVERIES = 1` 是 Provider、响应、JSON 和 candidate-contract 四个可恢复失败域共享的**同一份局部额度**；`MAX_STEPS = 6` 是另一本全局调用账。两道门都要通过：
+
+```text
+首次 Refinement 失败
+  -> 失败是否 recoverable？
+  -> 共享 recovery 是否还未使用？
+  -> 全局是否还有下一 step？
+       |-> 都满足：发出唯一一次新 Refinement 请求
+       `-> 任一不满足：安全停止，不发新请求
+```
+
+调用一旦因任何失败原因发出，它就已经消费共享额度；后来错误从 JSON 变成 Provider，或从 Provider 变成 JSON，都不会重置次数。正常链 step 5 首败最多使用 step 6；若前序恢复已把首次 Refinement 推到 step 6，则不存在 step 7。
+
+### recovery prompt 的信任边界
+
+- Provider/API 失败时没有正常返回的 response / content / candidate，所以直接复用原 prompt；不调用固定纠错 builder。
+- 响应、JSON 或 candidate 失败时，完整保留原可信 Refinement prompt，只按冻结 reason 追加客户端写死的纠错指令。
+- 坏 response、坏 content、完整失败 candidate、越界 URL、原始异常文本、堆栈和内部日志都不得进入 recovery prompt；错误类别可以选择固定指令，但错误原文不能回填。
+- recovery 不调用或重跑工具，也不能用模型常识补充事实；只能沿用原 prompt 中的真实 Observation、feedback 与 `allowed_sources`。
+
+恢复资格只是“允许丢弃旧输出后再生成一次”，绝不表示接受旧 candidate 或放宽安全门。每一份可返回候选都必须重新通过同一个最终 validator：
+
+```text
+键恰好为 status / summary / sources
+status == "success"
+summary 是非空字符串
+sources 是非空字符串列表
+sources ⊆ allowed_sources
+```
+
+唯一 recovery 再遇任何失败域都停止，不跨域追加第三次请求。公开入口只有在 exact 窄信号、step 算术、连续七字段日志、Provider cause 和来源重新派生全部一致时，才映射为 exact 三字段 `needs_manual`；此时 `sources` 只是本轮真实取得、供人工复核的证据池，不是已验证摘要引用。成功结果、内部停止信号和公开 handoff 都复制来源列表，避免校验后因共享列表别名被篡改。
+
+### 六条决定性轨迹
+
+| 场景 | 结果 |
+|---|---|
+| step 5 Provider recoverable → step 6 合法 | 第二次使用逐字符相同原 prompt；新 candidate 重过 validator 后才 `success` |
+| step 5 `invalid_json` → step 6 Provider recoverable | recovery 已由 JSON 失败发起；共享额度耗尽，零第三次请求，`needs_manual` |
+| step 5 Provider recoverable → step 6 `invalid_json` | Provider recovery 已消费共享额度；失败类型改变不重置，零第三次请求 |
+| step 5 candidate 来源越界 → step 6 合法 | 旧 candidate / URL 不回填；新 candidate 全量重校验后才 `success` |
+| 首次 Refinement 位于 step 6 后失败 | 全局预算已满；builder 与 recovery 请求均为 0，不存在 step 7 |
+| `allowed_sources=[]` | 在首次 SDK 调用前抛出调用方 `ValueError`；模型调用、工具调用与公开业务映射均为 0 |
+
 ### 用 spy 证明消息历史没有被失败结果污染
 
 只断言“最终没有崩溃”不够，因为非法的 Python `None` 或第一次失败字典可能已经进入 `messages`，只是尚未在当前路径触发异常。测试应捕获**下一次模型调用实际收到的消息列表**，再检查 Tool Message：
@@ -490,7 +555,7 @@ assert [message["content"] for message in tool_messages] == [expected_content]
 - 未注册工具、坏 JSON、Schema、工具路由或参数值漂移等执行前拒绝也可能返回同形的 `ok=False, retryable=False`，但真实工具调用次数为 0，应进入已经闭合的 C4b-1 Action correction，不能只看两个布尔字段就误映射为 `tool_failure`；
 - 工具调用成功但结果为空属于 `insufficient_evidence`，不是工具失败；
 - `choices` / `finish_reason` / tool_calls 数量、缺失 ID 等**模型响应协议结构错误**无法构造可靠的配对 Observation，仍由窄协议异常原样传播，不属于 Action correction；
-- Candidate / Reflection Provider/API 只有精确白名单、完整链预算与窄停止信号对账同时成立时才映射；Refinement 等尚未冻结位置的 API 异常、真实 Python 异常、未知预算 reason 和异常子类继续按原类型传播；
+- Candidate / Reflection Provider/API 只有精确白名单、完整链预算与窄停止信号对账同时成立时才映射；Refinement 的 Provider、响应、JSON 与 candidate-contract 失败只有在共享恢复合同和窄信号对账同时成立时才映射；真实 Python 异常、非法调用方不变量、未知 reason 和异常子类继续按原类型传播；
 - 将来新增第三种耗尽原因时，应显式增加分支，不能让 `else` 默认冒充已有原因。
 
 这些分支是否最终返回业务状态，要由各自冻结的 Problem Contract 和验收证据决定。
@@ -538,6 +603,9 @@ A4-Gate 当前重试的是受控只读工具，这个证据不能直接外推为
 | 把 Provider 错误事件直接记成 Provider recovery 1 | 可能根本没有发出额外调用，事件数不等于动作数 | 只有 Agent 因该错误真正发出新逻辑调用时才增加 Provider counter |
 | protocol recovery 最终 timeout，就把同一调用同时记为 Provider recovery | 调用的发起原因被结果倒改，一次调用被重复归账 | 该调用仍只记 protocol 1；只有后续另发 Provider recovery 才能记 Provider 1 |
 | Provider recovery 返回后，本地分类合法反馈也记一次协议 recovery | 本地分类没有网络请求、step 或日志，不是 recovery action | 协议 counter 只统计因坏响应真正额外发出的模型调用 |
+| 为 Refinement 的 Provider、JSON 和 candidate 失败各给一次 recovery | 失败类型一变化就会重置额度，产生第三次请求或 step 7 | 四个可恢复失败域共享 `MAX_REFINEMENT_RECOVERIES=1`，全局 `MAX_STEPS` 另行守门 |
+| 把越界 candidate / 原始 `ValueError` 拼进 Refinement recovery prompt | 不可信输出、内部诊断或注入式 URL 会重新成为模型输入 | 只用固定安全 reason 选择固定指令；失败原文全部丢弃 |
+| validator 拒绝后把合法来源项挑出来继续成功 | 原 candidate 已违反 exact 合同，局部修补会掩盖模型失败 | 丢弃整个 candidate；新 candidate 必须重新通过同一个完整 validator |
 
 ## 验证清单
 
@@ -547,12 +615,12 @@ A4-Gate 当前重试的是受控只读工具，这个证据不能直接外推为
 - [ ] 二次失败恰好两次工具调用，没有第三次调用。
 - [ ] 无剩余 step 时没有第二次工具副作用、计时或日志。
 - [ ] 公开结果严格只有 `status / summary / sources`。
-- [ ] 普通运行时错误、协议错误和不可重试失败没有被窄映射误吞。
+- [ ] 普通运行时错误、未被对应阶段窄策略接管的协议错误和不可重试失败没有被窄映射误吞。
 - [ ] 在把 `retryable=False` 映射为 `tool_failure` 前，账本能够证明真实工具已经执行；执行前同形拒绝仍走动作校验 / 修正。
 - [ ] Action correction 的消息顺序为原 invalid assistant → 同 ID 安全 Tool Observation；ID 原样保留。
 - [ ] Action correction 与工具 retry 都在新调用前检查局部额度和完整链预算。
 - [ ] 修正后首次工具若在 step 3 可重试失败，不会执行第二次工具，也不会把“完整链不足”误写成“重试次数耗尽”。
-- [ ] 公开入口按精确异常类型和精确 reason 分支；未知 reason、异常子类、API/协议错误仍原样传播。
+- [ ] 公开入口按精确异常类型和精确 reason 分支；未知 reason、异常子类，以及未被对应阶段窄策略接管的 API / 协议错误仍原样传播。
 - [ ] `needs_manual` 仍严格只有 `status / summary / sources`，且无真实证据时 `sources=[]`。
 - [ ] Candidate 响应先按固定三键分类；terminal reason 不会被正文结构错误降级成 recoverable。
 - [ ] Candidate recovery 只从既有真实 Tool Observation 构造消息，失败 Candidate 不进入历史，工具不会重跑。
@@ -561,7 +629,7 @@ A4-Gate 当前重试的是受控只读工具，这个证据不能直接外推为
 - [ ] Candidate 失败时，非空 `sources` 只来自真实白名单来源，公开说明明确其为人工接管证据池而非已验证摘要引用。
 - [ ] Reflection 反馈先按固定三键分类；terminal reason 优先，协议 recovery 分支不吞 Provider / SDK 异常，Provider wrapper 只处理公开 `APIError`。
 - [ ] step 4 Reflection 可恢复时轨迹精确为 step 5 recovery → step 6 Refinement；step 5 失败时在 recovery 前停止且不消耗 step 6。
-- [ ] 唯一 Reflection recovery 后的 terminal / recoverable 都不会再次恢复或进入 Refinement；Refinement / validator 失败仍按原异常边界传播。
+- [ ] 唯一 Reflection recovery 后的 terminal / recoverable 都不会再次恢复或进入 Refinement；合法反馈进入 Refinement 后，Refinement 失败改由独立的四域共享 recovery 编排处理。
 - [ ] Reflection `needs_manual` 明确“已有合法 Candidate，但没有最终结果通过 Reflection → Refinement → validator”；来源仍只是人工证据池。
 - [ ] 公开入口重新核对 Reflection 信号的 step、恢复次数与真实来源；伪造字段和异常子类都保持原样传播。
 - [ ] 真实 factory 显式冻结并可读取 `max_retries` / `timeout`；fake client 不充当 SDK 配置证据。
@@ -574,6 +642,10 @@ A4-Gate 当前重试的是受控只读工具，这个证据不能直接外推为
 - [ ] Reflection 首次与唯一 Provider recovery 复用同一 prompt、实际 client 和共享 context；每个实际逻辑调用恰好占一个 step、写一条聚合日志。
 - [ ] Reflection Provider recovery 返回坏反馈、唯一 recovery 再失败，或 protocol recovery 自身遇 Provider 错误后，都没有第三次 Reflection 请求或 Refinement。
 - [ ] Reflection 公开映射核对 exact cause、`reflection_start_step + 1 + provider + protocol`、两套计数和重新派生来源；任一不一致都 fail-closed。
+- [ ] Refinement 的 Provider、响应、JSON 与 candidate-contract 失败共用一次 recovery；跨失败域变化后没有第三次请求或 step 7。
+- [ ] Provider 失败使用逐字符相同原 prompt；其他可恢复失败只追加固定安全指令，坏 candidate / URL / 原异常 / 日志不进入新 prompt。
+- [ ] 每份 recovery candidate 都重新通过 exact 三键、精确 success、非空值和来源子集 validator；非法 `allowed_sources` 在首次 SDK 调用前上抛。
+- [ ] Refinement 的 exact 停止信号与公开 `needs_manual` 重新核对 step、完整日志、Provider cause 和真实来源；success / stop / handoff 来源均为防御复制。
 - [ ] 不同请求的 step、request ID 和日志相互隔离。
 
 ## 来源与证据
@@ -593,6 +665,9 @@ A4-Gate 当前重试的是受控只读工具，这个证据不能直接外推为
 - [C4b-2b-1 Reflection 反馈恢复提交 `e4a5681`](https://github.com/humbleded/AI-Agent-Learning/commit/e4a56813aa6b4e68ffee4ab7b45d5a3a2c1d2a5f)
 - [C4b-2b-2a Candidate Provider/API 恢复提交 `5fac2ba`](https://github.com/humbleded/AI-Agent-Learning/commit/5fac2bab123ed31232ca9d96a05d2dca51509d96)
 - [C4b-2b-2b Reflection Provider/API 恢复提交 `427d60c`](https://github.com/humbleded/AI-Agent-Learning/commit/427d60c)
+- [2026-08-22：C4b-2c Refinement 共享恢复、正式复验与真实正常链](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-22.md)
+- [DeepSeek Chat Completions API：nullable content 与 finish_reason](https://api-docs.deepseek.com/zh-cn/api/create-chat-completion/)（检查日期：2026-08-22）
+- [DeepSeek JSON Output](https://api-docs.deepseek.com/zh-cn/guides/json_mode/)（检查日期：2026-08-22）
 
 ## 相关链接
 
