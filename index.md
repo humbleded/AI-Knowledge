@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-08-22
+updated: 2026-08-23
 tags:
   - 知识库
   - index
@@ -83,7 +83,7 @@ tags:
 - [[02-Concepts/Engineering/HTTP 请求全链路与错误处理|一次 HTTP 请求的全链路与三类错误处理]]
 - [[02-Concepts/Engineering/服务端请求伪造(SSRF)|服务端请求伪造：服务器替攻击者访问内网目标]]
 
-优先扩写中的 seed 概念：
+已可复习的 LLM 基础概念（原 seed 已转 `usable`）：
 
 - [[02-Concepts/LLM/反向传播(Backprop)]]
 - [[02-Concepts/LLM/梯度下降(Gradient Descent)]]
@@ -92,6 +92,8 @@ tags:
 - [[02-Concepts/LLM/注意力机制(Attention)]]
 - [[02-Concepts/LLM/Transformer]]
 - [[02-Concepts/LLM/自回归生成(Autoregressive)]]
+
+下一批可新增或扩展的 LLM 基础概念：`cross entropy`、`softmax`、`logits`、`train/validation split`、`overfitting`、`layer normalization`、`residual connection`。
 
 ## 课程与路线
 
@@ -194,6 +196,7 @@ tags:
 - [[07-Reviews/Knowledge-Base/2026-08-02-weekly-maintenance]]
 - [[07-Reviews/Knowledge-Base/2026-08-09-weekly-maintenance]]
 - [[07-Reviews/Knowledge-Base/2026-08-16-weekly-maintenance]]
+- [[07-Reviews/Knowledge-Base/2026-08-23-weekly-maintenance]]
 - [[08-Memory/知识库长期记忆规则]]
 - [[08-Memory/全库中文辅助阅读规则]]
 - [[08-Memory/AI 学习原则]]
@@ -214,4 +217,4 @@ tags:
 - 扩展 [[04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]] 的代码注释、可视化或测试。
 - 为 Karpathy 课程补充 raw transcript 或 repo 摘录。
 - A4-Gate 的 C4a-2a/2b1/2b2、C4b-1、C4b-2a、C4b-2b-1、C4b-2b-2a 与 C4b-2b-2b 已完成教学 / 实现子单元，C4b-2c 已正式 `PASS`：真实工具终点、Action correction、Candidate / Reflection / Refinement 的响应与 Provider 恢复、Refinement JSON / candidate validator 共享一次 recovery、分层预算、公开信号对账和人工证据池映射都有决定性证据。其后仍需 HITL、14 条 eval、五个必答题、合同总体定稿和正式整关复核；父任务继续 `DOING`。
-- 继续新增 `cross entropy`、`softmax`、`logits` 等概念卡。
+- 继续新增 `cross entropy`、`softmax`、`logits`、`train/validation split`、`overfitting`、`layer normalization`、`residual connection` 等 LLM 基础概念卡。

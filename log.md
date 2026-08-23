@@ -1080,3 +1080,15 @@ tags:
 - no-op：[[02-Concepts/Agent/计划与求解(Plan-and-Solve)|Plan-and-Solve]] 已准确覆盖静态 history 与显式 Replanning 边界；本轮 `CD-005` 首答重现误区、经多级提示后才题级 PASS，因此不把该不稳定证据写成知识增量。API 参数 / SDK 客户端、HTTP、Triage、LLM README、总地图、资源地图、关联方案、开发路线、`07-Reviews`、raw 与岗位证据也保持 no-op。
 - 本次共更新 12 个既有文件（含本日志），零新建概念页、raw、整关 PASS review 或岗位证据。父任务剩余仅记录为 HITL allow / deny、14 条 eval、五个 Gate 必答题、合同总体定稿和整关正式复核。
 - 同步并追加本日志后运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`：`OK: True`，217 个 Markdown、1971 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。
+
+## 2026-08-23
+
+### Knowledge-Base Weekly Maintenance
+
+- 运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`，初始结果通过：217 个 Markdown、1971 个链接、0 断链、0 缺 frontmatter、8 个 raw 非索引文件。
+- 复核 [[00-Inbox/README|00-Inbox]] 和 [[raw/README|raw]]：Inbox 仍只有 `README.md`；raw 仍有 8 个非索引 source notes，本周没有新增 raw source note，本次不移动原始资料。
+- 复核 2026-08-16 周维护后的 Git 变化：`34c4276`、`8fcc225`、`b01a4ee`、`1c65098`、`c3303cf`、`6f27a60` 均围绕 A4-Gate C4a-2 / C4b 受控恢复链同步概念、课程、项目、索引和日志；父 `A4-Gate` 仍为 `DOING`，没有提前新建整关 PASS 复盘或求职证据。
+- 按 [[08-Memory/全库中文辅助阅读规则|全库中文辅助阅读规则]]复核新增内容，保留 `bounded retry`、`human handoff`、`Action correction`、`Candidate recovery`、`Reflection recovery`、`Refinement recovery`、`Provider/API`、`MAX_STEPS`、`completion budget`、`finish_reason`、`json.loads()`、路径、命令和代码块等 English technical anchors。
+- 修正 [[index|全局索引]] 中一个 stale navigation：`backpropagation`、`gradient descent`、`tokenization`、`embedding`、`attention`、`Transformer` 和 `autoregressive generation` 当前已是 `usable`，不再标为“优先扩写中的 seed 概念”；下一批待新增 LLM 概念保留为 `cross entropy`、`softmax`、`logits`、`train/validation split`、`overfitting`、`layer normalization` 与 `residual connection`。
+- 新增 [[07-Reviews/Knowledge-Base/2026-08-23-weekly-maintenance|2026-08-23 Weekly Maintenance]]，更新 [[07-Reviews/Knowledge-Base/README|Knowledge-Base 维护复盘索引]]、[[01-Maps/AI 知识库总地图|总地图]]和 [[index|全局索引]]。
+- 最终严格检查通过：218 个 Markdown、1997 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。
