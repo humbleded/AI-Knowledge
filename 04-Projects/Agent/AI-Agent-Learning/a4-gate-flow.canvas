@@ -1,0 +1,36 @@
+{
+	"nodes":[
+		{"id":"a4c0000000000005","type":"group","x":1800,"y":850,"width":4100,"height":1400,"color":"6","label":"HITL、安全边界、函数与正式证据"},
+		{"id":"a4c0000000000002","type":"group","x":200,"y":-1050,"width":1500,"height":3300,"color":"4","label":"权威完整生产运行图"},
+		{"id":"a4c0000000000004","type":"group","x":3550,"y":-1050,"width":2350,"height":1800,"color":"2","label":"拆分阅读：Candidate、Reflection 与最终硬门"},
+		{"id":"a4c0000000000003","type":"group","x":1800,"y":-1050,"width":1650,"height":1800,"color":"4","label":"拆分阅读：输入、Action、工具与证据"},
+		{"id":"a4c0000000000001","type":"group","x":-1600,"y":-1050,"width":1700,"height":1650,"color":"5","label":"全貌与学习入口"},
+		{"id":"a4c0000000000063","type":"file","file":"04-Projects/Agent/AI-Agent-Learning/a4-gate-function-call-reference.md","subpath":"#最终 validator 到底证明什么","x":4940,"y":1020,"width":850,"height":1000},
+		{"id":"a4c0000000000010","type":"text","text":"# A4-Gate 可缩放全景图\n按 `Shift+1` 一键适配全图；再用滚轮或缩放控件放大，拖动画布浏览。双击文件节点可打开原图或笔记。完整图用于审计，六张分图用于逐段学习。","x":-1600,"y":-1320,"width":7500,"height":170},
+		{"id":"a4c0000000000020","type":"file","file":"04-Projects/Agent/AI-Agent-Learning/assets/a4-gate/a4-gate-overview.svg","x":-1500,"y":-920,"width":1500,"height":385},
+		{"id":"a4c0000000000030","type":"file","file":"04-Projects/Agent/AI-Agent-Learning/assets/a4-gate/a4-gate-runtime-full.svg","x":300,"y":-900,"width":1300,"height":2600},
+		{"id":"a4c0000000000040","type":"file","file":"04-Projects/Agent/AI-Agent-Learning/assets/a4-gate/a4-gate-action-tool.svg","x":1880,"y":-900,"width":697,"height":1291},
+		{"id":"a4c0000000000041","type":"file","file":"04-Projects/Agent/AI-Agent-Learning/assets/a4-gate/a4-gate-tool-recovery.svg","x":2660,"y":-900,"width":697,"height":968},
+		{"id":"a4c0000000000052","type":"file","file":"04-Projects/Agent/AI-Agent-Learning/assets/a4-gate/a4-gate-refinement-validator.svg","x":5070,"y":-900,"width":649,"height":974},
+		{"id":"a4c0000000000011","type":"text","text":"> [!important] 阅读边界\n> 蓝色终点是公开三字段业务结果；程序错误与调用方不变量不进入该出口，而是保持原异常上抛。HITL 是独立安全评估分支，不在生产只读工具注册表中。","x":-1500,"y":250,"width":1500,"height":250},
+		{"id":"a4c0000000000021","type":"file","file":"04-Projects/Agent/AI-Agent-Learning/assets/a4-gate/a4-gate-learning-roadmap.svg","x":-1500,"y":-470,"width":1500,"height":85},
+		{"id":"a4c0000000000022","type":"file","file":"04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent.md","subpath":"#A4-Gate 完整流程图","x":-1500,"y":-320,"width":700,"height":500},
+		{"id":"a4c0000000000023","type":"file","file":"04-Projects/Agent/AI-Agent-Learning/a4-gate-diagrams.md","x":-750,"y":-320,"width":700,"height":500},
+		{"id":"a4c0000000000050","type":"file","file":"04-Projects/Agent/AI-Agent-Learning/assets/a4-gate/a4-gate-candidate-recovery.svg","x":3630,"y":-900,"width":650,"height":1500},
+		{"id":"a4c0000000000051","type":"file","file":"04-Projects/Agent/AI-Agent-Learning/assets/a4-gate/a4-gate-reflection-recovery.svg","x":4350,"y":-900,"width":650,"height":1500},
+		{"id":"a4c0000000000060","type":"file","file":"04-Projects/Agent/AI-Agent-Learning/assets/a4-gate/a4-gate-hitl.svg","x":1880,"y":1020,"width":1000,"height":857},
+		{"id":"a4c0000000000061","type":"file","file":"07-Reviews/AI-Agent-Learning/2026-08-24-a4-gate-pass-review.md","x":3000,"y":1020,"width":850,"height":1000},
+		{"id":"a4c0000000000062","type":"file","file":"04-Projects/Agent/AI-Agent-Learning/a4-gate-function-call-reference.md","subpath":"#一眼看懂主调用链","x":3970,"y":1020,"width":850,"height":1000}
+	],
+	"edges":[
+		{"id":"a4e0000000000001","fromNode":"a4c0000000000020","fromSide":"right","toNode":"a4c0000000000030","toSide":"left","label":"运行时全量审计"},
+		{"id":"a4e0000000000002","fromNode":"a4c0000000000020","fromSide":"right","toNode":"a4c0000000000040","toSide":"left","label":"分段学习入口"},
+		{"id":"a4e0000000000003","fromNode":"a4c0000000000040","fromSide":"right","toNode":"a4c0000000000041","toSide":"left","label":"合法 Action"},
+		{"id":"a4e0000000000004","fromNode":"a4c0000000000041","fromSide":"right","toNode":"a4c0000000000050","toSide":"left","label":"真实 Observation"},
+		{"id":"a4e0000000000005","fromNode":"a4c0000000000050","fromSide":"right","toNode":"a4c0000000000051","toSide":"left","label":"valid Candidate"},
+		{"id":"a4e0000000000006","fromNode":"a4c0000000000051","fromSide":"right","toNode":"a4c0000000000052","toSide":"left","label":"valid Reflection"},
+		{"id":"a4e0000000000007","fromNode":"a4c0000000000052","fromSide":"bottom","toNode":"a4c0000000000061","toSide":"top","label":"最终硬门证据"},
+		{"id":"a4e0000000000008","fromNode":"a4c0000000000060","fromSide":"right","toNode":"a4c0000000000061","toSide":"left","label":"HITL 决定性证据"},
+		{"id":"a4e0000000000009","fromNode":"a4c0000000000022","fromSide":"right","toNode":"a4c0000000000062","toSide":"left","label":"逐函数下钻"}
+	]
+}

@@ -292,6 +292,8 @@ Candidate recovery 分两类：
 
 ## 相关链接
 
+- [[a4-gate-flow.canvas|A4-Gate 可缩放全景 Canvas]]
+- [[a4-gate-diagrams|A4-Gate Mermaid 图源与分阶段流程图]]
 - [[a4-gate-research-summary-agent|A4-Gate 完整学习流程与项目证据]]
 - [[../../../02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管]]
 - [[../../../02-Concepts/Agent/动作绑定人工确认(Action-Bound Confirmation)|动作绑定人工确认]]

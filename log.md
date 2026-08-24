@@ -1104,3 +1104,11 @@ tags:
 - 新增 [[07-Reviews/AI-Agent-Learning/2026-08-24-a4-gate-pass-review|A4-Gate 正式 PASS 复盘]]。V5 唯一 RUN-5 为 14/14：normal 10/10、exact 10/10、supportedness 10/10、semantic 20/20、holdout 3/3、failure 3/3、danger 1/1；没有选择性重跑、重采样、best-of 或失败替换。
 - 同步课程页、课程索引、Agent 概念与项目索引、AI-Agent-Learning 跳转索引和全局索引；未创建 13 份 raw 聊天副本，也未把 `COURSE_PASS` 自动升级为 `JOB_EVIDENCE`。
 - Obsidian CLI 在当前环境不可用，因此按 skill fallback 使用仓库文件、索引和严格 vault checker 完成核验；`python tools\check_vault.py --root D:\AI-Knowledge --strict` 最终为 `OK: True`：222 个 Markdown、2061 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。
+
+### A4-Gate 流程图可读性修复
+
+- 针对单张 Mermaid 运行图约 95 个节点、在普通笔记视口中无法完整阅读的问题，新增 [[04-Projects/Agent/AI-Agent-Learning/a4-gate-flow.canvas|A4-Gate 可缩放全景 Canvas]]：使用 Obsidian 已启用的核心 Canvas，无需安装第三方插件；按 `Shift+1` 可适配全图，再局部缩放浏览。
+- 新增 [[04-Projects/Agent/AI-Agent-Learning/a4-gate-diagrams|A4-Gate 流程图图源]]，保留权威完整运行图，并拆成请求总览以及输入/Action、工具恢复、Candidate、Reflection、Refinement/validator、HITL 六张细节图。跨图接口节点只用于连续阅读，不表示额外调用。
+- 由固定版本 `@mermaid-js/mermaid-cli@11.16.0` 生成 9 张无损 SVG，主项目页改为优先嵌入 SVG 与 Canvas；旧 Mermaid 快照折叠保留。补画 `GUARD → M1_CORR` 与 `GUARD → DANGER` 两条原合同已有但旧图漏画的调用前 step 约束，没有改变 Agent 运行语义。
+- 实际在 Obsidian `1.13.7` 中打开 Canvas，21 个节点、5 个分组、9 条连线与 14 个文件节点均正常加载；`Shift+1` 全图适配与主项目页 SVG 渲染通过。Canvas 和 9 张 SVG 的结构化校验全部通过，SVG 总计 `630688 bytes`。
+- 窄化更新 `tools/check_vault.py`：明确带 `.canvas` / `.svg` 等受支持附件扩展名的 wikilink 必须解析到真实文件，不再被旧的强制 `.md` 后缀逻辑误判；存在/缺失附件的定向解析断言 `5/5 PASS`。最终严格检查为 `OK: True`：223 个 Markdown、2089 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。

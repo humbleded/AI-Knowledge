@@ -13,6 +13,21 @@ SOURCE_URL_RE = re.compile(r"^source_url:\s*(\S+)", re.MULTILINE)
 
 ALLOWED_NO_FRONTMATTER = {"AGENTS.md", "README.md"}
 GENERATED_PATTERNS = ("__pycache__/", ".pyc", ".pyo")
+EXPLICIT_VAULT_FILE_SUFFIXES = {
+    ".md",
+    ".canvas",
+    ".svg",
+    ".png",
+    ".jpg",
+    ".jpeg",
+    ".gif",
+    ".webp",
+    ".pdf",
+    ".mp3",
+    ".wav",
+    ".mp4",
+    ".webm",
+}
 CORE_INDEX_TYPES = {
     "concept-index",
     "course-index",
@@ -46,6 +61,16 @@ def resolve_link(root, source, raw_target, markdown_files):
     target = normalized_target(raw_target)
     if not target or target.startswith(("http://", "https://")):
         return True
+
+    target_path = Path(target)
+    if target_path.suffix.lower() in EXPLICIT_VAULT_FILE_SUFFIXES:
+        if target.startswith("/"):
+            explicit_candidates = [root / target.lstrip("/")]
+        else:
+            explicit_candidates = [source.parent / target, root / target]
+            if target_path.parent == Path("."):
+                explicit_candidates.extend(root.rglob(target_path.name))
+        return any(candidate.is_file() for candidate in explicit_candidates)
 
     candidates = []
     if target.startswith("/"):

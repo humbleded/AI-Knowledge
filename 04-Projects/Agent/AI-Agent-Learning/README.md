@@ -26,6 +26,8 @@ tags:
 - [[a4-04-plan-and-solve|A4-04 Plan-and-Solve]]
 - [[a4-05-reflection-writer|A4-05 Reflection Writer]]
 - [[a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（正式 PASS：完整学习流程、控制流、证据与历史订正）]]
+- [[a4-gate-flow.canvas|A4-Gate 可缩放全景 Canvas（完整图 + 六张分阶段细节图）]]
+- [[a4-gate-diagrams|A4-Gate Mermaid 图源与 SVG 维护说明]]
 - [[a4-gate-function-call-reference|A4-Gate 函数调用参考（62 个顶层函数、6 个内部 helper、11 个构造器）]]
 
 ## 源码阅读

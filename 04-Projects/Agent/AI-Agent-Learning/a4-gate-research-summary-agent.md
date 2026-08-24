@@ -61,8 +61,54 @@ tags:
 
 ## A4-Gate 完整流程图
 
-> [!info] 图例与范围
-> 全图均已获得最终项目证据。第一张图保留从合同、逐切片实现到整关复核的学习顺序；第二张图展示生产主链以及独立 HITL 安全测试分支。历史 V4 `RETRY` 仍保留在 daily，但不再代表当前状态。
+> [!tip] 推荐查看方式：原生 Canvas + 无损 SVG
+> 打开 [[a4-gate-flow.canvas|A4-Gate 可缩放 Canvas]] 后按 `Shift+1` 适配全图，再放大目标区域。Canvas 核心插件已启用，不需要安装第三方插件。下面的 SVG 可以在笔记中直接查看；[[a4-gate-diagrams|Mermaid 图源页]]保存可编辑源和完整拆图说明。
+
+### 1. 请求生命周期总览
+
+![[assets/a4-gate/a4-gate-overview.svg|1000]]
+
+### 2. 从需求合同到正式过关
+
+![[assets/a4-gate/a4-gate-learning-roadmap.svg|1000]]
+
+### 3. 六张分阶段细节图
+
+#### 3.1 输入、Action 协议与一次 correction
+
+![[assets/a4-gate/a4-gate-action-tool.svg|900]]
+
+#### 3.2 真实工具、同参数 retry 与证据门
+
+![[assets/a4-gate/a4-gate-tool-recovery.svg|900]]
+
+#### 3.3 Candidate 的 Provider/API 与协议恢复
+
+![[assets/a4-gate/a4-gate-candidate-recovery.svg|900]]
+
+#### 3.4 Reflection 的 Provider/API 与反馈恢复
+
+![[assets/a4-gate/a4-gate-reflection-recovery.svg|900]]
+
+#### 3.5 Refinement、共享 recovery 与最终 exact gate
+
+![[assets/a4-gate/a4-gate-refinement-validator.svg|900]]
+
+#### 3.6 action-bound HITL、全局账本与出口边界
+
+![[assets/a4-gate/a4-gate-hitl.svg|900]]
+
+### 4. 权威完整运行图
+
+![[assets/a4-gate/a4-gate-runtime-full.svg|900]]
+
+> [!note] 为什么还要保留完整图
+> 完整图用于审计所有回流边与全局护栏，因此天然很高；在普通笔记宽度里不适合逐字阅读。日常学习按总览与六张分图前进，需要核对跨阶段回流时再到 Canvas 中缩放完整图。跨图重复的灰色接口节点不代表额外调用。
+
+<details>
+<summary><strong>维护用：展开原始 Mermaid 快照</strong></summary>
+
+以下两张旧 Mermaid 保留为历史快照；当前可编辑图源与 SVG 生成源以 [[a4-gate-diagrams|A4-Gate 流程图图源]]为准。
 
 ### 1. 从需求合同到正式过关
 
@@ -227,6 +273,8 @@ flowchart TD
     class INVALID,SUCCESS,MANUAL_RETRY,MANUAL_ACTION,MANUAL_CAND,MANUAL_CAND_API,MANUAL_REF,MANUAL_REF_API,MANUAL_REFINE,TOOL_FAIL,INSUFFICIENT,MANUAL_OTHER terminalDone;
     class PROTOCOL_ERROR,PROGRAM_ERROR,START,GUARD,OUT note;
 ```
+
+</details>
 
 > [!note] 生产主链与 HITL 证据边界
 > 生产 `run_research_summary_once()` 的工具注册表只有 `read_material` 与 `search_web` 两个只读工具；D01 的危险 fake 通过注入的 `action_executor` 独立测试，未被偷接进生产注册表。两条边界都已验证。普通程序错误、非法调用方不变量与未映射协议错误仍按原类型传播；这是 fail-closed 设计，不应统一伪装成业务状态。
@@ -503,6 +551,8 @@ flowchart TD
 
 ## 相关链接
 
+- [[a4-gate-flow.canvas|A4-Gate 可缩放全景 Canvas]]
+- [[a4-gate-diagrams|A4-Gate Mermaid 图源与分阶段流程图]]
 - [[../../../02-Concepts/Agent/反思机制(Reflection)|反思机制]]
 - [[../../../02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管]]
 - [[../../../02-Concepts/Agent/动作绑定人工确认(Action-Bound Confirmation)|动作绑定人工确认]]
