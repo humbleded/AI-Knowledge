@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-08-23
+updated: 2026-08-24
 tags:
   - 知识库
   - index
@@ -74,6 +74,8 @@ tags:
 - [[02-Concepts/Agent/文件工具沙箱(File Tool Sandbox)|文件工具沙箱：resolve + relative_to 的安全边界]]
 - [[02-Concepts/Agent/外部 API 工具(External API Tool)|外部 API 工具：timeout / 错误兜底 / 必要字段摘要]]
 - [[02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管：SDK / Agent 双层重试、Candidate / Reflection / Refinement Provider 与协议 / JSON / candidate-contract recovery、共享预算与人工证据池]]
+- [[02-Concepts/Agent/动作绑定人工确认(Action-Bound Confirmation)|动作绑定人工确认：冻结动作深绑定、一次性消费与重放防护]]
+- [[02-Concepts/Agent/冻结评估与不可补偿硬门(Frozen Evaluation)|冻结评估与不可补偿硬门：唯一正式运行、版本指纹、holdout 与 exact / semantic 分层]]
 - [[02-Concepts/LLM/API 参数与 SDK 客户端参数|API 参数 vs SDK 客户端参数]]
 - [[02-Concepts/LLM/README|LLM 概念卡]]
 - [[02-Concepts/MCP/README|MCP 概念卡]]
@@ -148,7 +150,8 @@ tags:
 - [[04-Projects/Agent/AI-Agent-Learning/a4-03-react-agent]]
 - [[04-Projects/Agent/AI-Agent-Learning/a4-04-plan-and-solve]]
 - [[04-Projects/Agent/AI-Agent-Learning/a4-05-reflection-writer]]
-- [[04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（C4b-2c Refinement 共享恢复已收口，整关进行中）]]
+- [[04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（正式 PASS，完整学习流程）]]
+- [[04-Projects/Agent/AI-Agent-Learning/a4-gate-function-call-reference|A4-Gate 函数调用参考]]
 - [[04-Projects/Agent/AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引]]
 
 ## 复盘与记忆
@@ -178,6 +181,7 @@ tags:
 - [[07-Reviews/AI-Agent-Learning/2026-08-06-w4-alg-f3-valid-anagram-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-08-07-w4-alg-f1-two-sum-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-08-08-w4-alg-f4-contains-nearby-duplicate-review]]
+- [[07-Reviews/AI-Agent-Learning/2026-08-24-a4-gate-pass-review|A4-Gate 正式 PASS 复盘]]
 - [[07-Reviews/Daily-Practice/2026-06-04-review]]
 - [[07-Reviews/Daily-Practice/2026-06-05-review]]
 - [[07-Reviews/Knowledge-Base/README|Knowledge-Base 维护复盘索引]]
@@ -216,5 +220,5 @@ tags:
 - 为 [[04-Projects/LLM/README|LLM 项目记录]] 增加 micrograd 复现实验。
 - 扩展 [[04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]] 的代码注释、可视化或测试。
 - 为 Karpathy 课程补充 raw transcript 或 repo 摘录。
-- A4-Gate 的 C4a-2a/2b1/2b2、C4b-1、C4b-2a、C4b-2b-1、C4b-2b-2a 与 C4b-2b-2b 已完成教学 / 实现子单元，C4b-2c 已正式 `PASS`：真实工具终点、Action correction、Candidate / Reflection / Refinement 的响应与 Provider 恢复、Refinement JSON / candidate validator 共享一次 recovery、分层预算、公开信号对账和人工证据池映射都有决定性证据。其后仍需 HITL、14 条 eval、五个必答题、合同总体定稿和正式整关复核；父任务继续 `DOING`。
+- A4-Gate 已于 2026-08-24 正式 `PASS`：完整 Agent 主链、受控恢复、action-bound HITL、exact validator 和冻结 V5 评估均有决定性证据，唯一 RUN-5 为 14/14、semantic 20/20。课程下一起点为 G8-00，A4 历史 V4 `RETRY` 继续保留。
 - 继续新增 `cross entropy`、`softmax`、`logits`、`train/validation split`、`overfitting`、`layer normalization`、`residual connection` 等 LLM 基础概念卡。

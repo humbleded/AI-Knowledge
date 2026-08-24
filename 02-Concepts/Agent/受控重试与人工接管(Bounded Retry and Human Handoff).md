@@ -3,7 +3,7 @@ type: concept
 topic: Agent Bounded Retry and Human Handoff
 status: usable
 created: 2026-08-18
-updated: 2026-08-22
+updated: 2026-08-24
 source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\problem-contract.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_gate_research_summary_agent.py
@@ -13,6 +13,8 @@ source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-20.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-21.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-22.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-23.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-24.md
 tags:
   - AI/Agent
   - Reliability
@@ -51,10 +53,10 @@ aliases:
 受控重试（bounded retry）是：客户端只对**明确可恢复**的失败，在调用预算内追加有限次数的真实尝试；当精确的恢复机会已经耗尽时，Agent 停止自治，把事实和证据缺口整理成人工接管结果，而不是无限重试、伪造成功或吞掉其他程序错误。
 
 > [!important] 本卡的边界
-> 本卡总结的是“自动恢复耗尽后停止并交接”。它不等于完整的 HITL（Human-in-the-Loop）确认门：危险动作执行前的 allow / deny 仍是另一条控制流。
+> 本卡总结的是“自动恢复耗尽后停止并交接”。它不等于完整的 HITL（Human-in-the-Loop）确认门；危险动作执行前的 action-bound allow / deny、一次性消费和重放防护见 [[动作绑定人工确认(Action-Bound Confirmation)|动作绑定人工确认]]。
 
 > [!note] 当前项目证据边界
-> `A4-Gate-C4a-2a / C4a-2b1 / C4a-2b2 / C4b-1 / C4b-2a / C4b-2b-1 / C4b-2b-2a / C4b-2b-2b` 的教学 / 实现子单元已经闭合，`C4b-2c` Refinement 恢复已于 2026-08-22 正式 `PASS`，但父任务 `A4-Gate` 仍为 `DOING`。当前已关闭 Candidate、Reflection 与 Refinement 的受控恢复和安全停止；危险动作 HITL、14 条 eval、Gate 五个必答题、合同总体定稿和整关正式复核尚未完成。
+> 全部恢复切片、HITL、V5 固定评估、Gate 五题和合同定稿已经闭合；父任务 `A4-Gate` 于 2026-08-24 正式 `PASS`。V4 的 `RETRY` 与当时错误轨迹仍保留，不因最终 PASS 被覆盖。
 
 ## 新手比喻：一次派送、调度员与客服出口
 
@@ -644,7 +646,7 @@ A4-Gate 当前重试的是受控只读工具，这个证据不能直接外推为
 - [ ] Reflection 公开映射核对 exact cause、`reflection_start_step + 1 + provider + protocol`、两套计数和重新派生来源；任一不一致都 fail-closed。
 - [ ] Refinement 的 Provider、响应、JSON 与 candidate-contract 失败共用一次 recovery；跨失败域变化后没有第三次请求或 step 7。
 - [ ] Provider 失败使用逐字符相同原 prompt；其他可恢复失败只追加固定安全指令，坏 candidate / URL / 原异常 / 日志不进入新 prompt。
-- [ ] 每份 recovery candidate 都重新通过 exact 三键、精确 success、非空值和来源子集 validator；非法 `allowed_sources` 在首次 SDK 调用前上抛。
+- [ ] 每份 recovery candidate 都重新通过 exact 三键、精确 success、`summary == approved_summary` 逐码点比较和 `sources == allowed_sources` 精确列表比较；非法客户端权威参数在首次 SDK 调用前以 `ValueError` 上抛。
 - [ ] Refinement 的 exact 停止信号与公开 `needs_manual` 重新核对 step、完整日志、Provider cause 和真实来源；success / stop / handoff 来源均为防御复制。
 - [ ] 不同请求的 step、request ID 和日志相互隔离。
 
@@ -666,6 +668,8 @@ A4-Gate 当前重试的是受控只读工具，这个证据不能直接外推为
 - [C4b-2b-2a Candidate Provider/API 恢复提交 `5fac2ba`](https://github.com/humbleded/AI-Agent-Learning/commit/5fac2bab123ed31232ca9d96a05d2dca51509d96)
 - [C4b-2b-2b Reflection Provider/API 恢复提交 `427d60c`](https://github.com/humbleded/AI-Agent-Learning/commit/427d60c)
 - [2026-08-22：C4b-2c Refinement 共享恢复、正式复验与真实正常链](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-22.md)
+- [2026-08-23：action-bound confirmation、一次性消费与重放防护](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-23.md)
+- [2026-08-24：V5 唯一 RUN-5、Gate 五题与正式 PASS](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-24.md)
 - [DeepSeek Chat Completions API：nullable content 与 finish_reason](https://api-docs.deepseek.com/zh-cn/api/create-chat-completion/)（检查日期：2026-08-22）
 - [DeepSeek JSON Output](https://api-docs.deepseek.com/zh-cn/guides/json_mode/)（检查日期：2026-08-22）
 
@@ -677,6 +681,9 @@ A4-Gate 当前重试的是受控只读工具，这个证据不能直接外推为
 - [[外部 API 工具(External API Tool)|外部 API 工具]]
 - [[ReAct推理与行动循环(ReAct)|ReAct 推理与行动循环]]
 - [[反思机制(Reflection)|反思机制]]
+- [[动作绑定人工确认(Action-Bound Confirmation)|动作绑定人工确认]]
+- [[冻结评估与不可补偿硬门(Frozen Evaluation)|冻结评估与不可补偿硬门]]
 - [[../LLM/结构化输出(Structured Output)|结构化输出]]
 - [[../../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent]]
+- [[../../04-Projects/Agent/AI-Agent-Learning/a4-gate-function-call-reference|A4-Gate 函数调用参考]]
 - [[../LLM/API 参数与 SDK 客户端参数|API 参数 vs SDK 客户端参数]]

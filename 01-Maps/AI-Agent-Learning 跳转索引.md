@@ -3,7 +3,7 @@ type: map
 topic: AI-Agent-Learning 跳转索引
 status: active
 created: 2026-05-28
-updated: 2026-08-22
+updated: 2026-08-24
 tags:
   - AI-Agent-Learning
   - 索引
@@ -67,7 +67,8 @@ tags:
 - [[../04-Projects/Agent/AI-Agent-Learning/a4-03-react-agent|A4-03：ReAct 控制循环]]
 - [[../04-Projects/Agent/AI-Agent-Learning/a4-04-plan-and-solve|A4-04：Plan-and-Solve 计划与执行闭环]]
 - [[../04-Projects/Agent/AI-Agent-Learning/a4-05-reflection-writer|A4-05：Reflection Writer 与质量门槛]]
-- [[../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate：研究摘要 Agent（C4b-2c Refinement 共享恢复已收口，整关进行中）]]
+- [[../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate：研究摘要 Agent（正式 PASS，完整学习流程）]]
+- [[../04-Projects/Agent/AI-Agent-Learning/a4-gate-function-call-reference|A4-Gate：79 个函数定义的职责与调用参考]]
 - [[../raw/conversations/2026-08-13-ai-agent-learning-a4-gate-c4a-1-session-handoff|2026-08-13 C4a-1 会话接力摘要]]
 - [[../02-Concepts/Agent/智能体(Agent)|智能体（概念卡）]]
 - [[../02-Concepts/Agent/ReAct推理与行动循环(ReAct)|ReAct 推理与行动循环（概念卡）]]
@@ -77,6 +78,8 @@ tags:
 - [[../02-Concepts/Agent/文件工具沙箱(File Tool Sandbox)|文件工具沙箱（概念卡）]]
 - [[../02-Concepts/Agent/外部 API 工具(External API Tool)|外部 API 工具（概念卡）]]
 - [[../02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|SDK / Agent 双层重试、Candidate / Reflection / Refinement Provider 与协议 / JSON / candidate-contract recovery、共享预算和人工证据池（概念卡）]]
+- [[../02-Concepts/Agent/动作绑定人工确认(Action-Bound Confirmation)|Action-bound HITL、一次性 nonce 与重放防护（概念卡）]]
+- [[../02-Concepts/Agent/冻结评估与不可补偿硬门(Frozen Evaluation)|冻结评估、版本指纹、holdout 与不可补偿硬门（概念卡）]]
 - [[../02-Concepts/LLM/API 参数与 SDK 客户端参数|API 参数 vs SDK 客户端参数（概念卡）]]
 - [[../02-Concepts/LLM/分类与路由(Classification & Routing)|分类与路由（概念卡）]]
 - [[../02-Concepts/LLM/上下文工程(Context Engineering)|上下文工程：策划进窗口的整组 token（概念卡）]]
@@ -111,6 +114,7 @@ tags:
 - [[../07-Reviews/AI-Agent-Learning/2026-08-06-w4-alg-f3-valid-anagram-review|2026-08-06 W4-ALG-F3 有效的字母异位词 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-08-07-w4-alg-f1-two-sum-review|2026-08-07 W4-ALG-F1 两数之和 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-08-08-w4-alg-f4-contains-nearby-duplicate-review|2026-08-08 W4-ALG-F4 存在相近的重复元素 PASS 复盘]]
+- [[../07-Reviews/AI-Agent-Learning/2026-08-24-a4-gate-pass-review|2026-08-24 A4-Gate 正式 PASS 复盘]]
 
 ## 外部资源中文索引
 

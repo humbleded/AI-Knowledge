@@ -3,7 +3,7 @@ type: course-index
 topic: AI-Agent-Learning
 status: active
 created: 2026-05-28
-updated: 2026-08-22
+updated: 2026-08-24
 tags:
   - AI-Agent
   - Python
@@ -27,14 +27,14 @@ tags:
 - [[stage0_5-engineering-basics|阶段 0.5：工程基础随用随补]]
 - [[stage3-tool-calling|阶段 3：Tool Calling / Function Calling]]
 - [[stage4-agent-basics|阶段 4：Agent 基础原理]]
-- 已通过：P0-Gate、L1-Gate、PR2-Gate、T3-01、T3-02、T3-03、T3-04、T3-Gate、A4-01、A4-02、A4-03、A4-04、A4-05
-- 当前项：A4-Gate 最小 Agent 闯关（`DOING`）；其中 C4a-1、C4a-2a/2b1/2b2、C4b-1、C4b-2a、C4b-2b-1、C4b-2b-2a Candidate Provider/API 与 C4b-2b-2b Reflection Provider/API 已完成教学 / 实现子单元，C4b-2c Refinement 共享恢复已正式 `PASS`，当前没有活动代码 TODO。W4 算法已完成 4/4、内容块 `PASS`，无结转债务
+- 已通过：P0-Gate、L1-Gate、PR2-Gate、T3-01、T3-02、T3-03、T3-04、T3-Gate、A4-01、A4-02、A4-03、A4-04、A4-05、A4-Gate
+- 当前项：A4-Gate 已于 2026-08-24 正式 `PASS`；下一课程起点为 G8-00。W4 算法已完成 4/4、内容块 `PASS`，无结转债务。
 
 ## 当前执行策略
 
 - 阶段 0、阶段 1、阶段 2 主线已完成。
 - 阶段 3 已完成：三工具原生 Tool Calling 闭环与 14 条正式评估通过。
-- 阶段 4 已完成 A4-01~A4-05；A4-Gate 的 Problem Contract、C1/C2、C3a～C3d、C4a-1、C4a-2a/2b1/2b2、C4b-1、C4b-2a、C4b-2b-1、C4b-2b-2a 与 C4b-2b-2b 已完成教学 / 实现子单元，C4b-2c 已正式 `PASS`。当前已有每请求独立 context、七字段调用账本、真实工具终点、Action correction、分层预算、Candidate / Reflection / Refinement 的响应与 Provider 恢复、Refinement JSON / candidate validator 共享一次恢复，以及严格三字段人工接管。之后仍需 HITL allow/deny、14 条 eval、五个必答题、合同总体定稿和整关复核；父任务继续 `DOING`。
+- 阶段 4 的 A4-01～A4-05 与 A4-Gate 已完成。A4-Gate 已具备每请求独立 context、七字段调用账本、真实工具终点、Action correction、分层预算、Candidate / Reflection / Refinement 的协议与 Provider 恢复、exact approved summary / allowed sources validator、action-bound HITL 与冻结 V5 eval；唯一 RUN-5 14/14、semantic 20/20。
 - 阶段 0.5 工程基础不再整块前置，而是放到 API、Tool Calling、Memory、RAG、本地部署项目中随用随补。
 - `B0-Gate` 作为后续本地栈整合关卡，不阻塞第一次进入 L1/API。
 
@@ -72,7 +72,8 @@ tags:
 - [[../../../04-Projects/Agent/AI-Agent-Learning/a4-03-react-agent]]
 - [[../../../04-Projects/Agent/AI-Agent-Learning/a4-04-plan-and-solve]]
 - [[../../../04-Projects/Agent/AI-Agent-Learning/a4-05-reflection-writer]]
-- [[../../../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（C4b-2c Refinement 共享恢复已收口，整关进行中）]]
+- [[../../../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（正式 PASS）]]
+- [[../../../04-Projects/Agent/AI-Agent-Learning/a4-gate-function-call-reference|A4-Gate 函数调用参考]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-05-27-stage0-p0-01-p0-02-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-05-28-stage0-p0-03-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-06-02-stage0-p0-04-pass-review]]
@@ -90,3 +91,4 @@ tags:
 - [[../../../07-Reviews/AI-Agent-Learning/2026-07-22-a4-03-react-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-07-30-a4-04-plan-and-solve-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-08-04-a4-05-reflection-review]]
+- [[../../../07-Reviews/AI-Agent-Learning/2026-08-24-a4-gate-pass-review|A4-Gate 正式 PASS 复盘]]

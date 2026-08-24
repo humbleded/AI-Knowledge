@@ -1092,3 +1092,15 @@ tags:
 - 修正 [[index|全局索引]] 中一个 stale navigation：`backpropagation`、`gradient descent`、`tokenization`、`embedding`、`attention`、`Transformer` 和 `autoregressive generation` 当前已是 `usable`，不再标为“优先扩写中的 seed 概念”；下一批待新增 LLM 概念保留为 `cross entropy`、`softmax`、`logits`、`train/validation split`、`overfitting`、`layer normalization` 与 `residual connection`。
 - 新增 [[07-Reviews/Knowledge-Base/2026-08-23-weekly-maintenance|2026-08-23 Weekly Maintenance]]，更新 [[07-Reviews/Knowledge-Base/README|Knowledge-Base 维护复盘索引]]、[[01-Maps/AI 知识库总地图|总地图]]和 [[index|全局索引]]。
 - 最终严格检查通过：218 个 Markdown、1997 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。
+
+## 2026-08-24
+
+### AI-Agent-Learning A4-Gate 完整学习流程与正式 PASS 同步
+
+- 用户明确授权整理全部 13 个 A4-Gate Codex 任务并同步知识库；已逐个读取完整任务内容，以执行区的 final Contract、源码、V5 eval、全链 daily 与 tracker 做事实对账，没有把任务标题或单段聊天当作权威结论。
+- 合并定稿 [[04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent]]：从 Problem Contract、C1～C4、HITL、V5 RUN-5 到正式复核形成一条完整学习流程，同时保留 V4 `RETRY` 和逐题订正的历史语义。
+- 新增 [[04-Projects/Agent/AI-Agent-Learning/a4-gate-function-call-reference|A4-Gate 函数调用参考]]，覆盖源码中的 62 个顶层函数、6 个嵌套 helper 与 11 个自定义构造器，并区分主编排、动态工具注册表、SDK 逻辑调用、物理 GET retry 与独立 HITL 注入分支。
+- 新增 [[02-Concepts/Agent/动作绑定人工确认(Action-Bound Confirmation)|动作绑定人工确认]] 与 [[02-Concepts/Agent/冻结评估与不可补偿硬门(Frozen Evaluation)|冻结评估与不可补偿硬门]]；合并更新 [[02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管]]、[[02-Concepts/Agent/反思机制(Reflection)|反思机制]]和 [[02-Concepts/LLM/LLM 本质与幻觉(Hallucination)|LLM 本质与幻觉]]，明确 exact 一致性不等于证据真实、安全或相关。
+- 新增 [[07-Reviews/AI-Agent-Learning/2026-08-24-a4-gate-pass-review|A4-Gate 正式 PASS 复盘]]。V5 唯一 RUN-5 为 14/14：normal 10/10、exact 10/10、supportedness 10/10、semantic 20/20、holdout 3/3、failure 3/3、danger 1/1；没有选择性重跑、重采样、best-of 或失败替换。
+- 同步课程页、课程索引、Agent 概念与项目索引、AI-Agent-Learning 跳转索引和全局索引；未创建 13 份 raw 聊天副本，也未把 `COURSE_PASS` 自动升级为 `JOB_EVIDENCE`。
+- Obsidian CLI 在当前环境不可用，因此按 skill fallback 使用仓库文件、索引和严格 vault checker 完成核验；`python tools\check_vault.py --root D:\AI-Knowledge --strict` 最终为 `OK: True`：222 个 Markdown、2061 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。

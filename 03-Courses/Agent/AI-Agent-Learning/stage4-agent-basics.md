@@ -3,7 +3,7 @@ type: course-stage
 topic: AI-Agent-Learning Stage 4
 status: active
 created: 2026-07-10
-updated: 2026-08-22
+updated: 2026-08-24
 tags:
   - Agent
   - AI-Agent-Learning
@@ -16,7 +16,7 @@ tags:
 
 阶段 4 目标是理解 ReAct、Planning、Reflection，并写出最小 Agent。
 
-阶段 3 的 T3-Gate 已通过。阶段 4 当前已完成 A4-01～A4-05；当前主任务为 `DOING` 中的 A4-Gate 最小 Agent 闯关。W4 算法已完成 4/4、内容块 `PASS`，结转债务为 0；它仍与课程任务状态分层记录。
+阶段 3 的 T3-Gate 已通过。阶段 4 的 A4-01～A4-05 与 A4-Gate 均已 `PASS`；A4-Gate 于 2026-08-24 完成 HITL、V5 14 条固定评估、五道 Gate 问题、合同定稿和正式复核。项目下一起点为 G8-00，它不是 A4 的遗留补做。
 
 ## 任务状态
 
@@ -27,7 +27,7 @@ tags:
 | A4-03 ReAct | PASS | 2026-07-22 | `code/stage4/a4_03_react_agent.py` | 完整两轮轨迹与 max_steps 通过；15/15 parser/prompt/loop 边界断言通过 |
 | A4-04 Plan-and-Solve | PASS | 2026-07-30 | `code/stage4/a4_04_plan_solve_demo.py` | 可运行计划→执行→事实复盘闭环；39/39 解析、history、复盘与编排边界断言通过 |
 | A4-05 Reflection | PASS | 2026-08-04 | `code/stage4/a4_05_reflection_writer.py` | 初稿/反思/改进/同标准选择闭环；39/39 确定性断言、真实提前停止与真实故障修正路径通过 |
-| A4-Gate 最小 Agent 闯关 | DOING | 2026-08-22 | `code/stage4/problem-contract.md`、`code/stage4/a4_gate_research_summary_agent.py` | Problem Contract、C1/C2、C3a～C3d、C4a-1、C4a-2a/2b1/2b2、C4b-1、C4b-2a、C4b-2b-1、C4b-2b-2a 与 C4b-2b-2b 已完成教学 / 实现子单元，C4b-2c 已正式 PASS；已有真实工具终点、Action correction、Candidate / Reflection / Refinement 的响应、JSON、candidate validator 与 Provider/API 受控恢复、共享 / 独立计数、完整链预算和人工证据池映射。父 Gate 仍缺 HITL、14 条 eval、五个必答题、合同总体定稿和整关复核 |
+| A4-Gate 最小 Agent 闯关 | PASS | 2026-08-24 | `problem-contract.md`、`a4_gate_research_summary_agent.py`、`eval_cases.json` | 完整 Agent 链、分层恢复、exact validator、action-bound HITL 和冻结 V5 eval 全部闭合；唯一 RUN-5 14/14，semantic 20/20，正式课程 Gate 通过 |
 
 ## A4-01 已沉淀概念
 
@@ -63,14 +63,18 @@ tags:
 - [[../../../04-Projects/Agent/AI-Agent-Learning/a4-05-reflection-writer|A4-05 Reflection Writer 代码实践]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-08-04-a4-05-reflection-review|A4-05 PASS 复盘]]
 
-## A4-Gate 已沉淀进行中实践
+## A4-Gate 已沉淀 PASS 实践
 
-- [[../../../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（C4b-2c Refinement 共享恢复已收口，父任务 DOING）]]
+- [[../../../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent：完整学习流程、运行时控制流与最终证据]]
+- [[../../../04-Projects/Agent/AI-Agent-Learning/a4-gate-function-call-reference|A4-Gate 函数调用参考：79 个函数定义的职责与调用关系]]
 - [[../../../raw/conversations/2026-08-13-ai-agent-learning-a4-gate-c4a-1-session-handoff|C4a-1 会话接力摘要]]
 - [[../../../02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管：Action correction、完整链预算与稳定公开交接]]
 - [[../../../02-Concepts/Agent/反思机制(Reflection)|Reflection 的 Observation 来源白名单与硬校验边界]]
+- [[../../../02-Concepts/Agent/动作绑定人工确认(Action-Bound Confirmation)|动作绑定人工确认：nonce 一次性消费与重放防护]]
+- [[../../../02-Concepts/Agent/冻结评估与不可补偿硬门(Frozen Evaluation)|冻结评估与不可补偿硬门]]
 - [[../../../02-Concepts/LLM/结构化输出(Structured Output)|结构化输出、finish_reason 与 JSON 解析分层]]
 - [[../../../02-Concepts/LLM/函数调用(Function Calling)|SDK 属性对象与 Tool Calling 协议]]
+- [[../../../07-Reviews/AI-Agent-Learning/2026-08-24-a4-gate-pass-review|A4-Gate 正式 PASS 复盘]]
 
 ## 当前易错点
 
@@ -121,8 +125,9 @@ tags:
 - [A4-05 daily（带读与实现启动）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-03.md)
 - [A4-05 daily（实现、正式练习与任务级复核）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-04.md)
 - [A4-05 code](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage4/a4_05_reflection_writer.py)
-- [A4-Gate Problem Contract（DRAFT）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage4/problem-contract.md)
+- [A4-Gate Problem Contract（FINAL / PASS）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage4/problem-contract.md)
 - [A4-Gate 当前代码](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage4/a4_gate_research_summary_agent.py)
+- [A4-Gate V5 固定评估](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/stage4/eval_cases.json)
 - [A4-Gate C3d 正式证据（2026-08-11）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-11.md)
 - [A4-Gate C4a-1 前半段证据（2026-08-12）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-12.md)
 - [A4-Gate C4a-1 收口证据（2026-08-13）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-13.md)
@@ -132,4 +137,6 @@ tags:
 - [A4-Gate Candidate / Reflection 响应恢复、端到端回归与用户审核（2026-08-20）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-20.md)
 - [A4-Gate SDK retry / timeout 与 Candidate / Reflection Provider recovery（2026-08-21）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-21.md)
 - [A4-Gate C4b-2c Refinement 共享恢复与正式复验（2026-08-22）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-22.md)
+- [A4-Gate HITL action-bound confirmation（2026-08-23）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-23.md)
+- [A4-Gate V5 RUN-5、Gate 五题与正式 PASS（2026-08-24）](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/2026-08-24.md)
 - [progress](file:///C:/Users/26823/Desktop/AI-Agent-Learning/tracker/progress.md)

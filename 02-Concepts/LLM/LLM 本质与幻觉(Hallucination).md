@@ -5,11 +5,14 @@ type: concept
 topic: LLM
 status: usable
 created: 2026-06-16
-updated: 2026-07-15
+updated: 2026-08-24
 source:
   - hello-agents 第三章 大语言模型基础
   - DeepSeek 分享对话：上下文工程、路由与特殊 Token
   - AI-Agent-Learning A4-02 正式复核（2026-07-15）
+  - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_gate_research_summary_agent.py
+  - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\eval_cases.json
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-24.md
 tags:
   - LLM
   - hallucination
@@ -98,6 +101,24 @@ tags:
 
 还可以使用多步验证、外部评估、路由和 JIT 检索缩小上下文，但它们仍然是降低风险的方法，不是绝对正确保证。
 
+### A4-Gate：模型在哪里最容易幻觉，错误又在哪里被拦住
+
+在 A4-Gate 的正常链里，Candidate 是模型第一次把真实 Tool Observation 改写成自然语言摘要的阶段，自由生成空间最大，因此最容易混入训练记忆、常识推测或 Observation 中没有的额外结论。Action 只提议工具，Tool 由客户端真实执行；Reflection 只给软反馈；Refinement 虽然也生成文本，但已被 `approved_summary` 与 `allowed_sources` 强约束。
+
+要把两个问题分开：
+
+| 观察问题 | A4-Gate 结论 |
+|---|---|
+| 模型内部最容易在哪里生成无据文字？ | Candidate |
+| 无据文字能否成为公开 `success`？ | Candidate 自行添加且未被客户端批准的内容会被最终 exact gate 拦住 |
+
+最终 `validate_success_result()` 要求 `summary == approved_summary` 逐码点相等、`sources == allowed_sources` 列表精确相等，所以它能证明“最终输出没有偏离客户端批准值”。但是，如果搜索 snippet 或文件正文自身错误、恶意、被提示注入，且客户端仍把它选成 `approved_summary`，模型逐字复制后依然可能通过。换句话说：
+
+> [!warning] Exact 不等于真实
+> exact validator 证明**来源/批准值一致性**，不证明上游证据的事实真实性、内容安全性或问题相关性。因此 supportedness、semantic evaluator、证据质量筛选和高风险人工确认仍不可省略。
+
+这也是为什么 V5 把确定性硬门与语义指标分开冻结：硬门任何单例失败都不可补偿；Candidate 无据添加属于独立的模型行为观察，不能用最终 hard-gate 通过率掩盖，也不能在看完正式运行后临时加入当前计分口径。
+
 ### 超时必须保持“未知”
 
 订单 API 返回 `timeout` 时，权威事实只是“本次查询超时”，并没有证明订单成功或失败。正确收口是：
@@ -115,4 +136,7 @@ tags:
 - [[消息角色与指令优先级(Instruction Hierarchy)]]（上下文窗口 ≠ 幻觉）
 - [[函数调用(Function Calling)]]（自编 Observation 与真实执行的工程判别）
 - [[../Agent/工具调用与动作(Tool Calling and Action)]]（Tool Call、客户端执行与 Tool Result）
+- [[../Agent/反思机制(Reflection)|反思机制]]（软评审与客户端硬门）
+- [[../Agent/冻结评估与不可补偿硬门(Frozen Evaluation)|冻结评估与不可补偿硬门]]
+- [[../../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 完整学习流程]]
 - [[../../07-Reviews/AI-Agent-Learning/2026-07-15-a4-02-llm-agent-basics-review|A4-02 PASS 复盘]]

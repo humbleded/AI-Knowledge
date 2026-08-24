@@ -3,7 +3,7 @@ type: concept-index
 topic: Agent
 status: active
 created: 2026-07-06
-updated: 2026-08-22
+updated: 2026-08-24
 tags:
   - Agent
   - 概念卡
@@ -24,3 +24,5 @@ tags:
 - [[文件工具沙箱(File Tool Sandbox)|文件工具沙箱：resolve + relative_to 的安全边界]]
 - [[外部 API 工具(External API Tool)|外部 API 工具：HTTPS allowlist / 443 / SSRF / 重定向 / timeout]]
 - [[受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管：SDK / Agent 双层重试、Candidate / Reflection / Refinement 的 Provider 与协议 / JSON / candidate-contract recovery、共享预算和人工证据池]]
+- [[动作绑定人工确认(Action-Bound Confirmation)|动作绑定人工确认：冻结动作深绑定、一次性 nonce、先消费后副作用与重放防护]]
+- [[冻结评估与不可补偿硬门(Frozen Evaluation)|冻结评估与不可补偿硬门：版本指纹、唯一正式运行、holdout、exact / semantic 分层与不可补偿失败]]

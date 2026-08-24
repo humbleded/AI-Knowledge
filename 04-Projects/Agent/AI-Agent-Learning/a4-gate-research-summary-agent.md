@@ -1,12 +1,19 @@
 ---
 type: project
 topic: AI-Agent-Learning A4-Gate Research Summary Agent
-status: doing
+status: pass
 created: 2026-08-11
-updated: 2026-08-22
+updated: 2026-08-24
 source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\problem-contract.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_gate_research_summary_agent.py
+  - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\eval_cases.json
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-05.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-06.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-07.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-08.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-09.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-10.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-11.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-12.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-13.md
@@ -16,6 +23,8 @@ source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-20.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-21.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-22.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-23.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-24.md
 tags:
   - Agent
   - Tool-Calling
@@ -25,39 +34,41 @@ tags:
   - AI-Agent-Learning
 ---
 
-# A4-Gate 研究摘要 Agent（进行中）
+# A4-Gate 研究摘要 Agent（PASS）
 
 > [!important] 状态边界
-> `A4-Gate-C4a-1`、`C4a-2a / 2b1 / 2b2`、`C4b-1`、`C4b-2a`、`C4b-2b-1`、`C4b-2b-2a` 与 `C4b-2b-2b` 已完成教学 / 实现子单元，`C4b-2c` Refinement 恢复已于 2026-08-22 正式 `PASS`；父任务 `A4-Gate` 仍为 `DOING`。本页记录可复查的进行中项目进展，不是整关 PASS 复盘，也不升级求职证据。
+> `A4-Gate` 已于 2026-08-24 经正式复核判定为 `PASS`：HITL、V5 唯一 RUN-5、14 条固定评估、五道 Gate 问题与 Problem Contract 定稿全部闭合。该结论是 `COURSE_PASS`，不自动升级为 `JOB_EVIDENCE`；V4 唯一 RUN-4 的 `RETRY` 和逐题订正轨迹永久保留。
 
 ## 目标与当前产物
 
 - 目标：接收 `topic` 或受沙箱约束的 `relative_path`，只执行一个与请求匹配的工具，再基于本轮真实 Observation 生成带来源的三字段研究摘要。
-- 设计合同：`C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\problem-contract.md`，整关通过前保持 `DRAFT`。
+- 设计合同：`C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\problem-contract.md`，当前状态 `FINAL / PASS`。
 - 当前实现：`C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_gate_research_summary_agent.py`。
-- 证据链：`C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-11.md`、`2026-08-12.md`、`2026-08-13.md`、`2026-08-17.md`、`2026-08-18.md`、`2026-08-19.md`、`2026-08-20.md`、`2026-08-21.md`、`2026-08-22.md`。
-- 当前实现快照（2026-08-22 C4b-2c 正式复验后）：源码 SHA-256 `3F5A288019924887A4E80B13A1E7CE8E58089DB02B6A12241E5F8E4A2B021A9A`，合同 SHA-256 `DF30B11582F0C8831244415C20F2BC7E839A83D3AF854CF0F5807BD4DCC9FDDE`，`TODO / NotImplementedError = 0 / 0`。对应实现与学习证据提交为 [`838adba`](https://github.com/humbleded/AI-Agent-Learning/commit/838adba79295c9505885b414977aadfdaf1ae918)。
+- 固定评估：`C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\eval_cases.json`，版本 `a4-gate-v5`，结构 `10 normal + 3 failure + 1 danger`。
+- 完整证据链：`daily/2026-08-05.md`～`2026-08-13.md`、`2026-08-17.md`～`2026-08-24.md`；最终权威收口为 `daily/2026-08-24.md`。
+- 最终实现快照：源码 `243712 bytes / SHA-256 A6190964BFC7B70EED6F929C2495AC291CEBA441B1BFE5001B6A4EFC6D6F5DC6`；eval `102737 bytes / SHA-256 1802BAF7BF1ABF883E087CF6B9510C3043F394038E4609C90E1F595ECA0AFEDE`；post-review Contract `54902 bytes / SHA-256 8DE95E6B8CEFA0C8261287CAD23516B970E888ADC33740BB25F9D732632C2C9E`；`TODO / FIXME / NotImplementedError = 0`。
+- 逐函数职责、调用者、被调用函数与副作用见 [[a4-gate-function-call-reference|A4-Gate 函数调用参考]]。
 
 最终成功对象只能包含：
 
 ```json
 {
   "status": "success",
-  "summary": "非空摘要",
-  "sources": ["本轮真实来源"]
+  "summary": "逐字符等于客户端 approved_summary",
+  "sources": ["逐项等于客户端 allowed_sources"]
 }
 ```
 
 ## A4-Gate 完整流程图
 
 > [!info] 图例与范围
-> `✅` 表示已经获得当前项目证据，`⏳` 表示尚未完成；其中一部分只有高层边界，具体恢复策略仍待后续切片冻结。第二张图展示 **A4-Gate 最终目标控制流**；尚未完成的分支不能当成当前代码已经具备的能力。
+> 全图均已获得最终项目证据。第一张图保留从合同、逐切片实现到整关复核的学习顺序；第二张图展示生产主链以及独立 HITL 安全测试分支。历史 V4 `RETRY` 仍保留在 daily，但不再代表当前状态。
 
 ### 1. 从需求合同到正式过关
 
 ```mermaid
 flowchart LR
-    PC["Problem Contract<br/>第 1～11 节已完成<br/>整关前保持 DRAFT"] --> C1["C1<br/>输入校验 + 固定三字段 PASS"]
+    PC["Problem Contract<br/>FINAL / PASS"] --> C1["C1<br/>输入校验 + 固定三字段 PASS"]
     C1 --> C2["C2<br/>read_material / search_web PASS"]
     C2 --> C3A["C3a<br/>工具 Schema PASS"]
     C3A --> C3B["C3b<br/>白名单调度 + 参数硬校验 PASS"]
@@ -73,19 +84,16 @@ flowchart LR
     REF_FEEDBACK_REC --> CAND_PROVIDER["C4b-2b-2a<br/>Candidate Provider/API<br/>一次恢复与安全停止 PASS"]
     CAND_PROVIDER --> REF_PROVIDER["C4b-2b-2b<br/>Reflection Provider/API<br/>一次恢复与安全停止 PASS"]
     REF_PROVIDER --> REFINE_VAL_REC["C4b-2c<br/>Refinement Provider/API、响应 / JSON<br/>与 candidate validator 共享恢复 PASS"]
-    REFINE_VAL_REC --> HITL["HITL<br/>危险 fake allow / deny ⏳"]
-    HITL --> DATA["eval_cases.json<br/>10 normal + 3 failure + 1 danger<br/>至少 3 holdout ⏳"]
-    DATA --> REVIEW{"A4-Gate 正式复核 ⏳"}
+    REFINE_VAL_REC --> HITL["HITL<br/>action-bound fake allow / deny / replay PASS"]
+    HITL --> DATA["eval_cases.json V5<br/>10 normal + 3 failure + 1 danger<br/>3 holdout PASS"]
+    DATA --> REVIEW{"A4-Gate 正式复核 PASS"}
     REVIEW -->|"确定性合同与安全全过；语义阈值达标"| PASS["A4-Gate PASS"]
-    REVIEW -->|"存在缺口"| RETRY["保留 A4-Gate = DOING<br/>定位并返回实际失败切片<br/>修复后重跑对应回归"]
+    V4["历史 V4 唯一 RUN-4<br/>RETRY，证据永久保留"] --> DATA
 
-    classDef designed fill:#d9eaf7,stroke:#0b5394,color:#1f1f1f;
     classDef done fill:#d9ead3,stroke:#38761d,color:#1f1f1f;
-    classDef pending fill:#fff2cc,stroke:#bf9000,color:#1f1f1f;
     classDef gate fill:#d9eaf7,stroke:#0b5394,color:#1f1f1f;
-    class PC designed;
-    class C1,C2,C3A,C3B,C3C,C3D,C4A1,C4A2A,C4A2B1,C4A2B2,ACTION_REC,CAND_REC,REF_FEEDBACK_REC,CAND_PROVIDER,REF_PROVIDER,REFINE_VAL_REC done;
-    class HITL,DATA,RETRY pending;
+    class PC,C1,C2,C3A,C3B,C3C,C3D,C4A1,C4A2A,C4A2B1,C4A2B2,ACTION_REC,CAND_REC,REF_FEEDBACK_REC,CAND_PROVIDER,REF_PROVIDER,REFINE_VAL_REC,HITL,DATA done;
+    class V4 gate;
     class REVIEW,PASS gate;
 ```
 
@@ -107,11 +115,12 @@ flowchart TD
     M1_CORR --> F1
     BUDGET_A -->|"否"| MANUAL_ACTION["needs_manual<br/>修正上限或完整链不足 ✅"]
 
-    ACTION -->|"是"| RISK{"动作是否高风险？"}
-    RISK -->|"当前两个只读生产工具：否 ✅"| TOOL1["工具入口尝试 1<br/>只有真实执行才占 step / 计时 / 写 tool_call 日志"]
-    RISK -->|"未来危险动作 / eval fake：是"| CONFIRM{"展示工具名、参数、影响<br/>本次明确确认？ ⏳"}
-    CONFIRM -->|"拒绝 / 未确认"| MANUAL_OTHER
-    CONFIRM -->|"确认；参数未变化"| TOOL1
+    ACTION -->|"生产主链仅含两个只读工具"| TOOL1["工具入口尝试 1<br/>只有真实执行才占 step / 计时 / 写 tool_call 日志"]
+
+    HITL_EVAL["独立 D01 安全分支<br/>客户端冻结 planned_action + injected fake ✅"] --> CONFIRM{"request_id / tool_name / arguments<br/>decision / confirmation_id 全部通过？ ✅"}
+    CONFIRM -->|"deny / 缺失 / 错绑 / 重放"| MANUAL_OTHER
+    CONFIRM -->|"allow；先消费 nonce"| DANGER["危险 fake 恰好调用一次<br/>调用前占 step，调用后写七字段日志 ✅"]
+    DANGER --> HITL_OUT["成功返回适配器结果；普通异常记日志后原样上抛 ✅"]
 
     TOOL1 --> RESULT1{"返回结果<br/>账本能否证明真实工具已执行？"}
     RESULT1 -->|"无：执行前拒绝"| ACTION_REC
@@ -184,7 +193,7 @@ flowchart TD
     REFINE_REC_RESULT -->|"valid"| SUCCESS
     REFINE_REC_RESULT -->|"任一 Provider / response / JSON / candidate 失败"| MANUAL_REFINE
     REFINE_REC_RESULT -->|"普通程序错误"| PROGRAM_ERROR
-    MANUAL_OTHER["needs_manual<br/>HITL 拒绝 / 未确认停止分支 ⏳"]
+    MANUAL_OTHER["needs_manual<br/>危险工具 +0 / step +0 / 日志 +0 ✅"]
 
     GUARD["全局护栏<br/>每次真实模型/工具调用前 reserve_call_step<br/>MAX_STEPS=6；禁止第 7 次调用 ✅"] -.约束.-> M1
     GUARD -.约束.-> TOOL1
@@ -212,20 +221,15 @@ flowchart TD
     SUCCESS --> OUT
 
     classDef done fill:#d9ead3,stroke:#38761d,color:#1f1f1f;
-    classDef pending fill:#fff2cc,stroke:#bf9000,color:#1f1f1f;
     classDef terminalDone fill:#d9eaf7,stroke:#0b5394,color:#1f1f1f;
-    classDef terminalPending fill:#fce5cd,stroke:#cc4125,color:#1f1f1f;
     classDef note fill:#f3f3f3,stroke:#666666,color:#1f1f1f;
-    class PRE,INIT,M1,F1,ACTION,ACTION_REC,BUDGET_A,M1_CORR,TOOL1,RETRY_OK,TOOL2,RESULT1,RESULT2,EVIDENCE,OBS,M2,CAND_API,CAND_PROVIDER_CLASS,CAND_PROVIDER_BUDGET,CAND_PROVIDER_FIX,CAND_PROVIDER_RESULT,CAND_CLASS,CAND_BUDGET,CAND_FIX,CAND_PROTOCOL_API,CAND_CLASS2,REFLECT,REF_API,REF_PROVIDER_CLASS,REF_PROVIDER_BUDGET,REF_PROVIDER_FIX,REF_PROVIDER_RESULT,REF_CLASS,REF_BUDGET,REF_FIX,REF_PROTOCOL_API,REF_CLASS2,REFINE,REFINE_API,REFINE_PROVIDER_CLASS,REFINE_CLASS,REFINE_REC_BUDGET,REFINE_REC,REFINE_REC_RESULT done;
-    class RISK,CONFIRM pending;
-    class INVALID,SUCCESS,MANUAL_RETRY,MANUAL_ACTION,MANUAL_CAND,MANUAL_CAND_API,MANUAL_REF,MANUAL_REF_API,MANUAL_REFINE,TOOL_FAIL,INSUFFICIENT terminalDone;
-    class MANUAL_OTHER terminalPending;
-    class PROTOCOL_ERROR,PROGRAM_ERROR note;
-    class START,GUARD,OUT note;
+    class PRE,INIT,M1,F1,ACTION,ACTION_REC,BUDGET_A,M1_CORR,TOOL1,RETRY_OK,TOOL2,RESULT1,RESULT2,EVIDENCE,OBS,M2,CAND_API,CAND_PROVIDER_CLASS,CAND_PROVIDER_BUDGET,CAND_PROVIDER_FIX,CAND_PROVIDER_RESULT,CAND_CLASS,CAND_BUDGET,CAND_FIX,CAND_PROTOCOL_API,CAND_CLASS2,REFLECT,REF_API,REF_PROVIDER_CLASS,REF_PROVIDER_BUDGET,REF_PROVIDER_FIX,REF_PROVIDER_RESULT,REF_CLASS,REF_BUDGET,REF_FIX,REF_PROTOCOL_API,REF_CLASS2,REFINE,REFINE_API,REFINE_PROVIDER_CLASS,REFINE_CLASS,REFINE_REC_BUDGET,REFINE_REC,REFINE_REC_RESULT,HITL_EVAL,CONFIRM,DANGER,HITL_OUT done;
+    class INVALID,SUCCESS,MANUAL_RETRY,MANUAL_ACTION,MANUAL_CAND,MANUAL_CAND_API,MANUAL_REF,MANUAL_REF_API,MANUAL_REFINE,TOOL_FAIL,INSUFFICIENT,MANUAL_OTHER terminalDone;
+    class PROTOCOL_ERROR,PROGRAM_ERROR,START,GUARD,OUT note;
 ```
 
-> [!warning] 当前代码与目标图的差异
-> 当前已经验证无重试正常链、一次同参数工具重试、真实不可重试失败、搜索零证据、Action correction、修正 / 重试完整链预算，以及 Candidate、Reflection、Refinement 的响应 / Provider 受控恢复与公开 `needs_manual`。尚未收口的是 HITL 与 14 条整关 eval；普通程序错误、非法调用方不变量与未映射协议错误仍按原类型传播，不能宣称所有异常都会被统一成业务状态。
+> [!note] 生产主链与 HITL 证据边界
+> 生产 `run_research_summary_once()` 的工具注册表只有 `read_material` 与 `search_web` 两个只读工具；D01 的危险 fake 通过注入的 `action_executor` 独立测试，未被偷接进生产注册表。两条边界都已验证。普通程序错误、非法调用方不变量与未映射协议错误仍按原类型传播；这是 fail-closed 设计，不应统一伪装成业务状态。
 
 正常无重试路径只使用 step 1～5，不伪造 step 6。一次工具重试成功路径已经证明正好使用 step 1～6：模型选择 → 工具失败 → 工具重试成功 → 候选模型 → Reflection → Refinement。任何第 7 次模型或工具调用都必须在计时与副作用之前拒绝。
 
@@ -237,10 +241,10 @@ flowchart TD
 
 | 阶段 | 当前状态 | 可观察结果 |
 |---|---|---|
-| Problem Contract | 已固定，整关前仍为 DRAFT | 输入、输出、工具、停止、日志、HITL 与 eval 边界明确 |
+| Problem Contract | FINAL / PASS | 输入、输出、工具、停止、日志、HITL、eval 和非目标全部冻结 |
 | C1 输入与三字段结果 | PASS | 非法请求零副作用；成功/失败结果都只用冻结字段 |
 | C2 工具适配器 | PASS | `read_material` / `search_web` 的正常、失败与安全边界闭合 |
-| C3 Schema、调度、生成/反思/改进/校验 | PASS | topic/path 四模型 + 一工具正常链及来源子集硬门闭合 |
+| C3 Schema、调度、生成/反思/改进/校验 | PASS | topic/path 四模型 + 一工具正常链，以及 exact approved summary / allowed sources 硬门闭合 |
 | C4a-1 共享 context、日志、MAX、协议守门 | 已收口 | 无重试正常链 step 1～5、七字段日志、请求隔离与第 7 次调用硬门通过 |
 | C4a-2a 一次同参数工具 retry | 已收口 | 首败后第二次成功形成完整六步恢复轨迹；两次工具尝试各自占步、计时、记日志 |
 | C4a-2b1 自动恢复耗尽映射 | 已收口 | 二次可重试失败与重试前无剩余 step 均窄映射为严格三字段 `needs_manual` |
@@ -251,15 +255,15 @@ flowchart TD
 | Candidate Provider/API 异常恢复 | 已收口 | SDK 内部 retry 与 Agent recovery 分账；timeout / connection / 408 / 409 / 429 / 5xx 白名单、一次完整链预算恢复、两个独立计数和窄停止映射通过 |
 | Reflection Provider/API 异常恢复 | 已收口 | 首次调用与 protocol recovery 调用位置分开；Provider / protocol 按实际额外调用原因计数，完整链预算、零第三次请求与窄停止映射通过 |
 | C4b-2c Refinement Provider/API、响应 / JSON 与 candidate validator 恢复 | 已正式 PASS | 四个可恢复失败域共享一次 recovery；Provider 原 prompt、其他固定安全 prompt、新 candidate 全量重校验、普通程序错误上抛和窄停止映射均通过 |
-| HITL allow/deny | 未开始 | 危险 fake 在确认门前零执行 |
-| 14 条 eval | 未开始 | 固定 normal/failure/danger/holdout 案例与阈值 |
-| A4-Gate 正式复核 | 未开始 | 只有整关复核通过才可把父任务改为 PASS |
+| HITL action-bound confirmation | PASS | allow 恰好执行一次；deny / 缺失 / 错绑 / 重放均在副作用前停止；授权在 fake 前一次性消费 |
+| 14 条 eval | PASS | V5 唯一 RUN-5：10 normal + 3 failure + 1 danger 全部通过；3 条 holdout 全过 |
+| A4-Gate 正式复核 | PASS | exact、supportedness、semantic、holdout、failure、danger 与五道 Gate 问题全部过线 |
 
 ## 已完成切片
 
 | 切片 | 状态 | 结果 |
 |---|---|---|
-| Problem Contract | 已冻结设计，仍为 DRAFT | 固定输入、输出、工具、停止、日志、HITL 与 eval 边界 |
+| Problem Contract | FINAL / PASS | 固定输入、输出、工具、停止、日志、HITL、eval、版本指纹与非目标 |
 | C1 / C2 | PASS | 请求准备、文件工具、搜索工具与错误边界闭合 |
 | C3a / C3b / C3c | PASS | 工具 schema、白名单分发、两次模型 + 一次工具候选链闭合 |
 | C3d-I1 | PASS | Reflection 单次调用与 SDK 响应外壳 fail-closed |
@@ -279,6 +283,26 @@ flowchart TD
 | C4b-2b-2a G1～G4 / I1a / I1b / U1；I1c / I2 助手验证 | PASS / 已验证 | SDK retry / timeout 所有权、Candidate Provider 白名单、一次恢复、双计数、防篡改公开映射、故障注入和真实正常 smoke 闭合 |
 | C4b-2b-2b G1 / I1 / U1；I1b / I2 助手验证 | PASS / 已验证 | Reflection Provider 一次恢复、与 protocol recovery 独立计数、完整链预算、零第三次请求、防篡改公开映射和真实正常 smoke 闭合 |
 | C4b-2c G1～G3 / I1a / U1-1～U1-3；I1b～I1f / I2 助手验证 | PASS / 已验证 | Refinement Provider、响应、JSON 与 candidate-contract 共享一次 recovery、固定 prompt 信任边界、新候选重校验、普通程序错误上抛、公开停止和用户审核闭合 |
+| HITL G1 / I1 / I1a / I1b / U1 | PASS | request / tool / arguments 深绑定、`confirmation_id` 一次性消费、allow/deny/缺失/错绑/重放/超时边界全部闭合 |
+| V5 eval / RUN-5 | PASS | 唯一正式运行 14/14：normal 10/10、failure 3/3、danger 1/1；exact/supportedness 10/10、semantic 20/20、holdout 3/3 |
+| Gate 五题 / Problem Contract U1 / 正式复核 | PASS | 用户完成循环、停止、工具恢复、幻觉位置与可测试合同迁移；Contract 定稿，课程层正式 PASS |
+
+## 2026-08-23 HITL 决定性证据
+
+- 危险动作不是“模型说可以就执行”，而是客户端先冻结 `planned_action`，再校验 confirmation 的 `request_id`、`tool_name`、`arguments` 与 decision；任一缺失或错绑都返回严格三字段 `needs_manual`。
+- 每张授权单都有客户端生成的一次性 `confirmation_id`。精确绑定校验通过后、真实 fake 调用之前立即写入 `consumed_confirmation_ids`；因此即使调用超时或出现未知结果，也不能重放同一授权。
+- allow 路径先消费授权，再占一个真实 tool step、调用一次 injected fake 并写一条七字段日志。deny、缺失、错绑和重放的 fake / step / 七字段日志均精确为 `0 / 0 / 0`。
+- fake 抛出普通异常时，日志 `error` 只记录稳定类型名（例如 `"TimeoutError"`），随后裸 `raise` 使同一个异常对象向上传播；该分支没有公开 `status / sources`。
+- HITL helper 是独立安全评估入口，不改变生产只读工具注册表，也不允许 confirmation 跨动作或跨请求复用。
+
+## 2026-08-24 V5 RUN-5 与正式复核决定性证据
+
+- 正式计分只使用预先冻结的 V5 唯一 RUN-5；没有选择性重跑、重采样、best-of、失败替换或看完结果再调阈值。V4 唯一 RUN-4 的 `RETRY` 和修复轨迹原样保留。
+- 固定数据为 `10 normal + 3 failure + 1 danger`。最终为 normal `10/10`、exact approved summary `10/10`、supportedness `10/10`、semantic `10/10 cases / 20/20 keypoints`、holdout N17/N18/N19 `3/3`、failure F01～F03 `3/3`、danger D01 `1/1`，整关 `14/14`。
+- 正常链的可观察调用精确为 4 次模型 + 1 次逻辑工具，`step / logs = 5 / 5`；Refinement 的最终候选还必须经过不占 step 的本地 validator。
+- `validate_success_result()` 要求候选恰好三键、`status == "success"`、`summary == approved_summary` 逐码点相等、`sources == allowed_sources` 按内容和顺序完全相等。模型候选错误抛 `InvalidSuccessCandidateError`；客户端权威参数非法抛内建 `ValueError`。
+- exact gate 证明“最终输出与客户端批准证据一致”，不证明上游证据本身真实、安全或相关。Candidate 是内部最容易产生无据添加的阶段；恶意或错误 Observation 若被客户端批准，仍可能精确通过，因此 supportedness、semantic 和证据质量检查不能被 exact 替代。
+- 最终实现与评估指纹：源码 `243712 / A6190964BFC7B70EED6F929C2495AC291CEBA441B1BFE5001B6A4EFC6D6F5DC6`；eval `102737 / 1802BAF7BF1ABF883E087CF6B9510C3043F394038E4609C90E1F595ECA0AFEDE`；RUN-5 时 Contract `54211 / 25BB32E132521B1DEB9C84FFF8870FD8BF000D390A75155F09744D83018ED604`；post-review Contract `54902 / 8DE95E6B8CEFA0C8261287CAD23516B970E888ADC33740BB25F9D732632C2C9E`。
 
 ## 2026-08-22 C4b-2c Refinement 恢复决定性证据
 
@@ -432,11 +456,21 @@ flowchart TD
 34. Reflection 的合法反馈仍不是最终结果。Provider 或 protocol recovery 前必须同时为后续 Refinement 保留一个调用位置；`recoverable` 只通过分类门，不代表一定允许重试。
 35. Reflection Provider 公开映射除了 cause 与安全字段，还要核对阶段调用差额 `reflection_start_step + 1 + provider + protocol`；合法异常类型不代表其中的 step 和计数可以直接相信。
 36. Refinement recovery 的失败类型变化不会重置局部额度；Provider 使用原 prompt，其他可恢复失败只追加固定安全指令，坏 candidate / URL / 原异常不得进入新 prompt。
-37. candidate recovery 资格不等于接受坏输出；新 candidate 仍必须重过 exact 三字段、状态、非空和来源子集 validator。非法 `allowed_sources` 与普通程序错误必须保持上抛。
+37. candidate recovery 资格不等于接受坏输出；新 candidate 仍必须重过 exact 三字段、状态和客户端权威值 validator。非法 `allowed_sources` / `approved_summary` 与普通程序错误必须保持上抛。
+38. `validate_success_result()` 的最终 V5 合同不是“来源属于白名单子集”，而是 `summary` 与 `approved_summary` 逐码点相等、`sources` 与 `allowed_sources` 列表内容和顺序完全相等；这是防止模型在最终一步自行改写批准事实的 exact gate。
+39. direct validator 是本地纯函数层：零模型、零工具、零公开业务结果。模型候选不合格抛 `InvalidSuccessCandidateError`；调用方权威参数不合法抛内建 `ValueError`，不能把客户端 bug 伪装成可恢复模型失败。
+40. validator 通过后必须立即停止；不能再调用模型、工具或“二次美化”。recovery 新候选也没有特权，仍需经过同一个 validator。
+41. Candidate 是模型内部最容易产生无据添加的阶段，但“内部生成幻觉”和“幻觉逃逸为公开 success”是两个不同指标。exact gate 能拦住 Candidate 自行增加且未获批准的文字，却不能判断获批准证据本身的真伪与安全性。
+42. HITL confirmation 必须绑定到当前冻结动作，而不是笼统的“我同意”。`request_id / tool_name / arguments` 深度匹配只是绑定字段；还必须有独立 `confirmation_id` 区分同一请求内两份完全相同的授权。
+43. 一次性授权必须在副作用前消费。若等工具成功后才消费，超时、断线或未知结果会让同一授权被重放，可能造成重复删除或其他双重副作用。
+44. deny、缺失、错绑与重放不是“失败的工具调用”；它们在真实调用之前停止，因此 fake、step 与七字段日志都不增加。普通 fake 异常则已真实尝试，必须保留 step/log 后原样上抛。
+45. 评估口径必须在运行前冻结：案例、阈值、holdout、版本指纹和不可补偿项都不能看完结果再改。失败的正式运行必须保留，不能用后续更好样本覆盖。
+46. exact/supportedness 与 semantic 是不同观察层。确定性硬门必须 `100%` 且单例不可补偿；语义关键点按冻结单位独立计分，语义通过也不能补偿任何硬门突破。
+47. 评估状态必须绑定 source / eval / Contract / fixture 的字节数与 SHA-256。源文件顶部历史 docstring 的过时状态文字不推翻最终 tracker、daily、Contract 与冻结运行证据，但必须明确记录，避免把历史描述误当运行时事实。
 
 ## 安全边界
 
-- `allowed_sources` 只能从本轮真实 Observation 派生；`success.sources` 必须是摘要实际采用来源的非空子集。Candidate / Reflection 阶段失败时可以复制重新派生的真实白名单来源到 `needs_manual.sources`，但只能解释为人工接管证据池。
+- `allowed_sources` 与 `approved_summary` 只能从本轮真实 Observation 派生；最终 `success.sources` 必须与 `allowed_sources` 完全相等，`success.summary` 必须与 `approved_summary` 逐码点相等。Candidate / Reflection 阶段失败时可以复制重新派生的真实来源到 `needs_manual.sources`，但只能解释为人工接管证据池。
 - Prompt 中的来源名单是软约束，客户端 validator 才是硬门。
 - 来源身份属于 allowlist 只能证明“引用来自本轮工具结果”，不能单独证明摘要中的每个事实都被正文支持；语义真实性仍需固定 eval 与人工抽查。
 - 非法输入会在 client、模型和工具之前返回；Reflection 与 Refinement 均不暴露工具。
@@ -454,24 +488,28 @@ flowchart TD
 - Reflection Provider recovery 最多一次，必须复用同一 Reflection prompt、实际 client 和共享 context；预算不足、唯一恢复再失败、Provider recovery 返回坏反馈或 protocol recovery 自身遇 Provider 错误后，都不得发第三次 Reflection 请求或进入 Refinement。
 - Reflection 公开入口同时核对精确停止类型、真实 `APIError` cause、当前共享 step、`reflection_start_step + 1 + provider + protocol` 调用差额、两套计数与重新派生来源；Refinement 另由独立窄映射核对共享恢复次数、step 算术、完整日志、Provider cause 与真实来源。普通 Python 异常、非法调用方不变量和篡改变体仍保持原样传播。
 - Refinement 的 Provider、响应、JSON 与 candidate-contract 失败共享一次 recovery；坏输出与内部异常不回填，每份新 candidate 重过最终 validator，唯一 recovery 再失败后零第三次请求 / 工具重跑。
-- 当前同参数重试只在受控只读工具上获得证据，不能直接外推到支付、发送、部署等有副作用操作；写操作还需幂等键、去重与 HITL 风险门。
+- direct validator 只证明候选与客户端权威值一致，不证明工具证据真实、安全、相关；因此 exact、supportedness、semantic 和上游证据质量是互补护栏。
+- 当前同参数重试只在受控只读工具上获得证据，不能直接外推到支付、发送、部署等有副作用操作；有副作用操作必须使用 action-bound confirmation、nonce 一次性消费、幂等/去重和未知结果人工接管。
+- confirmation 在绑定校验通过后、执行危险工具前即被消费；工具超时也不恢复授权。deny、缺失、错绑、重放为零副作用安全停止，真实危险调用抛异常则保留 step/log 并原样传播。
+- V5 正式评估在运行前冻结并绑定版本指纹；任何硬门突破、合法结果被错误拒绝或绕过 validator 公开模型文本都不可由其他案例补偿。
 
-## 当前切片与后续未完成范围
+## 最终收口与后续边界
 
-父任务仍缺：
-
-- HITL：高风险 fake 工具的 allow/deny 可执行证据。
-- `eval_cases.json`：14 条固定案例、至少 3 条 holdout 和正式 Gate 阈值。
-- Gate 的循环、停止、工具恢复、幻觉点和可测试验收规则五个必答题。
-- 正式 Gate 复核；在此之前不新建 A4-Gate PASS 复盘，也不升级岗位证据。
-
-截至 2026-08-22，`C4a-2b2`、`C4b-1`、`C4b-2a`、`C4b-2b-1`、`C4b-2b-2a`、`C4b-2b-2b` 与 `C4b-2c` 已收口，当前没有活动代码 TODO；这些子单元没有替代父任务剩余范围，也没有把 `tracker/progress.md` 中的 `A4-Gate` 从 `DOING` 改为 `PASS`。
+- `A4-Gate` 已正式 `PASS`；当前没有活动代码 TODO，也没有 A4 遗留学习切片。
+- V4 `RETRY`、每道订正、所有子切片的当时状态与历史指纹继续保留，不能被最终 PASS 覆盖或改写。
+- 该结论是课程 Gate 证据，不自动升级为岗位证据；岗位证据仍需独立作品里程碑与交叉复核。
+- 下一课程起点由项目 tracker 决定，当前为 G8-00；它不属于 A4-Gate 的补做范围。
+- 维护时若修改 source、eval、Contract、模型或阈值，必须视为新版本，重新冻结口径并生成新的不可覆盖运行证据。
 
 ## 相关链接
 
 - [[../../../02-Concepts/Agent/反思机制(Reflection)|反思机制]]
 - [[../../../02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管]]
+- [[../../../02-Concepts/Agent/动作绑定人工确认(Action-Bound Confirmation)|动作绑定人工确认]]
+- [[../../../02-Concepts/Agent/冻结评估与不可补偿硬门(Frozen Evaluation)|冻结评估与不可补偿硬门]]
 - [[../../../02-Concepts/LLM/结构化输出(Structured Output)|结构化输出]]
 - [[../../../02-Concepts/LLM/函数调用(Function Calling)|函数调用 / Tool Calling]]
+- [[a4-gate-function-call-reference|A4-Gate 函数调用参考]]
+- [[../../../07-Reviews/AI-Agent-Learning/2026-08-24-a4-gate-pass-review|A4-Gate 正式 PASS 复盘]]
 - [[../../../03-Courses/Agent/AI-Agent-Learning/stage4-agent-basics|阶段 4：Agent 基础原理]]
 - [[../../../raw/conversations/2026-08-13-ai-agent-learning-a4-gate-c4a-1-session-handoff|C4a-1 会话接力摘要]]

@@ -3,7 +3,7 @@ type: concept
 topic: Reflection
 status: usable
 created: 2026-07-23
-updated: 2026-08-22
+updated: 2026-08-24
 source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-23.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-30.md
@@ -13,6 +13,7 @@ source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-20.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-21.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-22.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-24.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\problem-contract.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_05_reflection_writer.py
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage4\a4_gate_research_summary_agent.py
@@ -114,19 +115,24 @@ candidate
           |
           `-> allowed_sources
 
-候选摘要 + 完整 content/results + allowed_sources
+候选摘要 + 完整 content/results + allowed_sources + approved_summary
   -> Reflection 软评审
   -> Refinement 结构化候选
   -> JSON 解析
-  -> 客户端硬校验 sources ⊆ allowed_sources
+  -> 客户端硬校验：
+     summary == approved_summary（逐码点）
+     sources == allowed_sources（内容与顺序）
 ```
 
 - Reflection prompt 应同时带上完整的 `content/results` 和 `allowed_sources`：前者用来判断摘要结论有没有正文证据，后者只限定允许引用哪些来源。
 - prompt 中要求“只能从白名单选来源”仍是软约束；模型可能虚构、混入或返回空来源，解析后必须由客户端重新校验。
-- 客户端应拒绝空来源、非字符串来源、全越界来源，以及“一个合法来源 + 一个虚构来源”的混合结果，不能删除坏项后把剩余部分静默当成成功。
+- 客户端应拒绝空来源、非字符串来源、全越界来源，以及“一个合法来源 + 一个虚构来源”的混合结果，不能删除坏项后把剩余部分静默当成成功。A4-Gate V5 进一步冻结为：最终来源列表必须与客户端权威列表精确相等，不再只是子集关系。
 - `source in allowed_sources` 只证明这个来源身份来自本轮 Observation；它**不证明**摘要里的每个事实都由该来源正文支持。内容支持仍要由 Reflection、可执行 evaluator 或人工审核另行判断。
 
 这条边界也解释了为什么“模型说来源真实”不能替代代码检查：模型既是候选内容的生成者，又是软评审参与者；最终可接受集合必须由客户端根据外部执行事实确定。
+
+> [!important] 最终 V5 边界
+> Reflection 只输出评审反馈，是软护栏；它没有权修改 `approved_summary` 或 `allowed_sources`，也不能批准成功。Refinement 只产出仍不可信的候选，最终必须由本地 `validate_success_result()` 精确比较后放行。这个 exact gate 证明与客户端批准证据一致，不证明证据本身真实或安全。
 
 ## Reflection 反馈失败时，恢复的是评审，不是最终答案
 
@@ -254,6 +260,9 @@ Action
 - [[智能体(Agent)|智能体]]
 - [[工具调用与动作(Tool Calling and Action)|工具调用与动作]]
 - [[受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管]]
+- [[动作绑定人工确认(Action-Bound Confirmation)|动作绑定人工确认]]
+- [[冻结评估与不可补偿硬门(Frozen Evaluation)|冻结评估与不可补偿硬门]]
+- [[../../04-Projects/Agent/AI-Agent-Learning/a4-gate-function-call-reference|A4-Gate 函数调用参考]]
 
 ## 来源与证据
 
@@ -267,3 +276,4 @@ Action
 - `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-21.md`、`code\stage4\problem-contract.md`、`code\stage4\a4_gate_research_summary_agent.py`：A4-Gate C4b-2b-2b 的 Reflection Provider/API 一次恢复、Provider / protocol 独立计数、完整链预算与零第三次请求；真实 DeepSeek 只证明正常链没有回归。该证据只关闭本教学 / 实现子单元，父 Gate 仍为 `DOING`。
 - [C4b-2b-2b Reflection Provider/API 恢复提交 `427d60c`](https://github.com/humbleded/AI-Agent-Learning/commit/427d60c)
 - `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-22.md`、`code\stage4\problem-contract.md`、`code\stage4\a4_gate_research_summary_agent.py`：A4-Gate C4b-2c 的 Refinement Provider / 响应 / JSON / candidate-contract 共享一次 recovery、新候选重校验、普通程序错误上抛与安全人工接管。该证据只关闭 C4b-2c 子单元，父 Gate 仍为 `DOING`。
+- `C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-24.md`、`code\stage4\eval_cases.json`：V5 唯一 RUN-5 将最终合同收紧为 exact approved summary / allowed sources，并以 14/14、semantic 20/20 完成整关正式复核；父 `A4-Gate` 最终为 `PASS`。上方较早条目的 `DOING` 是各日期当时的历史状态。
