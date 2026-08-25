@@ -3,6 +3,7 @@ type: map
 topic: AI Agent 学习资源
 status: active
 created: 2026-05-28
+updated: 2026-08-25
 tags:
   - AI-Agent
   - Python
@@ -34,14 +35,17 @@ tags:
 | Agentic Design Patterns | 中文翻译项目 | [[../03-Courses/Agent/AI-Agent-Learning/Agentic Design Patterns 中文模式索引]] | D7 |
 | Hugging Face agents-course | 英文为主，本地含 zh-CN | [[../03-Courses/Agent/AI-Agent-Learning/Hugging Face agents-course 中文学习索引]] | L1-G8-R6-E10 |
 
-## 推荐学习顺序
+## 当前使用顺序
 
-1. P0：用廖雪峰 Python + CS50P 补 Python 基础。
-2. A4：用 Agent-Learning-Hub 建立 Agent 总体路线。
-3. A4/H5：读 Datawhale hello-agents 的 Agent 概念、ReAct、框架实践。
-4. H5：阅读 HelloAgents feature-branch-1，理解轻量级 Agent 框架代码。
-5. D7：读 Agentic Design Patterns，把设计模式整理成概念卡。
-6. G8/R6/E10：用 Hugging Face agents-course 学 smolagents、LangGraph、LlamaIndex、Agentic RAG 和评估。
+P0～A4 已完成，不再按旧的资源目录顺序重新学习。A4 后的真实顺序以执行区 `tracker/daily-plan.md` 和 `tracker/learning-resources.md` 为准：先核验当前任务的官方资料，再把本页已有教程当补充阅读。
+
+1. G8-00：先学显式 Graph 的 typed state、node/edge、路由、停止和 stream；只迁移已通过的 Agent 控制循环。
+2. R6/BE5/B0：围绕工程文档 RAG 旗舰，按需要使用 LangChain、数据库、FastAPI 和工程资料。
+3. G8 durable 切片：回到 LangGraph 旗舰补持久化、恢复、HITL 和幂等。
+4. D7/M9/E10：在已有两个旗舰上补编排取舍、长期 Memory、MCP 与共享评估框架。
+5. H5 不是固定步骤；只有真实框架问题需要时，才阅读 HelloAgents 的一条相关调用链。
+
+资源索引只回答“去哪里读”，不能代替任务 PASS、真实代码或可执行验证。
 
 ## 入库规则
 
@@ -51,4 +55,3 @@ tags:
 - 项目记录：放入 `04-Projects`
 - 阶段复盘：放入 `07-Reviews`
 - 提示词和流程：放入 `06-Prompts`
-

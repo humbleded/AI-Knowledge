@@ -1112,3 +1112,16 @@ tags:
 - 由固定版本 `@mermaid-js/mermaid-cli@11.16.0` 生成 9 张无损 SVG，主项目页改为优先嵌入 SVG 与 Canvas；旧 Mermaid 快照折叠保留。补画 `GUARD → M1_CORR` 与 `GUARD → DANGER` 两条原合同已有但旧图漏画的调用前 step 约束，没有改变 Agent 运行语义。
 - 实际在 Obsidian `1.13.7` 中打开 Canvas，21 个节点、5 个分组、9 条连线与 14 个文件节点均正常加载；`Shift+1` 全图适配与主项目页 SVG 渲染通过。Canvas 和 9 张 SVG 的结构化校验全部通过，SVG 总计 `630688 bytes`。
 - 窄化更新 `tools/check_vault.py`：明确带 `.canvas` / `.svg` 等受支持附件扩展名的 wikilink 必须解析到真实文件，不再被旧的强制 `.md` 后缀逻辑误判；存在/缺失附件的定向解析断言 `5/5 PASS`。最终严格检查为 `OK: True`：223 个 Markdown、2089 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。
+
+## 2026-08-25
+
+### AI-Agent-Learning A4 后路线审计同步
+
+- 来源为执行区的 `daily-plan.md`、`weekly-plan.md`、`progress.md`、`job-readiness.md`、`algorithm-progress.md` 及配套路线规则；对应路线审计提交为 [`0db733f`](https://github.com/humbleded/AI-Agent-Learning/commit/0db733f8bef176e4ea93a4f94b04fad253f22a82)。本次只同步路线审计，没有启动 G8-00，没有新增课程 PASS，也没有升级作品或岗位证据。
+- 新增 [[07-Reviews/AI-Agent-Learning/2026-08-25-route-audit-review|2026-08-25 路线审计复盘]]：明确 G8-00 是仍为 `TODO` 的阶段 4.5 迁移切片，并保存 A4 后完整依赖链、H5 可选触发点与 J11-01 持续挂载规则。
+- 更新 [[03-Courses/Agent/AI-Agent-Learning/README|AI-Agent-Learning 课程索引]]、[[01-Maps/AI 开发学习路线|AI 开发学习路线]]、[[01-Maps/AI-Agent-Learning 跳转索引|跳转索引]]与 [[01-Maps/AI Agent 学习资源地图|学习资源地图]]：两个旗舰分别固定为 LangChain 工程文档 RAG 助手和 LangGraph 故障诊断/变更评审 Agent；E10 复用一套共享评估框架和两个领域适配层，不另建第三项目。
+- 更新 [[08-Memory/AI 学习原则|AI 学习原则]]：记录用户会一些 Vue、进入真实任务时可由助手先审计并组合 GitHub 开源 Vue 骨架，以及用户仍需审核关键改动和独立解释/修改的边界；J11-02 只冻结一个 `product_flagship`，避免重复建设两套正式前端与公网产品。
+- 更新 [[01-Maps/AI-Agent-Learning 关联方案|关联方案]]：默认 RETRY 不沉淀为稳定知识，但用户明确要求同步时可以保存路线审计、失败复盘和未关闭债务，前提是如实标记状态。本次据此保留 W5 `DEBT 4` 与 W6 `RETRY / INCOMPLETE`，没有包装成 PASS。
+- no-op：`02-Concepts`、`04-Projects`、raw 与岗位证据页均无新稳定成果，不为本次路线审计创建概念卡或项目记录。
+- 同步更新 [[index|全局索引]]与本维护日志。
+- Obsidian CLI 在当前环境不可用，因此使用仓库文件和严格 vault checker 核验；`python tools\check_vault.py --root D:\AI-Knowledge --strict` 为 `OK: True`：224 个 Markdown、2106 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。

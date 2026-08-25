@@ -3,6 +3,7 @@ type: map
 topic: AI-Agent-Learning 关联方案
 status: active
 created: 2026-05-28
+updated: 2026-08-25
 tags:
   - AI-Agent-Learning
   - 知识库
@@ -14,7 +15,7 @@ tags:
 
 建议关联，但不要把两个目录合并。
 
-`C:\Users\26823\Desktop\AI-Agent-Learning` 是学习执行区，负责每天做任务、写代码、回答 gate 问题、接受 PASS/RETRY 评估。
+`C:\Users\26823\Desktop\AI-Agent-Learning` 是学习执行区，负责按知识单元和 Session 做任务、写代码、回答 Gate 问题、保存原始证据并接受 PASS/RETRY 评估。
 
 `D:\AI-Knowledge` 是长期知识库，负责沉淀概念、路线、复盘、提示词和长期记忆。
 
@@ -66,17 +67,17 @@ tags:
 - 可复用提示词 -> `06-Prompts`
 - 长期规则 -> `08-Memory`
 
-### 4. RETRY 不急着沉淀
+### 4. RETRY 默认不沉淀为稳定知识
 
-如果任务还没通过，只把问题和缺口留在 `AI-Agent-Learning` 的 daily log 或 tracker 里。
+如果任务还没通过，默认只把问题和缺口留在 `AI-Agent-Learning` 的 daily 或 tracker 里。
 
-通过后再进入长期知识库，避免知识库堆积半成品。
+通过后再进入长期知识库，避免知识库堆积半成品。例外是用户明确要求“同步/更新知识库”：这时可以保存路线审计、失败复盘或未关闭债务，但必须明确写出 `TODO`、`RETRY` 或 `INCOMPLETE`，不能包装成课程 PASS、概念定稿或岗位证据。
 
 ## 推荐同步节奏
 
 ```text
-每日学习 -> AI-Agent-Learning
-每日验证 -> tracker / daily
+实际学习 Session -> AI-Agent-Learning
+Session 验证 -> tracker / daily
 阶段 PASS -> D:\AI-Knowledge
 每周复盘 -> D:\AI-Knowledge\07-Reviews
 长期偏好 -> D:\AI-Knowledge\08-Memory

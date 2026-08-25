@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-08-24
+updated: 2026-08-25
 tags:
   - 知识库
   - index
@@ -182,6 +182,7 @@ tags:
 - [[07-Reviews/AI-Agent-Learning/2026-08-07-w4-alg-f1-two-sum-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-08-08-w4-alg-f4-contains-nearby-duplicate-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-08-24-a4-gate-pass-review|A4-Gate 正式 PASS 复盘]]
+- [[07-Reviews/AI-Agent-Learning/2026-08-25-route-audit-review|AI-Agent-Learning 路线审计复盘（未新增课程 PASS）]]
 - [[07-Reviews/Daily-Practice/2026-06-04-review]]
 - [[07-Reviews/Daily-Practice/2026-06-05-review]]
 - [[07-Reviews/Knowledge-Base/README|Knowledge-Base 维护复盘索引]]
@@ -220,5 +221,6 @@ tags:
 - 为 [[04-Projects/LLM/README|LLM 项目记录]] 增加 micrograd 复现实验。
 - 扩展 [[04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]] 的代码注释、可视化或测试。
 - 为 Karpathy 课程补充 raw transcript 或 repo 摘录。
-- A4-Gate 已于 2026-08-24 正式 `PASS`：完整 Agent 主链、受控恢复、action-bound HITL、exact validator 和冻结 V5 评估均有决定性证据，唯一 RUN-5 为 14/14、semantic 20/20。课程下一起点为 G8-00，A4 历史 V4 `RETRY` 继续保留。
+- A4-Gate 已于 2026-08-24 正式 `PASS`：完整 Agent 主链、受控恢复、action-bound HITL、exact validator 和冻结 V5 评估均有决定性证据，唯一 RUN-5 为 14/14、semantic 20/20；A4 历史 V4 `RETRY` 继续保留。
+- 2026-08-25 已完成 A4 后整条依赖路线审计：G8-00 是仍未启动的阶段 4.5 迁移切片；W5 算法结转 `DEBT 4`，W6 岗位审计保持 `RETRY / INCOMPLETE`。详见 [[07-Reviews/AI-Agent-Learning/2026-08-25-route-audit-review|路线审计复盘]]。
 - 继续新增 `cross entropy`、`softmax`、`logits`、`train/validation split`、`overfitting`、`layer normalization`、`residual connection` 等 LLM 基础概念卡。

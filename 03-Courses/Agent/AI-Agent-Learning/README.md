@@ -3,7 +3,7 @@ type: course-index
 topic: AI-Agent-Learning
 status: active
 created: 2026-05-28
-updated: 2026-08-24
+updated: 2026-08-25
 tags:
   - AI-Agent
   - Python
@@ -16,7 +16,7 @@ tags:
 
 ## 执行区与知识库分工
 
-- 执行区：写代码、跑程序、做每日打卡、接受 PASS/RETRY 判定。
+- 执行区：按知识单元和 Session 写代码、跑程序、保存原始证据并接受 PASS/RETRY 判定。
 - 知识库：保存已经通过的阶段总结、概念卡、代码练习复盘和长期可复用结论。
 
 ## 当前进度
@@ -28,7 +28,8 @@ tags:
 - [[stage3-tool-calling|阶段 3：Tool Calling / Function Calling]]
 - [[stage4-agent-basics|阶段 4：Agent 基础原理]]
 - 已通过：P0-Gate、L1-Gate、PR2-Gate、T3-01、T3-02、T3-03、T3-04、T3-Gate、A4-01、A4-02、A4-03、A4-04、A4-05、A4-Gate
-- 当前项：A4-Gate 已于 2026-08-24 正式 `PASS`；下一课程起点为 G8-00。W4 算法已完成 4/4、内容块 `PASS`，无结转债务。
+- 当前项：A4-Gate 已于 2026-08-24 正式 `PASS`；G8-00 仍为 `TODO`，只完成了路线审计，尚未开始带读或实现。
+- 并行债务：W4 算法块已 `PASS`，但 2026-08-25 审计确认 W5 缺少 `3 新 + 1 旧` 的合格证据，结转 `DEBT 4`；W6 岗位审计为 `RETRY / INCOMPLETE`，目前只有 `4 HARD_ELIGIBLE + 6 UNKNOWN`，不能计算正式匹配率。
 
 ## 当前执行策略
 
@@ -38,12 +39,41 @@ tags:
 - 阶段 0.5 工程基础不再整块前置，而是放到 API、Tool Calling、Memory、RAG、本地部署项目中随用随补。
 - `B0-Gate` 作为后续本地栈整合关卡，不阻塞第一次进入 L1/API。
 
+## A4 后依赖路线
+
+`G8-00` 虽然沿用阶段 8 的任务编号，但课程位置是阶段 4.5：它只把已经通过的 Agent 控制循环迁移到显式 Graph，不表示跳过阶段 5～7。后续按依赖推进，而不是按编号机械排序：
+
+```text
+G8-00
+→ R6-01 → BE5-01
+→ B0-01/03/04/Gate → BE5-04
+→ R6-02/S-02 → R6-03/S-06
+→ BE5-02/03 → G8-01/02/03
+→ BE5-05/BE5-Gate → R6-Gate
+→ D7-02/S-04 → G8-Gate
+→ D7-01/03/Gate → M9 → E10
+→ S-01（若待完成）
+→ J11-02 → J11-03 → J11-04 → J11-05
+→ S-05 正式收口 → J11-06
+→ FINAL-Gate → J11-07 → J11-08 → J11-Gate
+```
+
+- `H5-01` 只在真实框架调用链阻塞时触发，不阻塞主线；`J11-01` 随真实项目持续积累，最晚在 J11-06 前收口。
+- 两个旗舰分别是 LangChain 工程文档 RAG 助手和 LangGraph 故障诊断/变更评审 Agent。E10 复用一套评估框架、接两个领域适配层，不新建第三个项目。
+- J11-02 由用户冻结唯一 `product_flagship`。只有它继续建设正式 Vue、公网部署和产品级观测；另一旗舰保留可复现 API/demo、容器与完整评估。
+- 用户会一些 Vue，进入真实界面任务时先用最小切片复核。助手可以在核查许可证、维护状态、依赖与安全风险后组合 GitHub 开源 Vue 骨架；用户仍需审核关键改动，并在 J11-03 独立解释和修改组件状态、SSE、认证、错误处理及密钥边界。
+- W5 算法债务使用独立 Session 逐题清理；W6 岗位审计不阻塞 G8-00，但必须在 G8-00 正式 PASS 后、R6-01 启动前补足恰好 10 条硬门槛已核清的可投样本。
+
 ## 相关执行区文件
 
 - [学习执行区](file:///C:/Users/26823/Desktop/AI-Agent-Learning/)
 - [总 tracker](file:///C:/Users/26823/Desktop/AI-Agent-Learning/tracker/ai-agent-learning-tracker.md)
 - [进度表](file:///C:/Users/26823/Desktop/AI-Agent-Learning/tracker/progress.md)
-- [每日记录](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/)
+- [当前入口与主队列](file:///C:/Users/26823/Desktop/AI-Agent-Learning/tracker/daily-plan.md)
+- [依赖内容块](file:///C:/Users/26823/Desktop/AI-Agent-Learning/tracker/weekly-plan.md)
+- [岗位证据与审计](file:///C:/Users/26823/Desktop/AI-Agent-Learning/tracker/job-readiness.md)
+- [算法台账](file:///C:/Users/26823/Desktop/AI-Agent-Learning/tracker/algorithm-progress.md)
+- [Session 原始记录](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/)
 - [代码目录](file:///C:/Users/26823/Desktop/AI-Agent-Learning/code/)
 
 ## 已沉淀内容
@@ -92,3 +122,4 @@ tags:
 - [[../../../07-Reviews/AI-Agent-Learning/2026-07-30-a4-04-plan-and-solve-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-08-04-a4-05-reflection-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-08-24-a4-gate-pass-review|A4-Gate 正式 PASS 复盘]]
+- [[../../../07-Reviews/AI-Agent-Learning/2026-08-25-route-audit-review|2026-08-25 路线审计复盘]]

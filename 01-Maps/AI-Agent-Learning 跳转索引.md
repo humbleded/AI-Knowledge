@@ -3,7 +3,7 @@ type: map
 topic: AI-Agent-Learning 跳转索引
 status: active
 created: 2026-05-28
-updated: 2026-08-24
+updated: 2026-08-25
 tags:
   - AI-Agent-Learning
   - 索引
@@ -20,7 +20,13 @@ tags:
 
 - [学习总 tracker](file:///C:/Users/26823/Desktop/AI-Agent-Learning/tracker/ai-agent-learning-tracker.md)
 - [当前进度 progress](file:///C:/Users/26823/Desktop/AI-Agent-Learning/tracker/progress.md)
-- [每日记录模板](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/TEMPLATE.md)
+- [当前知识单元、Session 起点与主队列](file:///C:/Users/26823/Desktop/AI-Agent-Learning/tracker/daily-plan.md)
+- [依赖内容块与挂载任务](file:///C:/Users/26823/Desktop/AI-Agent-Learning/tracker/weekly-plan.md)
+- [岗位能力、作品证据与 JD 审计](file:///C:/Users/26823/Desktop/AI-Agent-Learning/tracker/job-readiness.md)
+- [算法配额与结转债务](file:///C:/Users/26823/Desktop/AI-Agent-Learning/tracker/algorithm-progress.md)
+- [弱点与间隔复习](file:///C:/Users/26823/Desktop/AI-Agent-Learning/tracker/weak-points.md)
+- [实际工作场景覆盖](file:///C:/Users/26823/Desktop/AI-Agent-Learning/tracker/work-scenario-coverage.md)
+- [Session 记录模板](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/TEMPLATE.md)
 - [打开 daily 文件夹](file:///C:/Users/26823/Desktop/AI-Agent-Learning/daily/)
 
 ## 学习产物
@@ -115,6 +121,7 @@ tags:
 - [[../07-Reviews/AI-Agent-Learning/2026-08-07-w4-alg-f1-two-sum-review|2026-08-07 W4-ALG-F1 两数之和 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-08-08-w4-alg-f4-contains-nearby-duplicate-review|2026-08-08 W4-ALG-F4 存在相近的重复元素 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-08-24-a4-gate-pass-review|2026-08-24 A4-Gate 正式 PASS 复盘]]
+- [[../07-Reviews/AI-Agent-Learning/2026-08-25-route-audit-review|2026-08-25 路线审计复盘（未新增课程 PASS）]]
 
 ## 外部资源中文索引
 
