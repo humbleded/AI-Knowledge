@@ -3,7 +3,7 @@ type: project-index
 topic: Agent
 status: active
 created: 2026-07-06
-updated: 2026-08-24
+updated: 2026-09-05
 tags:
   - Agent
   - Project
@@ -25,4 +25,5 @@ tags:
 - [[AI-Agent-Learning/a4-05-reflection-writer|A4-05 Reflection Writer]]
 - [[AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（正式 PASS）]]
 - [[AI-Agent-Learning/a4-gate-function-call-reference|A4-Gate 函数调用参考]]
+- [[AI-Agent-Learning/g8-00-incident-change-review-agent-v1|G8-00 故障诊断与变更评审 Agent v1（正式 PASS）]]
 - [[AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引|HelloAgents feature-branch-1 源码阅读索引]]

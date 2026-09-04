@@ -3,7 +3,7 @@ type: concept-index
 topic: Agent
 status: active
 created: 2026-07-06
-updated: 2026-08-24
+updated: 2026-09-05
 tags:
   - Agent
   - 概念卡
@@ -26,3 +26,4 @@ tags:
 - [[受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管：SDK / Agent 双层重试、Candidate / Reflection / Refinement 的 Provider 与协议 / JSON / candidate-contract recovery、共享预算和人工证据池]]
 - [[动作绑定人工确认(Action-Bound Confirmation)|动作绑定人工确认：冻结动作深绑定、一次性 nonce、先消费后副作用与重放防护]]
 - [[冻结评估与不可补偿硬门(Frozen Evaluation)|冻结评估与不可补偿硬门：版本指纹、唯一正式运行、holdout、exact / semantic 分层与不可补偿失败]]
+- [[LangGraph 状态图编排(StateGraph)|LangGraph 状态图编排：State / Node / Edge、条件路由、stream 与应用控制边界]]

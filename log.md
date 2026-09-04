@@ -1125,3 +1125,16 @@ tags:
 - no-op：`02-Concepts`、`04-Projects`、raw 与岗位证据页均无新稳定成果，不为本次路线审计创建概念卡或项目记录。
 - 同步更新 [[index|全局索引]]与本维护日志。
 - Obsidian CLI 在当前环境不可用，因此使用仓库文件和严格 vault checker 核验；`python tools\check_vault.py --root D:\AI-Knowledge --strict` 为 `OK: True`：224 个 Markdown、2106 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。
+
+## 2026-09-05
+
+### AI-Agent-Learning G8-00 LangGraph v1 正式 PASS 同步
+
+- 来源为执行区 `G8-00` 全部六份前序 daily、2026-09-05 正式检查、当前工作树代码和 tracker；正式判定为 `PASS`。正式核验时 stage8 目录尚未被 Git 跟踪；提交前仅清理过期验收说明与行尾空格并重新通过 `py_compile`、`pytest 12/12`、`pip check`，最终项目产物和学习台账已由 [`0fe4332`](https://github.com/humbleded/AI-Agent-Learning/commit/0fe4332) 推送到 `main`。
+- 新增 [[02-Concepts/Agent/LangGraph 状态图编排(StateGraph)|LangGraph 状态图编排]]：整理 State / Node / Edge、局部更新、reducer、条件路由、代码/LLM 控制边界、`invoke` / v2 `updates`、业务 `max_steps` / 运行 `recursion_limit`、分层测试和 checkpointer/thread/长期 Memory 边界；版本敏感事实以 2026-09-05 官方 Graph API、Streaming、Persistence 文档和本地 `langgraph==1.2.11` 为依据。
+- 新增 [[03-Courses/Agent/AI-Agent-Learning/stage4_5-langgraph-basics|阶段 4.5 课程页]]、[[04-Projects/Agent/AI-Agent-Learning/g8-00-incident-change-review-agent-v1|故障诊断与变更评审 Agent v1 项目页]]和[[07-Reviews/AI-Agent-Learning/2026-09-05-g8-00-langgraph-v1-review|正式 PASS 复盘]]；明确 maintained pytest 由用户委托助手编写，不能冒充用户独立 pytest 能力，也没有把无持久化 v1 包装成 durable workflow 或 `JOB_EVIDENCE`。
+- 合并更新 [[02-Concepts/Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议]]的“业务选择 / 批准表 / 执行 Node”三层职责，以及[[02-Concepts/Python/异常·调试·测试(Exceptions)|Python 异常、调试与单元测试]]中的“测试预期服从输入和产品规则”与 Graph 调用次数检查；没有新建同义的工具白名单、Graph 测试、最大步数或 Memory 小卡。
+- 更新 Agent 概念索引、课程索引与阶段 4 接力、Agent 项目索引、AI 开发路线、学习资源地图、AI-Agent-Learning 跳转索引、总地图和全局索引。
+- 保留未完成边界：W5 仍为 `DEBT 4`；`WP-27 / WP-29` 触发 `RECOVERY_BLOCK_PENDING`；W6 岗位审计仍为 `RETRY / INCOMPLETE`；R6-01 尚未启动。课程 PASS 没有修改岗位证据。
+- no-op：[[02-Concepts/Agent/智能体(Agent)|智能体]]、[[02-Concepts/Agent/ReAct推理与行动循环(ReAct)|ReAct]]、[[02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管]]、[[02-Concepts/LLM/多轮对话与无状态记忆(Stateless Memory)|多轮对话与无状态记忆]]、A4 项目/概念页、`raw/`、`08-Memory/` 与概念总索引已经准确，本次未为时间戳而改动。
+- 最终严格检查：`python tools\check_vault.py --root D:\AI-Knowledge --strict` 为 `OK: True`：228 个 Markdown、2159 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。

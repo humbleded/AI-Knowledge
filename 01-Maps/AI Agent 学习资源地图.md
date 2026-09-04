@@ -3,7 +3,7 @@ type: map
 topic: AI Agent 学习资源
 status: active
 created: 2026-05-28
-updated: 2026-08-25
+updated: 2026-09-05
 tags:
   - AI-Agent
   - Python
@@ -37,13 +37,14 @@ tags:
 
 ## 当前使用顺序
 
-P0～A4 已完成，不再按旧的资源目录顺序重新学习。A4 后的真实顺序以执行区 `tracker/daily-plan.md` 和 `tracker/learning-resources.md` 为准：先核验当前任务的官方资料，再把本页已有教程当补充阅读。
+P0～A4 与 G8-00 已完成，不再按旧的资源目录顺序重新学习。后续真实顺序以执行区 `tracker/daily-plan.md` 和 `tracker/learning-resources.md` 为准：先核验当前任务的官方资料，再把本页已有教程当补充阅读。
 
-1. G8-00：先学显式 Graph 的 typed state、node/edge、路由、停止和 stream；只迁移已通过的 Agent 控制循环。
-2. R6/BE5/B0：围绕工程文档 RAG 旗舰，按需要使用 LangChain、数据库、FastAPI 和工程资料。
-3. G8 durable 切片：回到 LangGraph 旗舰补持久化、恢复、HITL 和幂等。
-4. D7/M9/E10：在已有两个旗舰上补编排取舍、长期 Memory、MCP 与共享评估框架。
-5. H5 不是固定步骤；只有真实框架问题需要时，才阅读 HelloAgents 的一条相关调用链。
+1. G8-00：已 `PASS`；显式 Graph 的 typed State、Node/Edge、route/loop/stop 和 stream 见[[../03-Courses/Agent/AI-Agent-Learning/stage4_5-langgraph-basics|阶段 4.5 课程页]]。
+2. 当前插入：先完成独立算法恢复，再关闭 W6 岗位审计债务。
+3. R6/BE5/B0：围绕工程文档 RAG 旗舰，按需要使用 LangChain、数据库、FastAPI 和工程资料。
+4. G8 durable 切片：回到 LangGraph 旗舰补持久化、恢复、HITL 和幂等。
+5. D7/M9/E10：在已有两个旗舰上补编排取舍、长期 Memory、MCP 与共享评估框架。
+6. H5 不是固定步骤；只有真实框架问题需要时，才阅读 HelloAgents 的一条相关调用链。
 
 资源索引只回答“去哪里读”，不能代替任务 PASS、真实代码或可执行验证。
 

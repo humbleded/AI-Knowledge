@@ -3,7 +3,7 @@ type: map
 topic: AI-Agent-Learning 跳转索引
 status: active
 created: 2026-05-28
-updated: 2026-08-25
+updated: 2026-09-05
 tags:
   - AI-Agent-Learning
   - 索引
@@ -45,6 +45,7 @@ tags:
 - [[../03-Courses/LLM/AI-Agent-Learning/stage2-prompt-structured-output|阶段 2：Prompt 与结构化输出]]
 - [[../03-Courses/Agent/AI-Agent-Learning/stage3-tool-calling|阶段 3：Tool Calling / Function Calling]]
 - [[../03-Courses/Agent/AI-Agent-Learning/stage4-agent-basics|阶段 4：Agent 基础原理]]
+- [[../03-Courses/Agent/AI-Agent-Learning/stage4_5-langgraph-basics|阶段 4.5：LangGraph 基础工作流（G8-00 PASS）]]
 - [[../03-Courses/Agent/AI-Agent-Learning/stage0_5-engineering-basics|阶段 0.5：工程基础随用随补]]
 - [[../02-Concepts/Engineering/HTTP 请求全链路与错误处理|B0-02 一次 HTTP 请求的全链路与三类错误处理（概念卡）]]
 - [[../04-Projects/Python/AI-Agent-Learning/p0-01-hello-script|P0-01 环境与第一个程序]]
@@ -75,6 +76,7 @@ tags:
 - [[../04-Projects/Agent/AI-Agent-Learning/a4-05-reflection-writer|A4-05：Reflection Writer 与质量门槛]]
 - [[../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate：研究摘要 Agent（正式 PASS，完整学习流程）]]
 - [[../04-Projects/Agent/AI-Agent-Learning/a4-gate-function-call-reference|A4-Gate：79 个函数定义的职责与调用参考]]
+- [[../04-Projects/Agent/AI-Agent-Learning/g8-00-incident-change-review-agent-v1|G8-00：故障诊断与变更评审 Agent v1]]
 - [[../raw/conversations/2026-08-13-ai-agent-learning-a4-gate-c4a-1-session-handoff|2026-08-13 C4a-1 会话接力摘要]]
 - [[../02-Concepts/Agent/智能体(Agent)|智能体（概念卡）]]
 - [[../02-Concepts/Agent/ReAct推理与行动循环(ReAct)|ReAct 推理与行动循环（概念卡）]]
@@ -86,6 +88,7 @@ tags:
 - [[../02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|SDK / Agent 双层重试、Candidate / Reflection / Refinement Provider 与协议 / JSON / candidate-contract recovery、共享预算和人工证据池（概念卡）]]
 - [[../02-Concepts/Agent/动作绑定人工确认(Action-Bound Confirmation)|Action-bound HITL、一次性 nonce 与重放防护（概念卡）]]
 - [[../02-Concepts/Agent/冻结评估与不可补偿硬门(Frozen Evaluation)|冻结评估、版本指纹、holdout 与不可补偿硬门（概念卡）]]
+- [[../02-Concepts/Agent/LangGraph 状态图编排(StateGraph)|LangGraph StateGraph：State / Node / Edge、route/loop/stop 与 stream（概念卡）]]
 - [[../02-Concepts/LLM/API 参数与 SDK 客户端参数|API 参数 vs SDK 客户端参数（概念卡）]]
 - [[../02-Concepts/LLM/分类与路由(Classification & Routing)|分类与路由（概念卡）]]
 - [[../02-Concepts/LLM/上下文工程(Context Engineering)|上下文工程：策划进窗口的整组 token（概念卡）]]
@@ -122,6 +125,7 @@ tags:
 - [[../07-Reviews/AI-Agent-Learning/2026-08-08-w4-alg-f4-contains-nearby-duplicate-review|2026-08-08 W4-ALG-F4 存在相近的重复元素 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-08-24-a4-gate-pass-review|2026-08-24 A4-Gate 正式 PASS 复盘]]
 - [[../07-Reviews/AI-Agent-Learning/2026-08-25-route-audit-review|2026-08-25 路线审计复盘（未新增课程 PASS）]]
+- [[../07-Reviews/AI-Agent-Learning/2026-09-05-g8-00-langgraph-v1-review|2026-09-05 G8-00 LangGraph v1 正式 PASS 复盘]]
 
 ## 外部资源中文索引
 

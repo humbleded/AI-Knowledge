@@ -5,7 +5,11 @@ type: concept
 topic: Python exceptions debugging testing
 status: usable
 created: 2026-06-11
-updated: 2026-08-07
+updated: 2026-09-05
+source:
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-06.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-09-04.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-09-05.md
 tags:
   - Python
   - 异常处理
@@ -112,6 +116,24 @@ if __name__ == "__main__":
 2. 编译成功不能发现“断言在 `return` 后不可达”这类执行路径问题。
 3. 必须真实运行测试入口，并检查退出码和决定性输出；只有实际执行过的断言才能成为测试证据。
 
+## 测试预期不能追随错误实现
+
+测试预期应先从精确输入语义和产品规则推出，再用它检查实现。不能因为当前代码稳定返回某个结果，就把该结果直接抄成预期让测试变绿。
+
+例如，产品规则已经规定 alerts-only 要查询 latency summary。若旧工作流错误地反复查询 recent errors，最后得到 `max_steps_reached`，正确动作是修业务选择逻辑；把预期改成 `max_steps_reached` 会掩盖缺陷。
+
+对有状态工作流，只看最终 State 也可能漏掉已经发生的多余读取、费用或延迟。应联合检查：
+
+```text
+最终 State
++ Node 更新顺序
++ 工具 / 模型 spy.call_count
++ 真实 Provider 零调用门
++ fresh State 隔离
+```
+
+这样才能同时证明“结果正确”和“过程中没有越过外部调用边界”。
+
 ## P0-07 练习模式
 
 在 `P0-07` 中，稳定做法是：
@@ -129,3 +151,5 @@ if __name__ == "__main__":
 - [[../../04-Projects/Python/AI-Agent-Learning/p0-07-safe-divide|P0-07 异常、调试、单元测试]]
 - [[../../04-Projects/Python/AI-Agent-Learning/w4-03-valid-anagram|W4-03 有效的字母异位词项目记录]]
 - [[../../04-Projects/Python/AI-Agent-Learning/w4-01-two-sum|W4-01 两数之和项目记录]]
+- [[../Agent/LangGraph 状态图编排(StateGraph)|LangGraph 状态图的分层测试]]
+- [[../../07-Reviews/AI-Agent-Learning/2026-09-05-g8-00-langgraph-v1-review|G8-00 正式 PASS 复盘]]

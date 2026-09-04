@@ -3,7 +3,7 @@ type: project-index
 topic: AI-Agent-Learning Agent Projects
 status: active
 created: 2026-07-06
-updated: 2026-08-24
+updated: 2026-09-05
 tags:
   - Agent
   - AI-Agent-Learning
@@ -29,6 +29,10 @@ tags:
 - [[a4-gate-flow.canvas|A4-Gate 可缩放全景 Canvas（完整图 + 六张分阶段细节图）]]
 - [[a4-gate-diagrams|A4-Gate Mermaid 图源与 SVG 维护说明]]
 - [[a4-gate-function-call-reference|A4-Gate 函数调用参考（62 个顶层函数、6 个内部 helper、11 个构造器）]]
+
+## 阶段 4.5：LangGraph 基础工作流
+
+- [[g8-00-incident-change-review-agent-v1|G8-00 故障诊断与变更评审 Agent v1（正式 PASS）]]
 
 ## 源码阅读
 

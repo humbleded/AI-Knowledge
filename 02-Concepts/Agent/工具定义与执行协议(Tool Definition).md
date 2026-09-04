@@ -3,7 +3,7 @@ type: concept
 topic: Agent Tool Definition
 status: active
 created: 2026-07-06
-updated: 2026-07-21
+updated: 2026-09-05
 source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-06.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage3\t3_02_calculator_tool.py
@@ -11,6 +11,7 @@ source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage3\t3_gate_tool_assistant.py
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-11.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-21.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-09-04.md
 tags:
   - Agent
   - Tool-Calling
@@ -118,6 +119,25 @@ result = TOOLS[tool_name](**arguments)
 
 未知工具、坏 JSON、缺字段和多余字段都应在真实函数执行前返回稳定错误。同一 assistant 消息里的多个调用要彼此独立处理，不能因为一个失败就混淆其他调用的结果。
 
+## 业务选择、批准表与执行 Node 是三层
+
+进入 LangGraph 等显式工作流后，还要区分三层职责：
+
+```text
+业务决策 Node
+→ 根据当前 State 决定这一次需要哪个工具
+
+批准表 / 白名单
+→ 判断工具名是否获准，并映射到真实函数
+
+执行 Node
+→ 真正调用、校验结果、归一化失败并写回 State
+```
+
+工具出现在批准表里，只说明它“允许被执行”，不说明当前业务规则一定会选择它，也不说明它已经执行。G8-00 曾出现 latency 工具已经获批，但业务选择逻辑永远只请求 recent errors，导致 latency 路线不可达。
+
+有限且已冻结的工具选择规则应直接由代码判断；开放语义场景可以让 LLM 提议工具，但客户端仍须控制批准、参数、预算、真实执行、错误和停止。
+
 ## 稳定错误返回
 
 工具失败时，不应该把一大串异常直接甩给用户或让程序中断。学习阶段的稳定返回结构是：
@@ -153,3 +173,4 @@ else:
 - [[../../07-Reviews/AI-Agent-Learning/2026-07-06-t3-02-calculator-tool-review|2026-07-06 T3-02 PASS 复盘]]
 - [[../../04-Projects/Agent/AI-Agent-Learning/t3-gate-tool-assistant|T3-Gate 三工具助手]]
 - [[../../07-Reviews/AI-Agent-Learning/2026-07-12-t3-gate-tool-calling-review|2026-07-12 T3-Gate PASS 复盘]]
+- [[LangGraph 状态图编排(StateGraph)|LangGraph 状态图中的工具职责分层]]

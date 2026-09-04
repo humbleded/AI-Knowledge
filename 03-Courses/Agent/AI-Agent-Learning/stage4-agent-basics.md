@@ -3,7 +3,7 @@ type: course-stage
 topic: AI-Agent-Learning Stage 4
 status: active
 created: 2026-07-10
-updated: 2026-08-24
+updated: 2026-09-05
 tags:
   - Agent
   - AI-Agent-Learning
@@ -16,7 +16,7 @@ tags:
 
 阶段 4 目标是理解 ReAct、Planning、Reflection，并写出最小 Agent。
 
-阶段 3 的 T3-Gate 已通过。阶段 4 的 A4-01～A4-05 与 A4-Gate 均已 `PASS`；A4-Gate 于 2026-08-24 完成 HITL、V5 14 条固定评估、五道 Gate 问题、合同定稿和正式复核。项目下一起点为 G8-00，它不是 A4 的遗留补做。
+阶段 3 的 T3-Gate 已通过。阶段 4 的 A4-01～A4-05 与 A4-Gate 均已 `PASS`；A4-Gate 于 2026-08-24 完成 HITL、V5 14 条固定评估、五道 Gate 问题、输入输出和失败规则定稿及正式复核。后续的阶段 4.5 `G8-00` 也已于 2026-09-05 `PASS`，它是把 A4 控制循环迁移到显式 StateGraph，不是 A4 遗留补做。
 
 ## 任务状态
 
@@ -28,6 +28,13 @@ tags:
 | A4-04 Plan-and-Solve | PASS | 2026-07-30 | `code/stage4/a4_04_plan_solve_demo.py` | 可运行计划→执行→事实复盘闭环；39/39 解析、history、复盘与编排边界断言通过 |
 | A4-05 Reflection | PASS | 2026-08-04 | `code/stage4/a4_05_reflection_writer.py` | 初稿/反思/改进/同标准选择闭环；39/39 确定性断言、真实提前停止与真实故障修正路径通过 |
 | A4-Gate 最小 Agent 闯关 | PASS | 2026-08-24 | `problem-contract.md`、`a4_gate_research_summary_agent.py`、`eval_cases.json` | 完整 Agent 链、分层恢复、exact validator、action-bound HITL 和冻结 V5 eval 全部闭合；唯一 RUN-5 14/14，semantic 20/20，正式课程 Gate 通过 |
+
+## 接续到阶段 4.5
+
+- [[stage4_5-langgraph-basics|G8-00 LangGraph 基础工作流（2026-09-05 PASS）]]
+- [[../../../02-Concepts/Agent/LangGraph 状态图编排(StateGraph)|LangGraph 状态图编排]]
+- [[../../../04-Projects/Agent/AI-Agent-Learning/g8-00-incident-change-review-agent-v1|故障诊断与变更评审 Agent v1]]
+- [[../../../07-Reviews/AI-Agent-Learning/2026-09-05-g8-00-langgraph-v1-review|G8-00 正式 PASS 复盘]]
 
 ## A4-01 已沉淀概念
 
