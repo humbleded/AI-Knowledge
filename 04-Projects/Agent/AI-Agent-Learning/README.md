@@ -3,7 +3,7 @@ type: project-index
 topic: AI-Agent-Learning Agent Projects
 status: active
 created: 2026-07-06
-updated: 2026-09-05
+updated: 2026-09-08
 tags:
   - Agent
   - AI-Agent-Learning
@@ -33,6 +33,10 @@ tags:
 ## 阶段 4.5：LangGraph 基础工作流
 
 - [[g8-00-incident-change-review-agent-v1|G8-00 故障诊断与变更评审 Agent v1（正式 PASS）]]
+
+## 统一产品与知识库问答
+
+- [[workbench-knowledge-agent|统一 Agent 工作台与知识库问答（三模式全部采用；助手工程实现，非课程 PASS）]]
 
 ## 源码阅读
 

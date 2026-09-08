@@ -3,7 +3,7 @@ type: map
 topic: AI 知识库总地图
 status: active
 created: 2026-05-28
-updated: 2026-09-05
+updated: 2026-09-08
 tags:
   - 知识库
   - 地图
@@ -97,6 +97,7 @@ tags:
 - [[../03-Courses/Agent/AI-Agent-Learning/Agentic Design Patterns 中文模式索引]]
 - [[../03-Courses/Agent/AI-Agent-Learning/Hugging Face agents-course 中文学习索引]]
 - 本地知识库
+- [[../04-Projects/Agent/AI-Agent-Learning/workbench-knowledge-agent|统一工作台与真实知识库 Agent（三种工作模式，助手工程实现）]]
 - 自动化工作流
 
 ## 每周复盘问题

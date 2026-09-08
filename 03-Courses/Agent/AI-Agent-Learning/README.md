@@ -17,7 +17,7 @@ tags:
 ## 执行区与知识库分工
 
 - 执行区：按知识单元和 Session 写代码、跑程序、保存原始证据并接受 PASS/RETRY 判定。
-- 知识库：保存已经通过的阶段总结、概念卡、代码练习复盘和长期可复用结论。
+- 知识库：保存已经通过的阶段总结、概念卡、代码练习复盘和长期可复用结论；课程索引保留进行中的接力，助手工程实现单独标明，二者不自动成为新的掌握证据。
 
 ## 当前进度
 
@@ -29,7 +29,9 @@ tags:
 - [[stage4-agent-basics|阶段 4：Agent 基础原理]]
 - [[stage4_5-langgraph-basics|阶段 4.5：LangGraph 基础工作流]]
 - 已通过：P0-Gate、L1-Gate、PR2-Gate、T3-01、T3-02、T3-03、T3-04、T3-Gate、A4-01、A4-02、A4-03、A4-04、A4-05、A4-Gate、G8-00
-- 当前项：`R6-01 = DOING`，于 2026-09-07 启动。助手已整理场景、设计草稿与教学样本，并补讲 RAG 全貌；下一步核对资料怎样随问题交给模型，再接回真实文件读取。尚无本任务用户独立通过证据，助手示范不计课程 PASS。
+- 当前项：`R6-01 = DOING`，于 2026-09-07 启动。2026-09-08 的 `R6-01-G2` 已单题 PASS：用户指出已找到的资料没有进入模型上下文，并给出问题、正文及 source/section/version；当前有效即时证据为 1 个。原 G1 是委托助手规划，不计独立证据；G2 不再换题重考。
+- 下次课程起点：继续 G3，在 `code/stage6/engineering_docs_rag/ingest.py` 使用现成 LangChain `TextLoader`，由 `START → load_documents → END` 的最小 LangGraph 读取真实文件，核对返回的 documents、正文及 source/title/version。该文件仍为 TODO 骨架，等待用户实现；复用 G8-00 已通过的状态、节点和边，不重新考基础。
+- 当前产品：用户已授权助手实现统一 Vue + Python/FastAPI 工作台，并全部采用任务指挥台、知识研究工作室、可视流程画布三个工作模式；它们共享同一知识问答后端和当前页内查询。实现与真实运行证据见 [[04-Projects/Agent/AI-Agent-Learning/workbench-knowledge-agent|统一工作台与知识库 Agent（助手工程实现，非课程 PASS）]]。这些产物不代替 G3，也不提前通过 R6-02/R6-03、BE5 或 J11。
 - 恢复进展：2026-09-05 S2 的 `W5-ALG-R1` 已正式 PASS，`WP-27 / WP-29` 完成复测，恢复状态为 `NORMAL`；W5 剩余 `DEBT 3`（三道新题），独立推进。
 - 并行欠项：W6 岗位审计仍为 `RETRY / INCOMPLETE`，尚未凑齐恰好 10 条硬门槛已核清的可投样本，不能计算正式匹配率；该资料缺口不阻塞技术前置已满足的课程。
 
@@ -48,28 +50,23 @@ tags:
 
 `G8-00` 虽然沿用阶段 8 的任务编号，但课程位置是阶段 4.5：它只把已经通过的 Agent 控制循环迁移到显式 Graph，不表示跳过阶段 5～7。后续按依赖推进，而不是按编号机械排序：
 
-完整任务顺序只在执行区 [weekly-plan.md](https://github.com/humbleded/AI-Agent-Learning/blob/main/tracker/weekly-plan.md) 维护，本页保留阅读方向与本轮调整，避免复制另一套容易过期的课表：
+完整任务顺序、扩展挂载和收口条件只在执行区 [weekly-plan.md](https://github.com/humbleded/AI-Agent-Learning/blob/main/tracker/weekly-plan.md) 维护；下一次具体操作只读 [daily-plan.md](https://github.com/humbleded/AI-Agent-Learning/blob/main/tracker/daily-plan.md)。本页不复制第二套未来队列。
 
-- 先讲清 RAG 的用途及“准备资料、查询后生成回答”两个阶段，再学习真实文件读入、来源与切分。
-- 在同一项目补基础结构与测试后，先做本地真实检索和带出处的最小问答；随后补 SQL、Docker、数据库存储及完整检索、问答标准。提前完成的小成果不等于整项任务 PASS。
-- 继续在两个既有项目上增加接口、并发、工作流保存与恢复、认证和部署。
-- 先完成顺序、分支、并行的适用条件与取舍，再做受控多 Agent 对照；长期记忆另验收跨会话的更新、删除和隔离。
-- 系统评估后选一个产品主项目，完成 Vue、上线、观测、安全与作品集，再做综合答辩和求职收口。
-
-- `H5-01` 只在真实框架调用链阻塞时触发，不阻塞主线；`J11-01` 随真实项目持续积累，最晚在 J11-06 前收口。
-- 两个旗舰分别是 LangChain 工程文档 RAG 助手和 LangGraph 故障诊断/变更评审 Agent。E10 复用一套评估框架、接两个领域适配层，不新建第三个项目。
-- J11-02 由用户冻结唯一 `product_flagship`。只有它继续建设正式 Vue、公网部署和产品级观测；另一旗舰保留可复现 API/demo、容器与完整评估。
-- 用户会一些 Vue，进入真实界面任务时先用最小切片复核。助手可以在核查许可证、维护状态、依赖与安全风险后组合 GitHub 开源 Vue 骨架；用户仍需审核关键改动，并在 J11-03 独立解释和修改组件状态、SSE、认证、错误处理及密钥边界。
-- W5 剩余三道算法新题按独立 Session 逐题清理，不因跨日或超过七天追加题量；已完成的旧题席位不重复计数。
-- 岗位审计按指定内容块独立补齐；BE5-Gate 后可用真实项目证据提前校准求职材料，不能据此提前判简历任务 PASS。
-- 第二模型适配在出现相关接口边界时核查条件；缺少外部条件不阻塞产品建设，但 `FINAL-Gate` 前仍需真实对照证据。
+- 后续 Agent/RAG 项目统一采用 **LangChain 现成组件 + LangGraph 显式流程**：组件负责文档、模型、检索与工具，图负责连接步骤和控制执行。工程文档 RAG 助手与故障诊断/变更评审 Agent 保留各自业务目录、测试和验收证据；框架统一不让两项验收互相替代。
+- 后端统一 Python/FastAPI。两个业务核心可脱离 HTTP 单独运行和测试，通过共享 API 接入同一个 Vue 入口；本轮助手已按授权搭建，后续课程沿真实产物补独立操作与工程能力，不再等到 J11 才第一次看见界面。
+- 唯一产品已确定为 `product_flagship=agent_workbench`，包含两个持续演化的业务项目。J11-02 再冻结发布范围、默认展示业务 `default_showcase` 与质量要求；“唯一前端”表示共用一套 Vue 应用与公网发布链，不表示只能保留一个业务模块。
+- 三个已采用的工作模式是同一产品的不同操作入口，配色设置是附加功能。J11-03 仍需用户独立解释和修改组件状态、流式事件展示、认证、错误处理及密钥边界；助手实现与运行检查不能代替这些学习证据。
+- 工作、情景、语义、感知四类 Memory，以及真实图片/音频存储与检索，已纳入 D7-03 规划，**尚未启动、尚未实现**。当前页内问答状态和工作流 checkpoint 都不能冒充跨会话长期记忆。
+- `H5-01` 只在真实框架调用链阻塞时触发；`J11-01` 随真实项目持续积累。算法债务与岗位审计继续分别按各自台账推进，不因增加界面或知识库功能而清零或升级证据。
 
 ## 本轮同步依据
 
+- [2026-09-08 学习与助手工程交付记录](https://github.com/humbleded/AI-Agent-Learning/blob/main/daily/2026-09-08.md)
+- [课程进度事实源](https://github.com/humbleded/AI-Agent-Learning/blob/main/tracker/progress.md)、[当前 Session 接力](https://github.com/humbleded/AI-Agent-Learning/blob/main/tracker/daily-plan.md)
 - [2026-09-07 学习与维护记录](https://github.com/humbleded/AI-Agent-Learning/blob/main/daily/2026-09-07.md)
 - [学习方法评审](https://github.com/humbleded/AI-Agent-Learning/blob/main/resources/learning-method-review-2026-09-07.md)
 - [2026-09-05 算法复测原始证据](https://github.com/humbleded/AI-Agent-Learning/blob/main/daily/2026-09-05.md)
-- 本次同步进展、路线与稳定笔记订正，没有新增 RAG 掌握结论或岗位证据。
+- 本次承认已记录的 G2 单题 PASS，并同步 G3 接力、统一产品路线及助手实现归属；`R6-01` 仍为 DOING，没有新增整项课程 PASS 或岗位证据。
 
 ## 相关执行区文件
 
@@ -113,6 +110,7 @@ tags:
 - [[../../../04-Projects/Agent/AI-Agent-Learning/a4-gate-research-summary-agent|A4-Gate 研究摘要 Agent（正式 PASS）]]
 - [[../../../04-Projects/Agent/AI-Agent-Learning/a4-gate-function-call-reference|A4-Gate 函数调用参考]]
 - [[../../../04-Projects/Agent/AI-Agent-Learning/g8-00-incident-change-review-agent-v1|G8-00 故障诊断与变更评审 Agent v1]]
+- [[04-Projects/Agent/AI-Agent-Learning/workbench-knowledge-agent|统一工作台与知识库 Agent（助手工程实现，非课程 PASS）]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-05-27-stage0-p0-01-p0-02-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-05-28-stage0-p0-03-pass-review]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-06-02-stage0-p0-04-pass-review]]

@@ -145,6 +145,7 @@ tags:
 - [[04-Projects/LLM/AI-Agent-Learning/pr2-03-classifier-routing]]
 - [[04-Projects/LLM/AI-Agent-Learning/pr2-gate-email-processor]]
 - [[04-Projects/Agent/AI-Agent-Learning/README]]
+- [[04-Projects/Agent/AI-Agent-Learning/workbench-knowledge-agent|统一 Agent 工作台与知识库问答（三模式全部采用，助手工程记录）]]
 - [[04-Projects/Agent/AI-Agent-Learning/t3-02-calculator-tool]]
 - [[04-Projects/Agent/AI-Agent-Learning/t3-03-file-reader-tool]]
 - [[04-Projects/Agent/AI-Agent-Learning/t3-04-public-api-tool]]
@@ -158,6 +159,8 @@ tags:
 - [[04-Projects/Agent/AI-Agent-Learning/HelloAgents feature-branch-1 源码阅读索引]]
 
 ## 复盘与记忆
+
+- [[07-Reviews/Knowledge-Base/2026-09-08-workbench-sync-check|工作台同步后的知识库检查]]
 
 - [[07-Reviews/AI-Agent-Learning/2026-05-27-stage0-p0-01-p0-02-pass-review]]
 - [[07-Reviews/AI-Agent-Learning/2026-05-28-stage0-p0-03-pass-review]]
@@ -226,5 +229,5 @@ tags:
 - 扩展 [[04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]] 的代码注释、可视化或测试。
 - 为 Karpathy 课程补充 raw transcript 或 repo 摘录。
 - A4-Gate 已于 2026-08-24 正式 `PASS`：完整 Agent 主链、受控恢复、action-bound HITL、exact validator 和冻结 V5 评估均有决定性证据，唯一 RUN-5 为 14/14、semantic 20/20；A4 历史 V4 `RETRY` 继续保留。
-- G8-00 已于 2026-09-05 正式 `PASS`，验收范围见 [[07-Reviews/AI-Agent-Learning/2026-09-05-g8-00-langgraph-v1-review|正式复盘]]。2026-09-08 同步：算法旧题恢复已完成，W5 余三道新题；W6 岗位审计仍未完成并行补齐；R6-01 已进入 `DOING`，尚无新增用户独立通过证据。最新接力与完整路线入口见 [[03-Courses/Agent/AI-Agent-Learning/README|课程索引]]。
+- G8-00 已于 2026-09-05 正式 `PASS`，验收范围见 [[07-Reviews/AI-Agent-Learning/2026-09-05-g8-00-langgraph-v1-review|正式复盘]]。2026-09-08 最新接力：R6-01 仍 `DOING`，G2 有 1 个独立即时通过证据，G3 现成 Loader 与最小图仍待用户完成；统一工作台与知识库问答由助手实现，不新增课程 PASS。算法旧题恢复已完成，W5 余三道新题，W6 岗位审计并行补齐。完整路线见 [[03-Courses/Agent/AI-Agent-Learning/README|课程索引]]。
 - 继续新增 `cross entropy`、`softmax`、`logits`、`train/validation split`、`overfitting`、`layer normalization`、`residual connection` 等 LLM 基础概念卡。

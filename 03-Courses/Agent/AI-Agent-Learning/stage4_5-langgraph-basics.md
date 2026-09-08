@@ -9,6 +9,9 @@ source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\tracker\ai-agent-learning-tracker.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-08-25.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-09-05.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-09-08.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\tracker\daily-plan.md
+  - C:\Users\26823\Desktop\AI-Agent-Learning\tracker\weekly-plan.md
 tags:
   - AI/Agent
   - AI-Agent-Learning
@@ -67,13 +70,22 @@ tags:
 
 2026-09-08 同步：`WP-27 / WP-29` 已在 2026-09-05 S2 复测通过，恢复状态为 `NORMAL`；W5 余下三道新题独立推进。W6 岗位审计仍未完成，继续并行补齐，不阻塞技术课程。
 
-`R6-01` 已于 2026-09-07 开始，保持 `DOING`：先核对 RAG 整体理解，再做真实文件读入与切分。到后续 `G8-01～03` 再回到本项目增加持久化、恢复和人工处理。最新入口见 [[README|课程索引]] 及执行区 [daily-plan.md](https://github.com/humbleded/AI-Agent-Learning/blob/main/tracker/daily-plan.md)。这里的接力更新不改变本页 G8-00 的历史验收结论。
+`R6-01` 已于 2026-09-07 开始，保持 `DOING`。2026-09-08 的 `R6-01-G2` 已单题 PASS：用户能指出已找到的资料没有交给模型，并补齐问题、正文及 source/section/version；当前有效独立即时证据为 1 个，原 G1 的委托规划不计证据。下一步直接续 G3，不重考资料进入模型上下文。
+
+G3 的 `code/stage6/engineering_docs_rag/ingest.py` 仍为 TODO 骨架，等待用户使用现成 LangChain `TextLoader` 和 `START → load_documents → END` 的最小 LangGraph 实现真实读取，核对 documents、正文及 source/title/version，并从图入口运行。这里迁移 G8-00 已 PASS 的状态、节点和边，不重新教学或重复计数。
+
+后续两个业务项目统一使用 LangChain 组件与 LangGraph 流程，后端统一 Python/FastAPI。用户已授权助手搭建 `agent_workbench` 的单一 Vue/API 入口，并全部采用任务指挥台、知识研究工作室、可视流程画布三个工作模式。它们共享一次查询，真实知识库回答与原文阅读属于 [[04-Projects/Agent/AI-Agent-Learning/workbench-knowledge-agent|助手工程实现记录，非课程 PASS]]，不代替 G3 或本页“明确未覆盖”的用户能力证据。
+
+`product_flagship=agent_workbench` 表示两个业务模块共用一套前端与发布链；J11 继续补发布范围和独立工程能力，不重新创建另一套正式前端，也不把唯一产品误解为只能选择一个业务模块。四类 Memory 及图片、音频存储与检索仍是 D7-03 的计划，尚未实现。
+
+具体 Session 起点见 [[README|课程索引]] 与执行区 [daily-plan.md](https://github.com/humbleded/AI-Agent-Learning/blob/main/tracker/daily-plan.md)；包括 G8 持久化、恢复和人工处理在内的完整未来顺序只读 [weekly-plan.md](https://github.com/humbleded/AI-Agent-Learning/blob/main/tracker/weekly-plan.md)。这里的接力更新不改变 G8-00 于 2026-09-05 的历史 PASS，也不补写当时尚未覆盖的能力。
 
 ## 相关链接
 
 - [[stage4-agent-basics|阶段 4：Agent 基础原理]]
 - [[../../../02-Concepts/Agent/LangGraph 状态图编排(StateGraph)|LangGraph 状态图编排]]
 - [[../../../04-Projects/Agent/AI-Agent-Learning/g8-00-incident-change-review-agent-v1|G8-00 项目记录]]
+- [[04-Projects/Agent/AI-Agent-Learning/workbench-knowledge-agent|统一工作台与知识库 Agent（助手工程实现，非课程 PASS）]]
 - [[../../../07-Reviews/AI-Agent-Learning/2026-09-05-g8-00-langgraph-v1-review|G8-00 正式 PASS 复盘]]
 
 ## 执行区

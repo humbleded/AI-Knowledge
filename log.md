@@ -1154,3 +1154,14 @@ tags:
 
 - 提交来源：[AI-Agent-Learning d1ceda3](https://github.com/humbleded/AI-Agent-Learning/commit/d1ceda3)，包含本次引用的路线、笔记订正和提交前验证记录。
 - 同步后严格知识库检查通过：228 个 Markdown、2171 个链接、0 个断链、0 个缺失 frontmatter；Canvas 为 21 节点/9 连线，与原版逐 ID 比较仅节点排序变化，文件引用存在。两个仓库 `git diff --check` 均通过。
+
+
+### 统一工作台、知识库 Agent 与三模式决定同步
+
+- 用户明确要求“同步到知识库，一起提交和推送”，本次据此同步实际工程结果与当前接力。原始学习回答、框架要求、模板纠正、全部采用决定和运行记录直接引用执行区 `daily/2026-09-08.md`，不复制完整聊天或另建重复 raw。
+- 新增 [[04-Projects/Agent/AI-Agent-Learning/workbench-knowledge-agent|统一工作台与知识库 Agent 项目记录]]：三个工作模式全部采用；LangChain 现成组件 + LangGraph + Vue/FastAPI；只读目录、有限资料发送至 DeepSeek、真实查询与引用、模式偏好、两个已修复问题及未完成功能。此页是助手工程记录，不是 R6 课程 PASS。
+- 更新 [[03-Courses/Agent/AI-Agent-Learning/README|课程索引]]、[[03-Courses/Agent/AI-Agent-Learning/stage4_5-langgraph-basics|阶段 4.5 接力]]：G2 单题独立通过 1 个，R6-01 DOING，G3 Loader 与图待用户完成；不重复考察资料进入上下文。更新 [[01-Maps/AI 开发学习路线|当前路线]] 和 [[08-Memory/AI 学习原则|学习原则]]，统一一个产品承载两个业务、三种模式及后续框架选择，保留历史日期说明。
+- 维护项目 README、[[index|全局索引]]、[[01-Maps/AI 知识库总地图|总地图]]。当前没有新的 R6 任务正式 PASS，本轮不新建“已掌握”的 RAG/BM25 概念卡，不修改原有概念结论、弱点排期或岗位等级。查询 Agent 的只读权限不因本次助手同步而改变。
+- 知识库原先工作树干净；只提交本轮整理的笔记和索引。健康检查复用 `tools/check_vault.py` 的严格检查规则，扫描限定为 Git 可见的知识库文件，排除隐藏目录与 Claude 路径；结果见 [[07-Reviews/Knowledge-Base/2026-09-08-workbench-sync-check|本次健康检查记录]]。
+
+- 本次代码和原始证据固定到 [AI-Agent-Learning 1624eec](https://github.com/humbleded/AI-Agent-Learning/commit/1624eec8f559274ae25fc5545a517d701cec15de)。范围限定后的严格检查为 229 个 Markdown、2198 个内部链接、0 个错误与警告；扫描使用实际 Windows 路径大小写，未改写已有概念页。

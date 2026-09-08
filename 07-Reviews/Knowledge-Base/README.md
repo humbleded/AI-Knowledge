@@ -3,7 +3,7 @@ type: review-index
 topic: Knowledge-Base
 status: active
 created: 2026-08-02
-updated: 2026-08-23
+updated: 2026-09-08
 tags:
   - 知识库
   - Review
@@ -16,6 +16,8 @@ tags:
 这里索引知识库健康检查、周维护和结构性整理记录。每次维护优先记录检查结果、材料流向、索引更新、中文辅助阅读复核和下一步。
 
 ## 健康检查与自动化
+
+- [[2026-09-08-workbench-sync-check|2026-09-08 工作台同步后的知识库检查]]
 
 - [[2026-05-29-karpathy-health-check|2026-05-29 Karpathy 知识库健康检查]]
 - [[2026-05-29-vault-check-automation|2026-05-29 Vault Check Automation]]
