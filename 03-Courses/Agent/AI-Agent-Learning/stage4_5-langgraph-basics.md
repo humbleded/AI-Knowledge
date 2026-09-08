@@ -3,7 +3,7 @@ type: course-stage
 topic: AI-Agent-Learning Stage 4.5 LangGraph
 status: pass
 created: 2026-09-05
-updated: 2026-09-05
+updated: 2026-09-08
 source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\tracker\progress.md
   - C:\Users\26823\Desktop\AI-Agent-Learning\tracker\ai-agent-learning-tracker.md
@@ -65,10 +65,9 @@ tags:
 
 ## 当前接力
 
-1. 先完成已经签发的独立算法恢复 Session：一个问题复测 `WP-27 / WP-29`；
-2. 再关闭 W6 岗位审计 `RETRY / INCOMPLETE`；
-3. 两项完成后进入 `R6-01`，开始 LangChain 工程文档 RAG 助手的导入与切分；
-4. 到后续 `G8-01～03` 再回到本项目增加持久化、恢复和 HITL。
+2026-09-08 同步：`WP-27 / WP-29` 已在 2026-09-05 S2 复测通过，恢复状态为 `NORMAL`；W5 余下三道新题独立推进。W6 岗位审计仍未完成，继续并行补齐，不阻塞技术课程。
+
+`R6-01` 已于 2026-09-07 开始，保持 `DOING`：先核对 RAG 整体理解，再做真实文件读入与切分。到后续 `G8-01～03` 再回到本项目增加持久化、恢复和人工处理。最新入口见 [[README|课程索引]] 及执行区 [daily-plan.md](https://github.com/humbleded/AI-Agent-Learning/blob/main/tracker/daily-plan.md)。这里的接力更新不改变本页 G8-00 的历史验收结论。
 
 ## 相关链接
 

@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-09-05
+updated: 2026-09-08
 tags:
   - 知识库
   - index
@@ -226,5 +226,5 @@ tags:
 - 扩展 [[04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]] 的代码注释、可视化或测试。
 - 为 Karpathy 课程补充 raw transcript 或 repo 摘录。
 - A4-Gate 已于 2026-08-24 正式 `PASS`：完整 Agent 主链、受控恢复、action-bound HITL、exact validator 和冻结 V5 评估均有决定性证据，唯一 RUN-5 为 14/14、semantic 20/20；A4 历史 V4 `RETRY` 继续保留。
-- G8-00 已于 2026-09-05 正式 `PASS`：typed State、Node/Edge、五路条件路由、诊断回环、稳定停止、v2 updates、12/12 maintained pytest 与真实 DeepSeek Node 链已闭合；持久化/恢复仍留后续。当前先处理 `WP-27 / WP-29` 的独立算法恢复，再关闭 W6 `RETRY / INCOMPLETE`，之后进入 R6-01。详见 [[07-Reviews/AI-Agent-Learning/2026-09-05-g8-00-langgraph-v1-review|正式复盘]]。
+- G8-00 已于 2026-09-05 正式 `PASS`，验收范围见 [[07-Reviews/AI-Agent-Learning/2026-09-05-g8-00-langgraph-v1-review|正式复盘]]。2026-09-08 同步：算法旧题恢复已完成，W5 余三道新题；W6 岗位审计仍未完成并行补齐；R6-01 已进入 `DOING`，尚无新增用户独立通过证据。最新接力与完整路线入口见 [[03-Courses/Agent/AI-Agent-Learning/README|课程索引]]。
 - 继续新增 `cross entropy`、`softmax`、`logits`、`train/validation split`、`overfitting`、`layer normalization`、`residual connection` 等 LLM 基础概念卡。

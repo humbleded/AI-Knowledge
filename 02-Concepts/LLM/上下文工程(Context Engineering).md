@@ -5,7 +5,7 @@ type: concept
 topic: LLM
 status: usable
 created: 2026-06-29
-updated: 2026-07-02
+updated: 2026-09-08
 source:
   - AI-Agent-Learning S-03
   - Hello-Agents 第9章 上下文工程（9.1~9.2.3 / 9.7）
@@ -100,7 +100,7 @@ JIT 也可以看作**渐进式披露（progressive disclosure）**的一种实�
 
 同一段「8 条对话历史」（第 1 条藏了人名「三玖」），三方案对比：
 
-| 方案 | 条数 | token | 还留着「三玖」? | 含义 |
+| 方案 | 条数 | token 粗估（原实验） | 还留着「三玖」? | 含义 |
 |---|---|---|---|---|
 | ① 全量 full | 8 | 100 | ✅ | 信息全，但最费——长了还会 context rot |
 | ② 裁剪 trim | 2 | **25** | ❌ False | **最省，但早期关键信息硬丢** |
@@ -115,12 +115,18 @@ JIT 也可以看作**渐进式披露（progressive disclosure）**的一种实�
 - ❌「上下文工程 vs 提示工程」当成和「Compaction vs trim」一样 → ✅ 前者**跨层/演进**（上下文工程包含提示工程），后者**同层平级**。
 - ❌「trim 是提示工程的手段」/「不止提示工程也是上下文工程」 → ✅ trim **只**属上下文工程；trim ≠ Compaction（平级）；trim 技术名 **truncation**，是基础档、不在长时程三件套。
 - ❌ Compaction 只是「做个摘要」 → ✅ 灵魂是摘要**之后用它重启新窗口**；代价＝① 调模型（钱+延迟）② 摘要**失真/丢细节**。
-- ❌ 以为 Compaction「把全量历史都丢进窗口、只减少输出 token」 → ✅ 它把旧历史**替换**成短摘要，**输入 token 是减少的**（③ Compaction < ① 全量）；但 ③ ＝ ②裁剪 + **一条摘要**，摘要 token 恒 >0，故 ③ > ②、**再压也省不过 trim**。（S-03 后续 PR2-04 练习 B3 深化）
+- ❌ 以为 Compaction「把全量历史都丢进窗口、只减少输出 token」 → ✅ 它把旧历史**替换**成短摘要，**本次实验的输入估算减少**（③ Compaction < ① 全量），但摘要过长时不保证减少；但 ③ ＝ ②裁剪 + **一条摘要**，摘要 token 恒 >0，故 ③ > ②、**再压也省不过 trim**。（S-03 后续 PR2-04 练习 B3 深化）
 - ❌ 把「为什么上下文工程重要」答成「用什么手段」 → ✅ 答的是 **context rot 现象**（token 越多回忆越差）。
 - ⚠️ 工程坑 `history[-0:]`＝`history[0:]`＝**整个列表**（`-0==0`）；`keep_recent=0` 会让 trim/compaction 失效返回全部。
 - ⚠️ 工程坑 `str.split()` 按**空格**切**不按字**，中文整块算 1 词；`count_tokens` 中英混合会重复计中文、不精确（生产用真 tokenizer，详见 [[分词(Tokenization)]]）。
 - ⚠️ 真调坑 `messages=text`（字符串）→ **400**；`messages` 要 `list of {"role","content"}`（同 [[调用 chat.completions]]）；把待总结文本包成 `[{system:总结指令},{user:text}]`。
 - ⚠️ 实验设计坑：要演示「裁剪丢早期信息」，关键信息须**只在会被裁的早期出现**——若最近 N 条里复现（如末条复述名字），`name_in_trim` 会假性为 True，演示失效。
+
+## 2026-09-08 实验说明订正
+
+上面的 100/25/50 保留为原实验观测；其中 `count_tokens` 是按字符和单词估算，并非模型服务返回的真实用量。当前脚本会按每次实际结果比较，不能预先写死哪种方案最省。摘要是否保留人名与摘要是否节省上下文要分别验证；摘要过长可能比全量历史还大，生成摘要还会增加一次调用的成本和延迟。摘要失败或为空时停止比较，不能用模拟摘要冒充真实调用。
+
+来源：[当前实验代码](https://github.com/humbleded/AI-Agent-Learning/blob/main/code/stage2/s03_context_experiment.py)、[2026-09-07 维护与真实调用记录](https://github.com/humbleded/AI-Agent-Learning/blob/main/daily/2026-09-07.md)。本段订正实验解释，不改变原始作答和课程判定。
 
 ## 关联
 

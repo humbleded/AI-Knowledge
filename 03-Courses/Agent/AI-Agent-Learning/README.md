@@ -3,7 +3,7 @@ type: course-index
 topic: AI-Agent-Learning
 status: active
 created: 2026-05-28
-updated: 2026-09-05
+updated: 2026-09-08
 tags:
   - AI-Agent
   - Python
@@ -29,8 +29,11 @@ tags:
 - [[stage4-agent-basics|阶段 4：Agent 基础原理]]
 - [[stage4_5-langgraph-basics|阶段 4.5：LangGraph 基础工作流]]
 - 已通过：P0-Gate、L1-Gate、PR2-Gate、T3-01、T3-02、T3-03、T3-04、T3-Gate、A4-01、A4-02、A4-03、A4-04、A4-05、A4-Gate、G8-00
-- 当前项：G8-00 已于 2026-09-05 正式 `PASS`；下一主线是 R6-01，但必须先完成已签发的独立算法恢复 Session，并关闭 W6 岗位审计债务。
-- 并行债务：W5 仍为 `DEBT 4`；`WP-27 / WP-29` 触发 `RECOVERY_BLOCK_PENDING`；W6 岗位审计仍为 `RETRY / INCOMPLETE`，目前只有 `4 HARD_ELIGIBLE + 6 UNKNOWN`，不能计算正式匹配率。
+- 当前项：`R6-01 = DOING`，于 2026-09-07 启动。助手已整理场景、设计草稿与教学样本，并补讲 RAG 全貌；下一步核对资料怎样随问题交给模型，再接回真实文件读取。尚无本任务用户独立通过证据，助手示范不计课程 PASS。
+- 恢复进展：2026-09-05 S2 的 `W5-ALG-R1` 已正式 PASS，`WP-27 / WP-29` 完成复测，恢复状态为 `NORMAL`；W5 剩余 `DEBT 3`（三道新题），独立推进。
+- 并行欠项：W6 岗位审计仍为 `RETRY / INCOMPLETE`，尚未凑齐恰好 10 条硬门槛已核清的可投样本，不能计算正式匹配率；该资料缺口不阻塞技术前置已满足的课程。
+
+以上是 2026-09-08 同步快照；当前状态和接力点分别以执行区 `progress.md`、`daily-plan.md` 为准。
 
 ## 当前执行策略
 
@@ -45,28 +48,28 @@ tags:
 
 `G8-00` 虽然沿用阶段 8 的任务编号，但课程位置是阶段 4.5：它只把已经通过的 Agent 控制循环迁移到显式 Graph，不表示跳过阶段 5～7。后续按依赖推进，而不是按编号机械排序：
 
-```text
-G8-00（PASS）
-→ 独立算法恢复（WP-27 / WP-29）
-→ W6 岗位审计补全
-→ R6-01 → BE5-01
-→ B0-01/03/04/Gate → BE5-04
-→ R6-02/S-02 → R6-03/S-06
-→ BE5-02/03 → G8-01/02/03
-→ BE5-05/BE5-Gate → R6-Gate
-→ D7-02/S-04 → G8-Gate
-→ D7-01/03/Gate → M9 → E10
-→ S-01（若待完成）
-→ J11-02 → J11-03 → J11-04 → J11-05
-→ S-05 正式收口 → J11-06
-→ FINAL-Gate → J11-07 → J11-08 → J11-Gate
-```
+完整任务顺序只在执行区 [weekly-plan.md](https://github.com/humbleded/AI-Agent-Learning/blob/main/tracker/weekly-plan.md) 维护，本页保留阅读方向与本轮调整，避免复制另一套容易过期的课表：
+
+- 先讲清 RAG 的用途及“准备资料、查询后生成回答”两个阶段，再学习真实文件读入、来源与切分。
+- 在同一项目补基础结构与测试后，先做本地真实检索和带出处的最小问答；随后补 SQL、Docker、数据库存储及完整检索、问答标准。提前完成的小成果不等于整项任务 PASS。
+- 继续在两个既有项目上增加接口、并发、工作流保存与恢复、认证和部署。
+- 先完成顺序、分支、并行的适用条件与取舍，再做受控多 Agent 对照；长期记忆另验收跨会话的更新、删除和隔离。
+- 系统评估后选一个产品主项目，完成 Vue、上线、观测、安全与作品集，再做综合答辩和求职收口。
 
 - `H5-01` 只在真实框架调用链阻塞时触发，不阻塞主线；`J11-01` 随真实项目持续积累，最晚在 J11-06 前收口。
 - 两个旗舰分别是 LangChain 工程文档 RAG 助手和 LangGraph 故障诊断/变更评审 Agent。E10 复用一套评估框架、接两个领域适配层，不新建第三个项目。
 - J11-02 由用户冻结唯一 `product_flagship`。只有它继续建设正式 Vue、公网部署和产品级观测；另一旗舰保留可复现 API/demo、容器与完整评估。
 - 用户会一些 Vue，进入真实界面任务时先用最小切片复核。助手可以在核查许可证、维护状态、依赖与安全风险后组合 GitHub 开源 Vue 骨架；用户仍需审核关键改动，并在 J11-03 独立解释和修改组件状态、SSE、认证、错误处理及密钥边界。
-- W5 算法债务使用独立 Session 逐题清理；2026-09-05 已因旧复习积压签发 `RECOVERY_BLOCK_PENDING`，下一次只用一个问题复测 WP-27 / WP-29，未 PASS 前仍是 `DEBT 4`。之后必须关闭 W6 岗位审计，补足恰好 10 条硬门槛已核清的可投样本，才能启动 R6-01。
+- W5 剩余三道算法新题按独立 Session 逐题清理，不因跨日或超过七天追加题量；已完成的旧题席位不重复计数。
+- 岗位审计按指定内容块独立补齐；BE5-Gate 后可用真实项目证据提前校准求职材料，不能据此提前判简历任务 PASS。
+- 第二模型适配在出现相关接口边界时核查条件；缺少外部条件不阻塞产品建设，但 `FINAL-Gate` 前仍需真实对照证据。
+
+## 本轮同步依据
+
+- [2026-09-07 学习与维护记录](https://github.com/humbleded/AI-Agent-Learning/blob/main/daily/2026-09-07.md)
+- [学习方法评审](https://github.com/humbleded/AI-Agent-Learning/blob/main/resources/learning-method-review-2026-09-07.md)
+- [2026-09-05 算法复测原始证据](https://github.com/humbleded/AI-Agent-Learning/blob/main/daily/2026-09-05.md)
+- 本次同步进展、路线与稳定笔记订正，没有新增 RAG 掌握结论或岗位证据。
 
 ## 相关执行区文件
 

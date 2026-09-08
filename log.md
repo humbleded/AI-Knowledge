@@ -3,7 +3,7 @@ type: maintenance-log
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-08-22
+updated: 2026-09-08
 tags:
   - 知识库
   - log
@@ -1138,3 +1138,19 @@ tags:
 - 保留未完成边界：W5 仍为 `DEBT 4`；`WP-27 / WP-29` 触发 `RECOVERY_BLOCK_PENDING`；W6 岗位审计仍为 `RETRY / INCOMPLETE`；R6-01 尚未启动。课程 PASS 没有修改岗位证据。
 - no-op：[[02-Concepts/Agent/智能体(Agent)|智能体]]、[[02-Concepts/Agent/ReAct推理与行动循环(ReAct)|ReAct]]、[[02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管]]、[[02-Concepts/LLM/多轮对话与无状态记忆(Stateless Memory)|多轮对话与无状态记忆]]、A4 项目/概念页、`raw/`、`08-Memory/` 与概念总索引已经准确，本次未为时间戳而改动。
 - 最终严格检查：`python tools\check_vault.py --root D:\AI-Knowledge --strict` 为 `OK: True`：228 个 Markdown、2159 个链接、0 个断链、0 个缺 frontmatter、8 个 raw 非索引文件。
+
+
+## 2026-09-08
+
+### AI-Agent-Learning 进展、带学规则与既有笔记订正同步
+
+- 用户明确要求“提交并推送，同步更新知识库”。来源为执行区 [2026-09-07 学习与维护记录](https://github.com/humbleded/AI-Agent-Learning/blob/main/daily/2026-09-07.md)、[项目审查记录](https://github.com/humbleded/AI-Agent-Learning/blob/main/resources/project-audit-2026-09-07.md)、当前 progress/daily-plan/weekly-plan 及 [2026-09-05 复测证据](https://github.com/humbleded/AI-Agent-Learning/blob/main/daily/2026-09-05.md)。直接引用已有原始记录，不复制完整聊天或另建重复 raw。
+- 更新 [[03-Courses/Agent/AI-Agent-Learning/README|课程索引]]、[[03-Courses/Agent/AI-Agent-Learning/stage4_5-langgraph-basics|阶段 4.5 接力]]和 [[index|全局索引]]：R6-01 为学习中；旧题恢复已完成、W5 余三道新题；岗位审计并行补齐。完整未来队列回指执行区，避免两套课表漂移。
+- 更新 [[08-Memory/AI 学习原则]]：先讲整体用途和数据流程，再读片段、即时考察和动手；助手按委托规划场景与整理文档，用户证明理解和操作；跨日接力承认已有证据。
+- 合并 [[02-Concepts/LLM/提示工程基础(Prompt Engineering)|提示工程]]、[[02-Concepts/LLM/结构化输出(Structured Output)|结构化输出]]、[[02-Concepts/LLM/采样参数与成本(Sampling)|采样参数]]、[[02-Concepts/LLM/上下文工程(Context Engineering)|上下文实验]]和 [[04-Projects/Agent/AI-Agent-Learning/t3-04-public-api-tool|外部 API 工具]]的既有知识订正：提示不保证格式或事实，结构正确不等于内容正确，低温不保证复现，显式关闭思考后才做当前 DeepSeek 温度实验，token 粗估不等于计费，Requests 超时不等于总时限。
+- OpenAI 结构化输出、DeepSeek 思考模式和 Requests 超时说明于本轮重新查阅；DeepSeek JSON/Tool Calls 页面本轮提取失败，相关版本说明沿用项目 2026-09-07 核验记录并在笔记标明，没有伪称本轮验证成功。
+- 保留工作区原有 [[04-Projects/Agent/AI-Agent-Learning/a4-gate-flow.canvas|A4-Gate Canvas]] 节点顺序调整；没有改写图内容或流程含义。
+- 本次不新增课程 PASS、用户独立能力证据或岗位等级；R6-01 设计和讲解仍在执行区保留草稿与学习记录，未新建已掌握的 RAG 概念卡。历史日期复盘不重写。
+
+- 提交来源：[AI-Agent-Learning d1ceda3](https://github.com/humbleded/AI-Agent-Learning/commit/d1ceda3)，包含本次引用的路线、笔记订正和提交前验证记录。
+- 同步后严格知识库检查通过：228 个 Markdown、2171 个链接、0 个断链、0 个缺失 frontmatter；Canvas 为 21 节点/9 连线，与原版逐 ID 比较仅节点排序变化，文件引用存在。两个仓库 `git diff --check` 均通过。

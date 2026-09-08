@@ -5,7 +5,7 @@ type: concept
 topic: LLM
 status: usable
 created: 2026-06-24
-updated: 2026-07-15
+updated: 2026-09-08
 source:
   - AI-Agent-Learning PR2-01
   - AI-Agent-Learning A4-02 正式复核（2026-07-15）
@@ -25,18 +25,18 @@ tags:
 
 ## 一句话解释
 
-写 prompt 就是「**用最少的话，把任务、格式、边界、思考方式都交代清楚**」。四个基础技巧各管一块：**角色扮演**定身份、**上下文示例**锁格式、**few-shot** 划边界、**CoT** 给思考时间。判据不是「长短」而是「**相关 + 清晰**」。
+写 prompt 就是把任务、格式和边界交代清楚。角色说明引导表达侧重，输入输出示例展示预期结果，分步提示帮助拆解任务；这些都是引导，不能保证格式、事实或推理正确。判断重点是相关、清晰，以及实际任务上的效果。
 
 ## 四个技巧，各控什么维度（最重要的一张表）
 
 | 技巧 | 怎么用 | 主控维度（一句话） |
 |---|---|---|
-| **角色扮演** role-playing | 开头给模型安身份「你是资深 Python 专家」 | **怎么说**——风格 / 语气 / 知识深浅 |
-| **上下文示例** in-context example | 给「输入 → 输出」样例（尤其锁 JSON） | **长啥样**——输出格式 |
-| **few-shot** 少样本 | 给多个、且覆盖不同情况的样例 | **划边界 + 锁格式**——摸清任务边界和细微差别 |
-| **CoT** 思维链 | 加一句「请一步一步思考」 | **多步推理**——复杂题别一步蹦答案 |
+| **角色扮演** role-playing | 给出「你是 Python 讲师」等角色 | 引导风格、语气和解释侧重，不增加真实知识 |
+| **上下文示例** in-context example | 给「输入 → 输出」样例 | 示范格式和风格，不提供硬性格式保证 |
+| **few-shot** 少样本 | 给多个、且覆盖不同情况的样例 | 帮助理解边界，错误或不相关示例也可能带偏 |
+| **CoT** 思维链提示 | 要求分步分析或提供必要步骤 | 可能帮助多步任务；是否有效取决于模型和任务，不保证推理正确 |
 
-> 上下文示例 = few-shot 的应用，两者同源：few-shot 强调「划边界」，上下文示例强调「锁格式」，本质一回事。
+> 上下文示例按数量可分为 one-shot 和 few-shot；一个示例不能因为放在上下文里就叫 few-shot。二者都可展示格式和任务边界。
 > 口诀：**角色扮演管「怎么说」，上下文示例/few-shot 管「长啥样 + 边界」，CoT 管「怎么想」。**
 
 ## zero / one / few-shot：唯一区别 = 给几个样例
@@ -45,7 +45,7 @@ tags:
 |---|---|---|
 | zero-shot | 0 个 | 直接下命令、靠模型泛化；边界全凭它自己猜 |
 | one-shot | 1 个 | 照葫芦画瓢，主要教**格式** |
-| few-shot | 多个、覆盖不同情况 | 摸清任务**边界和细微差别** → 答得更准 |
+| few-shot | 多个、覆盖不同情况 | 帮助理解任务边界和差别，是否更准要实际比较 |
 
 ⚠️ **区别 ≠ 效果**：三者唯一的【区别】是「给几个样例」；「划清边界」是 few-shot 带来的【效果】，别把效果当区别答。
 
@@ -79,8 +79,8 @@ tags:
 | 持久性 | 保存在微调模型中；请求必须调用它 | 只在当前上下文有效，下次不带就没有 |
 | 代价 | 训练、评估和模型版本维护 | 每次都带例子，占 `prompt_tokens` |
 
-- 老 GPT-3 = 只会「文本补全」，得靠 few-shot 示范才会干活。
-- ChatGPT / DeepSeek / Qwen = 指令调优过 → 一句命令就照做（也是 zero-shot 能成立的原因）。
+- 指令调优通常改善按要求完成任务的能力，但不是 zero-shot 存在的前提；原始 GPT-3 也做过 zero-shot 测试。
+- 本课使用的是面向对话和指令的具体模型版本；不能由 DeepSeek、Qwen 等系列名推断所有版本训练方式相同，也不能保证一句命令就完成任务。
 
 ## 技巧 ≠ role（system / user / assistant）
 
@@ -91,10 +91,10 @@ tags:
 
 技巧不「是」role，但**技巧的内容可以放进某个 role**：
 
-- **角色扮演**（人设 = 全局规则）→ 放 `system`：优先级最高、一次设置整段生效；放 `user` 优先级低且要每轮重复，放 `assistant` = 替模型伪造发言（逻辑不通）。详见 [[消息角色与指令优先级(Instruction Hierarchy)]]。
-- **few-shot 示例**两种合法摆法：**甲** 直接塞 `system`（紧凑省事）；**乙** 伪造成 `user`/`assistant` 对话轮（更像真实聊天格式，有时模型更照学）。两种都只在开头设一次。
+- 角色说明可按用途放在合适的消息中；本课将长期行为要求放在 `system`，将本轮任务放在 `user`。服务端怎样处理优先级取决于接口，不能把消息角色当作格式或事实保证。详见 [[消息角色与指令优先级(Instruction Hierarchy)]]。
+- few-shot 示例可以直接写进一条说明，也可以组织成 `user`/`assistant` 示例对话。本课无状态 API 每次只看到实际发送的输入；客户端初始化一次不代表后续请求无需携带必要规则和示例。
 
-## 实战模板：锁 JSON 输出的 few-shot prompt
+## 实战模板：引导 JSON 输出的 few-shot prompt
 
 ```text
 你是一个情感分类器。给定评论，输出 JSON {"label":"正面/负面/中性","reason":"一句话理由"}，只输出 JSON，不要多余文字。
@@ -118,13 +118,13 @@ messages = [
 
 ## ⚠️ 工程坑：f-string / `.format()` 撞 prompt 里的 JSON 花括号
 
-锁 JSON 的 prompt 里既有 JSON 示例的 `{}`、又想用变量嵌入正文时，**别无脑 f-string**：
+引导 JSON 的 prompt 里既有 JSON 示例的 `{}`、又想用变量嵌入正文时，**别无脑 f-string**：
 
 ```python
 text = "正文"
 f'格式：{"points":["a"]} 内容：{text}'
-# {"points":["a"]} 被当成 dict 表达式求值 → "格式：{'points': ['a']} 内容：正文"
-# JSON 示例被悄悄换成 Python dict（单引号！）、还不报错；.format() 则 KeyError: 'points'
+# 上面的冒号会被当成格式说明符的分界，运行时可能报 ValueError。
+# .format() 中未转义的花括号也会被当成占位符，可能报 KeyError。
 ```
 
 **解法（从稳到巧）**：
@@ -155,12 +155,12 @@ f'格式：{"points":["a"]} 内容：{text}'
 | ② 清晰 | 角色+分隔符+点名 6 字段+空 JSON 模板+前后不带文字 | 纯 JSON、6 字段齐 | ✓ 成功 |
 | ③ few-shot | ② + 一组填好的样例（用别人的） | **与 ② 完全一致** | ✓ 成功 |
 
-🔑 **结论**：② 把模型的「自由发挥空间」消除掉就够了；③ 的 few-shot 在这种**规整任务上零增益**、纯多花 token——**坐实「prompt 不是越长越好、few-shot 看任务难度」**。few-shot 要扳回一城，得靠 ② 会栽的难输入（字段缺失 / 顺序乱 / 表述刁钻）。产物：`code/stage2/pr2_01_prompt_cases.md`。
+这一次样本中，② 和 ③ 得到相同结果，没有观察到额外示例带来的收益；不能推广为所有规整任务都没有收益，也不能说清晰提示消除了模型的自由输出。需要加入缺失字段、顺序变化等代表性输入，比较格式与内容正确率后再选择。产物：`code/stage2/pr2_01_prompt_cases.md`。
 
 ## 常见坑 / 错误理解 → 正确理解
 
 - ❌ 把 zero/few-shot 的「区别」答成「效果」 → ✅ 区别 = 给几个样例；划边界是 few-shot 的**效果**。
-- ❌ 把「格式」算给角色扮演 → ✅ 角色扮演管「怎么说」；**格式归上下文示例 / few-shot**（管「长啥样」）。
+- ❌ 把「格式」算给角色扮演 → ✅ 角色扮演管「怎么说」；**格式可由明确说明、示例及输出模式共同约束**，不能归给某一个提示技巧。
 - ❌ 把输出 **schema / 格式说明** 当成 **few-shot 示例** → ✅ `{"label":...,"reason":...}` 是格式说明（属清晰指令）；few-shot 是真实的「输入 → 输出」样例（评论 → JSON）。
 - ❌ 以为「`user` 这个格子里也装着 system + 历史」 → ✅ `user` 只装用户说的话；整盘 messages = system 消息 + 历史(user/assistant) + 本轮 user，`system` 是独立格子。
 - ❌ 搬进 messages 时把待分类目标留在 `system` → ✅ 目标放 `user`，`system` 只留指令 + 示例。
@@ -179,3 +179,4 @@ f'格式：{"points":["a"]} 内容：{text}'
 - AI-Agent-Learning PR2-01：`notes/stage2/pr2_01_prompt_notes.md`；练习 `daily/2026-06-22.md`（A1–D3 全 PASS）。
 - 资料：Hello-Agents 第 3 章 3.2.1 提示工程 (2)-(5)；DeepLearning.AI《Prompt Engineering for Developers》Guidelines。
 - AI-Agent-Learning A4-02：`daily/2026-07-15.md` F1，Instruction Data / Instruction Tuning / Few-shot 迁移 PASS。
+- 2026-09-08 同步 [项目提示词笔记订正](https://github.com/humbleded/AI-Agent-Learning/blob/main/notes/stage2/pr2_01_prompt_notes.md)；保留原实验与历史 PASS，本次维护不作为新作答证据。

@@ -3,6 +3,7 @@ type: project-note
 topic: T3-04 Public API Tool
 status: pass
 created: 2026-07-08
+updated: 2026-09-08
 source:
   - C:\Users\26823\Desktop\AI-Agent-Learning\code\stage3\t3_04_public_api_tool.py
   - C:\Users\26823\Desktop\AI-Agent-Learning\daily\2026-07-08.md
@@ -68,7 +69,10 @@ tags:
 - `response` 是响应对象，后续要用它读取 `ok/status_code/headers`。
 - 404 是服务器正常返回的 HTTP 状态码，不是网络异常。
 - 异常分支里可能没有 `response`，不能用 `response.ok`。
-- Agent 工具应返回稳定 dict，方便作为 Observation 回填给模型。
+- 工具返回稳定的 Python 字典；在当前 Chat Completions 调用链中，客户端先用 `json.dumps(..., ensure_ascii=False)` 转成 JSON 字符串，再写入带原 `tool_call_id` 的工具消息 `content`，供模型读取。
+- `requests.get(..., timeout=5)` 分别限制连接与读取等待，不是从开始到结束最多五秒。对方持续慢速发送数据时，整个请求可能超过五秒；任务总时限需要单独控制。见 [Requests 超时说明](https://requests.readthedocs.io/en/latest/user/quickstart/#timeouts)。
+
+上述说明于 2026-09-08 根据 [项目笔记订正](https://github.com/humbleded/AI-Agent-Learning/blob/main/notes/stage3/t3_04_public_api_tool.md)与官方文档核对后同步；上面的 2026-07-08 实跑结果保持历史记录，不代表本次重跑了真实网络工具。
 
 ## 今日易错点
 
