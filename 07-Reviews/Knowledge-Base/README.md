@@ -17,6 +17,7 @@ tags:
 
 ## 健康检查与自动化
 
+- [[2026-09-08-question-navigation-check|2026-09-08 问题导航与重点笔记整理检查]]
 - [[2026-09-08-workbench-sync-check|2026-09-08 工作台同步后的知识库检查]]
 
 - [[2026-05-29-karpathy-health-check|2026-05-29 Karpathy 知识库健康检查]]

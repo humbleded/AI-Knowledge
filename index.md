@@ -1,4 +1,4 @@
-﻿---
+---
 type: global-index
 topic: AI Knowledge
 status: active
@@ -14,11 +14,25 @@ tags:
 
 这是给人和 LLM 都能快速导航的全局索引。新增核心资料、完成 ingest、更新学习路线后，优先同步这里或相应地图页。
 
+## 先按问题找入口
+
+- [[01-Maps/按问题查知识#模型要求调用工具以后程序接下来做什么|模型要求调用工具，程序接下来做什么？]]
+- [[01-Maps/按问题查知识#工具一直失败什么时候重试什么时候停止|工具一直失败，什么时候重试或停止？]]
+- [[01-Maps/按问题查知识#程序重启后怎样继续之前的任务|程序重启后，怎样继续之前的任务？]]
+- [[01-Maps/按问题查知识#配置改了为什么没有生效|配置改了，为什么没有生效？]]
+- [[01-Maps/按问题查知识#几个 Agent 方案应该怎样选|几个 Agent 方案应该怎样选？]]
+- [[01-Maps/按问题查知识#资料导入后为什么回答时还找不到|资料导入后，为什么回答时还找不到？]]
+
+这张导航只连接已有资料与项目记录。想继续学习时，直接读取执行区的 [当前接力](<C:/Users/26823/Desktop/AI-Agent-Learning/tracker/daily-plan.md>) 和 [课程进度](<C:/Users/26823/Desktop/AI-Agent-Learning/tracker/progress.md>)；笔记状态不代替学习验收。
+
 ## 最高频入口
 
 - [[README|知识库说明]]
+- [[01-Maps/按问题查知识|按问题查知识]]
+- [[03-Courses/Agent/AI-Agent-Learning/README|Agent 应用开发课程与资料]]
+- [[04-Projects/Agent/AI-Agent-Learning/workbench-knowledge-agent|统一工作台工程记录（助手实现）]]
 - [[01-Maps/AI 知识库总地图]]
-- [[01-Maps/Karpathy AI 学习路线]]
+- [[01-Maps/Karpathy AI 学习路线|Karpathy 路线（模型原理选读）]]
 - [[raw/README|Raw Sources]]
 - [[raw/initial-link-sources|Initial Link Sources]]
 - [[00-Inbox/README|Inbox]]
@@ -73,7 +87,7 @@ tags:
 - [[02-Concepts/Agent/工具定义与执行协议(Tool Definition)|工具定义与执行协议：Name / Description / Execution Logic]]
 - [[02-Concepts/Agent/文件工具沙箱(File Tool Sandbox)|文件工具沙箱：resolve + relative_to 的安全边界]]
 - [[02-Concepts/Agent/外部 API 工具(External API Tool)|外部 API 工具：timeout / 错误兜底 / 必要字段摘要]]
-- [[02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管：SDK / Agent 双层重试、Candidate / Reflection / Refinement Provider 与协议 / JSON / candidate-contract recovery、共享预算与人工证据池]]
+- [[02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管：判断能否重试、共享预算、停止与交接]]
 - [[02-Concepts/Agent/动作绑定人工确认(Action-Bound Confirmation)|动作绑定人工确认：冻结动作深绑定、一次性消费与重放防护]]
 - [[02-Concepts/Agent/冻结评估与不可补偿硬门(Frozen Evaluation)|冻结评估与不可补偿硬门：唯一正式运行、版本指纹、holdout 与 exact / semantic 分层]]
 - [[02-Concepts/Agent/LangGraph 状态图编排(StateGraph)|LangGraph StateGraph：State / Node / Edge、条件路由、stream 与应用控制边界]]
@@ -96,7 +110,7 @@ tags:
 - [[02-Concepts/LLM/Transformer]]
 - [[02-Concepts/LLM/自回归生成(Autoregressive)]]
 
-下一批可新增或扩展的 LLM 基础概念：`cross entropy`、`softmax`、`logits`、`train/validation split`、`overfitting`、`layer normalization`、`residual connection`。
+模型原理的选读候选：`cross entropy`、`softmax`、`logits`、`train/validation split`、`overfitting`、`layer normalization`、`residual connection`。需要解释当前项目或主动选读时再补，不自动加入当前学习队列。
 
 ## 课程与路线
 
@@ -160,6 +174,7 @@ tags:
 
 ## 复盘与记忆
 
+- [[07-Reviews/Knowledge-Base/2026-09-08-question-navigation-check|问题导航、模板与重点笔记整理检查]]
 - [[07-Reviews/Knowledge-Base/2026-09-08-workbench-sync-check|工作台同步后的知识库检查]]
 
 - [[07-Reviews/AI-Agent-Learning/2026-05-27-stage0-p0-01-p0-02-pass-review]]
@@ -225,9 +240,8 @@ tags:
 
 ## 当前优先扩展
 
-- 为 [[04-Projects/LLM/README|LLM 项目记录]] 增加 micrograd 复现实验。
-- 扩展 [[04-Projects/LLM/micrograd-backprop-from-scratch|Micrograd：从零实现反向传播]] 的代码注释、可视化或测试。
-- 为 Karpathy 课程补充 raw transcript 或 repo 摘录。
-- A4-Gate 已于 2026-08-24 正式 `PASS`：完整 Agent 主链、受控恢复、action-bound HITL、exact validator 和冻结 V5 评估均有决定性证据，唯一 RUN-5 为 14/14、semantic 20/20；A4 历史 V4 `RETRY` 继续保留。
-- G8-00 已于 2026-09-05 正式 `PASS`，验收范围见 [[07-Reviews/AI-Agent-Learning/2026-09-05-g8-00-langgraph-v1-review|正式复盘]]。2026-09-08 最新接力：R6-01 仍 `DOING`，G2 有 1 个独立即时通过证据，G3 现成 Loader 与最小图仍待用户完成；统一工作台与知识库问答由助手实现，不新增课程 PASS。算法旧题恢复已完成，W5 余三道新题，W6 岗位审计并行补齐。完整路线见 [[03-Courses/Agent/AI-Agent-Learning/README|课程索引]]。
-- 继续新增 `cross entropy`、`softmax`、`logits`、`train/validation split`、`overfitting`、`layer normalization`、`residual connection` 等 LLM 基础概念卡。
+- 优先维护 [[01-Maps/按问题查知识|按问题查知识]]：用当前常见问题串起概念、例子与实际项目，已有内容准确时直接引用。
+- 沿工程文档问答的真实学习进展整理资料：读取 → 切分 → 检索 → 回答与引用。当前起点和未覆盖内容只认执行区 [daily-plan.md](<C:/Users/26823/Desktop/AI-Agent-Learning/tracker/daily-plan.md>)，完整依赖见 [weekly-plan.md](<C:/Users/26823/Desktop/AI-Agent-Learning/tracker/weekly-plan.md>)，本页不复制易过时的检查点快照。
+- 在实际复习或修改时，用 [[Templates/概念笔记模板|概念笔记模板]] 补齐使用场景、最小例子、常见误解、适用条件与来源；先维护经常使用的卡片。
+- 已有工程能力和待学内容分别查 [[04-Projects/Agent/AI-Agent-Learning/workbench-knowledge-agent|工作台项目记录]] 与 [[03-Courses/Agent/AI-Agent-Learning/README|课程资料索引]]。系统答不好的问题与用户学习弱点分开处理，不把演示或笔记整理算作课程 PASS。
+- Karpathy、micrograd 与其他模型原理材料继续作为 [[01-Maps/Karpathy AI 学习路线|选读路线]] 保留，按需要补来源或实验，不自动扩成第二条主线。

@@ -1,4 +1,4 @@
-﻿# AI Knowledge
+# AI Knowledge
 
 这是一个面向长期学习和复用的 AI 知识库，适合用 Obsidian 打开。
 
@@ -14,6 +14,15 @@
 2. 选择 `Open folder as vault`。
 3. 打开本目录：`D:\AI-Knowledge`。
 4. 从 [[index|AI Knowledge Index]] 或 [[01-Maps/AI 知识库总地图]] 开始。
+
+## 我现在想解决什么问题
+
+- 不知道该搜哪个术语：打开 [[01-Maps/按问题查知识|按问题查知识]]，从工具调用、失败重试、任务恢复、配置排查和方案选择进入。
+- 想找现有概念与例子：打开 [[02-Concepts/Agent/README|Agent 概念卡]] 或 [[02-Concepts/README|概念总索引]]。
+- 想看真实项目怎样串起来：打开 [[04-Projects/Agent/AI-Agent-Learning/workbench-knowledge-agent|统一工作台项目记录（助手工程实现）]]。
+- 想继续学习：查看执行区的 [当前 Session 接力](<C:/Users/26823/Desktop/AI-Agent-Learning/tracker/daily-plan.md>)；课程资料从 [[03-Courses/Agent/AI-Agent-Learning/README|课程索引]] 进入。
+
+当前主目标是 Agent 应用开发，工程文档问答与故障诊断是实践主线。笔记可查阅、助手演示可运行，都不自动代表用户已经掌握；课程状态以执行区的 [progress.md](<C:/Users/26823/Desktop/AI-Agent-Learning/tracker/progress.md>) 为准。
 
 ## Karpathy 式工作流
 
@@ -60,14 +69,11 @@
 
 - [[02-Concepts/Python/README|Python 概念卡]]
 - [[02-Concepts/LLM/README|LLM 概念卡]]
+- [[02-Concepts/Agent/README|Agent 概念卡]]
+- [[02-Concepts/Engineering/README|工程基础概念卡]]
 - [[02-Concepts/MCP/README|MCP 概念卡]]
 
-未来主题超过 8-10 篇笔记时，再新增：
-
-- `02-Concepts/Agent`
-- `02-Concepts/RAG`
-- `02-Concepts/Evaluation`
-- `02-Concepts/Prompting`
+RAG（先找资料再回答）的学习入口见 [[01-Maps/按问题查知识#资料导入后为什么回答时还找不到|文档问答资料导航]]。后续有稳定成果时按主题沉淀，不为补齐目录提前生成一批概念卡；其他新分类按实际内容需要建立。
 
 ### 课程笔记
 

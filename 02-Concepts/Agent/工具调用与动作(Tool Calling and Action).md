@@ -3,12 +3,13 @@ type: concept
 topic: Agent
 status: usable
 created: 2026-07-10
-updated: 2026-07-21
+updated: 2026-09-08
 source:
   - AI-Agent-Learning 对话：Tool / Tool Calling / Action / Fine-tuning 辨析（2026-07-10）
   - AI-Agent-Learning 对话：Action / Tool Call / Tool Execution 边界订正（2026-07-11）
   - AI-Agent-Learning T3-Gate 正式复核（2026-07-12）
   - AI-Agent-Learning 对话：Function Calling / Tool Calling 范围与调用格式辨析（2026-07-21）
+  - https://api-docs.deepseek.com/guides/tool_calls/
 tags:
   - Agent
   - Tool-Calling
@@ -23,6 +24,15 @@ aliases:
 ---
 
 # 工具调用与动作(Tool Calling and Action)
+
+> [!abstract] 先看这里
+>
+> - **什么时候用：** 问题需要查实时资料、做准确计算或操作外部系统时，用工具补上模型自己做不到的能力。
+> - **最小例子：** 用户问 `128 * 37` → 模型请求计算器 → 程序检查后执行 → 把 `4736` 回填给模型。具体请求见 [[#一条完整链路]]。
+> - **排查起点：** 模型说“已执行”不能作为执行证据；先核对 [[#四层流程：不要把请求当成执行|请求、执行和返回结果]] 分别到了哪一步。
+> - **使用范围：** 本文以应用自己提供的 Python 函数或 API 工具为例；执行前的参数、权限和停止规则见 [[工具定义与执行协议(Tool Definition)]]。
+
+`status: usable` 表示笔记可用于复习和引用，不表示读过这页就已掌握；个人学习通过情况以学习项目的 `tracker/progress.md` 为准。
 
 ## 一句话
 
@@ -47,7 +57,7 @@ aliases:
 - **概念层**：Tool Calling 更宽，Function Calling 是其子集；
 - **平台实现层**：以当前 API 文档规定的字段和 schema 为准。
 
-手写 ReAct 文本 `Action: Weather[Singapore]` 属于广义 Tool Calling；如果它只是靠 prompt 生成、再由客户端自行解析，就不等于 API 原生 Function Calling。详见 [[../../LLM/函数调用(Function Calling)|函数调用（Function Calling）]]。
+手写 ReAct 文本 `Action: Weather[Singapore]` 属于广义 Tool Calling；如果它只是靠 prompt 生成、再由客户端自行解析，就不等于 API 原生 Function Calling。详见 [[02-Concepts/LLM/函数调用(Function Calling)|函数调用（Function Calling）]]。
 
 ## 六个词的关系
 
@@ -132,6 +142,8 @@ Action（模型决定：下一步调用 calculator）
 
 这段 JSON 不是计算结果，而是模型发出的调用请求。真正算出结果的是程序里的 `calculator` 函数。
 
+这里省略了完整 API 消息格式。以 DeepSeek 为例，客户端还需保存模型返回的工具调用消息，并用对应的 `tool_call_id` 把执行结果作为工具消息回填，模型才能把结果对应到原请求。框架可以代办这些步骤，但不会省掉真实执行。[官方 Tool Calls 示例](https://api-docs.deepseek.com/guides/tool_calls/)（核验：2026-09-08）。
+
 ## Tool Calling 和微调的关系
 
 Tool Calling **不是微调本身**。
@@ -202,10 +214,16 @@ tools 参数 = 工具说明书
 Fine-tuning = 训练或改变模型，不是普通传参
 ```
 
+## 来源与适用条件
+
+- [DeepSeek Tool Calls](https://api-docs.deepseek.com/guides/tool_calls/)，核验日期 2026-09-08：支持“模型生成请求、应用执行、结果回填”的分工与消息对应方式；其他平台的具体字段需另查其官方文档。
+- [[04-Projects/Agent/AI-Agent-Learning/t3-gate-tool-assistant|T3-Gate 三工具助手]]：已有计算、文件读取、公开 API 的实现与校验证据。本文的最小例子是流程说明，本次整理没有重新运行模型或产生新的学习通过记录。
+- 术语误解与订正沿用页首 `source` 中 2026-07-10 至 2026-07-21 的学习来源，保留原有辨析和演进。
+
 ## 相关链接
 
-- [[../../LLM/函数调用(Function Calling)|函数调用（Function Calling）：原生调用与手写 JSON 的边界]]
+- [[02-Concepts/LLM/函数调用(Function Calling)|函数调用（Function Calling）：原生调用与手写 JSON 的边界]]
 - [[工具定义与执行协议(Tool Definition)]]
 - [[外部 API 工具(External API Tool)]]
-- [[../../04-Projects/Agent/AI-Agent-Learning/t3-gate-tool-assistant|T3-Gate 三工具助手]]
-- [[../../07-Reviews/AI-Agent-Learning/2026-07-12-t3-gate-tool-calling-review|T3-Gate PASS 复盘]]
+- [[04-Projects/Agent/AI-Agent-Learning/t3-gate-tool-assistant|T3-Gate 三工具助手]]
+- [[07-Reviews/AI-Agent-Learning/2026-07-12-t3-gate-tool-calling-review|T3-Gate PASS 复盘]]

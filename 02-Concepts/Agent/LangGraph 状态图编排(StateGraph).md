@@ -3,7 +3,7 @@ type: concept
 topic: LangGraph StateGraph
 status: usable
 created: 2026-09-05
-updated: 2026-09-05
+updated: 2026-09-08
 source:
   - https://docs.langchain.com/oss/python/langgraph/graph-api
   - https://docs.langchain.com/oss/python/langgraph/streaming
@@ -21,9 +21,20 @@ tags:
 
 # LangGraph 状态图编排（StateGraph）
 
+> [!abstract] 按问题查这页
+>
+> - **要决定是否引入工作流图：** 先看 [[#什么时候值得用]]；单步运算通常用普通函数即可。
+> - **数据为什么丢了或重复：** 查看 [[#State schema 不等于运行时校验|字段格式与更新规则]]，再看 [[#Node 优先返回局部更新|每一步实际返回了什么]]。
+> - **任务为什么停不下来：** 对照 [[#Edge：固定路线与条件路线|分支去向]] 与 [[#两种不同的上限|业务上限和运行保护]]。
+> - **重启后为什么接不上：** 查看 [[#没有 checkpointer 就不会跨调用续接|状态保存条件]]；当前 G8-00 的图只证明单次运行编排，不代表已经实现恢复。
+
+`status: usable` 表示这页可供复习和引用，不代表所有提到的功能都已掌握或实现；个人课程状态以学习项目的 `tracker/progress.md` 为准。
+
 ## 一句话
 
-`StateGraph` 像一张写清“现在掌握什么、下一站去哪、何时必须停”的流程地图：`State` 保存当前快照，`Node` 做一步工作并返回局部更新，`Edge` 决定下一步；有限、安全、可枚举的控制规则由代码掌握，LLM 只处理真正需要语言理解和开放推理的部分。
+`StateGraph` 像一张写清“现在掌握什么、下一站去哪、何时必须停”的流程地图：共享工作单（`State`）保存当前信息，处理步骤（`Node`）完成一步并交回变更，连接路线（`Edge`）决定下一步。能写清楚的控制规则由代码掌握，大语言模型（LLM）负责需要语言理解和开放推理的部分。
+
+最小场景是：**输入告警和日志 → 检查已有证据 → 必要时执行一次允许的诊断并回到检查 → 输出结论，或写明停止原因。** 这就是下文故障诊断 v1 的主线；字段更新小例子见 [[#State schema 不等于运行时校验]]，完整产物见 [[04-Projects/Agent/AI-Agent-Learning/g8-00-incident-change-review-agent-v1|G8-00 项目记录]]。
 
 ## 什么时候值得用
 
@@ -50,6 +61,7 @@ tags:
 ## State schema 不等于运行时校验
 
 ```python
+# 摘录：这里只展示与本节有关的字段，完整定义见 G8-00 项目。
 class IncidentState(TypedDict):
     evidence: Annotated[list[str], add]
     step_count: int
@@ -58,7 +70,7 @@ class IncidentState(TypedDict):
 
 `TypedDict` 主要帮助编辑器、类型检查器和读代码的人理解字段；普通 Python 运行时不会因为一个 dict 类型不符就自动拒绝它。真实输入边界仍要由应用代码或 Pydantic 等运行时校验工具守住。
 
-State 字段要区分两种更新规则：
+State 字段要区分两种更新规则；其中 `reducer` 就是把“旧值”和“本次更新”合成新值的函数：
 
 - 没有 reducer：默认用本次返回值替换旧值；
 - 声明 reducer：Graph 用 reducer 合并旧值和本次增量。
@@ -108,7 +120,7 @@ builder.add_conditional_edges(
 )
 ```
 
-同一 Node 连出多条普通边不是 `if/elif`；官方 Graph API 说明，这些目标会在下一次 super-step 中并行调度。互斥业务分支应由一个有完整返回范围的条件路由明确选择。
+同一 Node 连出多条普通边不是 `if/elif`；官方 Graph API 说明，这些目标会在下一轮统一调度（super-step）中并行执行。互斥业务分支应由一个有完整返回范围的条件路由明确选择。
 
 故障诊断 v1 的路由优先级是：
 
@@ -188,7 +200,7 @@ APPROVED_READONLY_TOOLS
 result = compiled_graph.invoke(initial_state)
 ```
 
-`invoke()` 等整次 Graph 结束后，把最终 State 交给调用方。普通 `.py` 文件若既不保存也不 `print()`，终端不会自动显示这个 dict。
+在本页 G8-00 的调用方式下，`invoke()` 等整次 Graph 结束后，把最终 State 交给调用方。若另设输出字段或改变返回版本，返回结构需按对应配置确认。普通 `.py` 文件若既不保存也不 `print()`，终端不会自动显示这个 dict。
 
 ```python
 for part in compiled_graph.stream(
@@ -200,9 +212,9 @@ for part in compiled_graph.stream(
         print(part["data"])
 ```
 
-`updates` 给出各 Node 本次返回的局部更新，不是完整 State，也不是模型逐 token 文本；逐 token 对应 `messages`。每次调用 `stream()` 都会从传入的输入启动一次新运行，不会回放前一次 `invoke()`。
+`updates` 给出各 Node 本次返回的局部更新，不是完整 State，也不是模型逐段生成的文本；模型文本流对应 `messages`。本页未配置状态保存器时，再调用 `stream(initial_state, ...)` 会执行一次新的图运行，不会回放前一次 `invoke()`；配置保存器后的继续或恢复要按下节条件处理。
 
-当前官方 Streaming 文档说明统一的 v2 `StreamPart` 结构需要 LangGraph 1.1+；G8-00 实际锁定并验证的是 `langgraph==1.2.11`，检查日期 2026-09-05。版本升级后应重新核对字段和默认行为。
+[官方 Streaming 文档](https://docs.langchain.com/oss/python/langgraph/streaming#stream-output-format-v2)说明统一的 v2 `StreamPart` 结构需要 LangGraph 1.1+，本次文档核验日期 2026-09-08；G8-00 的既有执行验证使用 `langgraph==1.2.11`（2026-09-05）。版本升级后应重新核对字段和默认行为。
 
 ## 没有 checkpointer 就不会跨调用续接
 
@@ -214,7 +226,7 @@ StateGraph(IncidentState)
 
 不会让下一次独立调用自动带回上次 evidence。后续若要让同一条工作流跨调用续接，需要：
 
-1. 编译时配置 checkpointer；
+1. 编译时配置状态保存器（checkpointer），也就是替工作流保留各步快照的组件；
 2. 调用时使用同一个 `thread_id` 定位这条流程；
 3. 若要求进程重启后仍能恢复，使用持久化类型的 checkpointer。
 
@@ -235,10 +247,10 @@ StateGraph(IncidentState)
 
 ## 来源与版本
 
-- [LangGraph Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api)，检查日期 2026-09-05。
-- [LangGraph Streaming](https://docs.langchain.com/oss/python/langgraph/streaming)，检查日期 2026-09-05。
-- [LangGraph Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)，检查日期 2026-09-05。
-- 本项目验证版本：`langgraph==1.2.11`。
+- [LangGraph Graph API](https://docs.langchain.com/oss/python/langgraph/graph-api)：核对 State、局部更新、合并规则与多边并行行为，检查日期 2026-09-08。
+- [LangGraph Streaming](https://docs.langchain.com/oss/python/langgraph/streaming)：核对 `updates`、`messages` 与 v2 输出结构，检查日期 2026-09-08。
+- [LangGraph Persistence](https://docs.langchain.com/oss/python/langgraph/persistence)：核对 `thread_id`、内存保存器重启失效，以及单条流程状态与跨流程长期记忆的区别，检查日期 2026-09-08。
+- 既有项目验证版本：`langgraph==1.2.11`；依据为 `C:\Users\26823\Desktop\AI-Agent-Learning\code\stage8\incident_change_review_agent\requirements.txt` 与同目录 `incident_graph.py`，相关提交 `0fe4332`。本次只核对文档和文件，没有重新执行测试或升级依赖；历史通过证据仍见原项目记录与 2026-09-05 复盘。
 
 ## 相关链接
 
@@ -246,6 +258,6 @@ StateGraph(IncidentState)
 - [[ReAct推理与行动循环(ReAct)|ReAct 循环与停止]]
 - [[工具定义与执行协议(Tool Definition)|工具定义、批准与执行边界]]
 - [[受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试与人工接管]]
-- [[../../04-Projects/Agent/AI-Agent-Learning/g8-00-incident-change-review-agent-v1|G8-00 故障诊断与变更评审 Agent v1]]
-- [[../../03-Courses/Agent/AI-Agent-Learning/stage4_5-langgraph-basics|阶段 4.5：LangGraph 基础工作流]]
-- [[../../07-Reviews/AI-Agent-Learning/2026-09-05-g8-00-langgraph-v1-review|G8-00 正式 PASS 复盘]]
+- [[04-Projects/Agent/AI-Agent-Learning/g8-00-incident-change-review-agent-v1|G8-00 故障诊断与变更评审 Agent v1]]
+- [[03-Courses/Agent/AI-Agent-Learning/stage4_5-langgraph-basics|阶段 4.5：LangGraph 基础工作流]]
+- [[07-Reviews/AI-Agent-Learning/2026-09-05-g8-00-langgraph-v1-review|G8-00 正式 PASS 复盘]]

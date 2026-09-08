@@ -11,13 +11,17 @@ tags:
 
 # AI 知识库总地图
 
+想解决一个具体问题，先看 [[01-Maps/按问题查知识|按问题查知识]]；想浏览知识领域，再按下面的主题进入。当前主线是 Agent 应用开发，模型原理材料保留为选读。
+
 ## 当前主线
 
 - [[../index|AI Knowledge Index]]
+- [[01-Maps/按问题查知识|按问题查知识]]
+- [[03-Courses/Agent/AI-Agent-Learning/README|Agent 应用开发课程资料]]
 - [[../raw/README|Raw Sources]]
 - [[../log|AI Knowledge Log]]
 - [[AI 开发学习路线]]
-- [[Karpathy AI 学习路线]]
+- [[Karpathy AI 学习路线|Karpathy 模型原理选读]]
 - [[AI + Obsidian 工作流]]
 - [[AI-Agent-Learning 关联方案]]
 - [[AI-Agent-Learning 跳转索引]]
@@ -39,7 +43,7 @@ tags:
 - [[../index|全局索引]]
 - [[../log|维护日志]]
 - [[../07-Reviews/Knowledge-Base/README|Knowledge-Base 维护复盘索引]]
-- [[../07-Reviews/Knowledge-Base/2026-08-23-weekly-maintenance|最近一次 Weekly Maintenance：2026-08-23]]
+- [[07-Reviews/Knowledge-Base/README|最新维护结果与历史检查]]
 - [[../07-Reviews/Knowledge-Base/2026-05-29-karpathy-health-check|2026-05-29 Karpathy 知识库健康检查]]
 
 ### 概念卡片
@@ -83,7 +87,7 @@ tags:
 - [[../02-Concepts/LLM/消息角色与指令优先级(Instruction Hierarchy)|消息角色与指令优先级]]
 - [[../02-Concepts/LLM/多轮对话与无状态记忆(Stateless Memory)|多轮对话与客户端记忆]]
 - [[../02-Concepts/LLM/流式输出(Streaming)|流式输出]]
-- RAG
+- [[01-Maps/按问题查知识#资料导入后为什么回答时还找不到|RAG：先找资料再回答（已有演示，课程进行中）]]
 - [[../02-Concepts/Agent/智能体(Agent)|Agent / 智能体]]
 - [[../02-Concepts/Agent/ReAct推理与行动循环(ReAct)|ReAct 推理与行动循环]]
 - [[../02-Concepts/Agent/计划与求解(Plan-and-Solve)|Plan-and-Solve 计划与求解]]

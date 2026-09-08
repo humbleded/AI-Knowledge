@@ -1,4 +1,4 @@
-﻿---
+---
 type: maintenance-log
 topic: AI Knowledge
 status: active
@@ -1165,3 +1165,10 @@ tags:
 - 知识库原先工作树干净；只提交本轮整理的笔记和索引。健康检查复用 `tools/check_vault.py` 的严格检查规则，扫描限定为 Git 可见的知识库文件，排除隐藏目录与 Claude 路径；结果见 [[07-Reviews/Knowledge-Base/2026-09-08-workbench-sync-check|本次健康检查记录]]。
 
 - 本次代码和原始证据固定到 [AI-Agent-Learning 1624eec](https://github.com/humbleded/AI-Agent-Learning/commit/1624eec8f559274ae25fc5545a517d701cec15de)。范围限定后的严格检查为 229 个 Markdown、2198 个内部链接、0 个错误与警告；扫描使用实际 Windows 路径大小写，未改写已有概念页。
+
+### 按问题导航、概念模板与重点笔记整理
+
+- 用户在对照外部产品支持知识库后授权“按照你说的来改进”，本轮完成已确定的小范围知识库维护。
+- 新增 [[01-Maps/按问题查知识|按问题查知识]]，六类问题连接已有概念、例子和项目。[[README|说明页]]、[[index|全局索引]]、[[01-Maps/AI 知识库总地图|总地图]]与 [[02-Concepts/Agent/README|Agent 索引]]均接入；首页修正分类，索引去掉重复且过时的学习快照，链接执行区当前进度。
+- 完善 [[Templates/概念笔记模板|概念模板]]；合并整理 [[02-Concepts/Agent/工具调用与动作(Tool Calling and Action)|工具调用]]、[[02-Concepts/Agent/LangGraph 状态图编排(StateGraph)|状态图]]、[[02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试]]，增加使用入口和适用条件，保留历史订正与代码证据。前两篇核验当前官方文档，重试页沿用原项目技术证据，不伪称本轮重跑。
+- 没有导入外站企业产品正文、保存凭据、修改课程判定或实现工作台新功能；资料状态与学习证据继续分开。原始对话授权及借鉴来源、独立审查发现、修正和最终校验结果集中记录在 [[07-Reviews/Knowledge-Base/2026-09-08-question-navigation-check|本次维护检查]]，不重复建立原始资料副本或测试脚本。
