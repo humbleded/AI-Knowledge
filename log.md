@@ -1172,3 +1172,15 @@ tags:
 - 新增 [[01-Maps/按问题查知识|按问题查知识]]，六类问题连接已有概念、例子和项目。[[README|说明页]]、[[index|全局索引]]、[[01-Maps/AI 知识库总地图|总地图]]与 [[02-Concepts/Agent/README|Agent 索引]]均接入；首页修正分类，索引去掉重复且过时的学习快照，链接执行区当前进度。
 - 完善 [[Templates/概念笔记模板|概念模板]]；合并整理 [[02-Concepts/Agent/工具调用与动作(Tool Calling and Action)|工具调用]]、[[02-Concepts/Agent/LangGraph 状态图编排(StateGraph)|状态图]]、[[02-Concepts/Agent/受控重试与人工接管(Bounded Retry and Human Handoff)|受控重试]]，增加使用入口和适用条件，保留历史订正与代码证据。前两篇核验当前官方文档，重试页沿用原项目技术证据，不伪称本轮重跑。
 - 没有导入外站企业产品正文、保存凭据、修改课程判定或实现工作台新功能；资料状态与学习证据继续分开。原始对话授权及借鉴来源、独立审查发现、修正和最终校验结果集中记录在 [[07-Reviews/Knowledge-Base/2026-09-08-question-navigation-check|本次维护检查]]，不重复建立原始资料副本或测试脚本。
+
+## 2026-09-13
+
+### Knowledge-Base Weekly Maintenance
+
+- 运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`，初始结果通过：232 个 Markdown、2303 个内部链接、0 个断链、0 个缺失 frontmatter、8 个 raw 非索引文件。
+- 复核 [[00-Inbox/README|00-Inbox]] 和 [[raw/README|raw]]：Inbox 仍只有 `README.md`；raw 仍有 8 个非索引 source notes，没有新 raw 需要移动或编译。
+- 复核 2026-08-23 周维护后的 Git 变化：A4-Gate 正式 PASS、A4-Gate Canvas / SVG、路线审计、G8-00 LangGraph PASS、RAG 学习订正、统一工作台同步和问题导航整理都已进入对应概念、课程、项目、复盘、索引与日志。
+- 复核 [[07-Reviews/Knowledge-Base/2026-09-08-workbench-sync-check|工作台同步检查]] 与 [[07-Reviews/Knowledge-Base/2026-09-08-question-navigation-check|问题导航整理检查]]：两份记录已说明来源、范围和不新增课程 PASS / 岗位证据的边界，本轮不重复建 raw 副本。
+- `status: seed` 仍主要集中在模板、早期 Python 基础概念、Claude Skills 课程摘记和 HelloAgents 源码阅读索引；旧 draft 为 `03-Courses/Daily-Practice/2026-06-05-practice.md`。本轮没有新的学习证据证明这些页面可以升级，因此只列入后续清理队列。
+- 新增 [[07-Reviews/Knowledge-Base/2026-09-13-weekly-maintenance|2026-09-13 Weekly Maintenance]]，更新 [[07-Reviews/Knowledge-Base/README|Knowledge-Base 维护复盘索引]]、[[01-Maps/AI 知识库总地图|总地图]]和 [[index|全局索引]]。
+- 最终严格检查通过：233 个 Markdown、2337 个内部链接、0 个断链、0 个缺失 frontmatter、8 个 raw 非索引文件。
