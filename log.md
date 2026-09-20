@@ -3,7 +3,7 @@ type: maintenance-log
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-09-08
+updated: 2026-09-20
 tags:
   - 知识库
   - log
@@ -1184,3 +1184,21 @@ tags:
 - `status: seed` 仍主要集中在模板、早期 Python 基础概念、Claude Skills 课程摘记和 HelloAgents 源码阅读索引；旧 draft 为 `03-Courses/Daily-Practice/2026-06-05-practice.md`。本轮没有新的学习证据证明这些页面可以升级，因此只列入后续清理队列。
 - 新增 [[07-Reviews/Knowledge-Base/2026-09-13-weekly-maintenance|2026-09-13 Weekly Maintenance]]，更新 [[07-Reviews/Knowledge-Base/README|Knowledge-Base 维护复盘索引]]、[[01-Maps/AI 知识库总地图|总地图]]和 [[index|全局索引]]。
 - 最终严格检查通过：233 个 Markdown、2337 个内部链接、0 个断链、0 个缺失 frontmatter、8 个 raw 非索引文件。
+
+## 2026-09-20
+
+### Knowledge-Base Weekly Maintenance
+
+- 运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`，初始结果通过：233 个 Markdown、2337 个内部链接、0 个断链、0 个缺失 frontmatter、8 个 raw 非索引文件。
+- 复核 [[00-Inbox/README|00-Inbox]] 与 [[raw/README|raw]]：Inbox 仍只有 README；raw 没有新增 source notes，本轮不移动原始资料。
+- 复核上次周维护提交 `d163bc1` 后的 Git 历史：没有新的知识库提交；工作树起始状态干净，剩余仅 `.claudian/`、`.obsidian/` 和 `__pycache__` 等忽略项。
+- 处理旧 stale 队列：将 6 张早期 Python `seed` 概念卡扩写为 `usable`，补充 `## 中文速读`、使用边界、常见误解、最小例子和来源线索：
+  - [[02-Concepts/Python/解释器(Interpreter)|Python Interpreter]]
+  - [[02-Concepts/Python/输入与输出(input & print)|Python input() 与 print()]]
+  - [[02-Concepts/Python/变量(Variables)|Python Variables]]
+  - [[02-Concepts/Python/基础数据类型(Data Types)|Python Data Types]]
+  - [[02-Concepts/Python/类型转换(Type Conversion)|Python Type Conversion]]
+  - [[02-Concepts/Python/f-string 格式化|Python f-string]]
+- 将 [[03-Courses/Daily-Practice/2026-06-05-practice|2026-06-05 每日练习题册]] 从 `draft` 标为 `completed`，链接最终 PASS 批改 [[07-Reviews/Daily-Practice/2026-06-05-review|2026-06-05 每日练习批改]]，并保留原始作答痕迹。
+- 新增 [[07-Reviews/Knowledge-Base/2026-09-20-weekly-maintenance|2026-09-20 Weekly Maintenance]]，更新 [[07-Reviews/Knowledge-Base/README|Knowledge-Base 维护复盘索引]]、[[01-Maps/AI 知识库总地图|总地图]]、[[02-Concepts/Python/README|Python 概念卡索引]]和 [[index|全局索引]]。
+- 最终严格检查通过：234 个 Markdown、2416 个内部链接、0 个断链、0 个缺失 frontmatter、8 个 raw 非索引文件，且无剩余 warning。

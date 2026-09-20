@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-09-13
+updated: 2026-09-20
 tags:
   - 知识库
   - index
@@ -54,10 +54,16 @@ tags:
 
 - [[02-Concepts/README|概念卡片总索引]]
 - [[02-Concepts/Python/README|Python 概念卡]]
+- [[02-Concepts/Python/解释器(Interpreter)|Python Interpreter：执行 .py 文件的程序]]
+- [[02-Concepts/Python/输入与输出(input & print)|Python input() 与 print()：输入永远先是字符串]]
+- [[02-Concepts/Python/变量(Variables)|Python 变量：给值起名字]]
+- [[02-Concepts/Python/基础数据类型(Data Types)|Python 基础数据类型：str / int / float / bool]]
 - [[02-Concepts/Python/真值判断与严格布尔校验(Truthiness)|Python 真值判断与严格布尔校验：truthiness / equality / identity]]
 - [[02-Concepts/Python/and-or 短路求值|Python and / or 短路与返回原值]]
 - [[02-Concepts/Python/函数与参数(Functions)|Python 函数、参数与 return]]
 - [[02-Concepts/Python/偏函数(functools.partial)|Python 偏函数 functools.partial 与默认参数]]
+- [[02-Concepts/Python/类型转换(Type Conversion)|Python 类型转换：外部输入进程序前先校验]]
+- [[02-Concepts/Python/f-string 格式化|Python f-string：把变量放进字符串]]
 - [[02-Concepts/Python/list·dict·set 容器|Python list、dict、set]]
 - [[02-Concepts/Python/环境管理(venv & pip)|Python 项目环境管理：venv、pip 与 .env]]
 - [[02-Concepts/Python/异常·调试·测试(Exceptions)|Python 异常、调试与单元测试]]
@@ -174,6 +180,7 @@ tags:
 
 ## 复盘与记忆
 
+- [[07-Reviews/Knowledge-Base/2026-09-20-weekly-maintenance|2026-09-20 知识库周维护]]
 - [[07-Reviews/Knowledge-Base/2026-09-13-weekly-maintenance|2026-09-13 知识库周维护]]
 - [[07-Reviews/Knowledge-Base/2026-09-08-question-navigation-check|问题导航、模板与重点笔记整理检查]]
 - [[07-Reviews/Knowledge-Base/2026-09-08-workbench-sync-check|工作台同步后的知识库检查]]
@@ -226,6 +233,7 @@ tags:
 - [[07-Reviews/Knowledge-Base/2026-08-16-weekly-maintenance]]
 - [[07-Reviews/Knowledge-Base/2026-08-23-weekly-maintenance]]
 - [[07-Reviews/Knowledge-Base/2026-09-13-weekly-maintenance]]
+- [[07-Reviews/Knowledge-Base/2026-09-20-weekly-maintenance]]
 - [[08-Memory/知识库长期记忆规则]]
 - [[08-Memory/全库中文辅助阅读规则]]
 - [[08-Memory/AI 学习原则]]

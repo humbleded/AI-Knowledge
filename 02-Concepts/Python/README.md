@@ -3,7 +3,7 @@ type: concept-index
 topic: Python
 status: active
 created: 2026-05-28
-updated: 2026-08-10
+updated: 2026-09-20
 tags:
   - Python
   - 概念卡
