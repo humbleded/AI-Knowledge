@@ -1202,3 +1202,14 @@ tags:
 - 将 [[03-Courses/Daily-Practice/2026-06-05-practice|2026-06-05 每日练习题册]] 从 `draft` 标为 `completed`，链接最终 PASS 批改 [[07-Reviews/Daily-Practice/2026-06-05-review|2026-06-05 每日练习批改]]，并保留原始作答痕迹。
 - 新增 [[07-Reviews/Knowledge-Base/2026-09-20-weekly-maintenance|2026-09-20 Weekly Maintenance]]，更新 [[07-Reviews/Knowledge-Base/README|Knowledge-Base 维护复盘索引]]、[[01-Maps/AI 知识库总地图|总地图]]、[[02-Concepts/Python/README|Python 概念卡索引]]和 [[index|全局索引]]。
 - 最终严格检查通过：234 个 Markdown、2416 个内部链接、0 个断链、0 个缺失 frontmatter、8 个 raw 非索引文件，且无剩余 warning。
+
+## 2026-10-28
+
+### Knowledge-Base Weekly Maintenance
+
+- 运行 `python tools\check_vault.py --root D:\AI-Knowledge --strict`；初始检查通过：234 个 Markdown、2416 个内部链接、0 个断链、0 个缺失 frontmatter、8 个 raw 非索引文件。
+- 复核 [[00-Inbox/README|00-Inbox]]、[[raw/README|raw]]、`index.md` 与 Git 历史：Inbox 没有待分拣材料；raw 没有新增 source notes；自 `70df3a0` 后没有新的知识库提交，工作树起始状态干净。
+- 按 [[08-Memory/全库中文辅助阅读规则|全库中文辅助阅读规则]] 复核本周内容：没有新增英文笔记需要补中文速读；既有代码、命令、路径、URL、专业术语和 wikilink 均保持原样。
+- 5 个 `seed` 页面仍是模板、命名规范或历史阅读索引；没有新增学习或源码证据支持升级，故未为了消除状态而虚构内容或改变状态。
+- 新增 [[07-Reviews/Knowledge-Base/2026-10-28-weekly-maintenance|2026-10-28 Weekly Maintenance]]，并更新 [[07-Reviews/Knowledge-Base/README|维护复盘索引]]、[[01-Maps/AI 知识库总地图|总地图]]和 [[index|全局索引]]。
+- 2026-11-01 补做的最终严格检查通过：235 个 Markdown、2432 个内部链接、0 个断链、0 个缺失 frontmatter、8 个 raw 非索引文件；`git diff --check` 通过。

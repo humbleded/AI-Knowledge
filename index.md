@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-09-20
+updated: 2026-10-28
 tags:
   - 知识库
   - index
@@ -180,6 +180,7 @@ tags:
 
 ## 复盘与记忆
 
+- [[07-Reviews/Knowledge-Base/2026-10-28-weekly-maintenance|2026-10-28 知识库周维护]]
 - [[07-Reviews/Knowledge-Base/2026-09-20-weekly-maintenance|2026-09-20 知识库周维护]]
 - [[07-Reviews/Knowledge-Base/2026-09-13-weekly-maintenance|2026-09-13 知识库周维护]]
 - [[07-Reviews/Knowledge-Base/2026-09-08-question-navigation-check|问题导航、模板与重点笔记整理检查]]
@@ -234,6 +235,7 @@ tags:
 - [[07-Reviews/Knowledge-Base/2026-08-23-weekly-maintenance]]
 - [[07-Reviews/Knowledge-Base/2026-09-13-weekly-maintenance]]
 - [[07-Reviews/Knowledge-Base/2026-09-20-weekly-maintenance]]
+- [[07-Reviews/Knowledge-Base/2026-10-28-weekly-maintenance]]
 - [[08-Memory/知识库长期记忆规则]]
 - [[08-Memory/全库中文辅助阅读规则]]
 - [[08-Memory/AI 学习原则]]
