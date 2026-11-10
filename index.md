@@ -3,7 +3,7 @@ type: global-index
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-10-28
+updated: 2026-11-10
 tags:
   - 知识库
   - index
@@ -36,6 +36,7 @@ tags:
 - [[raw/README|Raw Sources]]
 - [[raw/initial-link-sources|Initial Link Sources]]
 - [[00-Inbox/README|Inbox]]
+- [[07-Reviews/Knowledge-Base/2026-11-10-weekly-maintenance|最新周维护：2026-11-10]]
 - [[log|维护日志]]
 
 ## 主线地图

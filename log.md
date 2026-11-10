@@ -3,7 +3,7 @@ type: maintenance-log
 topic: AI Knowledge
 status: active
 created: 2026-05-29
-updated: 2026-09-20
+updated: 2026-11-10
 tags:
   - 知识库
   - log
@@ -13,6 +13,16 @@ tags:
 # AI Knowledge Log
 
 按时间记录知识库的重要维护、ingest、结构调整和健康检查。它是 Karpathy 式 LLM Wiki 的操作日志。
+
+## 2026-11-10
+
+### Knowledge-Base Weekly Maintenance
+
+- 严格检查通过：235 个 Markdown、2,432 个内部链接、0 个断链、0 个缺失 frontmatter、8 个 raw 非索引文件。
+- [[00-Inbox/README|00-Inbox]] 仍只有说明页；[[raw/README|raw]] 没有新增 source notes，本轮不移动原始资料或编造可提升的学习成果。
+- 工作树起始状态干净，`main` 与 `origin/main` 同步；复核后仅新增 [[07-Reviews/Knowledge-Base/2026-11-10-weekly-maintenance|本次维护记录]]，并更新维护索引、总地图和全局索引。
+- 已按 [[08-Memory/全库中文辅助阅读规则|全库中文辅助阅读规则]] 复核全库 Markdown：没有新增英文材料需要补中文速读；保留既有 English technical anchors、代码、命令、路径、URL、API 名称与 wikilink。
+- `status: seed` 的 5 个页面仍缺少学习或源码证据，本轮保持原状态；未产生 checker warning。
 
 ## 2026-05-29
 
